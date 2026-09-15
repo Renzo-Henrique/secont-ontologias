@@ -1,19 +1,16 @@
 import nucleo
-/**
- * Ontologia de Receitas Orçamentárias e Dívida Ativa do Estado do Espírito Santo
- * 
- * Esta ontologia modela:
- * 1. Receitas orçamentárias segundo a Lei Federal nº 4.320/64
- * 2. Registros de dívida ativa (CDA - Certidão de Dívida Ativa)
- * 
- * Fundação: UFO (Unified Foundational Ontology)
- */
-package receitas
 
 /**
- * Conta Contábil: Elemento do Plano de Contas do SIGEFES.
- * Representa a conta no plano de contas do qual o dado foi extraído.
+ *
+ **** Atributos encontrados apenas nos csv's:
+ * tipoLancamentoReceita 
  */
+
+package receitas
+
+
+datatype CodigoContaContabil specializes string
+
 kind ContaContabil {
     label {
         @pt-br "Conta Contábil"
@@ -22,9 +19,11 @@ kind ContaContabil {
         @pt-br "Corresponde a conta contábil, do plano de contas do SIGEFES, da qual foi extraído o dado."
     }
     
-    codigoContaContabil: number [1]
+    codigo: CodigoContaContabil [1] { const}
     descricaoContaContabil: string [1]
 }
+
+datatype CodigoNatureza specializes string
 
 kind NaturezaReceita {
     label {
@@ -33,10 +32,11 @@ kind NaturezaReceita {
     description {
         @pt-br "Agrupamento que identifica a origem dos recursos, se orçamentários ou extra- orçamentários. Busca identificar a origem dos recursos segundo o fato gerador. Constituem receitas orçamentárias os valores constantes da lei orçamentária, enquanto as extra- orçamentárias são todas aquelas provenientes de qualquer arrecadação que não figure no orçamento e, consequentemente, toda arrecadação que não constitui renda do Estado."
     }
-    
-    codigoNatureza: number [1]
+    codigo: CodigoNatureza [1] {const}
     descricaoNatureza: string [1]
 }
+
+datatype CodigoCategoriaReceita specializes string
 
 kind CategoriaReceita {
     label {
@@ -48,11 +48,12 @@ kind CategoriaReceita {
         Receitas de Capital: também aumentam as disponibilidades financeiras do Estado e são instrumentos de financiamento dos programas e ações orçamentários, a fim de se atingirem as finalidades públicas. Porém, de forma diversa das Receitas Correntes, as Receitas de Capital em geral não provocam efeito sobre o Patrimônio Líquido.
         "
     }
-    
-    codigoCategoriaReceita: number [1]
+    codigo: CodigoCategoriaReceita [1] {const}
     descricaoCategoriaReceita: string [1]
 }
 
+
+datatype CodigoOrigemReceita specializes string
 kind OrigemReceita {
     label {
         @pt-br "Origem da Receita"
@@ -77,10 +78,11 @@ kind OrigemReceita {
         5. Outras Receitas de Capital
         "
     }
-    
-    codigoOrigemReceita: string [1]
+    codigo: CodigoOrigemReceita [1] {const}
     descricaoOrigemReceita: string [1]
 }
+
+datatype CodigoEspecieReceita specializes string
 
 kind EspecieReceita {
     label {
@@ -89,10 +91,11 @@ kind EspecieReceita {
     description {
         @pt-br "É o nível de classificação vinculado à Origem que permite qualificar com maior detalhe o fato gerador dos ingressos das receitas. Por exemplo, dentro da Origem Receita Tributária, podemos identificar as espécies “impostos, taxas e contribuições de melhoria"
     }
-    
-    codigoEspecieReceita: number [1]
+    codigo: CodigoEspecieReceita [1] {const}
     descricaoEspecieReceita: string [1]
 }
+
+datatype CodigoRubricaReceita specializes string
 
 kind RubricaReceita {
     label {
@@ -102,10 +105,10 @@ kind RubricaReceita {
         @pt-br "É o detalhamento das espécies de receita. A Rubrica busca identificar dentro de cada Espécie de receita, uma qualificação mais específica. Agrega determinadas receitas com características próprias e semelhantes entre si."
     }
     
-    codigoRubricaReceita: number [1]
+    codigo: CodigoRubricaReceita [1] {const}
     descricaoRubricaReceita: string [1]
 }
-
+datatype CodigoAlineaReceita specializes string
 kind AlineaReceita {
     label {
         @pt-br "Alínea da Receita"
@@ -114,10 +117,10 @@ kind AlineaReceita {
         @pt-br "É o detalhamento que identifica o nome da receita propriamente dita, registrando a entrada de recursos financeiros."
     }
     
-    codigoAlineaReceita: number [1]
+    codigo: CodigoAlineaReceita [1] {const}
     descricaoAlineaReceita: string [1]
 }
-
+datatype CodigoSubAlineaReceita specializes string
 kind SubAlineaReceita {
     label {
         @pt-br "Sub-Alínea da Receita"
@@ -126,11 +129,11 @@ kind SubAlineaReceita {
         @pt-br "Constitui o nível mais analítico da receita, utilizado quando há necessidade de se detalhar a Alínea com maior especificidade"
     }
     
-    codigoSubAlineaReceita: number [1]
+    codigo: CodigoSubAlineaReceita [1] {const}
     descricaoSubAlineaReceita: string [1]
 }
-
-kind idUsoReceita {
+datatype CodigoIdUsoReceita specializes string
+kind IdUsoReceita {
     label {
         @pt-br "Identificador de Uso da Receita"
     }
@@ -138,10 +141,10 @@ kind idUsoReceita {
         @pt-br "Identificador de despesa que indica se os recursos compõem contrapartida nacional de empréstimos ou de doações, ou se são destinados a outras aplicações, constando da LOA e dos créditos adicionais"
     }
     
-    codigoIdUsoReceita: number [1]
+    codigo: CodigoIdUsoReceita [1] {const}
     descricaoIdUsoReceita: string [1]
 }
-
+datatype CodigoFonteReceita specializes string
 kind FonteReceita {
     label {
         @pt-br "Fonte de Recurso da Receita"
@@ -150,10 +153,10 @@ kind FonteReceita {
         @pt-br "Indica a origem ou procedência do dinheiro arrecadado. Esta classificação combina o critério origem do dinheiro às despesas orçamentárias. Esta vinculação visa demonstrar o montante de dinheiro que já está comprometido com o atendimento de determinadas finalidades, e aquele que pode ser livremente alocado"
     }
     
-    codigoFonteReceita: number [1]
+    codigo: CodigoFonteReceita [1] {const}
     descricaoFonteReceita: string [1]
 }
-
+datatype CodigoGrupoFonteReceita specializes string
 kind GrupoFonteReceita {
     label {
         @pt-br "Grupo de Fonte da Receita"
@@ -162,10 +165,11 @@ kind GrupoFonteReceita {
         @pt-br "Classificação criada para assegurar que receitas vinculadas por lei a finalidade específica sejam exclusivamente aplicadas em programas e ações que visem à consecução desse objetivo"
     }
     
-    codigoGrupoFonteReceita: number [1]
+    codigo: CodigoGrupoFonteReceita [1] {const}
     descricaoGrupoFonteReceita: string [1]
 }
-
+datatype CodigoDetalhamentoFonteReceita specializes string
+datatype CodigoDetalhamentoFonteReceitaAux specializes string
 kind DetalhamentoFonteReceita {
     label {
         @pt-br "Detalhamento de Fonte da Receita"
@@ -174,9 +178,9 @@ kind DetalhamentoFonteReceita {
         @pt-br "Código e título do detalhamento da fonte, utilizados no SIGEFES para registrar a receita."
     }
     
-    codigoDetalhamentoFonteReceita: number [1]
-    codigoDetalhamentoFonteReceitaAux: string [1]
-    descricaoDetalhamentoFonteReceita: number [1]
+    codigo: CodigoDetalhamentoFonteReceita [1] {const}
+    codigoAux: CodigoDetalhamentoFonteReceitaAux [1] {const}
+    descricaoDetalhamentoFonteReceita: string [1]
 }
 
 /**
@@ -192,7 +196,7 @@ Tipo numeric Tipo da receita (previsto ou realizad
 id text Código interno de sistema
 Ano numeric Ano que foi efetivada a receita
 */
-kind ReceitaReificada {
+relator ReceitaReificada {
     label {
         @pt-br ""
     }
@@ -200,14 +204,32 @@ kind ReceitaReificada {
         @pt-br ""
     }
     
-    valorPrevistoReceita: string [1]
+    valorPrevistoReceita: number [1]
     valorArrecadadoReceita: number [1]
-    dataEmissaoReceita: string [1]
-    dataContabilizacaoReceita: number [1]
-    documentoReceita: string [1]
-    codigoUGEmitenteReceita: number [1]
-    descricaoUGEmitenteReceita: string [1]
+    tipoLancamentoReceita: string [1]
+    dataEmissaoReceita: datetime [1]
+    dataContabilizacaoReceita: datetime [1]
+    documentoFiscalReceita: string [1]
     tipoReceita: number [1]
     idReceita: string [1]
     anoReceita: number [1]
+
 }
+
+
+// Relacionamentos
+
+@mediation relation ReceitaReificada [0..*] -- emitidaPara -- [1] nucleo.UnidadeGestora
+@mediation relation ReceitaReificada [0..*] -- [1] ContaContabil
+@mediation relation ReceitaReificada [0..*] -- [1] NaturezaReceita
+@mediation relation ReceitaReificada [0..*] -- [1] CategoriaReceita
+@mediation relation ReceitaReificada [0..*] -- [1] OrigemReceita
+@mediation relation ReceitaReificada [0..*] -- [1] EspecieReceita
+@mediation relation ReceitaReificada [0..*] -- [1] RubricaReceita
+@mediation relation ReceitaReificada [0..*] -- [1] AlineaReceita
+@mediation relation ReceitaReificada [0..*] -- [1] SubAlineaReceita
+@mediation relation ReceitaReificada [0..*] -- [1] IdUsoReceita
+@mediation relation ReceitaReificada [0..*] -- [1] FonteReceita
+@mediation relation ReceitaReificada [0..*] -- [1] GrupoFonteReceita
+@mediation relation ReceitaReificada [0..*] -- [1] DetalhamentoFonteReceita
+@mediation relation ReceitaReificada [0..*] -- emitidaPor -- [1] nucleo.UnidadeGestora

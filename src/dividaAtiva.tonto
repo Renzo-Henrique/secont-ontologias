@@ -1,0 +1,26 @@
+package dividaAtiva
+
+/**
+ *
+ **** Esse arquivo por completo é encontrado apenas nos csv's:
+ * tipoLancamentoReceita 
+ */
+
+kind dividaAtiva {
+    label {
+        @pt-br "Dívida Ativa"
+    }
+    description {
+        @pt-br "A Dívida Ativa é o conjunto de créditos tributários e não tributários devidos ao Estado, que não foram pagos no prazo legal. A inscrição em dívida ativa é o ato administrativo que formaliza a constituição do crédito tributário ou não tributário, tornando-o exigível judicialmente."
+    }
+    
+    numeroCDA: string [1]
+    ano: string [1]
+    dataInscricao: string [1]
+    numeroProcesso: string [1]
+    cpfCnpj: string [1]
+    nomeDevedor: string [1]
+    valorVRTE: string [1]
+    valorReal: string [1]
+    idDividaAtiva: string [1]
+}
