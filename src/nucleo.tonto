@@ -1,0 +1,19 @@
+package nucleo
+
+/**
+ * Unidade Gestora: Principal entidade identificável que emite e recebe recursos orçamentários.
+ * Uma UG é um órgão ou entidade do Estado que tem a responsabilidade de gerir recursos públicos.
+ */
+kind UnidadeGestora {
+    label {
+        @en "Gestional Unit"
+        @pt-br "Unidade Gestora"
+    }
+    description {
+        @en ""
+        @pt-br ""
+    }
+    
+    codigoUnidadeGestora: number [1]
+    descricaoUnidadeGestora: string [1]
+}
