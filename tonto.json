@@ -1,10 +1,18 @@
 {
-   "projectName": "tonto-project",
-   "displayName": "tonto-project",
+   "projectName": "secont-ontologias",
+   "displayName": "SECONT Ontologias",
    "version": "1.0.0",
-   "publisher": "",
+   "publisher": "Nemo",
    "license": "MIT",
    "outFolder": "out",
    "dependencies": {},
-   "authors": []
+   "authors": [
+      "César Bernabé",
+      "Fábio Cipriano Soave",
+      "Miguel Gewer de Oliveira",
+      "Renzo H. Guzzo Leão",
+      "Veruska Zamborlini",
+      "Vítor E. Silva Souza"
+   ],
+   "repository": "secont2"
 }
