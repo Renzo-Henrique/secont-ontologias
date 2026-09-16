@@ -1,6 +1,6 @@
 package nucleo
 
-
+datatype CodigoUnidadeGestora specializes string
 kind UnidadeGestora {
     label {
         @en "Gestional Unit"
@@ -11,6 +11,39 @@ kind UnidadeGestora {
         @pt-br ""
     }
     
-    codigoUnidadeGestora: number [1]
+    codigo: CodigoUnidadeGestora [1] {const}
     descricaoUnidadeGestora: string [1]
+}
+
+
+datatype Cpf specializes string
+
+kind PessoaFisica {
+    label {
+        @en "Natural Person"
+        @pt-br "Pessoa Física"
+    }
+    description {
+        @en ""
+        @pt-br ""
+    }
+    
+    cpf: Cpf [1] {const}
+    nome: string [1]
+}
+
+datatype Cnpj specializes string
+
+kind PessoaJuridica {
+    label {
+        @en "Legal Person"
+        @pt-br "Pessoa Jurídica"
+    }
+    description {
+        @en ""
+        @pt-br ""
+    }
+    
+    cnpj: Cnpj [1] {const}
+    nome: string [1]
 }

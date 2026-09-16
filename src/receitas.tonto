@@ -216,10 +216,30 @@ relator ReceitaReificada {
 
 }
 
+role UnidadeGestoraEmitenteDaReceita specializes nucleo.UnidadeGestora {
+    label {
+        @pt-br "Unidade Gestora Emitente da Receita"
+    }
+    description {
+        @pt-br "Unidade Gestora Emitente da Receita"
+    }
+    
+}
+
+role UnidadeGestoraBeneficiariaDaReceita specializes nucleo.UnidadeGestora {
+    label {
+        @pt-br "Unidade Gestora Beneficiária da Receita"
+    }
+    description {
+        @pt-br "Unidade Gestora Beneficiária da Receita"
+    }
+    
+}
+
 
 // Relacionamentos
 
-@mediation relation ReceitaReificada [0..*] -- emitidaPara -- [1] nucleo.UnidadeGestora
+@mediation relation ReceitaReificada [0..*] -- emitidaPara -- [1] UnidadeGestoraBeneficiariaDaReceita
 @mediation relation ReceitaReificada [0..*] -- [1] ContaContabil
 @mediation relation ReceitaReificada [0..*] -- [1] NaturezaReceita
 @mediation relation ReceitaReificada [0..*] -- [1] CategoriaReceita
@@ -232,4 +252,4 @@ relator ReceitaReificada {
 @mediation relation ReceitaReificada [0..*] -- [1] FonteReceita
 @mediation relation ReceitaReificada [0..*] -- [1] GrupoFonteReceita
 @mediation relation ReceitaReificada [0..*] -- [1] DetalhamentoFonteReceita
-@mediation relation ReceitaReificada [0..*] -- emitidaPor -- [1] nucleo.UnidadeGestora
+@mediation relation ReceitaReificada [0..*] -- emitidaPor -- [1] UnidadeGestoraEmitenteDaReceita
