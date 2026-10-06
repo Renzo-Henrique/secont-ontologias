@@ -16,6 +16,7 @@ kind ContaContabil {
         @pt-br "Conta Contábil"
     }
     description {
+        // Fonte: Dicionário de dados do dataset de receitas https://dados.es.gov.br/dataset/portal-da-transparencia-receitas/resource/594765ef-39ca-404d-99a0-6b41e58178c6 
         @pt-br "Corresponde a conta contábil, do plano de contas do SIGEFES, da qual foi extraído o dado."
     }
     
@@ -30,6 +31,7 @@ kind NaturezaReceita {
         @pt-br "Natureza da Receita"
     }
     description {
+        // Fonte: Dicionário de dados do dataset de receitas https://dados.es.gov.br/dataset/portal-da-transparencia-receitas/resource/594765ef-39ca-404d-99a0-6b41e58178c6 
         @pt-br "Agrupamento que identifica a origem dos recursos, se orçamentários ou extra- orçamentários. Busca identificar a origem dos recursos segundo o fato gerador. Constituem receitas orçamentárias os valores constantes da lei orçamentária, enquanto as extra- orçamentárias são todas aquelas provenientes de qualquer arrecadação que não figure no orçamento e, consequentemente, toda arrecadação que não constitui renda do Estado."
     }
     codigo: CodigoNatureza [1] {const}
@@ -43,6 +45,7 @@ kind CategoriaReceita {
         @pt-br "Categoria da Receita"
     }
     description {
+        // Fonte: Dicionário de dados do dataset de receitas https://dados.es.gov.br/dataset/portal-da-transparencia-receitas/resource/594765ef-39ca-404d-99a0-6b41e58178c6 
         @pt-br "A Lei Federal nº 4.320/64, em seu artigo 11, classifica a receita orçamentária em duas categorias econômicas: Receitas Correntes e Receitas de Capital. 
         Receitas Correntes: são arrecadadas dentro do exercício financeiro, aumentam as disponibilidades financeiras do Estado, em geral com efeito positivo sobre o Patrimônio Líquido e constituem instrumento para financiar os objetivos definidos nos programas e ações orçamentários, com vistas a satisfazer finalidades públicas.
         Receitas de Capital: também aumentam as disponibilidades financeiras do Estado e são instrumentos de financiamento dos programas e ações orçamentários, a fim de se atingirem as finalidades públicas. Porém, de forma diversa das Receitas Correntes, as Receitas de Capital em geral não provocam efeito sobre o Patrimônio Líquido.
@@ -59,6 +62,7 @@ kind OrigemReceita {
         @pt-br "Origem da Receita"
     }
     description {
+        // Fonte: Dicionário de dados do dataset de receitas https://dados.es.gov.br/dataset/portal-da-transparencia-receitas/resource/594765ef-39ca-404d-99a0-6b41e58178c6 
         @pt-br "É o detalhamento das Categorias Econômicas, que tem por objetivo identificar a natureza da procedência das receitas, no momento em que ingressam no Orçamento Público.
         Os códigos da Origem para as receitas correntes e de capital, de acordo com a Lei no 4.320, de 1964, são:
         RECEITAS CORRENTES
@@ -89,6 +93,7 @@ kind EspecieReceita {
         @pt-br "Espécie da Receita"
     }
     description {
+        // Fonte: Dicionário de dados do dataset de receitas https://dados.es.gov.br/dataset/portal-da-transparencia-receitas/resource/594765ef-39ca-404d-99a0-6b41e58178c6 
         @pt-br "É o nível de classificação vinculado à Origem que permite qualificar com maior detalhe o fato gerador dos ingressos das receitas. Por exemplo, dentro da Origem Receita Tributária, podemos identificar as espécies “impostos, taxas e contribuições de melhoria"
     }
     codigo: CodigoEspecieReceita [1] {const}
@@ -102,6 +107,7 @@ kind RubricaReceita {
         @pt-br "Rubrica da Receita"
     }
     description {
+        // Fonte: Dicionário de dados do dataset de receitas https://dados.es.gov.br/dataset/portal-da-transparencia-receitas/resource/594765ef-39ca-404d-99a0-6b41e58178c6 
         @pt-br "É o detalhamento das espécies de receita. A Rubrica busca identificar dentro de cada Espécie de receita, uma qualificação mais específica. Agrega determinadas receitas com características próprias e semelhantes entre si."
     }
     
@@ -114,6 +120,7 @@ kind AlineaReceita {
         @pt-br "Alínea da Receita"
     }
     description {
+        // Fonte: Dicionário de dados do dataset de receitas https://dados.es.gov.br/dataset/portal-da-transparencia-receitas/resource/594765ef-39ca-404d-99a0-6b41e58178c6 
         @pt-br "É o detalhamento que identifica o nome da receita propriamente dita, registrando a entrada de recursos financeiros."
     }
     
@@ -126,6 +133,7 @@ kind SubAlineaReceita {
         @pt-br "Sub-Alínea da Receita"
     }
     description {
+        // Fonte: Dicionário de dados do dataset de receitas https://dados.es.gov.br/dataset/portal-da-transparencia-receitas/resource/594765ef-39ca-404d-99a0-6b41e58178c6 
         @pt-br "Constitui o nível mais analítico da receita, utilizado quando há necessidade de se detalhar a Alínea com maior especificidade"
     }
     
@@ -138,6 +146,7 @@ kind IdUsoReceita {
         @pt-br "Identificador de Uso da Receita"
     }
     description {
+        // Fonte: Dicionário de dados do dataset de receitas https://dados.es.gov.br/dataset/portal-da-transparencia-receitas/resource/594765ef-39ca-404d-99a0-6b41e58178c6 
         @pt-br "Identificador de despesa que indica se os recursos compõem contrapartida nacional de empréstimos ou de doações, ou se são destinados a outras aplicações, constando da LOA e dos créditos adicionais"
     }
     
@@ -150,6 +159,7 @@ kind FonteReceita {
         @pt-br "Fonte de Recurso da Receita"
     }
     description {
+        // Fonte: Dicionário de dados do dataset de receitas https://dados.es.gov.br/dataset/portal-da-transparencia-receitas/resource/594765ef-39ca-404d-99a0-6b41e58178c6 
         @pt-br "Indica a origem ou procedência do dinheiro arrecadado. Esta classificação combina o critério origem do dinheiro às despesas orçamentárias. Esta vinculação visa demonstrar o montante de dinheiro que já está comprometido com o atendimento de determinadas finalidades, e aquele que pode ser livremente alocado"
     }
     
@@ -162,6 +172,7 @@ kind GrupoFonteReceita {
         @pt-br "Grupo de Fonte da Receita"
     }
     description {
+        // Fonte: Dicionário de dados do dataset de receitas https://dados.es.gov.br/dataset/portal-da-transparencia-receitas/resource/594765ef-39ca-404d-99a0-6b41e58178c6 
         @pt-br "Classificação criada para assegurar que receitas vinculadas por lei a finalidade específica sejam exclusivamente aplicadas em programas e ações que visem à consecução desse objetivo"
     }
     
@@ -175,6 +186,7 @@ kind DetalhamentoFonteReceita {
         @pt-br "Detalhamento de Fonte da Receita"
     }
     description {
+        // Fonte: Dicionário de dados do dataset de receitas https://dados.es.gov.br/dataset/portal-da-transparencia-receitas/resource/594765ef-39ca-404d-99a0-6b41e58178c6 
         @pt-br "Código e título do detalhamento da fonte, utilizados no SIGEFES para registrar a receita."
     }
     
@@ -198,10 +210,10 @@ Ano numeric Ano que foi efetivada a receita
 */
 relator ReceitaReificada {
     label {
-        @pt-br ""
+        @pt-br "Receita Reificada"
     }
     description {
-        @pt-br ""
+        @pt-br "Entidade que representa a receita reificada, com todos os seus atributos e relacionamentos. Reificar significa transformar um conceito em um objeto explícito, ou seja, a receita é transformada em uma entidade com atributos e relacionamentos próprios."
     }
     
     valorPrevistoReceita: number [1]
