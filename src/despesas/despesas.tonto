@@ -1,0 +1,110 @@
+import nucleo
+
+package despesas
+
+
+
+
+
+
+/*
+Ano numeric Ana de referência da realização da despesa
+Data timestamp Data de referência da realização da despesa
+ValorEmpenho text Valor que foi reservado para pagamento de um produto ou serviço.
+
+
+*/
+relator DespesaReificada {
+
+    ano: number [1]
+    data: datetime [1]
+    valorEmpenho: string [1]
+    valorLiquidado: string [1]
+    valorPago: string [1]
+    valorRap: string [1]
+    cpfCnpjNis: string [1]
+    tipoFavorecido: string [1]
+    cargoFuncao: string [1]
+    favorecido: string [1]
+    idFavorecido: string [1]
+    tipoLicitacao: string [1]
+    historicoDocumento: string [1]
+    documento: string [1]
+    documentoEmpenho: string [1]
+    codigoProcesso: string [1]
+    processo: string [1]
+    processoAssunto: string [1]
+    codigoFuncionalProgramatica: string [1]
+    codigoCategoriaEconomica: string [1]
+    categoriaEconomica: string [1]
+    codigoUnidadeGestora: string [1]
+    unidadeGestora: string [1]
+    codigoGrupoDespesa: string [1]
+    grupoDespesa: string [1]
+    elementoDespesa: string [1]
+    descricaoElementoDespesa: string [1]
+    codigoSubtitulo: string [1]
+    subtitulo: string [1]
+    codigoFonte: string [1]
+    fonte: string [1]
+    codigoOrgao: string [1]
+    orgao: string [1]
+    codigoFuncao: string [1]
+    funcao: string [1]
+    codigoSubFuncao: string [1]
+    subFuncao: string [1]
+    codigoPrograma: string [1]
+    programa: string [1]
+    codigoAcao: string [1]
+    acao: string [1]
+    codigoModalidade: string [1]
+    modalidade: string [1]
+    codigoSubElementoDespesa: string [1]
+    subElementoDespesa: string [1]
+    codigoGestaoEmitente: string [1]
+    codigoPlanoOrcamentario: string [1]
+    planoOrcamentario: string [1]
+    numeroProcesso: string [1]
+    codigoConvenioRecebido: string [1]
+    codigoConvenioConcedido: string [1]
+    id: string [1]
+    
+}
+
+role UnidadeGestoraNaDespesa specializes nucleo.UnidadeGestora, FavorecidoNaDespesa {
+    label {
+        @pt-br "Unidade Gestora na Despesa"
+    }
+    description {
+        @pt-br "Unidade Gestora na Despesa"
+    }
+    
+}
+
+role PessoaFisicaNaDespesa specializes nucleo.PessoaFisica, FavorecidoNaDespesa {
+    label {
+        @pt-br "Pessoa Física na Despesa"
+    }
+    description {
+        @pt-br "Pessoa Física na Despesa"
+    }
+    
+}
+
+roleMixin FavorecidoNaDespesa {
+    label {
+        @pt-br "Favorecido na Despesa"
+    }
+    description {
+        @pt-br "Favorecido na Despesa"
+    }
+    
+}
+
+disjoint complete genset GenSetFavorecidoNaDespesa {
+    general FavorecidoNaDespesa
+    specifics UnidadeGestoraNaDespesa, PessoaFisicaNaDespesa
+}
+
+
+@mediation relation despesaReificada [1..*] -- [1] FavorecidoNaDespesa

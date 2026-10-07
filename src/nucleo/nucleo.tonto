@@ -17,7 +17,7 @@ kind UnidadeGestora {
 
 
 datatype Cpf specializes string
-
+datatype Nis specializes string
 kind PessoaFisica {
     label {
         @en "Natural Person"
@@ -29,6 +29,7 @@ kind PessoaFisica {
     }
     
     cpf: Cpf [1] {const}
+    nis: Nis [0..1] {const}
     nome: string [1]
 }
 
