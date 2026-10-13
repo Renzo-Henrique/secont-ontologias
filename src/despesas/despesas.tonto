@@ -29,7 +29,7 @@ relator DespesaReificada {
     // Valor pago no período realizado, mas que teve seu empenho realizado no ano anterior
     valorRap: string [1]
     // CPF CNPJ ou NIS do favorecido
-    cpfCnpjNis: string [1]
+    // - cpfCnpjNis: string [1]
     // Código que ser refere ao tipo de favorecido: pessoa jurídica, física, órgão/entidade ou credor genérico
     tipoFavorecido: string [1]
     // Cargo ou função a que se refere à pessoa física, quando servidor público.
@@ -59,9 +59,9 @@ relator DespesaReificada {
     // Classificação detalhada da receita e despesa, com a finalidade de analisar a arrecadação e a despesa do governo.
     categoriaEconomica: string [1]
     // Código de identificação da Unidade Gestora
-    codigoUnidadeGestora: string [1]
+    // - codigoUnidadeGestora: string [1]
     // Entidades encarregadas de gerir os recursos públicos.
-    unidadeGestora: string [1]
+    // - unidadeGestora: string [1]
     // Código grupo de despesa
     codigoGrupoDespesa: string [1]
     // Agregação de elementos de despesa de mesmas características quanto ao objeto de gasto
@@ -125,12 +125,22 @@ relator DespesaReificada {
     
 }
 
-role UnidadeGestoraNaDespesa specializes nucleo.UnidadeGestora, FavorecidoNaDespesa {
+role UnidadeGestoraNaDespesa specializes nucleo.UnidadeGestora {
     label {
         @pt-br "Unidade Gestora na Despesa"
     }
     description {
         @pt-br "Unidade Gestora na Despesa"
+    }
+    
+}
+
+role PessoaJuridicaNaDespesa specializes nucleo.PessoaJuridica, FavorecidoNaDespesa {
+    label {
+        @pt-br "Pessoa Jurídica na Despesa"
+    }
+    description {
+        @pt-br "Pessoa Jurídica na Despesa"
     }
     
 }
@@ -157,7 +167,7 @@ roleMixin FavorecidoNaDespesa {
 
 disjoint complete genset GenSetFavorecidoNaDespesa {
     general FavorecidoNaDespesa
-    specifics UnidadeGestoraNaDespesa, PessoaFisicaNaDespesa
+    specifics PessoaJuridicaNaDespesa, PessoaFisicaNaDespesa
 }
 
 
