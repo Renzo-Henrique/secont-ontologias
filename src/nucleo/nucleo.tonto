@@ -12,7 +12,7 @@ kind UnidadeGestora {
     }
     
     codigo: CodigoUnidadeGestora [1] {const}
-    descricaoUnidadeGestora: string [1]
+    descricao: string [1]
 }
 
 

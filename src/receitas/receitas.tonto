@@ -9,191 +9,139 @@ import nucleo
 package receitas
 
 
-datatype CodigoContaContabil specializes string
+datatype CodigoCategoriaEconomicaReceita specializes string
+datatype CodigoOrigemReceita specializes string
+datatype CodigoEspecieReceita specializes string
+datatype CodigoRubricaReceita specializes string
+datatype CodigoAlineaReceita specializes string
+datatype CodigoSubalineaReceita specializes string
+datatype CodigoDetalhamento1Receita specializes string
+datatype CodigoDetalhamento2Receita specializes string
+datatype CodigoDetalhamento3Receita specializes string
+datatype CodigoNaturezaReceita specializes string
 
-kind ContaContabil {
+mode ClassificacaoReceita2022 {
+    label {
+        @pt-br "Classificação da Receita"
+    }
+    description {
+        @pt-br "Classificação da Receita"
+    }
+    /*
+    “a.b.c.d.ee.f.g”
+    I. “a” corresponde à Categoria Econômica da receita;
+    II. “b” corresponde à Origem da receita;
+    III. “c” corresponde à Espécie da receita;
+    IV. “d”, “ee” e “f” correspondem a desdobramentos que identificam peculiaridades ou
+    necessidades gerenciais de cada natureza de receita, sendo que os desdobramentos “ee”,
+    correspondentes aos 5º e 6º dígitos da codificação, separam os códigos da União daqueles
+    específicos dos demais entes federados, de acordo com a seguinte estrutura lógica:
+        a. “00” até “49” identificam códigos reservados para a União, que poderão ser utilizados,
+        no que couber, por Estados, Distrito Federal e Municípios;
+        b. “50” até “98” identificam códigos reservados para uso específico de Estados, Distrito
+        Federal e Municípios; e
+        c. “99” será utilizado para registrar “outras receitas”, entendidas assim as receitas
+        genéricas que não tenham código identificador específico, atendidas as normas
+        contábeis aplicáveis; e
+    V. “g” identifica o Tipo de Receita.
+
+    */
+    // 
+    codigoCategoriaEconomica: CodigoCategoriaEconomicaReceita [1] {const}
+    descricaoCategoriaEconomica: string [1] {const}
+    // 
+    codigoOrigem: CodigoOrigemReceita [1] {const}
+    descricaoOrigem: string [1] {const}
+    // 
+    codigoEspecie: CodigoEspecieReceita [1] {const}
+    descricaoEspecie: string [1] {const}
+    // 
+    codigoRubrica: CodigoRubricaReceita [1] {const}
+    descricaoRubrica: string [1] {const}
+    // 
+    codigoAlinea: CodigoAlineaReceita [1] {const}
+    descricaoAlinea: string [1] {const}
+    // 
+    codigoSubalinea: CodigoSubalineaReceita [1] {const}
+    descricaoSubalinea: string [1] {const}
+    // 
+    codigoDetalhamento1: CodigoDetalhamento1Receita [1] {const}
+    descricaoDetalhamento1: string [1] {const}
+    // 
+    codigoDetalhamento2: CodigoDetalhamento2Receita [1] {const}
+    descricaoDetalhamento2: string [1] {const}
+    // 
+    codigoDetalhamento3: CodigoDetalhamento3Receita [1] {const}
+    descricaoDetalhamento3: string [1] {const}
+    //
+    codigoNatureza: CodigoNaturezaReceita [1] {const}
+    descricaoNatureza: string [1] {const}
+
+}
+
+datatype CodigoContaContabilReceita specializes string
+
+mode ContaContabilReceita {
     label {
         @pt-br "Conta Contábil"
     }
     description {
-        // Fonte: Dicionário de dados do dataset de receitas https://dados.es.gov.br/dataset/portal-da-transparencia-receitas/resource/594765ef-39ca-404d-99a0-6b41e58178c6 
-        @pt-br "Corresponde a conta contábil, do plano de contas do SIGEFES, da qual foi extraído o dado."
+        @pt-br "Conta Contábil"
     }
-    
-    codigo: CodigoContaContabil [1] { const}
-    descricaoContaContabil: string [1]
+    codigo: CodigoContaContabilReceita [1] {const}
+    descricao: string [1] {const}
 }
 
-datatype CodigoNatureza specializes string
-
-kind NaturezaReceita {
+datatype CodigoUsoReceita specializes string
+mode UsoReceita {
     label {
-        @pt-br "Natureza da Receita"
+        @pt-br "Uso da Receita"
     }
     description {
-        // Fonte: Dicionário de dados do dataset de receitas https://dados.es.gov.br/dataset/portal-da-transparencia-receitas/resource/594765ef-39ca-404d-99a0-6b41e58178c6 
-        @pt-br "Agrupamento que identifica a origem dos recursos, se orçamentários ou extra- orçamentários. Busca identificar a origem dos recursos segundo o fato gerador. Constituem receitas orçamentárias os valores constantes da lei orçamentária, enquanto as extra- orçamentárias são todas aquelas provenientes de qualquer arrecadação que não figure no orçamento e, consequentemente, toda arrecadação que não constitui renda do Estado."
+        @pt-br "Uso da Receita"
     }
-    codigo: CodigoNatureza [1] {const}
-    descricaoNatureza: string [1]
+    codigo: CodigoUsoReceita [1] {const}
+    descricao: string [1] {const}
 }
 
-datatype CodigoCategoriaReceita specializes string
-
-kind CategoriaReceita {
-    label {
-        @pt-br "Categoria da Receita"
-    }
-    description {
-        // Fonte: Dicionário de dados do dataset de receitas https://dados.es.gov.br/dataset/portal-da-transparencia-receitas/resource/594765ef-39ca-404d-99a0-6b41e58178c6 
-        @pt-br "A Lei Federal nº 4.320/64, em seu artigo 11, classifica a receita orçamentária em duas categorias econômicas: Receitas Correntes e Receitas de Capital. 
-        Receitas Correntes: são arrecadadas dentro do exercício financeiro, aumentam as disponibilidades financeiras do Estado, em geral com efeito positivo sobre o Patrimônio Líquido e constituem instrumento para financiar os objetivos definidos nos programas e ações orçamentários, com vistas a satisfazer finalidades públicas.
-        Receitas de Capital: também aumentam as disponibilidades financeiras do Estado e são instrumentos de financiamento dos programas e ações orçamentários, a fim de se atingirem as finalidades públicas. Porém, de forma diversa das Receitas Correntes, as Receitas de Capital em geral não provocam efeito sobre o Patrimônio Líquido.
-        "
-    }
-    codigo: CodigoCategoriaReceita [1] {const}
-    descricaoCategoriaReceita: string [1]
-}
-
-
-datatype CodigoOrigemReceita specializes string
-kind OrigemReceita {
-    label {
-        @pt-br "Origem da Receita"
-    }
-    description {
-        // Fonte: Dicionário de dados do dataset de receitas https://dados.es.gov.br/dataset/portal-da-transparencia-receitas/resource/594765ef-39ca-404d-99a0-6b41e58178c6 
-        @pt-br "É o detalhamento das Categorias Econômicas, que tem por objetivo identificar a natureza da procedência das receitas, no momento em que ingressam no Orçamento Público.
-        Os códigos da Origem para as receitas correntes e de capital, de acordo com a Lei no 4.320, de 1964, são:
-        RECEITAS CORRENTES
-        1. Receita Tributária
-        2. Receita de Contribuições
-        3. Receita Patrimonial
-        4. Receita Agropecuária
-        5. Receita Industrial
-        6. Receita de Serviços
-        7. Transferências Correntes
-        9. Outras Receitas Correntes
-        RECEITAS DE CAPITAL
-        1. Operações de Crédito
-        2. Alienação de Bens
-        3. Amortização de Empréstimos
-        4. Transferências de Capital
-        5. Outras Receitas de Capital
-        "
-    }
-    codigo: CodigoOrigemReceita [1] {const}
-    descricaoOrigemReceita: string [1]
-}
-
-datatype CodigoEspecieReceita specializes string
-
-kind EspecieReceita {
-    label {
-        @pt-br "Espécie da Receita"
-    }
-    description {
-        // Fonte: Dicionário de dados do dataset de receitas https://dados.es.gov.br/dataset/portal-da-transparencia-receitas/resource/594765ef-39ca-404d-99a0-6b41e58178c6 
-        @pt-br "É o nível de classificação vinculado à Origem que permite qualificar com maior detalhe o fato gerador dos ingressos das receitas. Por exemplo, dentro da Origem Receita Tributária, podemos identificar as espécies “impostos, taxas e contribuições de melhoria"
-    }
-    codigo: CodigoEspecieReceita [1] {const}
-    descricaoEspecieReceita: string [1]
-}
-
-datatype CodigoRubricaReceita specializes string
-
-kind RubricaReceita {
-    label {
-        @pt-br "Rubrica da Receita"
-    }
-    description {
-        // Fonte: Dicionário de dados do dataset de receitas https://dados.es.gov.br/dataset/portal-da-transparencia-receitas/resource/594765ef-39ca-404d-99a0-6b41e58178c6 
-        @pt-br "É o detalhamento das espécies de receita. A Rubrica busca identificar dentro de cada Espécie de receita, uma qualificação mais específica. Agrega determinadas receitas com características próprias e semelhantes entre si."
-    }
-    
-    codigo: CodigoRubricaReceita [1] {const}
-    descricaoRubricaReceita: string [1]
-}
-datatype CodigoAlineaReceita specializes string
-kind AlineaReceita {
-    label {
-        @pt-br "Alínea da Receita"
-    }
-    description {
-        // Fonte: Dicionário de dados do dataset de receitas https://dados.es.gov.br/dataset/portal-da-transparencia-receitas/resource/594765ef-39ca-404d-99a0-6b41e58178c6 
-        @pt-br "É o detalhamento que identifica o nome da receita propriamente dita, registrando a entrada de recursos financeiros."
-    }
-    
-    codigo: CodigoAlineaReceita [1] {const}
-    descricaoAlineaReceita: string [1]
-}
-datatype CodigoSubAlineaReceita specializes string
-kind SubAlineaReceita {
-    label {
-        @pt-br "Sub-Alínea da Receita"
-    }
-    description {
-        // Fonte: Dicionário de dados do dataset de receitas https://dados.es.gov.br/dataset/portal-da-transparencia-receitas/resource/594765ef-39ca-404d-99a0-6b41e58178c6 
-        @pt-br "Constitui o nível mais analítico da receita, utilizado quando há necessidade de se detalhar a Alínea com maior especificidade"
-    }
-    
-    codigo: CodigoSubAlineaReceita [1] {const}
-    descricaoSubAlineaReceita: string [1]
-}
-datatype CodigoIdUsoReceita specializes string
-kind IdUsoReceita {
-    label {
-        @pt-br "Identificador de Uso da Receita"
-    }
-    description {
-        // Fonte: Dicionário de dados do dataset de receitas https://dados.es.gov.br/dataset/portal-da-transparencia-receitas/resource/594765ef-39ca-404d-99a0-6b41e58178c6 
-        @pt-br "Identificador de despesa que indica se os recursos compõem contrapartida nacional de empréstimos ou de doações, ou se são destinados a outras aplicações, constando da LOA e dos créditos adicionais"
-    }
-    
-    codigo: CodigoIdUsoReceita [1] {const}
-    descricaoIdUsoReceita: string [1]
-}
 datatype CodigoFonteReceita specializes string
-kind FonteReceita {
+mode FonteReceita {
     label {
-        @pt-br "Fonte de Recurso da Receita"
+        @pt-br "Fonte da Receita"
     }
     description {
-        // Fonte: Dicionário de dados do dataset de receitas https://dados.es.gov.br/dataset/portal-da-transparencia-receitas/resource/594765ef-39ca-404d-99a0-6b41e58178c6 
-        @pt-br "Indica a origem ou procedência do dinheiro arrecadado. Esta classificação combina o critério origem do dinheiro às despesas orçamentárias. Esta vinculação visa demonstrar o montante de dinheiro que já está comprometido com o atendimento de determinadas finalidades, e aquele que pode ser livremente alocado"
+        @pt-br "Fonte da Receita"
     }
-    
     codigo: CodigoFonteReceita [1] {const}
-    descricaoFonteReceita: string [1]
+    descricao: string [1] {const}
 }
+
 datatype CodigoGrupoFonteReceita specializes string
-kind GrupoFonteReceita {
+mode GrupoFonteReceita {
     label {
-        @pt-br "Grupo de Fonte da Receita"
+        @pt-br "Grupo da Fonte da Receita"
     }
     description {
-        // Fonte: Dicionário de dados do dataset de receitas https://dados.es.gov.br/dataset/portal-da-transparencia-receitas/resource/594765ef-39ca-404d-99a0-6b41e58178c6 
-        @pt-br "Classificação criada para assegurar que receitas vinculadas por lei a finalidade específica sejam exclusivamente aplicadas em programas e ações que visem à consecução desse objetivo"
+        @pt-br "Grupo da Fonte da Receita"
     }
-    
     codigo: CodigoGrupoFonteReceita [1] {const}
-    descricaoGrupoFonteReceita: string [1]
+    descricao: string [1] {const}
 }
+
 datatype CodigoDetalhamentoFonteReceita specializes string
-datatype CodigoDetalhamentoFonteReceitaAux specializes string
-kind DetalhamentoFonteReceita {
+datatype CodigoDetalhamentoFonteAuxiliarReceita specializes string
+mode DetalhamentoFonteReceita {
     label {
-        @pt-br "Detalhamento de Fonte da Receita"
+        @pt-br "Detalhamento da Fonte da Receita"
     }
     description {
-        // Fonte: Dicionário de dados do dataset de receitas https://dados.es.gov.br/dataset/portal-da-transparencia-receitas/resource/594765ef-39ca-404d-99a0-6b41e58178c6 
-        @pt-br "Código e título do detalhamento da fonte, utilizados no SIGEFES para registrar a receita."
+        @pt-br "Detalhamento da Fonte da Receita"
     }
-    
     codigo: CodigoDetalhamentoFonteReceita [1] {const}
-    codigoAux: CodigoDetalhamentoFonteReceitaAux [1] {const}
-    descricaoDetalhamentoFonteReceita: string [1]
+    codigoAuxiliar: CodigoDetalhamentoFonteAuxiliarReceita [1] {const}
+    descricao: string [1] {const}
 }
+
 
 /**
 
@@ -208,6 +156,13 @@ Tipo numeric Tipo da receita (previsto ou realizad
 id text Código interno de sistema
 Ano numeric Ano que foi efetivada a receita
 */
+
+datatype IdentificadorReceita specializes string
+datatype TipoArquivoReceita specializes string
+datatype TipoLancamentoReceita specializes string
+datatype IdentificadorReceita specializes string
+datatype IdentificadorDocumentoReceita specializes string
+
 relator ReceitaReificada {
     label {
         @pt-br "Receita Reificada"
@@ -216,15 +171,29 @@ relator ReceitaReificada {
         @pt-br "Entidade que representa a receita reificada, com todos os seus atributos e relacionamentos. Reificar significa transformar um conceito em um objeto explícito, ou seja, a receita é transformada em uma entidade com atributos e relacionamentos próprios."
     }
     
-    valorPrevistoReceita: number [1]
-    valorArrecadadoReceita: number [1]
-    tipoLancamentoReceita: string [1]
-    dataEmissaoReceita: datetime [1]
-    dataContabilizacaoReceita: datetime [1]
-    documentoFiscalReceita: string [1]
-    tipoReceita: number [1]
-    idReceita: string [1]
-    anoReceita: number [1]
+    ano: number [1] {const}
+    arrecadadaBruta: number [1] {const}
+    arrecadadaDeducao: number [1] {const}
+    arrecadadaLiquida: number [1] {const}
+    // Incluir UTC -3
+    data: datetime [1] {const}
+    // Incluir UTC -3
+    dataContabilizacao: datetime [1] {const}
+    // Incluir UTC -3
+    dataEmissao: datetime [1] {const}
+    documento: IdentificadorDocumentoReceita [1] {const}
+    identificador: IdentificadorReceita [1] {const}
+    // numeros de 01 a 12, representando os meses do ano
+    mes: number [1] {const}
+    previstaBruta: number [1] {const}
+    previstaDeducao: number [1] {const}
+    previstaLiquida: number [1] {const}
+    previsto: number [1] {const}
+    realizado: number [1] {const}
+    recolhidaBruta: number [1] {const}
+    recolhido: number [1] {const}
+    tipoArquivo: TipoArquivoReceita [1] {const}
+    tipoLancamento: TipoLancamentoReceita [1] {const}
 
 }
 
@@ -252,16 +221,5 @@ role UnidadeGestoraBeneficiariaDaReceita specializes nucleo.UnidadeGestora {
 // Relacionamentos
 
 @mediation relation ReceitaReificada [0..*] -- emitidaPara -- [1] UnidadeGestoraBeneficiariaDaReceita
-@mediation relation ReceitaReificada [0..*] -- [1] ContaContabil
-@mediation relation ReceitaReificada [0..*] -- [1] NaturezaReceita
-@mediation relation ReceitaReificada [0..*] -- [1] CategoriaReceita
-@mediation relation ReceitaReificada [0..*] -- [1] OrigemReceita
-@mediation relation ReceitaReificada [0..*] -- [1] EspecieReceita
-@mediation relation ReceitaReificada [0..*] -- [1] RubricaReceita
-@mediation relation ReceitaReificada [0..*] -- [1] AlineaReceita
-@mediation relation ReceitaReificada [0..*] -- [1] SubAlineaReceita
-@mediation relation ReceitaReificada [0..*] -- [1] IdUsoReceita
-@mediation relation ReceitaReificada [0..*] -- [1] FonteReceita
-@mediation relation ReceitaReificada [0..*] -- [1] GrupoFonteReceita
-@mediation relation ReceitaReificada [0..*] -- [1] DetalhamentoFonteReceita
 @mediation relation ReceitaReificada [0..*] -- emitidaPor -- [1] UnidadeGestoraEmitenteDaReceita
+
