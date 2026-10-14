@@ -20,6 +20,7 @@ datatype CodigoDetalhamento2Receita specializes string
 datatype CodigoDetalhamento3Receita specializes string
 datatype CodigoNaturezaReceita specializes string
 
+
 mode ClassificacaoReceita2022 {
     label {
         @pt-br "Classificação da Receita"
@@ -222,4 +223,10 @@ role UnidadeGestoraBeneficiariaDaReceita specializes nucleo.UnidadeGestora {
 
 @mediation relation ReceitaReificada [0..*] -- emitidaPara -- [1] UnidadeGestoraBeneficiariaDaReceita
 @mediation relation ReceitaReificada [0..*] -- emitidaPor -- [1] UnidadeGestoraEmitenteDaReceita
+@mediation relation ReceitaReificada [1] -- naturezaClassificadaPor -- [1] ClassificacaoReceita2022
+@mediation relation ReceitaReificada [0..*] -- extraidaDaConta -- [1] contaContabilReceita
+@mediation relation ReceitaReificada [0..*] -- usoEspecificadoPor -- [1] UsoReceita
+@mediation relation ReceitaReificada [0..*] -- fonteDoDinheiroClassificadoPor -- [1] FonteReceita
+@mediation relation ReceitaReificada [0..*] -- detalhamentoRegistradoPor -- [1] DetalhamentoFonteReceita
+
 
