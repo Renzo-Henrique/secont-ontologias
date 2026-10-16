@@ -21,64 +21,64 @@ datatype CodigoDetalhamento3Receita specializes string
 datatype CodigoNaturezaReceita specializes string
 
 
-mode ClassificacaoReceita2022 {
-    label {
-        @pt-br "Classificação da Receita"
-    }
-    description {
-        @pt-br "Classificação da Receita"
-    }
-    /*
-    “a.b.c.d.ee.f.g”
-    I. “a” corresponde à Categoria Econômica da receita;
-    II. “b” corresponde à Origem da receita;
-    III. “c” corresponde à Espécie da receita;
-    IV. “d”, “ee” e “f” correspondem a desdobramentos que identificam peculiaridades ou
-    necessidades gerenciais de cada natureza de receita, sendo que os desdobramentos “ee”,
-    correspondentes aos 5º e 6º dígitos da codificação, separam os códigos da União daqueles
-    específicos dos demais entes federados, de acordo com a seguinte estrutura lógica:
-        a. “00” até “49” identificam códigos reservados para a União, que poderão ser utilizados,
-        no que couber, por Estados, Distrito Federal e Municípios;
-        b. “50” até “98” identificam códigos reservados para uso específico de Estados, Distrito
-        Federal e Municípios; e
-        c. “99” será utilizado para registrar “outras receitas”, entendidas assim as receitas
-        genéricas que não tenham código identificador específico, atendidas as normas
-        contábeis aplicáveis; e
-    V. “g” identifica o Tipo de Receita.
+// mode ClassificacaoReceita2022 {
+//     label {
+//         @pt-br "Classificação da Receita"
+//     }
+//     description {
+//         @pt-br "Classificação da Receita"
+//     }
+//     /*
+//     “a.b.c.d.ee.f.g”
+//     I. “a” corresponde à Categoria Econômica da receita;
+//     II. “b” corresponde à Origem da receita;
+//     III. “c” corresponde à Espécie da receita;
+//     IV. “d”, “ee” e “f” correspondem a desdobramentos que identificam peculiaridades ou
+//     necessidades gerenciais de cada natureza de receita, sendo que os desdobramentos “ee”,
+//     correspondentes aos 5º e 6º dígitos da codificação, separam os códigos da União daqueles
+//     específicos dos demais entes federados, de acordo com a seguinte estrutura lógica:
+//         a. “00” até “49” identificam códigos reservados para a União, que poderão ser utilizados,
+//         no que couber, por Estados, Distrito Federal e Municípios;
+//         b. “50” até “98” identificam códigos reservados para uso específico de Estados, Distrito
+//         Federal e Municípios; e
+//         c. “99” será utilizado para registrar “outras receitas”, entendidas assim as receitas
+//         genéricas que não tenham código identificador específico, atendidas as normas
+//         contábeis aplicáveis; e
+//     V. “g” identifica o Tipo de Receita.
 
-    */
-    // 
-    codigoCategoriaEconomica: CodigoCategoriaEconomicaReceita [1] {const}
-    descricaoCategoriaEconomica: string [1] {const}
-    // 
-    codigoOrigem: CodigoOrigemReceita [1] {const}
-    descricaoOrigem: string [1] {const}
-    // 
-    codigoEspecie: CodigoEspecieReceita [1] {const}
-    descricaoEspecie: string [1] {const}
-    // 
-    codigoRubrica: CodigoRubricaReceita [1] {const}
-    descricaoRubrica: string [1] {const}
-    // 
-    codigoAlinea: CodigoAlineaReceita [1] {const}
-    descricaoAlinea: string [1] {const}
-    // 
-    codigoSubalinea: CodigoSubalineaReceita [1] {const}
-    descricaoSubalinea: string [1] {const}
-    // 
-    codigoDetalhamento1: CodigoDetalhamento1Receita [1] {const}
-    descricaoDetalhamento1: string [1] {const}
-    // 
-    codigoDetalhamento2: CodigoDetalhamento2Receita [1] {const}
-    descricaoDetalhamento2: string [1] {const}
-    // 
-    codigoDetalhamento3: CodigoDetalhamento3Receita [1] {const}
-    descricaoDetalhamento3: string [1] {const}
-    //
-    codigoNatureza: CodigoNaturezaReceita [1] {const}
-    descricaoNatureza: string [1] {const}
+//     */
+//     // 
+//     codigoCategoriaEconomica: CodigoCategoriaEconomicaReceita [1] {const}
+//     descricaoCategoriaEconomica: string [1] {const}
+//     // 
+//     codigoOrigem: CodigoOrigemReceita [1] {const}
+//     descricaoOrigem: string [1] {const}
+//     // 
+//     codigoEspecie: CodigoEspecieReceita [1] {const}
+//     descricaoEspecie: string [1] {const}
+//     // 
+//     codigoRubrica: CodigoRubricaReceita [1] {const}
+//     descricaoRubrica: string [1] {const}
+//     // 
+//     codigoAlinea: CodigoAlineaReceita [1] {const}
+//     descricaoAlinea: string [1] {const}
+//     // 
+//     codigoSubalinea: CodigoSubalineaReceita [1] {const}
+//     descricaoSubalinea: string [1] {const}
+//     // 
+//     codigoDetalhamento1: CodigoDetalhamento1Receita [1] {const}
+//     descricaoDetalhamento1: string [1] {const}
+//     // 
+//     codigoDetalhamento2: CodigoDetalhamento2Receita [1] {const}
+//     descricaoDetalhamento2: string [1] {const}
+//     // 
+//     codigoDetalhamento3: CodigoDetalhamento3Receita [1] {const}
+//     descricaoDetalhamento3: string [1] {const}
+//     //
+//     codigoNatureza: CodigoNaturezaReceita [1] {const}
+//     descricaoNatureza: string [1] {const}
 
-}
+// }
 
 datatype CodigoContaContabilReceita specializes string
 
@@ -142,10 +142,98 @@ mode DetalhamentoFonteReceita {
     codigoAuxiliar: CodigoDetalhamentoFonteAuxiliarReceita [1] {const}
     descricao: string [1] {const}
 }
-
-
 /**
+    Classificacao da receita, baseado no:
+    MANUAL DE CONTABILIDADE APLICADA AO SETOR PÚBLICO 11ª Edição
 
+    a. Natureza;
+    b. Fonte/Destinação de Recursos; e
+    c. Indicador de Resultado Primário.
+*/
+
+quality NaturezaReceita {
+    /**
+        Até o exercício financeiro de 2021, o código da natureza de receita estava definido de acordo com a seguinte estrutura “a.b.c.d.dd.d.e”.
+        Entretanto, por meio da Portaria Conjunta nº 650, de 24 de setembro de 2019, foi promovida a alteração no código da natureza de receita, a ser utilizada por todos os entes da Federação de forma facultativa em 2022 e obrigatória a partir de 2023, passou a ter a seguinte estrutura “a.b.c.d.ee.f.g”
+
+    **/
+    label {
+        @pt-br "Natureza da Receita"
+    }
+
+    codigoCategoriaEconomica: CodigoCategoriaEconomicaReceita [1] {const}
+    descricaoCategoriaEconomica: string [1] {const}
+    // 
+    codigoOrigem: CodigoOrigemReceita [1] {const}
+    descricaoOrigem: string [1] {const}
+    // 
+    codigoEspecie: CodigoEspecieReceita [1] {const}
+    descricaoEspecie: string [1] {const}
+    
+
+}
+
+
+
+phase NaturezaReceitaAnterior2022 specializes NaturezaReceita {
+    /**
+    A classificação de uma Receita por Natureza de Receita Orçamentária até o exercício financeiro de 2021, o código da natureza de receita estava definido de acordo com a seguinte estrutura “a.b.c.d.dd.d.e”, onde:
+        I. “a” identifica a Categoria Econômica da receita;
+        II. “b” a Origem da receita;
+        III. “c” a Espécie da receita;
+        IV. “d” corresponde a dígitos para desdobramentos que permitam identificar peculiaridades
+        ou necessidades gerenciais de cada natureza de receita; e
+        V. “e” o Tipo da Receita
+    **/
+    label {
+        @pt-br "Natureza da Receita anterior a 2022"
+    }
+
+    codigoRubrica: CodigoRubricaReceita [1]
+    descricaoRubrica: string [1]
+    codigoAlinea: CodigoAlineaReceita [1]
+    descricaoAlinea: string [1]
+    codigoSubalinea: CodigoSubalineaReceita [1]
+    descricaoSubalinea: string [1]
+}
+
+phase NaturezaReceitaApos2022 specializes NaturezaReceita {
+    /**
+    A classificação de uma Receita por Natureza de Receita Orçamentária a partir de 2023 começou a ser obrigatória, era de forma facultativa em 2022, e é composta por um código de oito dígitos numéricos, passou a ter a seguinte estrutura “a.b.c.d.ee.f.g”
+        I. “a” corresponde à Categoria Econômica da receita;
+        II. “b” corresponde à Origem da receita;
+        III. “c” corresponde à Espécie da receita;
+        IV. “d”, “ee” e “f” correspondem a desdobramentos que identificam peculiaridades ou
+        necessidades gerenciais de cada natureza de receita, sendo que os desdobramentos “ee”,
+        correspondentes aos 5º e 6º dígitos da codificação, separam os códigos da União daqueles
+        específicos dos demais entes federados, de acordo com a seguinte estrutura lógica:
+            a. “00” até “49” identificam códigos reservados para a União, que poderão ser utilizados,
+            no que couber, por Estados, Distrito Federal e Municípios;
+            b. “50” até “98” identificam códigos reservados para uso específico de Estados, Distrito
+            Federal e Municípios; e
+            c. “99” será utilizado para registrar “outras receitas”, entendidas assim as receitas
+            genéricas que não tenham código identificador específico, atendidas as normas
+            contábeis aplicáveis; e
+        V. “g” identifica o Tipo de Receita.
+    **/
+    label {
+        @pt-br "Natureza da Receita após 2022"
+    }
+    codigoDetalhamento1: CodigoDetalhamento1Receita [1]
+    descricaoDetalhamento1: string [1]
+    codigoDetalhamento2: CodigoDetalhamento2Receita [1]
+    descricaoDetalhamento2: string [1]
+    codigoDetalhamento3: CodigoDetalhamento3Receita [1]
+    descricaoDetalhamento3: string [1]
+}
+
+
+disjoint complete genset TipoDeNaturezaReceita {
+    general NaturezaReceita
+    specifics NaturezaReceitaApos2022, NaturezaReceitaAnterior2022
+}
+
+/*
 ValorPrevista text Valor de arrecadação prevista pelo Governo
 ValorArrecadada numeric Valor efetivamente arrecadado pelo Governo
 DataEmissao text Data de emissão do documento fiscal
@@ -221,12 +309,13 @@ role UnidadeGestoraBeneficiariaDaReceita specializes nucleo.UnidadeGestora {
 
 // Relacionamentos
 
-@mediation relation ReceitaReificada [0..*] -- emitidaPara -- [1] UnidadeGestoraBeneficiariaDaReceita
-@mediation relation ReceitaReificada [0..*] -- emitidaPor -- [1] UnidadeGestoraEmitenteDaReceita
-@mediation relation ReceitaReificada [1] -- naturezaClassificadaPor -- [1] ClassificacaoReceita2022
+@mediation relation ReceitaReificada [1..*] -- emitidaPara -- [1] UnidadeGestoraBeneficiariaDaReceita
+@mediation relation ReceitaReificada [1..*] -- emitidaPor -- [1] UnidadeGestoraEmitenteDaReceita
+@mediation relation ReceitaReificada [1] -- naturezaClassificadaPor -- [1] NaturezaReceita
 @mediation relation ReceitaReificada [0..*] -- extraidaDaConta -- [1] contaContabilReceita
 @mediation relation ReceitaReificada [0..*] -- usoEspecificadoPor -- [1] UsoReceita
 @mediation relation ReceitaReificada [0..*] -- fonteDoDinheiroClassificadoPor -- [1] FonteReceita
+@mediation relation ReceitaReificada [0..*] -- grupoDaFonteClassificadoPor -- [1] GrupoFonteReceita
 @mediation relation ReceitaReificada [0..*] -- detalhamentoRegistradoPor -- [1] DetalhamentoFonteReceita
 
 
