@@ -81,8 +81,7 @@ datatype CodigoNaturezaReceita specializes string
 // }
 
 datatype CodigoContaContabilReceita specializes string
-
-mode ContaContabilReceita {
+kind ContaContabilSIGEFES {
     label {
         @pt-br "Conta Contábil"
     }
@@ -93,20 +92,20 @@ mode ContaContabilReceita {
     descricao: string [1] {const}
 }
 
-datatype CodigoUsoReceita specializes string
-mode UsoReceita {
+datatype CodigoIdUsoReceita specializes string
+quality IdUsoReceita {
     label {
         @pt-br "Uso da Receita"
     }
     description {
         @pt-br "Uso da Receita"
     }
-    codigo: CodigoUsoReceita [1] {const}
+    codigo: CodigoIdUsoReceita [1] {const}
     descricao: string [1] {const}
 }
 
 datatype CodigoFonteReceita specializes string
-mode FonteReceita {
+quality FonteReceita {
     label {
         @pt-br "Fonte da Receita"
     }
@@ -118,7 +117,7 @@ mode FonteReceita {
 }
 
 datatype CodigoGrupoFonteReceita specializes string
-mode GrupoFonteReceita {
+quality GrupoFonteReceita {
     label {
         @pt-br "Grupo da Fonte da Receita"
     }
@@ -131,7 +130,7 @@ mode GrupoFonteReceita {
 
 datatype CodigoDetalhamentoFonteReceita specializes string
 datatype CodigoDetalhamentoFonteAuxiliarReceita specializes string
-mode DetalhamentoFonteReceita {
+quality DetalhamentoFonteReceita {
     label {
         @pt-br "Detalhamento da Fonte da Receita"
     }
@@ -174,7 +173,7 @@ quality NaturezaReceita {
 }
 
 
-
+datatype codigoNaturezaReceitaAnterior2022 specializes string
 phase NaturezaReceitaAnterior2022 specializes NaturezaReceita {
     /**
     A classificação de uma Receita por Natureza de Receita Orçamentária até o exercício financeiro de 2021, o código da natureza de receita estava definido de acordo com a seguinte estrutura “a.b.c.d.dd.d.e”, onde:
@@ -195,8 +194,11 @@ phase NaturezaReceitaAnterior2022 specializes NaturezaReceita {
     descricaoAlinea: string [1]
     codigoSubalinea: CodigoSubalineaReceita [1]
     descricaoSubalinea: string [1]
+    codigoNaturezaReceitaCompleto: CodigoNaturezaReceitaAnterior2022[1]
+    descricaoNaturezaReceita: string [1]
 }
 
+datatype codigoNaturezaReceitaApos2022 specializes string
 phase NaturezaReceitaApos2022 specializes NaturezaReceita {
     /**
     A classificação de uma Receita por Natureza de Receita Orçamentária a partir de 2023 começou a ser obrigatória, era de forma facultativa em 2022, e é composta por um código de oito dígitos numéricos, passou a ter a seguinte estrutura “a.b.c.d.ee.f.g”
@@ -225,6 +227,8 @@ phase NaturezaReceitaApos2022 specializes NaturezaReceita {
     descricaoDetalhamento2: string [1]
     codigoDetalhamento3: CodigoDetalhamento3Receita [1]
     descricaoDetalhamento3: string [1]
+    codigoNaturezaReceitaCompleto: CodigoNaturezaReceitaApos2022[1]
+    descricaoNaturezaReceita: string [1]
 }
 
 
@@ -274,13 +278,23 @@ relator ReceitaReificada {
     identificador: IdentificadorReceita [1] {const}
     // numeros de 01 a 12, representando os meses do ano
     mes: number [1] {const}
-    previstaBruta: number [1] {const}
-    previstaDeducao: number [1] {const}
-    previstaLiquida: number [1] {const}
-    previsto: number [1] {const}
-    realizado: number [1] {const}
-    recolhidaBruta: number [1] {const}
-    recolhido: number [1] {const}
+    // previstaBruta: number [1] {const}
+    // previstaDeducao: number [1] {const}
+    // previstaLiquida: number [1] {const}
+    // previsto: number [1] {const}
+    // realizado: number [1] {const}
+    // recolhidaBruta: number [1] {const}
+    // recolhido: number [1] {const}
+    valorArrecadada: number [0..1]
+    valorArrecadadaBruta: number [0..1]
+    valorArrecadadaDeducao: number [0..1]
+    valorArrecadadaLiquida: number [0..1]
+    valorPrevista: number [0..1]
+    valorPrevistaBruta: number [0..1]
+    valorPrevistaDeducao: number [0..1]
+    valorPrevistaLiquida: number [0..1]
+    valorRecolhida: number [0..1]
+    valorRecolhidaBruta: number [0..1]
     tipoArquivo: TipoArquivoReceita [1] {const}
     tipoLancamento: TipoLancamentoReceita [1] {const}
 
@@ -308,12 +322,11 @@ role UnidadeGestoraBeneficiariaDaReceita specializes nucleo.UnidadeGestora {
 
 
 // Relacionamentos
-
 @mediation relation ReceitaReificada [1..*] -- emitidaPara -- [1] UnidadeGestoraBeneficiariaDaReceita
 @mediation relation ReceitaReificada [1..*] -- emitidaPor -- [1] UnidadeGestoraEmitenteDaReceita
 @mediation relation ReceitaReificada [1] -- naturezaClassificadaPor -- [1] NaturezaReceita
-@mediation relation ReceitaReificada [0..*] -- extraidaDaConta -- [1] contaContabilReceita
-@mediation relation ReceitaReificada [0..*] -- usoEspecificadoPor -- [1] UsoReceita
+@mediation relation ReceitaReificada [0..*] -- extraidaDaConta -- [1] ContaContabilSIGEFES
+@mediation relation ReceitaReificada [0..*] -- usoEspecificadoPor -- [1] IdUsoReceita
 @mediation relation ReceitaReificada [0..*] -- fonteDoDinheiroClassificadoPor -- [1] FonteReceita
 @mediation relation ReceitaReificada [0..*] -- grupoDaFonteClassificadoPor -- [1] GrupoFonteReceita
 @mediation relation ReceitaReificada [0..*] -- detalhamentoRegistradoPor -- [1] DetalhamentoFonteReceita
