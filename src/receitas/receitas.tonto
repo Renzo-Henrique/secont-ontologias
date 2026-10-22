@@ -164,10 +164,10 @@ role DocumentoContabilDeReceitaOrcamentaria specializes DocumentoContabil{
     }
 }
 
-relator ReceitaReificada{
+relator RegistroDeReceitaOrcamentaria{
     @mediation [1] -- formalizadaPor -- [1] DocumentoContabilDeReceitaOrcamentaria
-    @mediation [1..*] -- [1] UnidadeGestoraEmitente
-    @mediation [1..*] -- [1] UnidadeGestoraBeneficiada
+    @mediation [1..*] -- temUnidadeGestoraEmitente -- [1] UnidadeGestoraEmitente
+    @mediation [1..*] -- temUnidadeGestoraBeneficiada -- [1] UnidadeGestoraBeneficiada
     
 }
 
@@ -184,8 +184,8 @@ relator ReceitaReificada{
 
 
 
-// @material relation DocumentoFiscalDeReceita [1..*] -- emitidaPor -- [1] UnidadeGestoraEmitente
-// @material relation DocumentoFiscalDeReceita [1..*] -- emitidaPara -- [1] UnidadeGestoraBeneficiada 
+@material relation DocumentoContabilDeReceitaOrcamentaria [1..*] -- emitidaPor -- [1] UnidadeGestoraEmitente
+@material relation DocumentoContabilDeReceitaOrcamentaria [1..*] -- emitidaPara -- [1] UnidadeGestoraBeneficiada 
 
 
 

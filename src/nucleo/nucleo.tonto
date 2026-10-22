@@ -1,6 +1,6 @@
 package nucleo
 
-datatype CodigoUnidadeGestora specializes string
+// datatype CodigoUnidadeGestora specializes string
 kind UnidadeGestora {
     label {
         @en "Gestional Unit"
@@ -13,13 +13,14 @@ kind UnidadeGestora {
         Cite Portaria MTP nº 1.467, de 2 junho de 2022: Capítulo I - Definições"
     }
     
-    codigo: CodigoUnidadeGestora [1] {const}
+    // codigo: CodigoUnidadeGestora [1] {const}
+    codigo: string [1]
     descricao: string [1]
 }
 
 
-datatype Cpf specializes string
-datatype Nis specializes string
+// datatype Cpf specializes string
+// datatype Nis specializes string
 kind PessoaFisica {
     label {
         @en "Natural Person"
@@ -30,12 +31,14 @@ kind PessoaFisica {
         @pt-br ""
     }
     
-    cpf: Cpf [1] {const}
-    nis: Nis [0..1] {const}
+    // cpf: Cpf [1] {const}
+    // nis: Nis [0..1] {const}
+    cpf: string [1] {const}
+    nis: string [0..1] {const}
     nome: string [1]
 }
 
-datatype Cnpj specializes string
+//datatype Cnpj specializes string
 
 kind PessoaJuridica {
     label {
@@ -47,6 +50,7 @@ kind PessoaJuridica {
         @pt-br ""
     }
     
-    cnpj: Cnpj [1] {const}
+    //cnpj: Cnpj [1] {const}
+    cnpj: string [1] {const}
     nome: string [1]
 }
