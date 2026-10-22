@@ -1,334 +1,61 @@
 import nucleo
+package receita
+
+
+
+
+
+
 
 /**
- *
- **** Atributos encontrados apenas nos csv's:
- * tipoLancamentoReceita 
- */
-
-package receitas
-
-
-datatype CodigoCategoriaEconomicaReceita specializes string
-datatype CodigoOrigemReceita specializes string
-datatype CodigoEspecieReceita specializes string
-datatype CodigoRubricaReceita specializes string
-datatype CodigoAlineaReceita specializes string
-datatype CodigoSubalineaReceita specializes string
-datatype CodigoDetalhamento1Receita specializes string
-datatype CodigoDetalhamento2Receita specializes string
-datatype CodigoDetalhamento3Receita specializes string
-datatype CodigoNaturezaReceita specializes string
-
-
-// mode ClassificacaoReceita2022 {
-//     label {
-//         @pt-br "Classificação da Receita"
-//     }
-//     description {
-//         @pt-br "Classificação da Receita"
-//     }
-//     /*
-//     “a.b.c.d.ee.f.g”
-//     I. “a” corresponde à Categoria Econômica da receita;
-//     II. “b” corresponde à Origem da receita;
-//     III. “c” corresponde à Espécie da receita;
-//     IV. “d”, “ee” e “f” correspondem a desdobramentos que identificam peculiaridades ou
-//     necessidades gerenciais de cada natureza de receita, sendo que os desdobramentos “ee”,
-//     correspondentes aos 5º e 6º dígitos da codificação, separam os códigos da União daqueles
-//     específicos dos demais entes federados, de acordo com a seguinte estrutura lógica:
-//         a. “00” até “49” identificam códigos reservados para a União, que poderão ser utilizados,
-//         no que couber, por Estados, Distrito Federal e Municípios;
-//         b. “50” até “98” identificam códigos reservados para uso específico de Estados, Distrito
-//         Federal e Municípios; e
-//         c. “99” será utilizado para registrar “outras receitas”, entendidas assim as receitas
-//         genéricas que não tenham código identificador específico, atendidas as normas
-//         contábeis aplicáveis; e
-//     V. “g” identifica o Tipo de Receita.
-
-//     */
-//     // 
-//     codigoCategoriaEconomica: CodigoCategoriaEconomicaReceita [1] {const}
-//     descricaoCategoriaEconomica: string [1] {const}
-//     // 
-//     codigoOrigem: CodigoOrigemReceita [1] {const}
-//     descricaoOrigem: string [1] {const}
-//     // 
-//     codigoEspecie: CodigoEspecieReceita [1] {const}
-//     descricaoEspecie: string [1] {const}
-//     // 
-//     codigoRubrica: CodigoRubricaReceita [1] {const}
-//     descricaoRubrica: string [1] {const}
-//     // 
-//     codigoAlinea: CodigoAlineaReceita [1] {const}
-//     descricaoAlinea: string [1] {const}
-//     // 
-//     codigoSubalinea: CodigoSubalineaReceita [1] {const}
-//     descricaoSubalinea: string [1] {const}
-//     // 
-//     codigoDetalhamento1: CodigoDetalhamento1Receita [1] {const}
-//     descricaoDetalhamento1: string [1] {const}
-//     // 
-//     codigoDetalhamento2: CodigoDetalhamento2Receita [1] {const}
-//     descricaoDetalhamento2: string [1] {const}
-//     // 
-//     codigoDetalhamento3: CodigoDetalhamento3Receita [1] {const}
-//     descricaoDetalhamento3: string [1] {const}
-//     //
-//     codigoNatureza: CodigoNaturezaReceita [1] {const}
-//     descricaoNatureza: string [1] {const}
-
-// }
-
-datatype CodigoContaContabilReceita specializes string
-kind ContaContabilSIGEFES {
-    label {
-        @pt-br "Conta Contábil"
-    }
-    description {
-        @pt-br "Conta Contábil"
-    }
-    codigo: CodigoContaContabilReceita [1] {const}
-    descricao: string [1] {const}
-}
-
-datatype CodigoIdUsoReceita specializes string
-quality IdUsoReceita {
-    label {
-        @pt-br "Uso da Receita"
-    }
-    description {
-        @pt-br "Uso da Receita"
-    }
-    codigo: CodigoIdUsoReceita [1] {const}
-    descricao: string [1] {const}
-}
-
-datatype CodigoFonteReceita specializes string
-quality FonteReceita {
-    label {
-        @pt-br "Fonte da Receita"
-    }
-    description {
-        @pt-br "Fonte da Receita"
-    }
-    codigo: CodigoFonteReceita [1] {const}
-    descricao: string [1] {const}
-}
-
-datatype CodigoGrupoFonteReceita specializes string
-quality GrupoFonteReceita {
-    label {
-        @pt-br "Grupo da Fonte da Receita"
-    }
-    description {
-        @pt-br "Grupo da Fonte da Receita"
-    }
-    codigo: CodigoGrupoFonteReceita [1] {const}
-    descricao: string [1] {const}
-}
-
-datatype CodigoDetalhamentoFonteReceita specializes string
-datatype CodigoDetalhamentoFonteAuxiliarReceita specializes string
-quality DetalhamentoFonteReceita {
-    label {
-        @pt-br "Detalhamento da Fonte da Receita"
-    }
-    description {
-        @pt-br "Detalhamento da Fonte da Receita"
-    }
-    codigo: CodigoDetalhamentoFonteReceita [1] {const}
-    codigoAuxiliar: CodigoDetalhamentoFonteAuxiliarReceita [1] {const}
-    descricao: string [1] {const}
-}
-/**
-    Classificacao da receita, baseado no:
-    MANUAL DE CONTABILIDADE APLICADA AO SETOR PÚBLICO 11ª Edição
-
+A classificação da receita orçamentária é de utilização obrigatória para todos os entes da Federação, sendo facultado seu desdobramento para atendimento das respectivas peculiaridades. Nesse sentido, as receitas orçamentárias são classificadas segundo os seguintes critérios:
     a. Natureza;
     b. Fonte/Destinação de Recursos; e
     c. Indicador de Resultado Primário.
-*/
 
-quality NaturezaReceita {
-    /**
-        Até o exercício financeiro de 2021, o código da natureza de receita estava definido de acordo com a seguinte estrutura “a.b.c.d.dd.d.e”.
-        Entretanto, por meio da Portaria Conjunta nº 650, de 24 de setembro de 2019, foi promovida a alteração no código da natureza de receita, a ser utilizada por todos os entes da Federação de forma facultativa em 2022 e obrigatória a partir de 2023, passou a ter a seguinte estrutura “a.b.c.d.ee.f.g”
 
-    **/
-    label {
-        @pt-br "Natureza da Receita"
+    Notas: Esse Indicador de Resultado Primário está presente no manual no 3.2.5, mas não é de caráter obrigatório.
+**/
+
+
+
+quality NaturezaDaReceita {
+    description{
+        @pt-br "O § 1º do art. 8º da Lei nº 4.320/1964 define que os itens da discriminação da receita, mencionados no art. 11 dessa lei, serão identificados por números de código decimal. Convencionou-se denominar este código de natureza de receita. 
+
+        Importante destacar que a classificação da receita orçamentária por natureza é utilizada por todos os entes da Federação e visa identificar a origem do recurso segundo o fato gerador: acontecimento real que ocasionou o ingresso da receita nos cofres públicos.
+        
+        A classificação por Natureza de Receita Orçamentária é composta por um código de oito dígitos numéricos que representam: a Categoria Econômica, a Origem, a Espécie, os Desdobramentos e o Tipo de Receita."
     }
+}
 
-    codigoCategoriaEconomica: CodigoCategoriaEconomicaReceita [1] {const}
-    descricaoCategoriaEconomica: string [1] {const}
-    // 
-    codigoOrigem: CodigoOrigemReceita [1] {const}
-    descricaoOrigem: string [1] {const}
-    // 
-    codigoEspecie: CodigoEspecieReceita [1] {const}
-    descricaoEspecie: string [1] {const}
-    
+quality FonteDaReceita {
 
+    description{
+        @pt-br "A classificação por fontes ou destinações de recursos (FR) tem como objetivo agrupar receitas que possuam as mesmas normas de aplicação na despesa. Em regra, as fontes ou destinações de recursos reúnem recursos oriundos de determinados códigos da classificação por natureza da receita orçamentária, conforme regras previamente estabelecidas. Por meio do orçamento público, essas fontes ou destinações são associadas a determinadas despesas de forma a evidenciar os meios para atingir os objetivos públicos."
+    }
 }
 
 
-datatype codigoNaturezaReceitaAnterior2022 specializes string
-phase NaturezaReceitaAnterior2022 specializes NaturezaReceita {
-    /**
-    A classificação de uma Receita por Natureza de Receita Orçamentária até o exercício financeiro de 2021, o código da natureza de receita estava definido de acordo com a seguinte estrutura “a.b.c.d.dd.d.e”, onde:
-        I. “a” identifica a Categoria Econômica da receita;
-        II. “b” a Origem da receita;
-        III. “c” a Espécie da receita;
-        IV. “d” corresponde a dígitos para desdobramentos que permitam identificar peculiaridades
-        ou necessidades gerenciais de cada natureza de receita; e
-        V. “e” o Tipo da Receita
-    **/
-    label {
-        @pt-br "Natureza da Receita anterior a 2022"
-    }
 
-    codigoRubrica: CodigoRubricaReceita [1]
-    descricaoRubrica: string [1]
-    codigoAlinea: CodigoAlineaReceita [1]
-    descricaoAlinea: string [1]
-    codigoSubalinea: CodigoSubalineaReceita [1]
-    descricaoSubalinea: string [1]
-    codigoNaturezaReceitaCompleto: CodigoNaturezaReceitaAnterior2022[1]
-    descricaoNaturezaReceita: string [1]
+
+role UnidadeGestoraEmitente specializes nucleo.UnidadeGestora
+role UnidadeGestoraBeneficiada specializes nucleo.UnidadeGestora
+
+
+
+relator ReceitaReificada{
+    @mediation [1..*] -- EmitidaPor -- [1] UnidadeGestoraEmitente
+    @mediation [1..*] -- EmitidaPara -- [1] UnidadeGestoraBeneficiada
 }
+/**
 
-datatype codigoNaturezaReceitaApos2022 specializes string
-phase NaturezaReceitaApos2022 specializes NaturezaReceita {
-    /**
-    A classificação de uma Receita por Natureza de Receita Orçamentária a partir de 2023 começou a ser obrigatória, era de forma facultativa em 2022, e é composta por um código de oito dígitos numéricos, passou a ter a seguinte estrutura “a.b.c.d.ee.f.g”
-        I. “a” corresponde à Categoria Econômica da receita;
-        II. “b” corresponde à Origem da receita;
-        III. “c” corresponde à Espécie da receita;
-        IV. “d”, “ee” e “f” correspondem a desdobramentos que identificam peculiaridades ou
-        necessidades gerenciais de cada natureza de receita, sendo que os desdobramentos “ee”,
-        correspondentes aos 5º e 6º dígitos da codificação, separam os códigos da União daqueles
-        específicos dos demais entes federados, de acordo com a seguinte estrutura lógica:
-            a. “00” até “49” identificam códigos reservados para a União, que poderão ser utilizados,
-            no que couber, por Estados, Distrito Federal e Municípios;
-            b. “50” até “98” identificam códigos reservados para uso específico de Estados, Distrito
-            Federal e Municípios; e
-            c. “99” será utilizado para registrar “outras receitas”, entendidas assim as receitas
-            genéricas que não tenham código identificador específico, atendidas as normas
-            contábeis aplicáveis; e
-        V. “g” identifica o Tipo de Receita.
-    **/
-    label {
-        @pt-br "Natureza da Receita após 2022"
-    }
-    codigoDetalhamento1: CodigoDetalhamento1Receita [1]
-    descricaoDetalhamento1: string [1]
-    codigoDetalhamento2: CodigoDetalhamento2Receita [1]
-    descricaoDetalhamento2: string [1]
-    codigoDetalhamento3: CodigoDetalhamento3Receita [1]
-    descricaoDetalhamento3: string [1]
-    codigoNaturezaReceitaCompleto: CodigoNaturezaReceitaApos2022[1]
-    descricaoNaturezaReceita: string [1]
-}
+    Relacoes
 
+**/
 
-disjoint complete genset TipoDeNaturezaReceita {
-    general NaturezaReceita
-    specifics NaturezaReceitaApos2022, NaturezaReceitaAnterior2022
-}
+@characterization relation ReceitaReificada [0..*] -- NaturezaClassificadaPor -- [1] NaturezaDaReceita
+@characterization relation ReceitaReificada [0..*] -- FonteClassificadaPor -- [1] FonteDaReceita
 
-/*
-ValorPrevista text Valor de arrecadação prevista pelo Governo
-ValorArrecadada numeric Valor efetivamente arrecadado pelo Governo
-DataEmissao text Data de emissão do documento fiscal
-DataContabilizacao numeric Data de contabilização do documento fiscal
-Documento text Número do documento fiscal
-CodigoUGEmitente numeric Código da Unidade Gestora emitente do documento
-DescricaoUGEmitente text Unidade Gestora emitente do documento
-Tipo numeric Tipo da receita (previsto ou realizad
-id text Código interno de sistema
-Ano numeric Ano que foi efetivada a receita
-*/
-
-datatype IdentificadorReceita specializes string
-datatype TipoArquivoReceita specializes string
-datatype TipoLancamentoReceita specializes string
-datatype IdentificadorReceita specializes string
-datatype IdentificadorDocumentoReceita specializes string
-
-relator ReceitaReificada {
-    label {
-        @pt-br "Receita Reificada"
-    }
-    description {
-        @pt-br "Entidade que representa a receita reificada, com todos os seus atributos e relacionamentos. Reificar significa transformar um conceito em um objeto explícito, ou seja, a receita é transformada em uma entidade com atributos e relacionamentos próprios."
-    }
-    
-    ano: number [1] {const}
-    arrecadadaBruta: number [1] {const}
-    arrecadadaDeducao: number [1] {const}
-    arrecadadaLiquida: number [1] {const}
-    // Incluir UTC -3
-    data: datetime [1] {const}
-    // Incluir UTC -3
-    dataContabilizacao: datetime [1] {const}
-    // Incluir UTC -3
-    dataEmissao: datetime [1] {const}
-    documento: IdentificadorDocumentoReceita [1] {const}
-    identificador: IdentificadorReceita [1] {const}
-    // numeros de 01 a 12, representando os meses do ano
-    mes: number [1] {const}
-    // previstaBruta: number [1] {const}
-    // previstaDeducao: number [1] {const}
-    // previstaLiquida: number [1] {const}
-    // previsto: number [1] {const}
-    // realizado: number [1] {const}
-    // recolhidaBruta: number [1] {const}
-    // recolhido: number [1] {const}
-    valorArrecadada: number [0..1]
-    valorArrecadadaBruta: number [0..1]
-    valorArrecadadaDeducao: number [0..1]
-    valorArrecadadaLiquida: number [0..1]
-    valorPrevista: number [0..1]
-    valorPrevistaBruta: number [0..1]
-    valorPrevistaDeducao: number [0..1]
-    valorPrevistaLiquida: number [0..1]
-    valorRecolhida: number [0..1]
-    valorRecolhidaBruta: number [0..1]
-    tipoArquivo: TipoArquivoReceita [1] {const}
-    tipoLancamento: TipoLancamentoReceita [1] {const}
-
-}
-
-role UnidadeGestoraEmitenteDaReceita specializes nucleo.UnidadeGestora {
-    label {
-        @pt-br "Unidade Gestora Emitente da Receita"
-    }
-    description {
-        @pt-br "Unidade Gestora Emitente da Receita"
-    }
-    
-}
-
-role UnidadeGestoraBeneficiariaDaReceita specializes nucleo.UnidadeGestora {
-    label {
-        @pt-br "Unidade Gestora Beneficiária da Receita"
-    }
-    description {
-        @pt-br "Unidade Gestora Beneficiária da Receita"
-    }
-    
-}
-
-
-// Relacionamentos
-@mediation relation ReceitaReificada [1..*] -- emitidaPara -- [1] UnidadeGestoraBeneficiariaDaReceita
-@mediation relation ReceitaReificada [1..*] -- emitidaPor -- [1] UnidadeGestoraEmitenteDaReceita
-@mediation relation ReceitaReificada [1] -- naturezaClassificadaPor -- [1] NaturezaReceita
-@mediation relation ReceitaReificada [0..*] -- extraidaDaConta -- [1] ContaContabilSIGEFES
-@mediation relation ReceitaReificada [0..*] -- usoEspecificadoPor -- [1] IdUsoReceita
-@mediation relation ReceitaReificada [0..*] -- fonteDoDinheiroClassificadoPor -- [1] FonteReceita
-@mediation relation ReceitaReificada [0..*] -- grupoDaFonteClassificadoPor -- [1] GrupoFonteReceita
-@mediation relation ReceitaReificada [0..*] -- detalhamentoRegistradoPor -- [1] DetalhamentoFonteReceita
 
 
