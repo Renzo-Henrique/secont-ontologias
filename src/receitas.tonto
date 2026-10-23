@@ -1,166 +1,58 @@
+/// @namespace https://example.org/ontologia-portal-transparencia-es/base-receitas#
 ontology base-receitas
 import nucleo from <./nucleo.tonto>
 
 
-
-
-
-
-
-/**
-A classificação da receita orçamentária é de utilização obrigatória para todos os entes da Federação, sendo facultado seu desdobramento para atendimento das respectivas peculiaridades. Nesse sentido, as receitas orçamentárias são classificadas segundo os seguintes critérios:
-    a. Natureza;
-    b. Fonte/Destinação de Recursos; e
-    c. Indicador de Resultado Primário.
-
-
-    Notas: Esse Indicador de Resultado Primário está presente no manual no 3.2.5, mas não é de caráter obrigatório.
-**/
-
-
-/**
-5.
-codigoNatureza
-
-6.
-descricaoNatureza
-
-7.
-codigoCategoria
-
-8.
-descricaoCategoria
-
-9.
-codigoOrigem
-
-10.
-descricaoOrigem
-
-11.
-codigoEspecie
-
-12.
-descricaoEspecie
-
-13.
-codigoDetalhamento1
-
-14.
-descricaoDetalhamento1
-
-15.
-codigoDetalhamento2
-
-16.
-descricaoDetalhamento2
-17.
-codigoDetalhamento3
-
-18.
-descricaoDetalhamento3
-
-19.
-codigoTipo
-
-20.
-descricaoTipo
-**/
+/// @pt-br O § 1º do art. 8º da Lei nº 4.320/1964 define que os itens da discriminação da receita, mencionados no art. 11 dessa lei, serão identificados por números de código decimal. Convencionou-se denominar este código de natureza de receita.
+/// Importante destacar que a classificação da receita orçamentária por natureza é utilizada por todos os entes da Federação e visa identificar a origem do recurso segundo o fato gerador: acontecimento real que ocasionou o ingresso da receita nos cofres públicos.
+/// A classificação por Natureza de Receita Orçamentária é composta por um código de oito dígitos numéricos que representam: a Categoria Econômica, a Origem, a Espécie, os Desdobramentos e o Tipo de Receita.
+/// Cite MCASP - 11º Edicao: Parte I: Seção 3.2.1
 quality NaturezaDaReceita {
-    description{
-        @pt-br "O § 1º do art. 8º da Lei nº 4.320/1964 define que os itens da discriminação da receita, mencionados no art. 11 dessa lei, serão identificados por números de código decimal. Convencionou-se denominar este código de natureza de receita. 
-
-        Importante destacar que a classificação da receita orçamentária por natureza é utilizada por todos os entes da Federação e visa identificar a origem do recurso segundo o fato gerador: acontecimento real que ocasionou o ingresso da receita nos cofres públicos.
-        
-        A classificação por Natureza de Receita Orçamentária é composta por um código de oito dígitos numéricos que representam: a Categoria Econômica, a Origem, a Espécie, os Desdobramentos e o Tipo de Receita.
-        
-        Cite MCASP - 11º Edicao: Parte I: Seção 3.2.1"
-    }
     
     codigoNatureza: string [1]
     descricaoNatureza: string [1]
 
     codigoCategoria: string [1]
-
     descricaoCategoria: string [1]
 
     codigoOrigem: string [1]
-
     descricaoOrigem: string [1]
 
     codigoEspecie: string [1]
-
     descricaoEspecie: string [1]
 
     codigoDetalhamento1: string [1]
-
     descricaoDetalhamento1: string [1]
 
     codigoDetalhamento2: string [1]
-
     descricaoDetalhamento2: string [1]
 
     codigoDetalhamento3: string [1]
-
     descricaoDetalhamento3: string [1]
 
     codigoTipo: string [1]
-
     descricaoTipo: string [1]
 }
-/**
-23.
-codigoFonte
 
-24.
-descricaoFonte
-
-25.
-codigoGrupoFonte
-
-26.
-descricaoGrupoFonte
-
-27.
-codigoDetalhamentoFonte
-
-28.
-codigoDetalhamentoFonteAux
-
-29.
-descricaoDetalhamentoFonte
-**/
+/// @pt-br A classificação por fontes ou destinações de recursos (FR) tem como objetivo agrupar receitas que possuam as mesmas normas de aplicação na despesa. Em regra, as fontes ou destinações de recursos reúnem recursos oriundos de determinados códigos da classificação por natureza da receita orçamentária, conforme regras previamente estabelecidas. Por meio do orçamento público, essas fontes ou destinações são associadas a determinadas despesas de forma a evidenciar os meios para atingir os objetivos públicos.
+/// Cite MCASP - 11º Edicao: Parte I: Seção 5.1
 quality FonteDaReceita {
 
-    description{
-        @pt-br "A classificação por fontes ou destinações de recursos (FR) tem como objetivo agrupar receitas que possuam as mesmas normas de aplicação na despesa. Em regra, as fontes ou destinações de recursos reúnem recursos oriundos de determinados códigos da classificação por natureza da receita orçamentária, conforme regras previamente estabelecidas. Por meio do orçamento público, essas fontes ou destinações são associadas a determinadas despesas de forma a evidenciar os meios para atingir os objetivos públicos.
-        
-        
-        Cite MCASP - 11º Edicao: Parte I: Seção 5.1"
-    }
     codigoFonte: string [1]
     descricaoFonte: string [1]
+
     codigoGrupoFonte: string [1]
     descricaoGrupoFonte: string [1]
+
     codigoDetalhamentoFonte: string [1]
     codigoDetalhamentoFonteAux: string [1]
     descricaoDetalhamentoFonte: string [1]
 }
 
-/**
-3.
-contaContabil
 
-4.
-descricaoContaContabil
-**/
-
+/// @pt-br Conta é a expressão qualitativa e quantitativa de fatos de mesma natureza, que evidencia a composição, variação e estado do patrimônio, bem como de bens, direitos, obrigações e situações nele não compreendidas, mas que, direta ou indiretamente, possam vir a afetá-lo.
+/// Cite MCASP - 11º Edicao: Parte IV: Seções 2.3 ; 3.1
 quality ContaContabil {
-    description{
-        @pt-br "Conta é a expressão qualitativa e quantitativa de fatos de mesma natureza, que evidencia a composição, variação e estado do patrimônio, bem como de bens, direitos, obrigações e situações nele não compreendidas, mas que, direta ou indiretamente, possam vir a afetá-lo.
-        
-        Cite MCASP - 11º Edicao: Parte IV: Seções 2.3 ; 3.1"
-    }
     codigo: string [1]
     descricao: string [1]
 }
@@ -170,38 +62,20 @@ quality ContaContabil {
 role UnidadeGestoraEmitente specializes nucleo.UnidadeGestora
 
 
-/**
 
-1.
-codigoUG
-
-2.
-descricaoUG
-**/
 role UnidadeGestoraBeneficiada specializes nucleo.UnidadeGestora
 
 
-kind DocumentoContabil{
-    description{
-        @pt-br "O objetivo da elaboração e divulgação da informação contábil é fornecer informação para fins de prestação de contas e responsabilização (accountability) e tomada de decisão. 
-        
-        Cite MCASP - 11º Edicao: Parte Geral: Seções 2.3 ; 3.1"
-    }
-}
+/// @pt-br O objetivo da elaboração e divulgação da informação contábil é fornecer informação para fins de prestação de contas e responsabilização (accountability) e tomada de decisão.
+/// Cite MCASP - 11º Edicao: Parte Geral: Seções 2.3 ; 3.1
+kind DocumentoContabil
 
+/// @pt-br O orçamento é um importante instrumento de planejamento de qualquer entidade, seja pública ou privada, e representa o fluxo previsto de ingressos e de aplicações de recursos em determinado período.
+/// Cite MCASP - 11º Edicao: Parte I: Seção 3.1
+/// São disponibilidades de recursos financeiros que ingressam durante o exercício e que aumentam o saldo financeiro da instituição. Instrumento por meio do qual se viabiliza a execução das políticas públicas, as receitas orçamentárias são fontes de recursos utilizadas pelo Estado em programas e ações cuja finalidade precípua é atender às necessidades públicas e demandas da sociedade.
+/// Essas receitas pertencem ao Estado, transitam pelo patrimônio do Poder Público e, via de regra, por força do princípio orçamentário da universalidade, estão previstas na Lei Orçamentária Anual - LOA.
+/// Cite MCASP - 11º Edicao: Parte I: Seção 3.1.2
 role DocumentoContabilDeReceitaOrcamentaria specializes DocumentoContabil{
-    description{
-        @pt-br "O orçamento é um importante instrumento de planejamento de qualquer entidade, seja pública ou privada, e representa o fluxo previsto de ingressos e de aplicações de recursos em determinado período.
-        Cite MCASP - 11º Edicao: Parte I: Seção 3.1
-
-
-        São disponibilidades de recursos financeiros que ingressam durante o exercício e que aumentam o saldo financeiro da instituição. Instrumento por meio do qual se viabiliza a execução das políticas públicas, as receitas orçamentárias são fontes de recursos utilizadas pelo Estado em programas e ações cuja finalidade precípua é atender às necessidades públicas e demandas da sociedade.
-        
-        Essas receitas pertencem ao Estado, transitam pelo patrimônio do Poder Público e, via de regra, por força do princípio orçamentário da universalidade, estão previstas na Lei Orçamentária Anual - LOA.
-
-
-        Cite MCASP - 11º Edicao: Parte I: Seção 3.1.2"
-    }
     codigoIdUso: string[1]
     descricaoIdUso: string[1]
     valorPrevista: string[1]
@@ -241,9 +115,8 @@ relator RegistroDeReceitaOrcamentaria{
 @characterization relation ContaContabil [1] -- ClassificaInformacaoContabilDe -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
 
 
-
-@material relation DocumentoContabilDeReceitaOrcamentaria [1..*] -- emitidaPor -- [1] UnidadeGestoraEmitente
-@material relation DocumentoContabilDeReceitaOrcamentaria [1..*] -- emitidaPara -- [1] UnidadeGestoraBeneficiada 
+@material relation DocumentoContabilDeReceitaOrcamentaria [1..*] -- emitidaPor -- [1] UnidadeGestoraEmitente derivedFrom RegistroDeReceitaOrcamentaria
+@material relation DocumentoContabilDeReceitaOrcamentaria [1..*] -- emitidaPara -- [1] UnidadeGestoraBeneficiada derivedFrom RegistroDeReceitaOrcamentaria
 
 
 

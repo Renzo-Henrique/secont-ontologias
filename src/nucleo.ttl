@@ -1,0 +1,106 @@
+# Written by `tonto gufo` from the tonto ontology nucleo.
+# Change the model and export it again, rather than this file.
+
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix gufo: <http://purl.org/nemo/gufo#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix nucleo: <https://example.org/ontologia-portal-transparencia-es/nucleo#> .
+
+<https://example.org/ontologia-portal-transparencia-es/nucleo> a owl:Ontology ;
+    owl:imports <http://purl.org/nemo/gufo#> ;
+    vann:preferredNamespacePrefix "nucleo" ;
+    vann:preferredNamespaceUri "https://example.org/ontologia-portal-transparencia-es/nucleo#" .
+
+nucleo:UnidadeGestora a owl:Class, gufo:Kind ;
+    rdfs:label "UnidadeGestora" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:subClassOf
+        gufo:FunctionalComplex,
+        [ a owl:Restriction ;
+          owl:onProperty nucleo:UnidadeGestora.codigo ;
+          owl:minCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty nucleo:UnidadeGestora.descricao ;
+          owl:minCardinality "1"^^xsd:nonNegativeInteger ] .
+
+nucleo:PessoaFisica a owl:Class, gufo:Kind ;
+    rdfs:label "PessoaFisica" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:subClassOf
+        gufo:FunctionalComplex,
+        [ a owl:Restriction ;
+          owl:onProperty nucleo:PessoaFisica.cpf ;
+          owl:minCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty nucleo:PessoaFisica.nome ;
+          owl:minCardinality "1"^^xsd:nonNegativeInteger ] .
+
+nucleo:PessoaJuridica a owl:Class, gufo:Kind ;
+    rdfs:label "PessoaJuridica" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:subClassOf
+        gufo:FunctionalComplex,
+        [ a owl:Restriction ;
+          owl:onProperty nucleo:PessoaJuridica.cnpj ;
+          owl:minCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty nucleo:PessoaJuridica.nome ;
+          owl:minCardinality "1"^^xsd:nonNegativeInteger ] .
+
+nucleo:UnidadeGestora.codigo a owl:DatatypeProperty ;
+    rdfs:label "codigo" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:domain nucleo:UnidadeGestora ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+nucleo:UnidadeGestora.descricao a owl:DatatypeProperty ;
+    rdfs:label "descricao" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:domain nucleo:UnidadeGestora ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+nucleo:PessoaFisica.cpf a owl:DatatypeProperty ;
+    rdfs:label "cpf" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:domain nucleo:PessoaFisica ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+nucleo:PessoaFisica.nis a owl:DatatypeProperty ;
+    rdfs:label "nis" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:domain nucleo:PessoaFisica ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+nucleo:PessoaFisica.nome a owl:DatatypeProperty ;
+    rdfs:label "nome" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:domain nucleo:PessoaFisica ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+nucleo:PessoaJuridica.cnpj a owl:DatatypeProperty ;
+    rdfs:label "cnpj" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:domain nucleo:PessoaJuridica ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+nucleo:PessoaJuridica.nome a owl:DatatypeProperty ;
+    rdfs:label "nome" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:domain nucleo:PessoaJuridica ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( nucleo:PessoaFisica nucleo:PessoaJuridica nucleo:UnidadeGestora ) .
+
+vann:preferredNamespacePrefix a owl:AnnotationProperty .
+
+vann:preferredNamespaceUri a owl:AnnotationProperty .
