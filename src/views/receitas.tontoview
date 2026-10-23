@@ -48,31 +48,56 @@
       "y": 368
     },
     "base-receitas::UnidadeGestoraEmitente": {
-      "x": 784,
-      "y": 280
+      "x": 752,
+      "y": 256
     },
     "nucleo::UnidadeGestora": {
       "x": 741,
       "y": 217
     },
     "base-receitas::UnidadeGestoraBeneficiada": {
-      "x": 920,
-      "y": 376
+      "x": 792,
+      "y": 392
     },
     "base-receitas::DocumentoContabil": {
       "x": 408,
       "y": 48
     },
     "base-receitas::DocumentoContabilDeReceitaOrcamentaria": {
-      "x": 352,
-      "y": 248,
-      "width": 288,
-      "height": 112
+      "x": 328,
+      "y": 248
     },
     "base-receitas::RegistroDeReceitaOrcamentaria": {
-      "x": 752,
-      "y": 56
+      "x": 664,
+      "y": 64,
+      "width": 216,
+      "height": 64
     }
   },
-  "edges": {}
+  "edges": {
+    "rel:base-receitas::RegistroDeReceitaOrcamentaria->base-receitas::UnidadeGestoraBeneficiada:mediation:temUnidadeGestoraBeneficiada": {
+      "points": [
+        {
+          "x": 795,
+          "y": 128
+        },
+        {
+          "x": 896,
+          "y": 160
+        },
+        {
+          "x": 944,
+          "y": 234
+        },
+        {
+          "x": 944,
+          "y": 277
+        },
+        {
+          "x": 880,
+          "y": 392
+        }
+      ]
+    }
+  }
 }

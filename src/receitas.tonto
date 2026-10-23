@@ -76,6 +76,37 @@ quality NaturezaDaReceita {
         
         Cite MCASP - 11º Edicao: Parte I: Seção 3.2.1"
     }
+    
+    codigoNatureza: string [1]
+    descricaoNatureza: string [1]
+
+    codigoCategoria: string [1]
+
+    descricaoCategoria: string [1]
+
+    codigoOrigem: string [1]
+
+    descricaoOrigem: string [1]
+
+    codigoEspecie: string [1]
+
+    descricaoEspecie: string [1]
+
+    codigoDetalhamento1: string [1]
+
+    descricaoDetalhamento1: string [1]
+
+    codigoDetalhamento2: string [1]
+
+    descricaoDetalhamento2: string [1]
+
+    codigoDetalhamento3: string [1]
+
+    descricaoDetalhamento3: string [1]
+
+    codigoTipo: string [1]
+
+    descricaoTipo: string [1]
 }
 /**
 23.
@@ -107,6 +138,13 @@ quality FonteDaReceita {
         
         Cite MCASP - 11º Edicao: Parte I: Seção 5.1"
     }
+    codigoFonte: string [1]
+    descricaoFonte: string [1]
+    codigoGrupoFonte: string [1]
+    descricaoGrupoFonte: string [1]
+    codigoDetalhamentoFonte: string [1]
+    codigoDetalhamentoFonteAux: string [1]
+    descricaoDetalhamentoFonte: string [1]
 }
 
 /**
@@ -123,6 +161,8 @@ quality ContaContabil {
         
         Cite MCASP - 11º Edicao: Parte IV: Seções 2.3 ; 3.1"
     }
+    codigo: string [1]
+    descricao: string [1]
 }
 
 
@@ -162,6 +202,24 @@ role DocumentoContabilDeReceitaOrcamentaria specializes DocumentoContabil{
 
         Cite MCASP - 11º Edicao: Parte I: Seção 3.1.2"
     }
+    codigoIdUso: string[1]
+    descricaoIdUso: string[1]
+    valorPrevista: string[1]
+    valorArrecadada: string[1]
+    valorRecolhida: string[1]
+    tipoLancamento: string[1]
+    dataEmissao: string[1]
+    dataContabilizacao: string[1]
+    documento: string[1]
+    tipo: string[1]
+    valorPrevistaBruta: string[1]
+    valorPrevistaDeducao: string[1]
+    valorPrevistaLiquida: string[1]
+    valorArrecadadaBruta: string[1]
+    valorArrecadadaDeducao: string[1]
+    valorArrecadadaLiquida: string[1]
+    valorRecolhidaBruta: string[1]
+    ano: string[1]
 }
 
 relator RegistroDeReceitaOrcamentaria{
