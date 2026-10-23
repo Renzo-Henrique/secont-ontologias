@@ -15,6 +15,8 @@
 
 nucleo:UnidadeGestora a owl:Class, gufo:Kind ;
     rdfs:label "UnidadeGestora" ;
+    rdfs:comment """44 Portaria MTP 1.467/2022, Art.2º - Definições: VI - unidade gestora: entidade ou órgão único, de natureza pública, de cada ente federativo, abrangendo todos os poderes, órgãos e entidades autárquicas e fundacionais, que tenha por finalidade a administração, o gerenciamento e a operacionalização do RPPS, incluindo a arrecada.
+Cite Portaria MTP nº 1.467, de 2 junho de 2022: Capítulo I - Definições"""@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
     rdfs:subClassOf
         gufo:FunctionalComplex,

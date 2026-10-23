@@ -18,6 +18,10 @@
 
 base-receitas:NaturezaDaReceita a owl:Class, gufo:Kind ;
     rdfs:label "NaturezaDaReceita" ;
+    rdfs:comment """O § 1º do art. 8º da Lei nº 4.320/1964 define que os itens da discriminação da receita, mencionados no art. 11 dessa lei, serão identificados por números de código decimal. Convencionou-se denominar este código de natureza de receita.
+Importante destacar que a classificação da receita orçamentária por natureza é utilizada por todos os entes da Federação e visa identificar a origem do recurso segundo o fato gerador: acontecimento real que ocasionou o ingresso da receita nos cofres públicos.
+A classificação por Natureza de Receita Orçamentária é composta por um código de oito dígitos numéricos que representam: a Categoria Econômica, a Origem, a Espécie, os Desdobramentos e o Tipo de Receita.
+Cite MCASP - 11º Edicao: Parte I: Seção 3.2.1"""@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:subClassOf
         gufo:Quality,
@@ -76,6 +80,8 @@ base-receitas:NaturezaDaReceita a owl:Class, gufo:Kind ;
 
 base-receitas:FonteDaReceita a owl:Class, gufo:Kind ;
     rdfs:label "FonteDaReceita" ;
+    rdfs:comment """A classificação por fontes ou destinações de recursos (FR) tem como objetivo agrupar receitas que possuam as mesmas normas de aplicação na despesa. Em regra, as fontes ou destinações de recursos reúnem recursos oriundos de determinados códigos da classificação por natureza da receita orçamentária, conforme regras previamente estabelecidas. Por meio do orçamento público, essas fontes ou destinações são associadas a determinadas despesas de forma a evidenciar os meios para atingir os objetivos públicos.
+Cite MCASP - 11º Edicao: Parte I: Seção 5.1"""@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:subClassOf
         gufo:Quality,
@@ -107,6 +113,8 @@ base-receitas:FonteDaReceita a owl:Class, gufo:Kind ;
 
 base-receitas:ContaContabil a owl:Class, gufo:Kind ;
     rdfs:label "ContaContabil" ;
+    rdfs:comment """Conta é a expressão qualitativa e quantitativa de fatos de mesma natureza, que evidencia a composição, variação e estado do patrimônio, bem como de bens, direitos, obrigações e situações nele não compreendidas, mas que, direta ou indiretamente, possam vir a afetá-lo.
+Cite MCASP - 11º Edicao: Parte IV: Seções 2.3 ; 3.1"""@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:subClassOf
         gufo:Quality,
@@ -147,11 +155,18 @@ base-receitas:UnidadeGestoraBeneficiada a owl:Class, gufo:Role ;
 
 base-receitas:DocumentoContabil a owl:Class, gufo:Kind ;
     rdfs:label "DocumentoContabil" ;
+    rdfs:comment """O objetivo da elaboração e divulgação da informação contábil é fornecer informação para fins de prestação de contas e responsabilização (accountability) e tomada de decisão.
+Cite MCASP - 11º Edicao: Parte Geral: Seções 2.3 ; 3.1"""@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:subClassOf gufo:FunctionalComplex .
 
 base-receitas:DocumentoContabilDeReceitaOrcamentaria a owl:Class, gufo:Role ;
     rdfs:label "DocumentoContabilDeReceitaOrcamentaria" ;
+    rdfs:comment """O orçamento é um importante instrumento de planejamento de qualquer entidade, seja pública ou privada, e representa o fluxo previsto de ingressos e de aplicações de recursos em determinado período.
+Cite MCASP - 11º Edicao: Parte I: Seção 3.1
+São disponibilidades de recursos financeiros que ingressam durante o exercício e que aumentam o saldo financeiro da instituição. Instrumento por meio do qual se viabiliza a execução das políticas públicas, as receitas orçamentárias são fontes de recursos utilizadas pelo Estado em programas e ações cuja finalidade precípua é atender às necessidades públicas e demandas da sociedade.
+Essas receitas pertencem ao Estado, transitam pelo patrimônio do Poder Público e, via de regra, por força do princípio orçamentário da universalidade, estão previstas na Lei Orçamentária Anual - LOA.
+Cite MCASP - 11º Edicao: Parte I: Seção 3.1.2"""@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:subClassOf
         base-receitas:DocumentoContabil,
@@ -603,7 +618,12 @@ base-receitas:DocumentoContabilDeReceitaOrcamentaria.emitidaPor a
     rdfs:label "emitidaPor" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:domain base-receitas:DocumentoContabilDeReceitaOrcamentaria ;
-    rdfs:range base-receitas:UnidadeGestoraEmitente .
+    rdfs:range base-receitas:UnidadeGestoraEmitente ;
+    gufo:isDerivedFrom base-receitas:RegistroDeReceitaOrcamentaria ;
+    owl:propertyChainAxiom (
+        [ owl:inverseOf base-receitas:RegistroDeReceitaOrcamentaria.formalizadaPor ]
+        base-receitas:RegistroDeReceitaOrcamentaria.temUnidadeGestoraEmitente
+    ) .
 
 base-receitas:DocumentoContabilDeReceitaOrcamentaria.emitidaPara a
         owl:ObjectProperty,
@@ -611,7 +631,12 @@ base-receitas:DocumentoContabilDeReceitaOrcamentaria.emitidaPara a
     rdfs:label "emitidaPara" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:domain base-receitas:DocumentoContabilDeReceitaOrcamentaria ;
-    rdfs:range base-receitas:UnidadeGestoraBeneficiada .
+    rdfs:range base-receitas:UnidadeGestoraBeneficiada ;
+    gufo:isDerivedFrom base-receitas:RegistroDeReceitaOrcamentaria ;
+    owl:propertyChainAxiom (
+        [ owl:inverseOf base-receitas:RegistroDeReceitaOrcamentaria.formalizadaPor ]
+        base-receitas:RegistroDeReceitaOrcamentaria.temUnidadeGestoraBeneficiada
+    ) .
 
 [] a owl:AllDisjointClasses ;
     owl:members (
