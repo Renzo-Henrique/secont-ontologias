@@ -1,5 +1,5 @@
-import nucleo
-package receita
+ontology base-receitas
+import nucleo from <./nucleo.tonto>
 
 
 
@@ -165,9 +165,9 @@ role DocumentoContabilDeReceitaOrcamentaria specializes DocumentoContabil{
 }
 
 relator RegistroDeReceitaOrcamentaria{
-    @mediation [1] -- formalizadaPor -- [1] DocumentoContabilDeReceitaOrcamentaria
-    @mediation [1..*] -- temUnidadeGestoraEmitente -- [1] UnidadeGestoraEmitente
-    @mediation [1..*] -- temUnidadeGestoraBeneficiada -- [1] UnidadeGestoraBeneficiada
+    @mediation [1] -- formalizadaPor -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
+    @mediation [1..*] -- temUnidadeGestoraEmitente -- [1] (const) UnidadeGestoraEmitente
+    @mediation [1..*] -- temUnidadeGestoraBeneficiada -- [1] (const) UnidadeGestoraBeneficiada 
     
 }
 
@@ -178,9 +178,9 @@ relator RegistroDeReceitaOrcamentaria{
 
 **/
 
-@characterization relation DocumentoContabilDeReceitaOrcamentaria [0..*] -- NaturezaClassificadaPor -- [1] NaturezaDaReceita
-@characterization relation DocumentoContabilDeReceitaOrcamentaria [0..*] -- FonteClassificadaPor -- [1] FonteDaReceita
-@characterization relation DocumentoContabilDeReceitaOrcamentaria [0..*] -- informacaoContabilClassificadaPor -- [1] ContaContabil
+@characterization relation NaturezaDaReceita [1] -- ClassificaNaturezaDe -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
+@characterization relation FonteDaReceita [1] -- ClassificaFonteDe -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
+@characterization relation ContaContabil [1] -- ClassificaInformacaoContabilDe -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
 
 
 

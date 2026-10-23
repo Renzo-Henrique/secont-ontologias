@@ -1,4 +1,4 @@
-package nucleo
+ontology nucleo
 
 // datatype CodigoUnidadeGestora specializes string
 kind UnidadeGestora {
@@ -33,8 +33,8 @@ kind PessoaFisica {
     
     // cpf: Cpf [1] {const}
     // nis: Nis [0..1] {const}
-    cpf: string [1] {const}
-    nis: string [0..1] {const}
+    cpf: string [1]
+    nis: string [0..1]
     nome: string [1]
 }
 
@@ -51,6 +51,6 @@ kind PessoaJuridica {
     }
     
     //cnpj: Cnpj [1] {const}
-    cnpj: string [1] {const}
+    cnpj: string [1]
     nome: string [1]
 }
