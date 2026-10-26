@@ -1,0 +1,31 @@
+.
+├── AGENTS.md
+├── CLAUDE.md
+├── README.md
+├── mapeamentos
+│   └── Receitas-2025.csv
+├── out
+│   ├── base-receitas.svg
+│   ├── conversao.md
+│   ├── converter_svg.py
+│   ├── exportados
+│   │   ├── base-receitas.pdf
+│   │   ├── base-receitas.png
+│   │   ├── nucleo.pdf
+│   │   └── nucleo.png
+│   └── nucleo.svg
+├── src
+│   ├── bases
+│   │   ├── base-receitas.tonto
+│   │   ├── base-receitas.ttl
+│   │   └── views
+│   │       └── base-receitas.tontoview
+│   └── nucleo
+│       ├── nucleo.tonto
+│       ├── nucleo.ttl
+│       └── views
+│           └── nucleo.tontoview
+├── tonto.json
+└── tree.txt
+
+9 directories, 20 files

@@ -2,13 +2,10 @@
   "version": 1,
   "content": {
     "scope": "file",
-    "showExternalReferences": true,
+    "showExternalReferences": false,
     "showDatatypes": true,
     "showGensets": true,
-    "derivedMaterialMode": "both",
-    "hidden": [
-      "nucleo::UnidadeGestora"
-    ]
+    "derivedMaterialMode": "both"
   },
   "display": {
     "taxonomyOnly": false,
@@ -16,7 +13,7 @@
     "routing": "curved",
     "fontFamily": "sans",
     "fontSize": "medium",
-    "showAttributes": true,
+    "showAttributes": false,
     "showCardinalities": true,
     "showRelationNames": true,
     "showRelationStereotypes": true,
@@ -28,76 +25,51 @@
     "qualifyNames": false
   },
   "layout": {
-    "direction": "DOWN",
+    "direction": "RIGHT",
     "associationDistance": 100,
     "nodeSpacing": 60,
     "rankSpacing": 100,
-    "groupByPackage": false
+    "groupByPackage": true
   },
   "nodes": {
     "base-receitas::NaturezaDaReceita": {
-      "x": -8,
-      "y": -96
+      "x": 48,
+      "y": 440
     },
     "base-receitas::FonteDaReceita": {
-      "x": -24,
-      "y": 288
+      "x": 40,
+      "y": 568
     },
     "base-receitas::ContaContabil": {
-      "x": 16,
-      "y": 520
+      "x": -752,
+      "y": 640
     },
     "base-receitas::UnidadeGestoraEmitente": {
-      "x": 752,
-      "y": 256
+      "x": 832,
+      "y": 600
     },
     "nucleo::UnidadeGestora": {
-      "x": 741,
-      "y": 217
+      "x": 483,
+      "y": 50
     },
     "base-receitas::UnidadeGestoraBeneficiada": {
-      "x": 792,
-      "y": 392
+      "x": 776,
+      "y": 152
     },
     "base-receitas::DocumentoContabil": {
-      "x": 408,
-      "y": 48
+      "x": 448,
+      "y": 232
     },
     "base-receitas::DocumentoContabilDeReceitaOrcamentaria": {
-      "x": 328,
-      "y": 248
+      "x": 381,
+      "y": 472,
+      "width": 291,
+      "height": 104
     },
     "base-receitas::RegistroDeReceitaOrcamentaria": {
-      "x": 664,
-      "y": 64,
-      "width": 216,
-      "height": 64
+      "x": 816,
+      "y": 328
     }
   },
-  "edges": {
-    "rel:base-receitas::RegistroDeReceitaOrcamentaria->base-receitas::UnidadeGestoraBeneficiada:mediation:temUnidadeGestoraBeneficiada": {
-      "points": [
-        {
-          "x": 795,
-          "y": 128
-        },
-        {
-          "x": 896,
-          "y": 160
-        },
-        {
-          "x": 944,
-          "y": 234
-        },
-        {
-          "x": 944,
-          "y": 277
-        },
-        {
-          "x": 880,
-          "y": 392
-        }
-      ]
-    }
-  }
+  "edges": {}
 }
