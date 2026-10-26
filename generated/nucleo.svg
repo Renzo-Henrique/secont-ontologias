@@ -1,1 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" data-diagram-type="CLASS" style="width:341px;height:265px;background:#FFFFFF;" width="341px" height="265px" viewBox="0 0 341 265" zoomAndPan="magnify" preserveAspectRatio="none" contentStyleType="text/css"><?plantuml 1.2026.9beta4?><defs/><g font-family="sans-serif" lengthAdjust="spacing"><!--class UnidadeGestora--><g class="entity" data-qualified-name="UnidadeGestora" id="ent0001" data-source-line="9"><rect x="7" y="7" width="132.784" height="80.859" fill="#FF99A3" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><text x="53.297" y="23.139" fill="#000" font-size="12" textLength="40.189" font-style="italic">«kind»</text><text x="16.832" y="38.964" fill="#000" font-size="14" textLength="113.121">UnidadeGestora</text><line x1="8" y1="47.266" x2="138.784" y2="47.266" style="stroke:#181818;stroke-width:0.5;"/><text x="13" y="64.261" fill="#000" font-size="14" textLength="100.297">codigo : string</text><text x="13" y="80.558" fill="#000" font-size="14" textLength="120.784">descricao : string</text></g><!--class PessoaFisica--><g class="entity" data-qualified-name="PessoaFisica" id="ent0002" data-source-line="13"><rect x="20.64" y="152.85" width="105.495" height="97.156" fill="#FF99A3" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><text x="53.293" y="168.989" fill="#000" font-size="12" textLength="40.189" font-style="italic">«kind»</text><text x="29.292" y="184.814" fill="#000" font-size="14" textLength="88.19">PessoaFisica</text><line x1="21.64" y1="193.116" x2="125.135" y2="193.116" style="stroke:#181818;stroke-width:0.5;"/><text x="26.64" y="210.111" fill="#000" font-size="14" textLength="75.318">cpf : string</text><text x="26.64" y="226.408" fill="#000" font-size="14" textLength="73.862">nis : string</text><text x="26.64" y="242.704" fill="#000" font-size="14" textLength="93.495">nome : string</text></g><!--class PessoaJuridica--><g class="entity" data-qualified-name="PessoaJuridica" id="ent0003" data-source-line="18"><rect x="219.78" y="7" width="106.488" height="80.859" fill="#FF99A3" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><text x="252.929" y="23.139" fill="#000" font-size="12" textLength="40.189" font-style="italic">«kind»</text><text x="222.78" y="38.964" fill="#000" font-size="14" textLength="100.488">PessoaJuridica</text><line x1="220.78" y1="47.266" x2="325.268" y2="47.266" style="stroke:#181818;stroke-width:0.5;"/><text x="225.78" y="64.261" fill="#000" font-size="14" textLength="83.152">cnpj : string</text><text x="225.78" y="80.558" fill="#000" font-size="14" textLength="93.495">nome : string</text></g><?plantuml-src VOx1IWD1343l-nMX_a1152kbK8GLFGdY1ypEfBjnTv8boI8g_hjJHHWFxN7U92_FqC5m3XfS55WOcmaF3YwWr0yEYHIZat1Z8_5nC4ESWjdUNQbR71-Yy3Dz8AoRWH82vjdV8MFkKAtQOabOJi7rLGKry7Y4D-iATY6ElSh2wKwcalKsaEElF9B62PkV0bYzCAMGy1wjr8SLRBV5aNOxk6ZRpMP_2PyDG9H4lS0jM0dclf3I4PLYgE3Nd_89pIIqPEN_b70-r3Oc-_UKZ2UzZujIEcFc-VMCwni0?></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-22 -42 318 293" width="318" height="293">
+<style>
+/* Everything that is text, before anything specialises it. The label layer sits
+   above the boxes and outside every other group, so a rule that reached labels
+   through their edge stopped reaching them the day they were lifted out of it --
+   and an SVG with no font-family on a text element falls back to a 16px serif.
+   Stated once at the top, no layer can lose it again. */
+text {
+    font-family: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", sans-serif;
+    font-stretch: normal;
+    font-size: 11px;
+    fill: #e8e6e1;
+    font-variant-numeric: tabular-nums;
+}
+
+.tv-node rect { stroke: #c9c4bb; stroke-width: 1; }
+.tv-node text { fill: #1f1c17; }
+.tv-name { font-weight: 600; font-size: 13px; letter-spacing: 0.005em; }
+.tv-legend text { font-size: 13px; fill: #e8e6e1; }
+.tv-stereotype { font-size: 11px; fill-opacity: 0.72; letter-spacing: 0.01em; }
+.tv-attribute { font-size: 12px; }
+.tv-edge path { fill: none; stroke: #c9c4bb; stroke-width: 1.2; }
+.tv-end { fill: #a29c91; }
+.tv-edge-stereotype { font-size: 9.5px; fill-opacity: 0.78; letter-spacing: 0.01em; }
+.tv-marker { fill: #252526; stroke: #c9c4bb; stroke-width: 1.2; }
+.tv-arrow { fill: none; stroke: #c9c4bb; stroke-width: 1.2; }
+.tv-reading { fill: #e8e6e1; stroke: none; }
+.tv-lock { fill: none; stroke: #a29c91; stroke-width: 1.1; stroke-linecap: round; }
+.tv-lock rect { fill: #1e1e1e; }
+.tv-group rect { fill: none; stroke: #a29c91; stroke-dasharray: 4 3; }
+.tv-group text { font-size: 11px; fill: #a29c91; }
+.tv-ontology rect { fill: none; stroke: #c9c4bb; stroke-width: 1.2; stroke-dasharray: none; }
+.tv-ontology text { font-weight: 600; font-size: 13px; fill: #e8e6e1; }
+.tv-location { font-size: 12px; fill-opacity: 0.72; }
+.tv-selected rect { stroke: #6fd0c4; stroke-width: 2.5; }
+/* The second selector is for a leg of a shared tree, which carries its own id
+   and so is chosen as itself rather than through a group around it. */
+.tv-selected path, path.tv-selected { stroke: #6fd0c4; stroke-width: 2.2; }
+.tv-unresolved rect { stroke-dasharray: 5 3; }
+.tv-external rect { stroke-dasharray: 2 2; }
+</style>
+<rect x="-22" y="-42" width="318" height="293" fill="#1e1e1e"/>
+<g class="tv-group" data-group="pkg:nucleo"><rect x="-6" y="-26" width="286" height="261" rx="4"/><text x="2" y="-12">nucleo</text></g><g class="tv-node" data-node="nucleo::UnidadeGestora"><title>*pt-br* — 44 Portaria MTP 1.467/2022, Art.2º - Definições: VI - unidade gestora: entidade ou órgão único, de natureza pública, de cada ente federativo, abrangendo todos os poderes, órgãos e entidades autárquicas e fundacionais, que tenha por finalidade a administração, o gerenciamento e a operacionalização do RPPS, incluindo a arrecada.
+Cite Portaria MTP nº 1.467, de 2 junho de 2022: Capítulo I - Definições</title><rect x="12" y="12" width="115" height="84" rx="3" fill="#FF99A3"/><text class="tv-stereotype" x="69.5" y="27" text-anchor="middle">«kind»</text><text class="tv-name" x="69.5" y="44" text-anchor="middle">UnidadeGestora</text><line x1="12" y1="54" x2="127" y2="54" stroke="#c9c4bb" stroke-width="1"/><text class="tv-attribute" x="20" y="70">codigo: string</text><text class="tv-attribute" x="20" y="87">descricao: string</text></g><g class="tv-node" data-node="nucleo::PessoaFisica"><rect x="12" y="116" width="108" height="101" rx="3" fill="#FF99A3"/><text class="tv-stereotype" x="66" y="131" text-anchor="middle">«kind»</text><text class="tv-name" x="66" y="148" text-anchor="middle">PessoaFisica</text><line x1="12" y1="158" x2="120" y2="158" stroke="#c9c4bb" stroke-width="1"/><text class="tv-attribute" x="20" y="174">cpf: string</text><text class="tv-attribute" x="20" y="191">nis: string [0..1]</text><text class="tv-attribute" x="20" y="208">nome: string</text></g><g class="tv-node" data-node="nucleo::PessoaJuridica"><rect x="147" y="12" width="115" height="84" rx="3" fill="#FF99A3"/><text class="tv-stereotype" x="204.5" y="27" text-anchor="middle">«kind»</text><text class="tv-name" x="204.5" y="44" text-anchor="middle">PessoaJuridica</text><line x1="147" y1="54" x2="262" y2="54" stroke="#c9c4bb" stroke-width="1"/><text class="tv-attribute" x="155" y="70">cnpj: string</text><text class="tv-attribute" x="155" y="87">nome: string</text></g><g class="tv-labels"></g></svg>

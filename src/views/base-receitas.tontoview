@@ -16,7 +16,7 @@
     "routing": "curved",
     "fontFamily": "sans",
     "fontSize": "medium",
-    "showAttributes": false,
+    "showAttributes": true,
     "showCardinalities": true,
     "showRelationNames": true,
     "showRelationStereotypes": true,
@@ -36,16 +36,16 @@
   },
   "nodes": {
     "base-receitas::NaturezaDaReceita": {
-      "x": 16,
-      "y": 104
+      "x": -8,
+      "y": -96
     },
     "base-receitas::FonteDaReceita": {
-      "x": -48,
-      "y": 248
+      "x": -24,
+      "y": 288
     },
     "base-receitas::ContaContabil": {
-      "x": 8,
-      "y": 368
+      "x": 16,
+      "y": 520
     },
     "base-receitas::UnidadeGestoraEmitente": {
       "x": 752,
