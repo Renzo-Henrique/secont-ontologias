@@ -4,7 +4,7 @@
    "version": "1.0.0",
    "publisher": "Nemo",
    "license": "MIT",
-   "outFolder": "out",
+   "outFolder": "generated",
    "dependencies": {},
    "authors": [
       "César Bernabé",
