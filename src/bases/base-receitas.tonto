@@ -32,10 +32,14 @@ quality NaturezaDaReceita {
 
     codigoTipo: string [1]
     descricaoTipo: string [1]
+
+    @characterization [1] -- ClassificaNaturezaDe -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
 }
 
 /// @pt-br A classificação por fontes ou destinações de recursos (FR) tem como objetivo agrupar receitas que possuam as mesmas normas de aplicação na despesa. Em regra, as fontes ou destinações de recursos reúnem recursos oriundos de determinados códigos da classificação por natureza da receita orçamentária, conforme regras previamente estabelecidas. Por meio do orçamento público, essas fontes ou destinações são associadas a determinadas despesas de forma a evidenciar os meios para atingir os objetivos públicos.
 /// Cite MCASP - 11º Edicao: Parte I: Seção 5.1
+/// No momento da arrecadação, a FR deverá ser informada no registro da realização da receita orçamentária (classe 6 do PCASP), no registro do ingresso dos recursos financeiros no ativo financeiro (classe 1 com atributo "F") e em contas de controle da Disponibilidade por Destinação de Recursos - DDR (nas classes 7 e 8 do PCASP). A partir desse momento, a FR informada para os recursos financeiros não deverá ser alterada
+/// Cite MCASP - 11º Edicao: Parte I: Seção 5.2
 quality FonteDaReceita {
 
     codigoFonte: string [1]
@@ -47,6 +51,8 @@ quality FonteDaReceita {
     codigoDetalhamentoFonte: string [1]
     codigoDetalhamentoFonteAux: string [1]
     descricaoDetalhamentoFonte: string [1]
+
+    @characterization [1] -- ClassificaFonteDe -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
 }
 
 
@@ -55,27 +61,27 @@ quality FonteDaReceita {
 quality ContaContabil {
     codigo: string [1]
     descricao: string [1]
+
+    @characterization [1] -- ClassificaInformacaoContabilDe -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
 }
 
 
 
-role UnidadeGestoraEmitente specializes nucleo.UnidadeGestora
+role UnidadeGestoraEmitenteDeReceita specializes nucleo.UnidadeGestora
 
 
 
-role UnidadeGestoraBeneficiada specializes nucleo.UnidadeGestora
+role UnidadeGestoraBeneficiadaDeReceita specializes nucleo.UnidadeGestora
 
 
-/// @pt-br O objetivo da elaboração e divulgação da informação contábil é fornecer informação para fins de prestação de contas e responsabilização (accountability) e tomada de decisão.
-/// Cite MCASP - 11º Edicao: Parte Geral: Seções 2.3 ; 3.1
-kind DocumentoContabil
+
 
 /// @pt-br O orçamento é um importante instrumento de planejamento de qualquer entidade, seja pública ou privada, e representa o fluxo previsto de ingressos e de aplicações de recursos em determinado período.
 /// Cite MCASP - 11º Edicao: Parte I: Seção 3.1
 /// São disponibilidades de recursos financeiros que ingressam durante o exercício e que aumentam o saldo financeiro da instituição. Instrumento por meio do qual se viabiliza a execução das políticas públicas, as receitas orçamentárias são fontes de recursos utilizadas pelo Estado em programas e ações cuja finalidade precípua é atender às necessidades públicas e demandas da sociedade.
 /// Essas receitas pertencem ao Estado, transitam pelo patrimônio do Poder Público e, via de regra, por força do princípio orçamentário da universalidade, estão previstas na Lei Orçamentária Anual - LOA.
 /// Cite MCASP - 11º Edicao: Parte I: Seção 3.1.2
-role DocumentoContabilDeReceitaOrcamentaria specializes DocumentoContabil{
+role DocumentoContabilDeReceitaOrcamentaria specializes nucleo.DocumentoContabil{
     codigoIdUso: string[1]
     descricaoIdUso: string[1]
     valorPrevista: string[1]
@@ -98,8 +104,8 @@ role DocumentoContabilDeReceitaOrcamentaria specializes DocumentoContabil{
 
 relator RegistroDeReceitaOrcamentaria{
     @mediation [1]  -- formalizadaPor -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
-    @mediation [1..*] -- temUnidadeGestoraEmitente -- [1] (const) UnidadeGestoraEmitente
-    @mediation [1..*] -- temUnidadeGestoraBeneficiada -- [1] (const) UnidadeGestoraBeneficiada 
+    @mediation [1..*] -- temUnidadeGestoraEmitente -- [1] (const) UnidadeGestoraEmitenteDeReceita
+    @mediation [1..*] -- temUnidadeGestoraBeneficiada -- [1] (const) UnidadeGestoraBeneficiadaDeReceita 
     
 }
 
@@ -110,13 +116,13 @@ relator RegistroDeReceitaOrcamentaria{
 
 **/
 
-@characterization relation NaturezaDaReceita [1] -- ClassificaNaturezaDe -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
-@characterization relation FonteDaReceita [1] -- ClassificaFonteDe -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
-@characterization relation ContaContabil [1] -- ClassificaInformacaoContabilDe -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
+// @characterization relation NaturezaDaReceita [1] -- ClassificaNaturezaDe -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
+// @characterization relation FonteDaReceita [1] -- ClassificaFonteDe -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
+// @characterization relation ContaContabil [1] -- ClassificaInformacaoContabilDe -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
 
 
-@material relation DocumentoContabilDeReceitaOrcamentaria [1..*] -- emitidaPor -- [1] UnidadeGestoraEmitente derivedFrom RegistroDeReceitaOrcamentaria
-@material relation DocumentoContabilDeReceitaOrcamentaria [1..*] -- emitidaPara -- [1] UnidadeGestoraBeneficiada derivedFrom RegistroDeReceitaOrcamentaria
+@material relation DocumentoContabilDeReceitaOrcamentaria [1..*] -- emitidaPor -- [1] UnidadeGestoraEmitenteDeReceita derivedFrom RegistroDeReceitaOrcamentaria
+@material relation DocumentoContabilDeReceitaOrcamentaria [1..*] -- emitidaPara -- [1] UnidadeGestoraBeneficiadaDeReceita derivedFrom RegistroDeReceitaOrcamentaria
 
 
 

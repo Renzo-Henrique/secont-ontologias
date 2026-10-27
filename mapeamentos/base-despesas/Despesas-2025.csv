@@ -1,0 +1,71 @@
+Ano ; base-despesas.
+Data ; base-despesas.
+ValorEmpenho ; base-despesas.
+ValorLiquidado ; base-despesas.
+ValorPago ; base-despesas.
+ValorRap ; base-despesas.
+CpfCnpjNis ; base-despesas.
+TipoFavorecido ; base-despesas.
+CargoFuncao ;
+Favorecido ; base-despesas.
+IdFavorecido ; base-despesas.
+TipoLicitacao ; base-despesas.
+HistoricoDocumento ; base-despesas.
+Documento ; base-despesas.
+DocumentoEmpenho ; base-despesas.
+CodigoProcesso ; base-despesas.
+Processo ; base-despesas.
+ProcessoAssunto ; base-despesas.
+CodigoFuncionalProgramatica ;
+CodigoCategoriaEconomica ; base-despesas.ClassificadorPorNaturezaDeDespesa
+CategoriaEconomica ; base-despesas.ClassificadorPorNaturezaDeDespesa
+CodigoUnidadeGestora ; base-despesas.UnidadeGestoraEmitenteDeDespesa
+UnidadeGestora ; base-despesas.UnidadeGestoraEmitenteDeDespesa
+CodigoGrupoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa
+GrupoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa
+CodigoElementoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa
+ElementoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa
+DescricaoElementoDespesa ;
+CodigoSubtitulo ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa
+Subtitulo ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa
+CodigoFonte ; base-despesas.FonteDaDespesa
+Fonte ; base-despesas.FonteDaDespesa
+CodigoDetalhamentoFonte ; base-despesas.FonteDaDespesa
+DetalhamentoFonte ; base-despesas.FonteDaDespesa
+CodigoOrgao ; base-despesas.ClassificadorInstitucionalDeDespesa
+Orgao ;
+CodigoFuncao ; base-despesas.ClassificadorFuncionalDeDespesa
+Funcao ; base-despesas.ClassificadorFuncionalDeDespesa
+CodigoSubFuncao ; base-despesas.ClassificadorFuncionalDeDespesa
+SubFuncao ; base-despesas.ClassificadorFuncionalDeDespesa
+CodigoPrograma ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa
+Programa ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa
+CodigoAcao ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa
+Acao ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa
+CodigoModalidade ; base-despesas.ClassificadorPorNaturezaDeDespesa
+Modalidade ; base-despesas.ClassificadorPorNaturezaDeDespesa
+CodigoSubelementoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa
+SubelementoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa
+CodigoGestaoEmitente ;
+CodigoPlanoOrcamentario ;
+PlanoOrcamentario ;
+NumeroProcesso ;
+CodigoConvenioRecebido ;
+CodigoConvenioConcedido ; base-despesas.
+Embasamento ; base-despesas.
+CredorRetencao ; base-despesas.
+NomeCredorRetencao ; base-despesas.
+TipoRetencao ; base-despesas.
+NomeTipoRetencao ; base-despesas.
+NumeroLicitacao ; base-despesas.
+AnoLicitacao ; base-despesas.
+BancoOrigem ; base-despesas.Banco
+AgenciaOrigem ; base-despesas.Banco
+DomicilioBancarioOrigem ; base-despesas.Banco
+IdUso ; base-despesas.
+DescricaoIdUso ; base-despesas.
+Emenda ; base-despesas.
+Esfera ; base-despesas.
+DescricaoEsfera ;
+Contrato ; base-despesas.
+Id ; base-despesas.
