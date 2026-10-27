@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "content": {
+    "scope": "file",
+    "showExternalReferences": false,
+    "showDatatypes": true,
+    "showGensets": true,
+    "derivedMaterialMode": "both"
+  },
+  "display": {
+    "taxonomyOnly": false,
+    "partonomyOnly": false,
+    "routing": "curved",
+    "fontFamily": "sans",
+    "fontSize": "medium",
+    "showAttributes": false,
+    "showCardinalities": true,
+    "showRelationNames": true,
+    "showRelationStereotypes": true,
+    "showEndDecorations": true,
+    "showRoleNames": true,
+    "showColors": true,
+    "showLegend": false,
+    "showPackageGroups": true,
+    "qualifyNames": false
+  },
+  "layout": {
+    "direction": "RIGHT",
+    "associationDistance": 100,
+    "nodeSpacing": 60,
+    "rankSpacing": 100,
+    "groupByPackage": true
+  },
+  "nodes": {
+    "base-receitas::NaturezaDaReceita": {
+      "x": 56,
+      "y": 384
+    },
+    "base-receitas::FonteDaReceita": {
+      "x": 48,
+      "y": 592
+    },
+    "base-receitas::ContaContabil": {
+      "x": 48,
+      "y": 496
+    },
+    "base-receitas::UnidadeGestoraEmitente": {
+      "x": 832,
+      "y": 600
+    },
+    "nucleo::UnidadeGestora": {
+      "x": 483,
+      "y": 50
+    },
+    "base-receitas::UnidadeGestoraBeneficiada": {
+      "x": 776,
+      "y": 152
+    },
+    "base-receitas::DocumentoContabil": {
+      "x": 448,
+      "y": 232
+    },
+    "base-receitas::DocumentoContabilDeReceitaOrcamentaria": {
+      "x": 381,
+      "y": 472,
+      "width": 291,
+      "height": 104
+    },
+    "base-receitas::RegistroDeReceitaOrcamentaria": {
+      "x": 816,
+      "y": 328
+    }
+  },
+  "edges": {}
+}

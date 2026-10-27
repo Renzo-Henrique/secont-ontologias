@@ -33,16 +33,16 @@
   },
   "nodes": {
     "base-receitas::NaturezaDaReceita": {
-      "x": 48,
-      "y": 440
+      "x": 56,
+      "y": 384
     },
     "base-receitas::FonteDaReceita": {
-      "x": 40,
-      "y": 568
+      "x": 48,
+      "y": 592
     },
     "base-receitas::ContaContabil": {
-      "x": -752,
-      "y": 640
+      "x": 48,
+      "y": 496
     },
     "base-receitas::UnidadeGestoraEmitente": {
       "x": 832,
