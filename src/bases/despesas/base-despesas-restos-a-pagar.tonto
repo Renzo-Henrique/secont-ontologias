@@ -1,0 +1,21 @@
+/// @namespace https://example.org/ontologia-portal-transparencia-es/base-despesas-restos-a-pagar#
+ontology base-despesas-restos-a-pagar
+import nucleo from <../../nucleo/nucleo.tonto>
+import base-despesas from <base-despesas.tonto>
+
+role UnidadeGestoraComRestosAPagar specializes nucleo.UnidadeGestora
+role DocumentoContabilDeRestosAPagar specializes nucleo.DocumentoContabil
+
+
+
+datatype DadosDeRestosAPagarAnonimizados
+
+relator RegistroDeRestosAPagar{
+  @mediation [1]  -- [1] (const) DocumentoContabilDeRestosAPagar
+  @mediation [1..*] -- [1] (const) UnidadeGestoraComRestosAPagar
+  @mediation [1] -- ClassificadoPor -- [1] (const) base-despesas.ClassificadorPorNaturezaDeDespesa
+
+  dadosAnonimizados: DadosDeRestosAPagarAnonimizados [1]
+  poder: nucleo.PoderDaFederacao [1]
+}
+

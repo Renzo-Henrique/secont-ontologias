@@ -1,0 +1,14 @@
+
+Ano ; 
+CodigoPoder ; nucleo.PoderDaFederacao
+Poder ; nucleo.PoderDaFederacao
+CodigoUnidadeGestora ; base-despesas-restos-a-pagar.UnidadeGestoraComRestosAPagar
+UnidadeGestora ; base-despesas-restos-a-pagar.UnidadeGestoraComRestosAPagar
+CodigoElemento ; base-despesas.ClassificadorPorNaturezaDeDespesa
+Elemento ; base-despesas.ClassificadorPorNaturezaDeDespesa
+CpfCnpjNis ; base-despesas-restos-a-pagar.DadosDeRestosAPagarAnonimizados
+Favorecido ; base-despesas-restos-a-pagar.DadosDeRestosAPagarAnonimizados
+ValorNaoProcessado ;
+ValorProcessado ;
+ValorNaoProcessadoLiquidado ;
+Id ; 
