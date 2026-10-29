@@ -4,12 +4,12 @@ ValorEmpenho ;
 ValorLiquidado ;
 ValorPago ;
 ValorRap ;
-CpfCnpjNis ;
-TipoFavorecido ;
-CargoFuncao ;
-Favorecido ;
-IdFavorecido ;
-TipoLicitacao ;
+CpfCnpjNis ; base-despesas.DadosAnonimizadosDeDespesa
+TipoFavorecido ; base-despesas.DadosAnonimizadosDeDespesa
+CargoFuncao ; base-despesas.DadosAnonimizadosDeDespesa
+Favorecido ; base-despesas.DadosAnonimizadosDeDespesa
+IdFavorecido ; base-despesas.DadosAnonimizadosDeDespesa
+TipoLicitacao ; base-despesas.DadosAnonimizadosDeDespesa
 HistoricoDocumento ;
 Documento ;
 DocumentoEmpenho ;
@@ -25,7 +25,7 @@ CodigoGrupoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa
 GrupoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa
 CodigoElementoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa
 ElementoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa
-DescricaoElementoDespesa ;
+DescricaoElementoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa
 CodigoSubtitulo ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa
 Subtitulo ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa
 CodigoFonte ; base-despesas.FonteDaDespesa
@@ -50,8 +50,8 @@ CodigoGestaoEmitente ;
 CodigoPlanoOrcamentario ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa
 PlanoOrcamentario ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa
 NumeroProcesso ;
-CodigoConvenioRecebido ;
-CodigoConvenioConcedido ;
+CodigoConvenioRecebido ; base-despesas.ConvenioRecebido
+CodigoConvenioConcedido ; base-despesas.ConvenioConcedido
 Embasamento ;
 CredorRetencao ;
 NomeCredorRetencao ;
@@ -59,9 +59,9 @@ TipoRetencao ;
 NomeTipoRetencao ;
 NumeroLicitacao ;
 AnoLicitacao ;
-BancoOrigem ; base-despesas.Banco
-AgenciaOrigem ; base-despesas.Banco
-DomicilioBancarioOrigem ; base-despesas.Banco
+BancoOrigem ; nucleo.Banco
+AgenciaOrigem ; nucleo.Banco
+DomicilioBancarioOrigem ; nucleo.Banco
 IdUso ;
 DescricaoIdUso ;
 Emenda ;

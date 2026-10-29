@@ -1,3 +1,4 @@
+/// @namespace https://example.org/ontologia-portal-transparencia-es/base-despesas-orcamentos-despesa#
 ontology base-despesas-orcamentos-despesa
 import nucleo from <../../nucleo/nucleo.tonto>
 import base-despesas from <base-despesas.tonto>

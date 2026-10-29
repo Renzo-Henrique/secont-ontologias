@@ -12,10 +12,14 @@ role DocumentoContabilDeDespesaOrcamentaria specializes nucleo.DocumentoContabil
 
 role UnidadeGestoraEmitenteDeDespesa specializes nucleo.UnidadeGestora
 
+datatype DadosAnonimizadosDeDespesa
 relator RegistroDeDespesaOrcamentaria {
   @mediation [1]  -- formalizadaPor -- [1] (const) DocumentoContabilDeDespesaOrcamentaria
   @mediation [1..*] -- temUnidadeGestoraEmitenteDeDespesa -- [1] (const) UnidadeGestoraEmitenteDeDespesa
+
+  dadosAnonimizados: DadosAnonimizadosDeDespesa [1]
 }
+
 
 
 relator ClassificadorDeDespesaOrcamentaria {
@@ -71,3 +75,19 @@ category ClassificadorPorNaturezaDeDespesa  of functional-complexes{
 category FonteDaDespesa  of functional-complexes{
   
 }
+
+role ConvenioConcedido specializes nucleo.Convenio
+
+role ConvenioRecebido specializes nucleo.Convenio
+
+relator RegistroDeConvenioConcedidoNaDespesaOrcamentaria {
+  @mediation [1] -- [1] (const) ConvenioConcedido
+  @mediation [0..1] -- [1] (const) DocumentoContabilDeDespesaOrcamentaria
+}
+
+relator RegistroDeConvenioRecebidoNaDespesaOrcamentaria {
+  @mediation [1] -- [1] (const) ConvenioConcedido
+  @mediation [0..1] -- [1] (const) DocumentoContabilDeDespesaOrcamentaria
+}
+
+

@@ -46,3 +46,9 @@ kind Municipio{
     @componenthood [0..*] <>-- [1] Regiao
     @componenthood [0..*] <>-- [0..*] MicroRegiao
 }
+
+kind Banco
+
+/// Convênios, contratos de repasse e termos de parceria são acordos feitos entre União e entidades governamentais dos demais entes da Federação, ou organizações não-governamentais, para transferência de recursos financeiros a serem utilizados na execução de um objetivo comum. Portanto, as transferências voluntárias e legais serão viabilizadas a partir dos mencionados instrumentos e outros congêneres.
+/// Cite url https://portaldatransparencia.gov.br/entenda-a-gestao-publica/convenios-e-outros-acordos
+kind Convenio
