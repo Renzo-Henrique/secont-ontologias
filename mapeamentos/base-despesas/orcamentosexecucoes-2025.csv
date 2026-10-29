@@ -1,0 +1,11 @@
+Data ; base-receitas.DocumentoContabilOrcamentario
+ValorEmpenho ; base-receitas.DocumentoContabilOrcamentario
+ValorLiquidado ; base-receitas.DocumentoContabilOrcamentario
+ValorPago ; base-receitas.DocumentoContabilOrcamentario
+ValorRap ; base-receitas.DocumentoContabilOrcamentario
+ValorOrcadoInicial ; base-receitas.DocumentoContabilOrcamentario
+ValorOrcado ; base-receitas.DocumentoContabilOrcamentario
+CodigoUnidadeGestora ; base-receitas.UnidadeGestoraOrcamentada
+UnidadeGestora ; base-receitas.UnidadeGestoraOrcamentada
+SiglaUnidadeGestora ; base-receitas.UnidadeGestoraOrcamentada
+Id ;
