@@ -7,7 +7,7 @@ import nucleo from <../nucleo/nucleo.tonto>
 /// Importante destacar que a classificação da receita orçamentária por natureza é utilizada por todos os entes da Federação e visa identificar a origem do recurso segundo o fato gerador: acontecimento real que ocasionou o ingresso da receita nos cofres públicos.
 /// A classificação por Natureza de Receita Orçamentária é composta por um código de oito dígitos numéricos que representam: a Categoria Econômica, a Origem, a Espécie, os Desdobramentos e o Tipo de Receita.
 /// Cite MCASP - 11º Edicao: Parte I: Seção 3.2.1
-quality NaturezaDaReceita {
+category NaturezaDaReceita of functional-complexes {
     
     codigoNatureza: string [1]
     descricaoNatureza: string [1]
@@ -33,14 +33,14 @@ quality NaturezaDaReceita {
     codigoTipo: string [1]
     descricaoTipo: string [1]
 
-    @characterization [1] -- ClassificaNaturezaDe -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
+    // @characterization [1] -- ClassificaNaturezaDe -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
 }
 
 /// @pt-br A classificação por fontes ou destinações de recursos (FR) tem como objetivo agrupar receitas que possuam as mesmas normas de aplicação na despesa. Em regra, as fontes ou destinações de recursos reúnem recursos oriundos de determinados códigos da classificação por natureza da receita orçamentária, conforme regras previamente estabelecidas. Por meio do orçamento público, essas fontes ou destinações são associadas a determinadas despesas de forma a evidenciar os meios para atingir os objetivos públicos.
 /// Cite MCASP - 11º Edicao: Parte I: Seção 5.1
 /// No momento da arrecadação, a FR deverá ser informada no registro da realização da receita orçamentária (classe 6 do PCASP), no registro do ingresso dos recursos financeiros no ativo financeiro (classe 1 com atributo "F") e em contas de controle da Disponibilidade por Destinação de Recursos - DDR (nas classes 7 e 8 do PCASP). A partir desse momento, a FR informada para os recursos financeiros não deverá ser alterada
 /// Cite MCASP - 11º Edicao: Parte I: Seção 5.2
-quality FonteDaReceita {
+category FonteDaReceita of functional-complexes {
 
     codigoFonte: string [1]
     descricaoFonte: string [1]
@@ -52,17 +52,17 @@ quality FonteDaReceita {
     codigoDetalhamentoFonteAux: string [1]
     descricaoDetalhamentoFonte: string [1]
 
-    @characterization [1] -- ClassificaFonteDe -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
+    // @characterization [1] -- ClassificaFonteDe -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
 }
 
 
 /// @pt-br Conta é a expressão qualitativa e quantitativa de fatos de mesma natureza, que evidencia a composição, variação e estado do patrimônio, bem como de bens, direitos, obrigações e situações nele não compreendidas, mas que, direta ou indiretamente, possam vir a afetá-lo.
 /// Cite MCASP - 11º Edicao: Parte IV: Seções 2.3 ; 3.1
-quality ContaContabil {
+category ContaContabil of functional-complexes {
     codigo: string [1]
     descricao: string [1]
 
-    @characterization [1] -- ClassificaInformacaoContabilDe -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
+    // @characterization [1] -- ClassificaInformacaoContabilDe -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
 }
 
 
@@ -109,6 +109,12 @@ relator RegistroDeReceitaOrcamentaria{
     
 }
 
+relator ClassificacaoDeReceitaOrcamentaria{
+    @mediation [1..*] -- NaturezaClassificadaPor -- [1] (const) NaturezaDaReceita
+    @mediation [1..*] -- FonteClassificadaPor -- [1] (const) FonteDaReceita
+    @mediation [1..*] -- InformacaoContabilClassificadaPor -- [1] (const) ContaContabil
+    @mediation [1] -- ClassificadorDocumentalDe -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
+}
 
 /**
 
