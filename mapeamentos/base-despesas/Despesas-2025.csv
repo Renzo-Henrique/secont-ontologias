@@ -1,21 +1,21 @@
-Ano ; base-despesas.
-Data ; base-despesas.
-ValorEmpenho ; base-despesas.
-ValorLiquidado ; base-despesas.
-ValorPago ; base-despesas.
-ValorRap ; base-despesas.
-CpfCnpjNis ; base-despesas.
-TipoFavorecido ; base-despesas.
+Ano ;
+Data ;
+ValorEmpenho ;
+ValorLiquidado ;
+ValorPago ;
+ValorRap ;
+CpfCnpjNis ;
+TipoFavorecido ;
 CargoFuncao ;
-Favorecido ; base-despesas.
-IdFavorecido ; base-despesas.
-TipoLicitacao ; base-despesas.
-HistoricoDocumento ; base-despesas.
-Documento ; base-despesas.
-DocumentoEmpenho ; base-despesas.
-CodigoProcesso ; base-despesas.
-Processo ; base-despesas.
-ProcessoAssunto ; base-despesas.
+Favorecido ;
+IdFavorecido ;
+TipoLicitacao ;
+HistoricoDocumento ;
+Documento ;
+DocumentoEmpenho ;
+CodigoProcesso ;
+Processo ;
+ProcessoAssunto ;
 CodigoFuncionalProgramatica ;
 CodigoCategoriaEconomica ; base-despesas.ClassificadorPorNaturezaDeDespesa
 CategoriaEconomica ; base-despesas.ClassificadorPorNaturezaDeDespesa
@@ -47,25 +47,25 @@ Modalidade ; base-despesas.ClassificadorPorNaturezaDeDespesa
 CodigoSubelementoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa
 SubelementoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa
 CodigoGestaoEmitente ;
-CodigoPlanoOrcamentario ;
-PlanoOrcamentario ;
+CodigoPlanoOrcamentario ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa
+PlanoOrcamentario ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa
 NumeroProcesso ;
 CodigoConvenioRecebido ;
-CodigoConvenioConcedido ; base-despesas.
-Embasamento ; base-despesas.
-CredorRetencao ; base-despesas.
-NomeCredorRetencao ; base-despesas.
-TipoRetencao ; base-despesas.
-NomeTipoRetencao ; base-despesas.
-NumeroLicitacao ; base-despesas.
-AnoLicitacao ; base-despesas.
+CodigoConvenioConcedido ;
+Embasamento ;
+CredorRetencao ;
+NomeCredorRetencao ;
+TipoRetencao ;
+NomeTipoRetencao ;
+NumeroLicitacao ;
+AnoLicitacao ;
 BancoOrigem ; base-despesas.Banco
 AgenciaOrigem ; base-despesas.Banco
 DomicilioBancarioOrigem ; base-despesas.Banco
-IdUso ; base-despesas.
-DescricaoIdUso ; base-despesas.
-Emenda ; base-despesas.
-Esfera ; base-despesas.
-DescricaoEsfera ;
-Contrato ; base-despesas.
-Id ; base-despesas.
+IdUso ;
+DescricaoIdUso ;
+Emenda ;
+Esfera ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa
+DescricaoEsfera ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa
+Contrato ;
+Id ;

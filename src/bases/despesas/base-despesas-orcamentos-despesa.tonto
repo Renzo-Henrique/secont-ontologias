@@ -1,0 +1,24 @@
+ontology base-despesas-orcamentos-despesa
+import nucleo from <../../nucleo/nucleo.tonto>
+import base-despesas from <base-despesas.tonto>
+
+role UnidadeGestoraComOrcamentoDeDespesa specializes nucleo.UnidadeGestora
+role DocumentoContabilDeOrcamentoDeDespesa specializes nucleo.DocumentoContabil
+
+relator ClassificadorDeOrcamentoDeDespesa {
+  @mediation [0..*] -- [1] (const) base-despesas.ClassificadorInstitucionalDeDespesa
+  @mediation [0..*] -- [1] (const) base-despesas.ClassificadorFuncionalDeDespesa
+  @mediation [0..*] -- [1] (const) base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa
+  @mediation [0..*] -- [1] (const) base-despesas.ClassificadorPorNaturezaDeDespesa
+  @mediation [0..*] -- [1] (const) base-despesas.FonteDaDespesa
+  @mediation [1]  -- ClassificadorDocumentalDe -- [1] (const) DocumentoContabilDeOrcamentoDeDespesa
+}
+
+
+relator RegistroDeOrcamentoDeDespesa{
+  @mediation [1]  -- [1] (const) DocumentoContabilDeOrcamentoDeDespesa
+  @mediation [1..*] -- [1] (const) UnidadeGestoraComOrcamentoDeDespesa
+  @mediation [0..*] -- [1] (const) nucleo.MicroRegiao
+  @mediation [0..*] -- [1] (const) nucleo.Municipio
+}
+

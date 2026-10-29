@@ -1,11 +1,11 @@
-Data ; base-receitas.DocumentoContabilOrcamentario
-ValorEmpenho ; base-receitas.DocumentoContabilOrcamentario
-ValorLiquidado ; base-receitas.DocumentoContabilOrcamentario
-ValorPago ; base-receitas.DocumentoContabilOrcamentario
-ValorRap ; base-receitas.DocumentoContabilOrcamentario
-ValorOrcadoInicial ; base-receitas.DocumentoContabilOrcamentario
-ValorOrcado ; base-receitas.DocumentoContabilOrcamentario
-CodigoUnidadeGestora ; base-receitas.UnidadeGestoraOrcamentada
-UnidadeGestora ; base-receitas.UnidadeGestoraOrcamentada
-SiglaUnidadeGestora ; base-receitas.UnidadeGestoraOrcamentada
+Data ; base-despesas-orcamentos-execucoes.DocumentoContabilDeOrcamentoDeExecucao
+ValorEmpenho ; base-despesas-orcamentos-execucoes.DocumentoContabilDeOrcamentoDeExecucao
+ValorLiquidado ; base-despesas-orcamentos-execucoes.DocumentoContabilDeOrcamentoDeExecucao
+ValorPago ; base-despesas-orcamentos-execucoes.DocumentoContabilDeOrcamentoDeExecucao
+ValorRap ; base-despesas-orcamentos-execucoes.DocumentoContabilDeOrcamentoDeExecucao
+ValorOrcadoInicial ; base-despesas-orcamentos-execucoes.DocumentoContabilDeOrcamentoDeExecucao
+ValorOrcado ; base-despesas-orcamentos-execucoes.DocumentoContabilDeOrcamentoDeExecucao
+CodigoUnidadeGestora ; base-despesas-orcamentos-execucoes.UnidadeGestoraComOrcamentoDeExecucao
+UnidadeGestora ; base-despesas-orcamentos-execucoes.UnidadeGestoraComOrcamentoDeExecucao
+SiglaUnidadeGestora ; base-despesas-orcamentos-execucoes.UnidadeGestoraComOrcamentoDeExecucao
 Id ;

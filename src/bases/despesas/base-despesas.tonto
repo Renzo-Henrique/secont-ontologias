@@ -1,170 +1,13 @@
 /// @namespace https://example.org/ontologia-portal-transparencia-es/base-despesas#
 ontology base-despesas
-import nucleo from <../nucleo/nucleo.tonto>
-
-kind OrcamentosExecucoes{
-  /*
-  CodigoUnidadeGestora,
-  Data,
-  Id,
-  SiglaUnidadeGestora,
-  UnidadeGestora,
-  ValorEmpenho,
-  ValorLiquidado,
-  ValorOrcado,
-  ValorOrcadoInicial,
-  ValorPago,
-  ValorRap,
-
-  */
-}
-
-kind OrcamentosDespesa{
-  /*
-  Acao,
-  Ano,
-  CategoriaEconomica,
-  CodigoAcao,
-  CodigoCategoriaEconomica,
-  CodigoElementoDespesa,
-  CodigoFonte,
-  CodigoFuncao,
-  CodigoGrupoDespesa,
-  CodigoModalidade,
-  CodigoPlanoOrcamentario,
-  CodigoPrograma,
-  CodigoSubFuncao,
-  CodigoSubelementoDespesa,
-  CodigoUnidadeGestora,
-  CpfCnpjNis,
-  DespesaEmpenhada,
-  DespesaLiquidada,
-  DespesaPaga,
-  DotacaoAtualizada,
-  DotacaoInicial,
-  ElementoDespesa,
-  Emenda,
-  Esfera,
-  Favorecido,
-  Fonte,
-  Funcao,
-  GrupoDespesa,
-  Id,
-  Microregiao,
-  Modalidade,
-  Municipio,
-  NomeEsfera,
-  NomeMicroregiao,
-  NomeMunicipio,
-  NomeUnidadeOrcamentaria,
-  PlanoOrcamentario,
-  Programa,
-  SubFuncao,
-  SubelementoDespesa,
-  UnidadeGestora,
-  UnidadeOrcamentaria
+import nucleo from <../../nucleo/nucleo.tonto>
 
 
-  */
-}
-
-kind RestosAPagar {
-  /*
-  Ano,
-  CodigoElemento,
-  CodigoPoder,
-  CodigoUnidadeGestora,
-  CpfCnpjNis,
-  Elemento,
-  Favorecido,
-  Id,
-  Poder,
-  UnidadeGestora,
-  ValorNaoProcessado,
-  ValorNaoProcessadoLiquidado,
-  ValorProcessado,
-
-  */
-}
 /// @pt-br Despesa orçamentária é toda transação que depende de autorização legislativa, na forma de consignação de dotação orçamentária, para ser efetivada.
 /// Cite MCASP - 11º Edição: Parte I: Seção 4.1
 role DocumentoContabilDeDespesaOrcamentaria specializes nucleo.DocumentoContabil{
-  /*
-  Acao,
-  AgenciaOrigem,
-  Ano,
-  AnoLicitacao,
-  BancoOrigem,
-  CargoFuncao,  ---> Nulos
-  CategoriaEconomica,
-  CodigoAcao,
-  CodigoCategoriaEconomica,
-  CodigoConvenioConcedido,
-  CodigoConvenioRecebido,  ---> Nulos
-  CodigoDetalhamentoFonte,
-  CodigoElementoDespesa,
-  CodigoFonte,
-  CodigoFuncao,
-  CodigoFuncionalProgramatica,   ---> Zeros
-  CodigoGestaoEmitente,
-  CodigoGrupoDespesa,
-  CodigoModalidade,
-  CodigoOrgao,
-  CodigoPlanoOrcamentario,  ---> Nulos
-  CodigoProcesso,
-  CodigoPrograma,
-  CodigoSubFuncao,
-  CodigoSubelementoDespesa,
-  CodigoSubtitulo,
-  CodigoUnidadeGestora,
-  Contrato,
-  CpfCnpjNis,
-  CredorRetencao,
-  Data,
-  DescricaoElementoDespesa,  ---> Nulos
-  DescricaoEsfera,  ---> Nulos
-  DescricaoIdUso,
-  DetalhamentoFonte,
-  Documento,
-  DocumentoEmpenho,
-  DomicilioBancarioOrigem,
-  ElementoDespesa,
-  Embasamento,
-  Emenda,
-  Esfera,
-  Favorecido,
-  Fonte,
-  Funcao,
-  GrupoDespesa,
-  HistoricoDocumento,
-  Id,
-  IdFavorecido,
-  IdUso,
-  Modalidade,
-  NomeCredorRetencao,
-  NomeTipoRetencao,
-  NumeroLicitacao,
-  NumeroProcesso,    ---> Nulos
-  Orgao,    ---> Nulos
-  PlanoOrcamentario,    ---> Nulos
-  Processo,
-  ProcessoAssunto,
-  Programa,
-  SubFuncao,
-  SubelementoDespesa,
-  Subtitulo,
-  TipoFavorecido,
-  TipoLicitacao,
-  TipoRetencao,
-  UnidadeGestora,
-  ValorEmpenho,
-  ValorLiquidado,
-  ValorPago,
-  ValorRap
-
-  */
+  
 }
-
 
 
 role UnidadeGestoraEmitenteDeDespesa specializes nucleo.UnidadeGestora
@@ -172,17 +15,15 @@ role UnidadeGestoraEmitenteDeDespesa specializes nucleo.UnidadeGestora
 relator RegistroDeDespesaOrcamentaria {
   @mediation [1]  -- formalizadaPor -- [1] (const) DocumentoContabilDeDespesaOrcamentaria
   @mediation [1..*] -- temUnidadeGestoraEmitenteDeDespesa -- [1] (const) UnidadeGestoraEmitenteDeDespesa
-  @mediation [1] -- [1] (const) nucleo.MicroRegiao
-  @mediation [1] -- [1] (const) nucleo.Municipio
 }
 
 
 relator ClassificadorDeDespesaOrcamentaria {
-  @mediation [1..*] -- [1] (const) ClassificadorInstitucionalDeDespesa
-  @mediation [1..*] -- [1] (const) ClassificadorFuncionalDeDespesa
-  @mediation [1..*] -- [1] (const) ClassificadorPorEstruturaProgramaticaDeDespesa
-  @mediation [1..*] -- [1] (const) ClassificadorPorNaturezaDeDespesa
-  @mediation [1..*] -- [1] (const) FonteDaDespesa
+  @mediation [0..*] -- [1] (const) ClassificadorInstitucionalDeDespesa
+  @mediation [0..*] -- [1] (const) ClassificadorFuncionalDeDespesa
+  @mediation [0..*] -- [1] (const) ClassificadorPorEstruturaProgramaticaDeDespesa
+  @mediation [0..*] -- [1] (const) ClassificadorPorNaturezaDeDespesa
+  @mediation [0..*] -- [1] (const) FonteDaDespesa
   @mediation [1]  -- ClassificadorDocumentalDe -- [1] (const) DocumentoContabilDeDespesaOrcamentaria
 }
 
@@ -229,16 +70,4 @@ category ClassificadorPorNaturezaDeDespesa  of functional-complexes{
 /// Cite MCASP - 11º Edição: Parte I: Seção 5.2
 category FonteDaDespesa  of functional-complexes{
   
-}
-
-
-
-
-role UnidadeGestoraOrcamentada specializes nucleo.UnidadeGestora
-
-role DocumentoContabilOrcamentario specializes nucleo.DocumentoContabil
-
-relator RegistroDeOrcamentosEExecucoes {
-  @mediation [1] -- [1] (const) DocumentoContabilOrcamentario
-  @mediation [1..*] -- [1] (const) UnidadeGestoraOrcamentada
 }

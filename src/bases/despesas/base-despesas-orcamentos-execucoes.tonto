@@ -1,0 +1,11 @@
+ontology base-despesas-orcamentos-execucoes
+import nucleo from <../../nucleo/nucleo.tonto>
+import base-despesas from <base-despesas.tonto>
+
+role UnidadeGestoraComOrcamentoDeExecucao specializes nucleo.UnidadeGestora
+role DocumentoContabilDeOrcamentoDeExecucao specializes nucleo.DocumentoContabil
+
+relator RegistroDeOrcamentoDeExecucao{
+  @mediation [1]  -- [1] (const) DocumentoContabilDeOrcamentoDeExecucao
+  @mediation [1..*] -- [1] (const) UnidadeGestoraComOrcamentoDeExecucao
+}

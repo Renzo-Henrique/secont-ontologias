@@ -1,5 +1,5 @@
-CodigoUnidadeGestora ; base-despesas.UnidadeGestoraEmitenteDeDespesa
-UnidadeGestora ; base-despesas.UnidadeGestoraEmitenteDeDespesa
+CodigoUnidadeGestora ; base-despesas.UnidadeGestoraComOrcamentoDeDespesa
+UnidadeGestora ; base-despesas.UnidadeGestoraComOrcamentoDeDespesa
 CodigoPrograma ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa
 Programa ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa
 CodigoAcao ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa
@@ -20,16 +20,16 @@ CodigoSubelementoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa
 SubelementoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa
 CodigoFonte ; base-despesas.FonteDaDespesa
 Fonte ; base-despesas.FonteDaDespesa
-CpfCnpjNis ; base-despesas.
-Favorecido ; base-despesas.
+CpfCnpjNis ; 
+Favorecido ; 
 CodigoPlanoOrcamentario ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa
 PlanoOrcamentario ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa
-DotacaoInicial ; base-despesas.
-DotacaoAtualizada ; base-despesas.
-DespesaEmpenhada ; base-despesas.
-DespesaLiquidada ; base-despesas.
-DespesaPaga ; base-despesas.
-Ano ; base-despesas.
+DotacaoInicial ; 
+DotacaoAtualizada ; 
+DespesaEmpenhada ; 
+DespesaLiquidada ; 
+DespesaPaga ; 
+Ano ; 
 Esfera ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa
 NomeEsfera ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa
 UnidadeOrcamentaria ; base-despesas.ClassificadorInstitucionalDeDespesa
@@ -38,5 +38,5 @@ Microregiao ; nucleo.MicroRegiao
 NomeMicroregiao ; nucleo.MicroRegiao
 Municipio ; nucleo.Municipio
 NomeMunicipio ; nucleo.Municipio
-Emenda ; base-despesas.
+Emenda ; 
 Id ; base-despesas.

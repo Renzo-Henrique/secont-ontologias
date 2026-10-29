@@ -1,6 +1,6 @@
 /// @namespace https://example.org/ontologia-portal-transparencia-es/base-receitas#
 ontology base-receitas
-import nucleo from <../nucleo/nucleo.tonto>
+import nucleo from <../../nucleo/nucleo.tonto>
 
 
 /// @pt-br O § 1º do art. 8º da Lei nº 4.320/1964 define que os itens da discriminação da receita, mencionados no art. 11 dessa lei, serão identificados por números de código decimal. Convencionou-se denominar este código de natureza de receita.
