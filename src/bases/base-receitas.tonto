@@ -33,7 +33,6 @@ category NaturezaDaReceita of functional-complexes {
     codigoTipo: string [1]
     descricaoTipo: string [1]
 
-    // @characterization [1] -- ClassificaNaturezaDe -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
 }
 
 /// @pt-br A classificação por fontes ou destinações de recursos (FR) tem como objetivo agrupar receitas que possuam as mesmas normas de aplicação na despesa. Em regra, as fontes ou destinações de recursos reúnem recursos oriundos de determinados códigos da classificação por natureza da receita orçamentária, conforme regras previamente estabelecidas. Por meio do orçamento público, essas fontes ou destinações são associadas a determinadas despesas de forma a evidenciar os meios para atingir os objetivos públicos.
@@ -52,17 +51,15 @@ category FonteDaReceita of functional-complexes {
     codigoDetalhamentoFonteAux: string [1]
     descricaoDetalhamentoFonte: string [1]
 
-    // @characterization [1] -- ClassificaFonteDe -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
 }
 
 
 /// @pt-br Conta é a expressão qualitativa e quantitativa de fatos de mesma natureza, que evidencia a composição, variação e estado do patrimônio, bem como de bens, direitos, obrigações e situações nele não compreendidas, mas que, direta ou indiretamente, possam vir a afetá-lo.
 /// Cite MCASP - 11º Edicao: Parte IV: Seções 2.3 ; 3.1
-category ContaContabil of functional-complexes {
+category ContaContabil of functional-complexes{
     codigo: string [1]
     descricao: string [1]
 
-    // @characterization [1] -- ClassificaInformacaoContabilDe -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
 }
 
 
@@ -121,11 +118,6 @@ relator ClassificacaoDeReceitaOrcamentaria{
     Relacoes
 
 **/
-
-// @characterization relation NaturezaDaReceita [1] -- ClassificaNaturezaDe -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
-// @characterization relation FonteDaReceita [1] -- ClassificaFonteDe -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
-// @characterization relation ContaContabil [1] -- ClassificaInformacaoContabilDe -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
-
 
 @material relation DocumentoContabilDeReceitaOrcamentaria [1..*] -- emitidaPor -- [1] UnidadeGestoraEmitenteDeReceita derivedFrom RegistroDeReceitaOrcamentaria
 @material relation DocumentoContabilDeReceitaOrcamentaria [1..*] -- emitidaPara -- [1] UnidadeGestoraBeneficiadaDeReceita derivedFrom RegistroDeReceitaOrcamentaria

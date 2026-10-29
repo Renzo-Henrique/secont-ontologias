@@ -87,7 +87,7 @@ kind RestosAPagar {
   */
 }
 /// @pt-br Despesa orçamentária é toda transação que depende de autorização legislativa, na forma de consignação de dotação orçamentária, para ser efetivada.
-/// Cite MCASP - 11º Edicao: Parte I: Seção 4.1
+/// Cite MCASP - 11º Edição: Parte I: Seção 4.1
 role DocumentoContabilDeDespesaOrcamentaria specializes nucleo.DocumentoContabil{
   /*
   Acao,
@@ -165,20 +165,31 @@ role DocumentoContabilDeDespesaOrcamentaria specializes nucleo.DocumentoContabil
   */
 }
 
-kind Banco {
 
-}
 
 role UnidadeGestoraEmitenteDeDespesa specializes nucleo.UnidadeGestora
 
 relator RegistroDeDespesaOrcamentaria {
   @mediation [1]  -- formalizadaPor -- [1] (const) DocumentoContabilDeDespesaOrcamentaria
   @mediation [1..*] -- temUnidadeGestoraEmitenteDeDespesa -- [1] (const) UnidadeGestoraEmitenteDeDespesa
+  @mediation [1] -- [1] (const) nucleo.MicroRegiao
+  @mediation [1] -- [1] (const) nucleo.Municipio
 }
 
-subkind RegistroDeDespesaOrcamentariaComBanco specializes RegistroDeDespesaOrcamentaria{
-  @mediation [1] -- originadaEm -- [1] (const) Banco
+
+relator ClassificadorDeDespesaOrcamentaria {
+  @mediation [1..*] -- [1] (const) ClassificadorInstitucionalDeDespesa
+  @mediation [1..*] -- [1] (const) ClassificadorFuncionalDeDespesa
+  @mediation [1..*] -- [1] (const) ClassificadorPorEstruturaProgramaticaDeDespesa
+  @mediation [1..*] -- [1] (const) ClassificadorPorNaturezaDeDespesa
+  @mediation [1..*] -- [1] (const) FonteDaDespesa
+  @mediation [1]  -- ClassificadorDocumentalDe -- [1] (const) DocumentoContabilDeDespesaOrcamentaria
 }
+
+// kind Banco
+// subkind RegistroDeDespesaOrcamentariaComBanco specializes RegistroDeDespesaOrcamentaria{
+//   @mediation [1] -- originadaEm -- [1] (const) Banco
+// }
 
 /**
 
@@ -188,32 +199,34 @@ Entidades criadas para a ontologia
 **/
 
 /// @pt-br A classificação institucional reflete a estrutura de alocação dos créditos orçamentários e está estruturada em dois níveis hierárquicos: órgão orçamentário e unidade orçamentária. Constitui unidade orçamentária o agrupamento de serviços subordinados ao mesmo órgão ou repartição a que serão consignadas dotações próprias (art. 14 da Lei nº 4.320/1964).
-/// Cite MCASP - 11º Edicao: Parte I: Seção 4.2.1
-quality ClassificadorInstitucionalDeDespesa{
-  @characterization [1] -- [1] (const) DocumentoContabilDeDespesaOrcamentaria
+/// Cite MCASP - 11º Edição: Parte I: Seção 4.2.1
+category ClassificadorInstitucionalDeDespesa of functional-complexes{
+  
 }
 
 /// @pt-br A classificação funcional segrega as dotações orçamentárias em funções e subfunções, buscando responder basicamente à indagação "em que área" de ação governamental a despesa será realizada. A atual classificação funcional foi instituída pela Portaria nº 42/1999, do então Ministério do Orçamento e Gestão, divulgada pela Portaria SOF/ME nº 2.520/2022, e é composta de um rol de funções e subfunções prefixadas, que servem como agregador dos gastos públicos por área de ação governamental nas três esferas de Governo. Trata-se de uma classificação independente dos programas e de aplicação comum e obrigatória, no âmbito da União, dos Estados, do Distrito Federal e dos Municípios, o que permite a consolidação nacional dos gastos do setor público.
-/// Cite MCASP - 11º Edicao: Parte I: Seção 4.2.2
-quality ClassificadorFuncionalDeDespesa{
-  @characterization [1] -- [1] (const) DocumentoContabilDeDespesaOrcamentaria
+/// Cite MCASP - 11º Edição: Parte I: Seção 4.2.2
+category ClassificadorFuncionalDeDespesa  of functional-complexes{
+  
 }
 /// @pt-br Toda ação do Governo está estruturada em programas orientados para a realização dos objetivos estratégicos definidos no Plano Plurianual (PPA) para o período de quatro anos. Conforme estabelecido no art. 3º da Portaria SOF/SETO/ME nº 42/1999 (divulgada pela Portaria SOF/ME nº 2.520/2022), a União, os Estados, o Distrito Federal e os Municípios estabelecerão, em atos próprios, suas estruturas de programas, códigos e identificação, respeitados os conceitos e determinações nela contidos. Ou seja, todos os entes devem ter seus trabalhos organizados por programas e ações, mas cada um estabelecerá seus próprios programas e ações de acordo com a referida Portaria
-/// Cite MCASP - 11º Edicao: Parte I: Seção 4.2.3
-quality ClassificadorPorEstruturaProgramaticaDeDespesa {
-  @characterization [*] -- [1] (const) DocumentoContabilDeDespesaOrcamentaria
+/// Cite MCASP - 11º Edição: Parte I: Seção 4.2.3
+/// Na União, o subtítulo representa o menor nível de categoria de programação e será detalhado por esfera orçamentária (fiscal, seguridade e investimento), grupo de natureza de despesa, modalidade de aplicação, identificador de resultado primário, identificador de uso e fonte de recursos, sendo o produto e a unidade de medida os mesmos da ação orçamentária.
+/// Cite MCASP - 11º Edição: Parte I: Seção 4.2.3.3
+category ClassificadorPorEstruturaProgramaticaDeDespesa of functional-complexes{
+  
 }
 
 /// @pt-br A classificação da despesa orçamentária, segundo a sua natureza, compõe-se de: a. Categoria Econômica ; b. Grupo de Natureza da Despesa ; c. Elemento de Despesa.  A natureza da despesa será complementada pela informação gerencial denominada "Modalidade de Aplicação", a qual tem por finalidade indicar se os recursos são aplicados diretamente por órgãos ou entidades no âmbito da mesma esfera de Governo ou por outro ente da Federação e suas respectivas entidades, e objetiva, precipuamente, possibilitar a eliminação da dupla contagem dos recursos transferidos ou descentralizados.
-/// Cite MCASP - 11º Edicao: Parte I: Seção 4.2.4
-quality ClassificadorPorNaturezaDeDespesa {
-  @characterization [*] -- [1] (const) DocumentoContabilDeDespesaOrcamentaria
+/// Cite MCASP - 11º Edição: Parte I: Seção 4.2.4
+category ClassificadorPorNaturezaDeDespesa  of functional-complexes{
+  
 }
 
 /// @pt-br A classificação por fontes ou destinações de recursos (FR) tem como objetivo agrupar receitas que possuam as mesmas normas de aplicação na despesa. Em regra, as fontes ou destinações de recursos reúnem recursos oriundos de determinados códigos da classificação por natureza da receita orçamentária, conforme regras previamente estabelecidas. Por meio do orçamento público, essas fontes ou destinações são associadas a determinadas despesas de forma a evidenciar os meios para atingir os objetivos públicos.
-/// Cite MCASP - 11º Edicao: Parte I: Seção 5.1
+/// Cite MCASP - 11º Edição: Parte I: Seção 5.1
 /// Na execução orçamentária da despesa, a FR estará associada, desde o momento do empenho, às contas de controle orçamentário (classe 6 do PCASP), às contas do passivo financeiro (classe 2 com atributo “F”) e às contas de controle da disponibilidade por destinação de recursos (na classe 8)
-/// Cite MCASP - 11º Edicao: Parte I: Seção 5.2
-quality FonteDaDespesa {
-  @characterization [*] -- [1] (const) DocumentoContabilDeDespesaOrcamentaria
+/// Cite MCASP - 11º Edição: Parte I: Seção 5.2
+category FonteDaDespesa  of functional-complexes{
+  
 }

@@ -33,3 +33,16 @@ kind PessoaJuridica {
 /// @pt-br O objetivo da elaboração e divulgação da informação contábil é fornecer informação para fins de prestação de contas e responsabilização (accountability) e tomada de decisão.
 /// Cite MCASP - 11º Edicao: Parte Geral: Seções 2.3 ; 3.1
 kind DocumentoContabil
+
+
+
+kind Regiao
+
+kind MicroRegiao{
+    @componenthood [0..*] <>-- [1] Regiao
+}
+
+kind Municipio{
+    @componenthood [0..*] <>-- [1] Regiao
+    @componenthood [0..*] <>-- [0..*] MicroRegiao
+}
