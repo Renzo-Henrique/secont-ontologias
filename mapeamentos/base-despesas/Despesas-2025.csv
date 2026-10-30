@@ -4,12 +4,12 @@ ValorEmpenho ;
 ValorLiquidado ;
 ValorPago ;
 ValorRap ;
-CpfCnpjNis ; base-despesas.DadosAnonimizadosDeDespesa
-TipoFavorecido ; base-despesas.DadosAnonimizadosDeDespesa
-CargoFuncao ; base-despesas.DadosAnonimizadosDeDespesa
-Favorecido ; base-despesas.DadosAnonimizadosDeDespesa
-IdFavorecido ; base-despesas.DadosAnonimizadosDeDespesa
-TipoLicitacao ; base-despesas.DadosAnonimizadosDeDespesa
+CpfCnpjNis ; nucleo.DadosPessoaisAnonimizados
+TipoFavorecido ; nucleo.DadosPessoaisAnonimizados
+CargoFuncao ; nucleo.DadosPessoaisAnonimizados
+Favorecido ; nucleo.DadosPessoaisAnonimizados
+IdFavorecido ; nucleo.DadosPessoaisAnonimizados
+TipoLicitacao ; nucleo.DadosPessoaisAnonimizados
 HistoricoDocumento ;
 Documento ;
 DocumentoEmpenho ;

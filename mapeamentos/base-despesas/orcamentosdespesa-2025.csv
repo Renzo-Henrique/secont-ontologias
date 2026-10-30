@@ -20,8 +20,8 @@ CodigoSubelementoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa
 SubelementoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa
 CodigoFonte ; base-despesas.FonteDaDespesa
 Fonte ; base-despesas.FonteDaDespesa
-CpfCnpjNis ; 
-Favorecido ; 
+CpfCnpjNis ; nucleo.DadosPessoaisAnonimizados
+Favorecido ; nucleo.DadosPessoaisAnonimizados
 CodigoPlanoOrcamentario ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa
 PlanoOrcamentario ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa
 DotacaoInicial ; 

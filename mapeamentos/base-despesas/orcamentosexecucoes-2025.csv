@@ -1,11 +1,11 @@
-Data ; base-despesas-orcamentos-execucoes.DocumentoContabilDeOrcamentoDeExecucao
-ValorEmpenho ; base-despesas-orcamentos-execucoes.DocumentoContabilDeOrcamentoDeExecucao
-ValorLiquidado ; base-despesas-orcamentos-execucoes.DocumentoContabilDeOrcamentoDeExecucao
-ValorPago ; base-despesas-orcamentos-execucoes.DocumentoContabilDeOrcamentoDeExecucao
-ValorRap ; base-despesas-orcamentos-execucoes.DocumentoContabilDeOrcamentoDeExecucao
-ValorOrcadoInicial ; base-despesas-orcamentos-execucoes.DocumentoContabilDeOrcamentoDeExecucao
-ValorOrcado ; base-despesas-orcamentos-execucoes.DocumentoContabilDeOrcamentoDeExecucao
-CodigoUnidadeGestora ; base-despesas-orcamentos-execucoes.UnidadeGestoraComOrcamentoDeExecucao
-UnidadeGestora ; base-despesas-orcamentos-execucoes.UnidadeGestoraComOrcamentoDeExecucao
-SiglaUnidadeGestora ; base-despesas-orcamentos-execucoes.UnidadeGestoraComOrcamentoDeExecucao
+Data ; 
+ValorEmpenho ; 
+ValorLiquidado ; 
+ValorPago ; 
+ValorRap ; 
+ValorOrcadoInicial ; 
+ValorOrcado ; 
+CodigoUnidadeGestora ; 
+UnidadeGestora ; 
+SiglaUnidadeGestora ; 
 Id ;
