@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "content": {
+    "scope": "file",
+    "showExternalReferences": true,
+    "showDatatypes": true,
+    "showGensets": true,
+    "derivedMaterialMode": "both",
+    "hidden": [
+      "nucleo::UnidadeGestora",
+      "nucleo::DocumentoContabil"
+    ]
+  },
+  "display": {
+    "taxonomyOnly": false,
+    "partonomyOnly": false,
+    "routing": "straight",
+    "fontFamily": "sans",
+    "fontSize": "medium",
+    "showAttributes": true,
+    "showCardinalities": true,
+    "showRelationNames": true,
+    "showRelationStereotypes": true,
+    "showEndDecorations": true,
+    "showRoleNames": true,
+    "showColors": true,
+    "showLegend": false,
+    "showPackageGroups": true,
+    "qualifyNames": false
+  },
+  "layout": {
+    "direction": "DOWN",
+    "associationDistance": 100,
+    "nodeSpacing": 60,
+    "rankSpacing": 100,
+    "groupByPackage": true
+  },
+  "nodes": {
+    "base-despesas-orcamentos-despesa::UnidadeGestoraComOrcamentoDeDespesa": {
+      "x": 592,
+      "y": 296
+    },
+    "nucleo::UnidadeGestora": {
+      "x": 654,
+      "y": 901
+    },
+    "base-despesas-orcamentos-despesa::DocumentoContabilDeOrcamentoDeDespesa": {
+      "x": 960,
+      "y": 288
+    },
+    "nucleo::DocumentoContabil": {
+      "x": 30,
+      "y": 943
+    },
+    "base-despesas-orcamentos-despesa::ClassificadorDeOrcamentoDeDespesa": {
+      "x": 1240,
+      "y": 400
+    },
+    "base-despesas-orcamentos-despesa::RegistroDeOrcamentoDeDespesa": {
+      "x": 720,
+      "y": 432
+    },
+    "base-despesas::ClassificadorInstitucionalDeDespesa": {
+      "x": 1176,
+      "y": 736
+    },
+    "base-despesas::ClassificadorFuncionalDeDespesa": {
+      "x": 1000,
+      "y": 664
+    },
+    "base-despesas::ClassificadorPorEstruturaProgramaticaDeDespesa": {
+      "x": 1392,
+      "y": 640
+    },
+    "base-despesas::ClassificadorPorNaturezaDeDespesa": {
+      "x": 1600,
+      "y": 568
+    },
+    "base-despesas::FonteDaDespesa": {
+      "x": 984,
+      "y": 568
+    },
+    "nucleo::MicroRegiao": {
+      "x": 832,
+      "y": 568
+    },
+    "nucleo::Municipio": {
+      "x": 592,
+      "y": 560
+    }
+  },
+  "edges": {}
+}

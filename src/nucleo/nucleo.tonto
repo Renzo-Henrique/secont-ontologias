@@ -39,12 +39,12 @@ kind DocumentoContabil
 kind Regiao
 
 kind MicroRegiao{
-    @componenthood [0..*] <>-- [1] Regiao
+    @componenthood [0..*] --<> [1] Regiao
 }
 
 kind Municipio{
-    @componenthood [0..*] <>-- [1] Regiao
-    @componenthood [0..*] <>-- [0..*] MicroRegiao
+    @componenthood [0..*] --<> [1] Regiao
+    @componenthood [0..*] --<> [0..*] MicroRegiao
 }
 
 kind Banco

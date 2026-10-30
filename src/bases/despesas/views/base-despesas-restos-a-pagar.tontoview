@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "content": {
+    "scope": "file",
+    "showExternalReferences": true,
+    "showDatatypes": true,
+    "showGensets": true,
+    "derivedMaterialMode": "both"
+  },
+  "display": {
+    "taxonomyOnly": false,
+    "partonomyOnly": false,
+    "routing": "straight",
+    "fontFamily": "sans",
+    "fontSize": "medium",
+    "showAttributes": true,
+    "showCardinalities": true,
+    "showRelationNames": true,
+    "showRelationStereotypes": true,
+    "showEndDecorations": true,
+    "showRoleNames": true,
+    "showColors": true,
+    "showLegend": false,
+    "showPackageGroups": true,
+    "qualifyNames": false
+  },
+  "layout": {
+    "direction": "DOWN",
+    "associationDistance": 100,
+    "nodeSpacing": 60,
+    "rankSpacing": 100,
+    "groupByPackage": true
+  },
+  "nodes": {
+    "base-despesas-restos-a-pagar::UnidadeGestoraComRestosAPagar": {
+      "x": 56,
+      "y": 392
+    },
+    "nucleo::UnidadeGestora": {
+      "x": 112,
+      "y": 208
+    },
+    "base-despesas-restos-a-pagar::DocumentoContabilDeRestosAPagar": {
+      "x": 408,
+      "y": 392
+    },
+    "nucleo::DocumentoContabil": {
+      "x": 464,
+      "y": 248
+    },
+    "base-despesas-restos-a-pagar::DadosDeRestosAPagarAnonimizados": {
+      "x": 480,
+      "y": 704
+    },
+    "base-despesas-restos-a-pagar::RegistroDeRestosAPagar": {
+      "x": 157,
+      "y": 537,
+      "width": 347,
+      "height": 84
+    },
+    "base-despesas::ClassificadorPorNaturezaDeDespesa": {
+      "x": 184,
+      "y": 864
+    }
+  },
+  "edges": {}
+}

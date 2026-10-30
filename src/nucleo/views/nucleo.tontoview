@@ -46,6 +46,34 @@
     "nucleo::PessoaJuridica": {
       "x": 147,
       "y": 12
+    },
+    "nucleo::Regiao": {
+      "x": 288,
+      "y": 280
+    },
+    "nucleo::DocumentoContabil": {
+      "x": 144,
+      "y": 144
+    },
+    "nucleo::MicroRegiao": {
+      "x": 8,
+      "y": 280
+    },
+    "nucleo::Municipio": {
+      "x": 8,
+      "y": 416
+    },
+    "nucleo::Banco": {
+      "x": 296,
+      "y": 48
+    },
+    "nucleo::Convenio": {
+      "x": 328,
+      "y": 144
+    },
+    "nucleo::PoderDaFederacao": {
+      "x": 304,
+      "y": 216
     }
   },
   "edges": {}

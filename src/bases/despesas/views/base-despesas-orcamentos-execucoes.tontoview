@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "content": {
+    "scope": "file",
+    "showExternalReferences": true,
+    "showDatatypes": true,
+    "showGensets": true,
+    "derivedMaterialMode": "both"
+  },
+  "display": {
+    "taxonomyOnly": false,
+    "partonomyOnly": false,
+    "routing": "straight",
+    "fontFamily": "sans",
+    "fontSize": "medium",
+    "showAttributes": true,
+    "showCardinalities": true,
+    "showRelationNames": true,
+    "showRelationStereotypes": true,
+    "showEndDecorations": true,
+    "showRoleNames": true,
+    "showColors": true,
+    "showLegend": false,
+    "showPackageGroups": true,
+    "qualifyNames": false
+  },
+  "layout": {
+    "direction": "DOWN",
+    "associationDistance": 100,
+    "nodeSpacing": 60,
+    "rankSpacing": 100,
+    "groupByPackage": true
+  },
+  "nodes": {
+    "base-despesas-orcamentos-execucoes::UnidadeGestoraComOrcamentoDeExecucao": {
+      "x": -56,
+      "y": 616
+    },
+    "nucleo::UnidadeGestora": {
+      "x": -32,
+      "y": 288
+    },
+    "base-despesas-orcamentos-execucoes::DocumentoContabilDeOrcamentoDeExecucao": {
+      "x": 368,
+      "y": 624
+    },
+    "nucleo::DocumentoContabil": {
+      "x": 424,
+      "y": 312
+    },
+    "base-despesas-orcamentos-execucoes::RegistroDeOrcamentoDeExecucao": {
+      "x": 168,
+      "y": 488
+    }
+  },
+  "edges": {}
+}
