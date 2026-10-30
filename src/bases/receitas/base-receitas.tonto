@@ -7,8 +7,9 @@ import nucleo from <../../nucleo/nucleo.tonto>
 /// Importante destacar que a classificação da receita orçamentária por natureza é utilizada por todos os entes da Federação e visa identificar a origem do recurso segundo o fato gerador: acontecimento real que ocasionou o ingresso da receita nos cofres públicos.
 /// A classificação por Natureza de Receita Orçamentária é composta por um código de oito dígitos numéricos que representam: a Categoria Econômica, a Origem, a Espécie, os Desdobramentos e o Tipo de Receita.
 /// Cite MCASP - 11º Edicao: Parte I: Seção 3.2.1
-category NaturezaDaReceita of functional-complexes {
-    
+category NaturezaDaReceita of intrinsic-modes {
+    @characterization [0..*] -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
+
     codigoNatureza: const string [1]
     descricaoNatureza: const string [1]
 
@@ -39,7 +40,8 @@ category NaturezaDaReceita of functional-complexes {
 /// Cite MCASP - 11º Edicao: Parte I: Seção 5.1
 /// No momento da arrecadação, a FR deverá ser informada no registro da realização da receita orçamentária (classe 6 do PCASP), no registro do ingresso dos recursos financeiros no ativo financeiro (classe 1 com atributo "F") e em contas de controle da Disponibilidade por Destinação de Recursos - DDR (nas classes 7 e 8 do PCASP). A partir desse momento, a FR informada para os recursos financeiros não deverá ser alterada
 /// Cite MCASP - 11º Edicao: Parte I: Seção 5.2
-category FonteDaReceita of functional-complexes {
+category FonteDaReceita of intrinsic-modes {
+    @characterization [0..*] -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
 
     codigoFonte: const string [1]
     descricaoFonte: const string [1]
@@ -56,7 +58,9 @@ category FonteDaReceita of functional-complexes {
 
 /// @pt-br Conta é a expressão qualitativa e quantitativa de fatos de mesma natureza, que evidencia a composição, variação e estado do patrimônio, bem como de bens, direitos, obrigações e situações nele não compreendidas, mas que, direta ou indiretamente, possam vir a afetá-lo.
 /// Cite MCASP - 11º Edicao: Parte IV: Seções 2.3 ; 3.1
-category ContaContabil of functional-complexes{
+category ContaContabil of intrinsic-modes{
+    @characterization [0..*] -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
+
     codigo: const string [1]
     descricao: const string [1]
 
@@ -65,8 +69,6 @@ category ContaContabil of functional-complexes{
 
 
 role UnidadeGestoraEmitenteDeReceita specializes nucleo.UnidadeGestora
-
-
 
 role UnidadeGestoraBeneficiadaDeReceita specializes nucleo.UnidadeGestora
 
@@ -80,7 +82,7 @@ role UnidadeGestoraBeneficiadaDeReceita specializes nucleo.UnidadeGestora
 /// Cite MCASP - 11º Edicao: Parte I: Seção 3.1.2
 subkind DocumentoContabilDeReceitaOrcamentaria specializes nucleo.DocumentoContabil
 
-role ReceitaOrcamentaria specializes DocumentoContabilDeReceitaOrcamentaria{
+role DocumentoContabilDeReceita specializes DocumentoContabilDeReceitaOrcamentaria{
     codigoIdUso: const string [1]
     descricaoIdUso: const string [1]
     valorPrevista: const string [1]
@@ -102,17 +104,10 @@ role ReceitaOrcamentaria specializes DocumentoContabilDeReceitaOrcamentaria{
 }
 
 relator RegistroDeReceitaOrcamentaria{
-    @mediation (const) [1]  -- formalizadaPor -- [1] (const) ReceitaOrcamentaria
+    @mediation (const) [1]  -- formalizadaPor -- [1] (const) DocumentoContabilDeReceita
     @mediation [1..*] -- temUnidadeGestoraEmitente -- [1] (const) UnidadeGestoraEmitenteDeReceita
     @mediation [1..*] -- temUnidadeGestoraBeneficiada -- [1] (const) UnidadeGestoraBeneficiadaDeReceita 
     
-}
-
-relator ClassificacaoDeReceitaOrcamentaria{
-    @mediation [1..*] -- NaturezaClassificadaPor -- [1] (const) NaturezaDaReceita
-    @mediation [1..*] -- FonteClassificadaPor -- [1] (const) FonteDaReceita
-    @mediation [1..*] -- InformacaoContabilClassificadaPor -- [1] (const) ContaContabil
-    @mediation (const) [1] -- ClassificadorDocumentalDe -- [1] (const) ReceitaOrcamentaria
 }
 
 /**
@@ -121,8 +116,8 @@ relator ClassificacaoDeReceitaOrcamentaria{
 
 **/
 
-@material relation ReceitaOrcamentaria [1..*] -- emitidaPor -- [1] (const) UnidadeGestoraEmitenteDeReceita derivedFrom RegistroDeReceitaOrcamentaria
-@material relation ReceitaOrcamentaria [1..*] -- emitidaPara -- [1] (const) UnidadeGestoraBeneficiadaDeReceita derivedFrom RegistroDeReceitaOrcamentaria
+@material relation DocumentoContabilDeReceita [1..*] -- emitidaPor -- [1] (const) UnidadeGestoraEmitenteDeReceita derivedFrom RegistroDeReceitaOrcamentaria
+@material relation DocumentoContabilDeReceita [1..*] -- emitidaPara -- [1] (const) UnidadeGestoraBeneficiadaDeReceita derivedFrom RegistroDeReceitaOrcamentaria
 
 
 

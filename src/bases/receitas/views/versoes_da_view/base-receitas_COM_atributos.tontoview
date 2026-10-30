@@ -2,15 +2,18 @@
   "version": 1,
   "content": {
     "scope": "file",
-    "showExternalReferences": false,
+    "showExternalReferences": true,
     "showDatatypes": true,
     "showGensets": true,
-    "derivedMaterialMode": "both"
+    "derivedMaterialMode": "both",
+    "hidden": [
+      "nucleo::UnidadeGestora"
+    ]
   },
   "display": {
     "taxonomyOnly": false,
     "partonomyOnly": false,
-    "routing": "curved",
+    "routing": "straight",
     "fontFamily": "sans",
     "fontSize": "medium",
     "showAttributes": true,
@@ -25,7 +28,7 @@
     "qualifyNames": false
   },
   "layout": {
-    "direction": "RIGHT",
+    "direction": "DOWN",
     "associationDistance": 100,
     "nodeSpacing": 60,
     "rankSpacing": 100,
@@ -33,60 +36,116 @@
   },
   "nodes": {
     "base-receitas::NaturezaDaReceita": {
-      "x": -16,
-      "y": 776
+      "x": 1160,
+      "y": 480
     },
     "base-receitas::FonteDaReceita": {
-      "x": 248,
-      "y": 768
+      "x": 1168,
+      "y": 856
     },
     "base-receitas::ContaContabil": {
-      "x": 176,
-      "y": 440
-    },
-    "base-receitas::UnidadeGestoraEmitente": {
-      "x": 832,
-      "y": 600
-    },
-    "nucleo::UnidadeGestora": {
-      "x": 1104,
-      "y": 208
-    },
-    "base-receitas::UnidadeGestoraBeneficiada": {
-      "x": 776,
-      "y": 152
-    },
-    "base-receitas::DocumentoContabil": {
-      "x": 448,
-      "y": 232
-    },
-    "base-receitas::DocumentoContabilDeReceitaOrcamentaria": {
-      "x": 656,
-      "y": 992
-    },
-    "base-receitas::RegistroDeReceitaOrcamentaria": {
-      "x": 1040,
-      "y": 360
+      "x": 2048,
+      "y": 480
     },
     "base-receitas::UnidadeGestoraEmitenteDeReceita": {
-      "x": 1016,
-      "y": 752
+      "x": 1984,
+      "y": 1032
+    },
+    "nucleo::UnidadeGestora": {
+      "x": 1843,
+      "y": 50
     },
     "base-receitas::UnidadeGestoraBeneficiadaDeReceita": {
-      "x": 504,
-      "y": 352
+      "x": 1976,
+      "y": 640
     },
-    "base-receitas::ClassificacaoDeReceitaOrcamentaria": {
-      "x": 120,
-      "y": 592
+    "base-receitas::DocumentoContabilDeReceitaOrcamentaria": {
+      "x": 1512,
+      "y": 512
     },
     "nucleo::DocumentoContabil": {
-      "x": 512,
-      "y": 704
+      "x": 1600,
+      "y": 368
     },
     "base-receitas::ReceitaOrcamentaria": {
-      "x": 576,
-      "y": 544
+      "x": 1700,
+      "y": 1028
+    },
+    "base-receitas::RegistroDeReceitaOrcamentaria": {
+      "x": 2008,
+      "y": 840
+    },
+    "base-receitas::ClassificacaoDeReceitaOrcamentaria": {
+      "x": 1279,
+      "y": 827
+    },
+    "codigoNatureza": {
+      "x": 239,
+      "y": 1987
+    },
+    "descricaoNatureza": {
+      "x": 1363,
+      "y": 1987
+    },
+    "codigoCategoria": {
+      "x": 30,
+      "y": 1987
+    },
+    "descricaoCategoria": {
+      "x": 2464,
+      "y": 1987
+    },
+    "codigoOrigem": {
+      "x": 2693,
+      "y": 1987
+    },
+    "descricaoOrigem": {
+      "x": 444,
+      "y": 1987
+    },
+    "codigoEspecie": {
+      "x": 920,
+      "y": 1987
+    },
+    "descricaoEspecie": {
+      "x": 2046,
+      "y": 1987
+    },
+    "codigoDetalhamento1": {
+      "x": 3154,
+      "y": 1987
+    },
+    "descricaoDetalhamento1": {
+      "x": 1588,
+      "y": 1987
+    },
+    "codigoDetalhamento2": {
+      "x": 3394,
+      "y": 1987
+    },
+    "descricaoDetalhamento2": {
+      "x": 657,
+      "y": 1987
+    },
+    "codigoDetalhamento3": {
+      "x": 1120,
+      "y": 1987
+    },
+    "descricaoDetalhamento3": {
+      "x": 2891,
+      "y": 1987
+    },
+    "codigoTipo": {
+      "x": 1848,
+      "y": 1987
+    },
+    "descricaoTipo": {
+      "x": 2266,
+      "y": 1987
+    },
+    "base-receitas::DocumentoContabilDeReceita": {
+      "x": 1544,
+      "y": 696
     }
   },
   "edges": {}

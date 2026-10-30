@@ -35,7 +35,7 @@
     "groupByPackage": true
   },
   "nodes": {
-    "despesas::DocumentoContabilDeDespesaOrcamentaria": {
+    "base-despesas::DocumentoContabilDeDespesaOrcamentaria": {
       "x": 440,
       "y": 424
     },
@@ -43,55 +43,55 @@
       "x": 520,
       "y": 160
     },
-    "despesas::ClassificadorDeDespesaOrcamentaria": {
+    "base-despesas::ClassificadorDeDespesaOrcamentaria": {
       "x": 230,
       "y": 495
     },
-    "despesas::ClassificadorInstitucionalDeDespesa": {
+    "base-despesas::ClassificadorInstitucionalDeDespesa": {
       "x": 232,
       "y": 192
     },
-    "despesas::ClassificadorFuncionalDeDespesa": {
+    "base-despesas::ClassificadorFuncionalDeDespesa": {
       "x": -48,
       "y": 200
     },
-    "despesas::ClassificadorPorEstruturaProgramaticaDeDespesa": {
+    "base-despesas::ClassificadorPorEstruturaProgramaticaDeDespesa": {
       "x": 712,
       "y": 208
     },
-    "despesas::ClassificadorPorNaturezaDeDespesa": {
+    "base-despesas::ClassificadorPorNaturezaDeDespesa": {
       "x": 888,
       "y": 296
     },
-    "despesas::FonteDaDespesa": {
+    "base-despesas::FonteDaDespesa": {
       "x": -64,
       "y": 296
     },
-    "despesas::TerminoDoExercicioDeDespesaVigente": {
+    "base-despesas::TerminoDoExercicioDeDespesaVigente": {
       "x": 768,
       "y": 720
     },
-    "despesas::CriacaoDeDespesaNaoPaga": {
+    "base-despesas::CriacaoDeDespesaNaoPaga": {
       "x": 808,
       "y": 536
     },
-    "despesas::DocumentoContabilDeRestosAPagar": {
+    "base-despesas::DocumentoContabilDeRestosAPagar": {
       "x": 576,
       "y": 824
     },
-    "despesas::DespesaDeExercicioVigente": {
+    "base-despesas::DespesaDeExercicioVigente": {
       "x": 1096,
       "y": 632
     },
-    "despesas::DespesaDeExercicioAnterior": {
+    "base-despesas::DespesaDeExercicioAnterior": {
       "x": 576,
       "y": 640
     },
-    "despesas::DocumentoContabilDeOrcamentoDeDespesa": {
+    "base-despesas::DocumentoContabilDeOrcamentoDeDespesa": {
       "x": 176,
       "y": 528
     },
-    "despesas::UnidadeGestoraComOrcamentoDeDespesa": {
+    "base-despesas::UnidadeGestoraComOrcamentoDeDespesa": {
       "x": -16,
       "y": 760
     },
@@ -99,7 +99,7 @@
       "x": -56,
       "y": 1000
     },
-    "despesas::RegistroDeOrcamentoDeDespesa": {
+    "base-despesas::RegistroDeOrcamentoDeDespesa": {
       "x": 192,
       "y": 624
     },
@@ -111,51 +111,51 @@
       "x": 320,
       "y": 784
     },
-    "despesas::DocumentoContabilDeOrcamentoDeExecucao": {
+    "base-despesas::DocumentoContabilDeOrcamentoDeExecucao": {
       "x": -136,
       "y": 424
     },
-    "despesas::RegistroDeOrcamentoDeExecucao": {
+    "base-despesas::RegistroDeOrcamentoDeExecucao": {
       "x": -104,
       "y": 552
     },
-    "despesas::UnidadeGestoraComOrcamentoDeExecucao": {
+    "base-despesas::UnidadeGestoraComOrcamentoDeExecucao": {
       "x": -136,
       "y": 656
     },
-    "despesas::DadosDeRestosAPagarAnonimizados": {
+    "base-despesas::DadosDeRestosAPagarAnonimizados": {
       "x": 24,
       "y": 896
     },
-    "despesas::RegistroDeRestosAPagar": {
+    "base-despesas::RegistroDeRestosAPagar": {
       "x": 192,
       "y": 896
     },
-    "despesas::UnidadeGestoraComRestosAPagar": {
+    "base-despesas::UnidadeGestoraComRestosAPagar": {
       "x": -128,
       "y": 848
     },
-    "despesas::RegistroDeDespesaOrcamentaria": {
+    "base-despesas::RegistroDeDespesaOrcamentaria": {
       "x": 912,
       "y": 888
     },
-    "despesas::DocumentoContabilDeDespesa": {
+    "base-despesas::DocumentoContabilDeDespesa": {
       "x": 1088,
       "y": 768
     },
-    "despesas::UnidadeGestoraEmitenteDeDespesa": {
+    "base-despesas::UnidadeGestoraEmitenteDeDespesa": {
       "x": 536,
       "y": 984
     },
-    "despesas::RegistroDeConvenioRecebidoNaDespesaOrcamentaria": {
+    "base-despesas::RegistroDeConvenioRecebidoNaDespesaOrcamentaria": {
       "x": 1344,
       "y": 464
     },
-    "despesas::ConvenioRecebido": {
+    "base-despesas::ConvenioRecebido": {
       "x": 1472,
       "y": 584
     },
-    "despesas::ConvenioConcedido": {
+    "base-despesas::ConvenioConcedido": {
       "x": 1472,
       "y": 840
     },
@@ -163,7 +163,7 @@
       "x": 1496,
       "y": 720
     },
-    "despesas::RegistroDeConvenioConcedidoNaDespesaOrcamentaria": {
+    "base-despesas::RegistroDeConvenioConcedidoNaDespesaOrcamentaria": {
       "x": 1320,
       "y": 968
     }
