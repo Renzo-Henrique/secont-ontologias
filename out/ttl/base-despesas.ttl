@@ -94,7 +94,7 @@ Cite MCASP - 11º Edição: Parte I: Seção 5.2"""@pt-br ;
 
 base-despesas:DocumentoContabilDeDespesa a owl:Class, gufo:Role ;
     rdfs:label "DocumentoContabilDeDespesa" ;
-    rdfs:comment "Documento contabil referente aos arquivos \"Despesas\"" ;
+    rdfs:comment "Documento contabil referente aos arquivos \"Despesas\""@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:subClassOf
         base-despesas:DespesaDeExercicioVigente,
@@ -104,6 +104,7 @@ base-despesas:DocumentoContabilDeDespesa a owl:Class, gufo:Role ;
 
 base-despesas:UnidadeGestoraEmitenteDeDespesa a owl:Class, gufo:Role ;
     rdfs:label "UnidadeGestoraEmitenteDeDespesa" ;
+    rdfs:comment "Unidade gestora responsável pela emissão do documento contábil de despesa."@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:subClassOf
         nucleo:UnidadeGestora,
@@ -113,6 +114,7 @@ base-despesas:UnidadeGestoraEmitenteDeDespesa a owl:Class, gufo:Role ;
 
 base-despesas:RegistroDeDespesaOrcamentaria a owl:Class, gufo:Kind ;
     rdfs:label "RegistroDeDespesaOrcamentaria" ;
+    rdfs:comment "Registro que associa o documento contábil de despesa à unidade gestora emitente."@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:subClassOf
         gufo:Relator,
@@ -130,6 +132,7 @@ base-despesas:RegistroDeDespesaOrcamentaria a owl:Class, gufo:Kind ;
 
 base-despesas:ConvenioConcedido a owl:Class, gufo:Role ;
     rdfs:label "ConvenioConcedido" ;
+    rdfs:comment "Convênio no qual a unidade gestora concede recursos relacionados à despesa."@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:subClassOf
         nucleo:Convenio,
@@ -139,6 +142,7 @@ base-despesas:ConvenioConcedido a owl:Class, gufo:Role ;
 
 base-despesas:ConvenioRecebido a owl:Class, gufo:Role ;
     rdfs:label "ConvenioRecebido" ;
+    rdfs:comment "Convênio no qual a unidade gestora recebe recursos relacionados à despesa."@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:subClassOf
         nucleo:Convenio,
@@ -148,6 +152,7 @@ base-despesas:ConvenioRecebido a owl:Class, gufo:Role ;
 
 base-despesas:RegistroDeConvenioConcedidoNaDespesaOrcamentaria a owl:Class, gufo:Kind ;
     rdfs:label "RegistroDeConvenioConcedidoNaDespesaOrcamentaria" ;
+    rdfs:comment "Registro da associação entre um convênio concedido e o documento contábil de despesa correspondente."@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:subClassOf
         gufo:Relator,
@@ -162,6 +167,7 @@ base-despesas:RegistroDeConvenioConcedidoNaDespesaOrcamentaria a owl:Class, gufo
 
 base-despesas:RegistroDeConvenioRecebidoNaDespesaOrcamentaria a owl:Class, gufo:Kind ;
     rdfs:label "RegistroDeConvenioRecebidoNaDespesaOrcamentaria" ;
+    rdfs:comment "Registro da associação entre um convênio recebido e o documento contábil de despesa correspondente."@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:subClassOf
         gufo:Relator,
@@ -176,6 +182,7 @@ base-despesas:RegistroDeConvenioRecebidoNaDespesaOrcamentaria a owl:Class, gufo:
 
 base-despesas:UnidadeGestoraComRestosAPagar a owl:Class, gufo:Role ;
     rdfs:label "UnidadeGestoraComRestosAPagar" ;
+    rdfs:comment "Unidade gestora associada ao registro de despesas inscritas em restos a pagar."@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:subClassOf
         nucleo:UnidadeGestora,
@@ -185,7 +192,7 @@ base-despesas:UnidadeGestoraComRestosAPagar a owl:Class, gufo:Role ;
 
 base-despesas:DespesaDeExercicioVigente a owl:Class, gufo:SubKind ;
     rdfs:label "DespesaDeExercicioVigente" ;
-    rdfs:comment "Despesa empenhada que foi paga no mesmo exercício vigente em que foi emitida" ;
+    rdfs:comment "Despesa empenhada que foi paga no mesmo exercício vigente em que foi emitida"@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:subClassOf
         base-despesas:DocumentoContabilDeDespesaOrcamentaria,
@@ -197,7 +204,7 @@ base-despesas:DespesaDeExercicioVigente a owl:Class, gufo:SubKind ;
 base-despesas:DespesaDeExercicioAnterior a owl:Class, gufo:SubKind ;
     rdfs:label "DespesaDeExercicioAnterior" ;
     rdfs:comment """São Restos a Pagar todas as despesas regularmente empenhadas, do exercício atual ou anterior, mas não pagas até 31 de dezembro do exercício financeiro vigente.
-Cite MCASP - 11º Edição: Parte I: Seção 4.7""" ;
+Cite MCASP - 11º Edição: Parte I: Seção 4.7"""@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:subClassOf
         base-despesas:DocumentoContabilDeDespesaOrcamentaria,
@@ -209,13 +216,13 @@ Cite MCASP - 11º Edição: Parte I: Seção 4.7""" ;
 base-despesas:TerminoDoExercicioDeDespesaVigente a owl:Class, gufo:SituationType ;
     rdfs:label "TerminoDoExercicioDeDespesaVigente" ;
     rdfs:comment """No fim do exercício, as despesas orçamentárias empenhadas e não pagas serão inscritas em restos a pagar.
-Cite MCASP - 11º Edição: Parte I: Seção 4.7.1""" ;
+Cite MCASP - 11º Edição: Parte I: Seção 4.7.1"""@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:subClassOf gufo:Situation .
 
 base-despesas:CriacaoDeDespesaNaoPaga a owl:Class, gufo:EventType ;
     rdfs:label "CriacaoDeDespesaNaoPaga" ;
-    rdfs:comment "Evento de criação de uma despesa empenhada que NÃO foi paga no mesmo exercício vigente em que foi emitida" ;
+    rdfs:comment "Evento de criação de uma despesa empenhada que NÃO foi paga no mesmo exercício vigente em que foi emitida"@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:subClassOf
         gufo:Event,
@@ -234,7 +241,7 @@ base-despesas:CriacaoDeDespesaNaoPaga a owl:Class, gufo:EventType ;
 
 base-despesas:DocumentoContabilDeRestosAPagar a owl:Class, gufo:Role ;
     rdfs:label "DocumentoContabilDeRestosAPagar" ;
-    rdfs:comment "Documento contabil referente aos arquivos \"RestosAPagar\"" ;
+    rdfs:comment "Documento contabil referente aos arquivos \"RestosAPagar\""@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:subClassOf
         base-despesas:DespesaDeExercicioAnterior,
@@ -244,6 +251,7 @@ base-despesas:DocumentoContabilDeRestosAPagar a owl:Class, gufo:Role ;
 
 base-despesas:RegistroDeRestosAPagar a owl:Class, gufo:Kind ;
     rdfs:label "RegistroDeRestosAPagar" ;
+    rdfs:comment "Registro de uma despesa inscrita em restos a pagar e da unidade gestora associada, com dados de anonimização e Poder da Federação."@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:subClassOf
         gufo:Relator,
@@ -264,6 +272,7 @@ base-despesas:RegistroDeRestosAPagar a owl:Class, gufo:Kind ;
 
 base-despesas:UnidadeGestoraComOrcamentoDeDespesa a owl:Class, gufo:Role ;
     rdfs:label "UnidadeGestoraComOrcamentoDeDespesa" ;
+    rdfs:comment "Unidade gestora associada ao registro de orçamento de despesa."@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:subClassOf
         nucleo:UnidadeGestora,
@@ -273,7 +282,7 @@ base-despesas:UnidadeGestoraComOrcamentoDeDespesa a owl:Class, gufo:Role ;
 
 base-despesas:DocumentoContabilDeOrcamentoDeDespesa a owl:Class, gufo:Role ;
     rdfs:label "DocumentoContabilDeOrcamentoDeDespesa" ;
-    rdfs:comment "Documento contabil referente aos arquivos \"OrcamentosDespesa\"" ;
+    rdfs:comment "Documento contabil referente aos arquivos \"OrcamentosDespesa\""@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:subClassOf
         base-despesas:DocumentoContabilDeDespesaOrcamentaria,
@@ -283,6 +292,7 @@ base-despesas:DocumentoContabilDeOrcamentoDeDespesa a owl:Class, gufo:Role ;
 
 base-despesas:RegistroDeOrcamentoDeDespesa a owl:Class, gufo:Kind ;
     rdfs:label "RegistroDeOrcamentoDeDespesa" ;
+    rdfs:comment "Registro do orçamento de despesa, associado à unidade gestora e às localidades geográficas aplicáveis."@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:subClassOf
         gufo:Relator,
@@ -305,6 +315,7 @@ base-despesas:RegistroDeOrcamentoDeDespesa a owl:Class, gufo:Kind ;
 
 base-despesas:UnidadeGestoraComOrcamentoDeExecucao a owl:Class, gufo:Role ;
     rdfs:label "UnidadeGestoraComOrcamentoDeExecucao" ;
+    rdfs:comment "Unidade gestora associada ao registro de execução do orçamento de despesa."@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:subClassOf
         nucleo:UnidadeGestora,
@@ -314,7 +325,7 @@ base-despesas:UnidadeGestoraComOrcamentoDeExecucao a owl:Class, gufo:Role ;
 
 base-despesas:DocumentoContabilDeOrcamentoDeExecucao a owl:Class, gufo:Role ;
     rdfs:label "DocumentoContabilDeOrcamentoDeExecucao" ;
-    rdfs:comment "Documento contabil referente aos arquivos \"OrcamentosExecucoes\"" ;
+    rdfs:comment "Documento contabil referente aos arquivos \"OrcamentosExecucoes\""@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:subClassOf
         base-despesas:DocumentoContabilDeDespesaOrcamentaria,
@@ -324,6 +335,7 @@ base-despesas:DocumentoContabilDeOrcamentoDeExecucao a owl:Class, gufo:Role ;
 
 base-despesas:RegistroDeOrcamentoDeExecucao a owl:Class, gufo:Kind ;
     rdfs:label "RegistroDeOrcamentoDeExecucao" ;
+    rdfs:comment "Registro da execução do orçamento de despesa, associado ao documento contábil e à unidade gestora."@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:subClassOf
         gufo:Relator,

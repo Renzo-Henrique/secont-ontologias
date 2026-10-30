@@ -133,6 +133,7 @@ Cite MCASP - 11º Edicao: Parte IV: Seções 2.3 ; 3.1"""@pt-br ;
 
 base-receitas:UnidadeGestoraEmitenteDeReceita a owl:Class, gufo:Role ;
     rdfs:label "UnidadeGestoraEmitenteDeReceita" ;
+    rdfs:comment "Unidade gestora responsável pela emissão do documento contábil de receita."@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:subClassOf
         nucleo:UnidadeGestora,
@@ -145,6 +146,7 @@ base-receitas:UnidadeGestoraEmitenteDeReceita a owl:Class, gufo:Role ;
 
 base-receitas:UnidadeGestoraBeneficiadaDeReceita a owl:Class, gufo:Role ;
     rdfs:label "UnidadeGestoraBeneficiadaDeReceita" ;
+    rdfs:comment "Unidade gestora beneficiada pela receita registrada no documento contábil."@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:subClassOf
         nucleo:UnidadeGestora,
@@ -167,6 +169,7 @@ Cite MCASP - 11º Edicao: Parte I: Seção 3.1.2"""@pt-br ;
 
 base-receitas:DocumentoContabilDeReceita a owl:Class, gufo:Role ;
     rdfs:label "DocumentoContabilDeReceita" ;
+    rdfs:comment "Documento contabil referente aos arquivos \"Receitas\""@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:subClassOf
         base-receitas:DocumentoContabilDeReceitaOrcamentaria,
@@ -236,6 +239,7 @@ base-receitas:DocumentoContabilDeReceita a owl:Class, gufo:Role ;
 
 base-receitas:RegistroDeReceitaOrcamentaria a owl:Class, gufo:Kind ;
     rdfs:label "RegistroDeReceitaOrcamentaria" ;
+    rdfs:comment "Registro que associa o documento contábil de receita às unidades gestoras emitente e beneficiada."@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:subClassOf
         gufo:Relator,

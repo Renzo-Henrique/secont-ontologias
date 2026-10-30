@@ -29,6 +29,7 @@ Cite Portaria MTP nº 1.467, de 2 junho de 2022: Capítulo I - Definições"""@p
 
 nucleo:PessoaFisica a owl:Class, gufo:Kind ;
     rdfs:label "PessoaFisica" ;
+    rdfs:comment "Pessoa natural identificada no modelo por CPF e nome, podendo também ter NIS informado."@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
     rdfs:subClassOf
         gufo:FunctionalComplex,
@@ -41,6 +42,7 @@ nucleo:PessoaFisica a owl:Class, gufo:Kind ;
 
 nucleo:PessoaJuridica a owl:Class, gufo:Kind ;
     rdfs:label "PessoaJuridica" ;
+    rdfs:comment "Entidade com personalidade jurídica identificada no modelo por CNPJ e nome."@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
     rdfs:subClassOf
         gufo:FunctionalComplex,
@@ -60,11 +62,13 @@ Cite MCASP - 11º Edicao: Parte Geral: Seções 2.3 ; 3.1"""@pt-br ;
 
 nucleo:Regiao a owl:Class, gufo:Kind ;
     rdfs:label "Regiao" ;
+    rdfs:comment "Unidade territorial usada para agrupar municípios no contexto geográfico da ontologia."@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
     rdfs:subClassOf gufo:FunctionalComplex .
 
 nucleo:MicroRegiao a owl:Class, gufo:Kind ;
     rdfs:label "MicroRegiao" ;
+    rdfs:comment "Recorte geográfico formado por municípios e vinculado a uma região no modelo."@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
     rdfs:subClassOf
         gufo:FunctionalComplex,
@@ -75,6 +79,7 @@ nucleo:MicroRegiao a owl:Class, gufo:Kind ;
 
 nucleo:Municipio a owl:Class, gufo:Kind ;
     rdfs:label "Municipio" ;
+    rdfs:comment "Unidade territorial municipal relacionada à região e à microrregião correspondentes."@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
     rdfs:subClassOf
         gufo:FunctionalComplex,
@@ -85,23 +90,26 @@ nucleo:Municipio a owl:Class, gufo:Kind ;
 
 nucleo:Banco a owl:Class, gufo:Kind ;
     rdfs:label "Banco" ;
+    rdfs:comment "Instituição financeira referenciada nos dados do Portal da Transparência."@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
     rdfs:subClassOf gufo:FunctionalComplex .
 
 nucleo:Convenio a owl:Class, gufo:Kind ;
     rdfs:label "Convenio" ;
     rdfs:comment """Convênios, contratos de repasse e termos de parceria são acordos feitos entre União e entidades governamentais dos demais entes da Federação, ou organizações não-governamentais, para transferência de recursos financeiros a serem utilizados na execução de um objetivo comum. Portanto, as transferências voluntárias e legais serão viabilizadas a partir dos mencionados instrumentos e outros congêneres.
-Cite url https://portaldatransparencia.gov.br/entenda-a-gestao-publica/convenios-e-outros-acordos""" ;
+Cite url https://portaldatransparencia.gov.br/entenda-a-gestao-publica/convenios-e-outros-acordos"""@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
     rdfs:subClassOf gufo:FunctionalComplex .
 
 nucleo:PoderDaFederacao a rdfs:Datatype ;
     rdfs:label "PoderDaFederacao" ;
+    rdfs:comment "Classificação que identifica o Poder da Federação ao qual uma unidade gestora está vinculada."@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
     owl:equivalentClass rdfs:Literal .
 
 nucleo:DadosPessoaisAnonimizados a rdfs:Datatype ;
     rdfs:label "DadosPessoaisAnonimizados" ;
+    rdfs:comment "Representação de informações pessoais que foram submetidas a processo de anonimização."@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
     owl:equivalentClass rdfs:Literal .
 

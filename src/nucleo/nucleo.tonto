@@ -10,8 +10,6 @@ kind UnidadeGestora {
 }
 
 
-// datatype Cpf specializes string
-// datatype Nis specializes string
 /// @pt-br Pessoa natural identificada no modelo por CPF e nome, podendo também ter NIS informado.
 kind PessoaFisica {
     
@@ -22,12 +20,10 @@ kind PessoaFisica {
     nome: string [1]
 }
 
-//datatype Cnpj specializes string
 
 /// @pt-br Entidade com personalidade jurídica identificada no modelo por CNPJ e nome.
 kind PessoaJuridica {
  
-    //cnpj: Cnpj [1] {const}
     cnpj: string [1]
     nome: string [1]
 }
@@ -61,5 +57,6 @@ kind Convenio
 
 /// @pt-br Classificação que identifica o Poder da Federação ao qual uma unidade gestora está vinculada.
 datatype PoderDaFederacao
+
 /// @pt-br Representação de informações pessoais que foram submetidas a processo de anonimização.
 datatype DadosPessoaisAnonimizados
