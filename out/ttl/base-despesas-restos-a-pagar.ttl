@@ -1,0 +1,121 @@
+# Written by `tonto gufo` from the tonto ontology base-despesas-restos-a-pagar.
+# Change the model and export it again, rather than this file.
+
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix gufo: <http://purl.org/nemo/gufo#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix base-despesas: <https://example.org/ontologia-portal-transparencia-es/base-despesas#> .
+@prefix base-despesas-restos-a-pagar: <https://example.org/ontologia-portal-transparencia-es/base-despesas-restos-a-pagar#> .
+@prefix nucleo: <https://example.org/ontologia-portal-transparencia-es/nucleo#> .
+
+<https://example.org/ontologia-portal-transparencia-es/base-despesas-restos-a-pagar> a owl:Ontology ;
+    owl:imports
+        <http://purl.org/nemo/gufo#>,
+        <https://example.org/ontologia-portal-transparencia-es/base-despesas>,
+        <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    vann:preferredNamespacePrefix "base-despesas-restos-a-pagar" ;
+    vann:preferredNamespaceUri "https://example.org/ontologia-portal-transparencia-es/base-despesas-restos-a-pagar#" .
+
+base-despesas-restos-a-pagar:UnidadeGestoraComRestosAPagar a owl:Class, gufo:Role ;
+    rdfs:label "UnidadeGestoraComRestosAPagar" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas-restos-a-pagar> ;
+    rdfs:subClassOf
+        nucleo:UnidadeGestora,
+        [ a owl:Restriction ;
+          owl:onProperty [ owl:inverseOf base-despesas-restos-a-pagar:RegistroDeRestosAPagar.mediatesUnidadeGestoraComRestosAPagar ] ;
+          owl:someValuesFrom base-despesas-restos-a-pagar:RegistroDeRestosAPagar ] .
+
+base-despesas-restos-a-pagar:DocumentoContabilDeRestosAPagar a owl:Class, gufo:Role ;
+    rdfs:label "DocumentoContabilDeRestosAPagar" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas-restos-a-pagar> ;
+    rdfs:subClassOf
+        nucleo:DocumentoContabil,
+        [ a owl:Restriction ;
+          owl:onProperty [ owl:inverseOf base-despesas-restos-a-pagar:RegistroDeRestosAPagar.mediatesDocumentoContabilDeRestosAPagar ] ;
+          owl:someValuesFrom base-despesas-restos-a-pagar:RegistroDeRestosAPagar ] .
+
+base-despesas-restos-a-pagar:DadosDeRestosAPagarAnonimizados a rdfs:Datatype ;
+    rdfs:label "DadosDeRestosAPagarAnonimizados" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas-restos-a-pagar> ;
+    owl:equivalentClass rdfs:Literal .
+
+base-despesas-restos-a-pagar:RegistroDeRestosAPagar a owl:Class, gufo:Kind ;
+    rdfs:label "RegistroDeRestosAPagar" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas-restos-a-pagar> ;
+    rdfs:subClassOf
+        gufo:Relator,
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas-restos-a-pagar:RegistroDeRestosAPagar.dadosAnonimizados ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas-restos-a-pagar:RegistroDeRestosAPagar.poder ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas-restos-a-pagar:RegistroDeRestosAPagar.mediatesDocumentoContabilDeRestosAPagar ;
+          owl:onClass base-despesas-restos-a-pagar:DocumentoContabilDeRestosAPagar ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas-restos-a-pagar:RegistroDeRestosAPagar.mediatesUnidadeGestoraComRestosAPagar ;
+          owl:onClass base-despesas-restos-a-pagar:UnidadeGestoraComRestosAPagar ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas-restos-a-pagar:RegistroDeRestosAPagar.ClassificadoPor ;
+          owl:onClass base-despesas:ClassificadorPorNaturezaDeDespesa ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
+
+base-despesas-restos-a-pagar:RegistroDeRestosAPagar.dadosAnonimizados a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "dadosAnonimizados" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas-restos-a-pagar> ;
+    rdfs:domain base-despesas-restos-a-pagar:RegistroDeRestosAPagar ;
+    rdfs:range base-despesas-restos-a-pagar:DadosDeRestosAPagarAnonimizados ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas-restos-a-pagar:RegistroDeRestosAPagar.poder a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "poder" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas-restos-a-pagar> ;
+    rdfs:domain base-despesas-restos-a-pagar:RegistroDeRestosAPagar ;
+    rdfs:range nucleo:PoderDaFederacao ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas-restos-a-pagar:RegistroDeRestosAPagar.mediatesDocumentoContabilDeRestosAPagar a
+        owl:ObjectProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "RegistroDeRestosAPagar.mediatesDocumentoContabilDeRestosAPagar" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas-restos-a-pagar> ;
+    rdfs:domain base-despesas-restos-a-pagar:RegistroDeRestosAPagar ;
+    rdfs:range base-despesas-restos-a-pagar:DocumentoContabilDeRestosAPagar ;
+    rdfs:subPropertyOf gufo:mediates .
+
+base-despesas-restos-a-pagar:RegistroDeRestosAPagar.mediatesUnidadeGestoraComRestosAPagar a
+        owl:ObjectProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "RegistroDeRestosAPagar.mediatesUnidadeGestoraComRestosAPagar" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas-restos-a-pagar> ;
+    rdfs:domain base-despesas-restos-a-pagar:RegistroDeRestosAPagar ;
+    rdfs:range base-despesas-restos-a-pagar:UnidadeGestoraComRestosAPagar ;
+    rdfs:subPropertyOf gufo:mediates .
+
+base-despesas-restos-a-pagar:RegistroDeRestosAPagar.ClassificadoPor a
+        owl:ObjectProperty,
+        owl:FunctionalProperty,
+        owl:InverseFunctionalProperty ;
+    rdfs:label "ClassificadoPor" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas-restos-a-pagar> ;
+    rdfs:domain base-despesas-restos-a-pagar:RegistroDeRestosAPagar ;
+    rdfs:range base-despesas:ClassificadorPorNaturezaDeDespesa ;
+    rdfs:subPropertyOf gufo:mediates .
+
+base-despesas:ClassificadorPorNaturezaDeDespesa rdfs:subClassOf [ a owl:Restriction ;
+                                                                  owl:onProperty [ owl:inverseOf base-despesas-restos-a-pagar:RegistroDeRestosAPagar.ClassificadoPor ] ;
+                                                                  owl:onClass base-despesas-restos-a-pagar:RegistroDeRestosAPagar ;
+                                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
+
+vann:preferredNamespacePrefix a owl:AnnotationProperty .
+
+vann:preferredNamespaceUri a owl:AnnotationProperty .

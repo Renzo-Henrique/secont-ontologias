@@ -11,11 +11,11 @@ role DocumentoContabilDeRestosAPagar specializes nucleo.DocumentoContabil
 datatype DadosDeRestosAPagarAnonimizados
 
 relator RegistroDeRestosAPagar{
-  @mediation [1]  -- [1] (const) DocumentoContabilDeRestosAPagar
+  @mediation (const) [1]  -- [1] (const) DocumentoContabilDeRestosAPagar
   @mediation [1..*] -- [1] (const) UnidadeGestoraComRestosAPagar
-  @mediation [1] -- ClassificadoPor -- [1] (const) base-despesas.ClassificadorPorNaturezaDeDespesa
+  @mediation (const) [1] -- ClassificadoPor -- [1] (const) base-despesas.ClassificadorPorNaturezaDeDespesa
 
-  dadosAnonimizados: DadosDeRestosAPagarAnonimizados [1]
-  poder: nucleo.PoderDaFederacao [1]
+  dadosAnonimizados: const  DadosDeRestosAPagarAnonimizados [1]
+  poder: const  nucleo.PoderDaFederacao [1]
 }
 

@@ -14,10 +14,10 @@ role UnidadeGestoraEmitenteDeDespesa specializes nucleo.UnidadeGestora
 
 datatype DadosAnonimizadosDeDespesa
 relator RegistroDeDespesaOrcamentaria {
-  @mediation [1]  -- formalizadaPor -- [1] (const) DocumentoContabilDeDespesaOrcamentaria
+  @mediation (const) [1]  -- formalizadaPor -- [1] (const) DocumentoContabilDeDespesaOrcamentaria
   @mediation [1..*] -- temUnidadeGestoraEmitenteDeDespesa -- [1] (const) UnidadeGestoraEmitenteDeDespesa
 
-  dadosAnonimizados: DadosAnonimizadosDeDespesa [1]
+  dadosAnonimizados: const DadosAnonimizadosDeDespesa [1]
 }
 
 
@@ -28,7 +28,7 @@ relator ClassificadorDeDespesaOrcamentaria {
   @mediation [0..*] -- [1] (const) ClassificadorPorEstruturaProgramaticaDeDespesa
   @mediation [0..*] -- [1] (const) ClassificadorPorNaturezaDeDespesa
   @mediation [0..*] -- [1] (const) FonteDaDespesa
-  @mediation [1]  -- ClassificadorDocumentalDe -- [1] (const) DocumentoContabilDeDespesaOrcamentaria
+  @mediation (const) [1]  -- ClassificadorDocumentalDe -- [1] (const) DocumentoContabilDeDespesaOrcamentaria
 }
 
 // kind Banco
@@ -81,13 +81,13 @@ role ConvenioConcedido specializes nucleo.Convenio
 role ConvenioRecebido specializes nucleo.Convenio
 
 relator RegistroDeConvenioConcedidoNaDespesaOrcamentaria {
-  @mediation [1] -- [1] (const) ConvenioConcedido
-  @mediation [0..1] -- [1] (const) DocumentoContabilDeDespesaOrcamentaria
+  @mediation (const) [1] -- [1] (const) ConvenioConcedido
+  @mediation (const) [0..1] -- [1] (const) DocumentoContabilDeDespesaOrcamentaria
 }
 
 relator RegistroDeConvenioRecebidoNaDespesaOrcamentaria {
-  @mediation [1] -- [1] (const) ConvenioRecebido
-  @mediation [0..1] -- [1] (const) DocumentoContabilDeDespesaOrcamentaria
+  @mediation (const) [1] -- [1] (const) ConvenioRecebido
+  @mediation (const) [0..1] -- [1] (const) DocumentoContabilDeDespesaOrcamentaria
 }
 
 

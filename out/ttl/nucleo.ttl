@@ -1,0 +1,188 @@
+# Written by `tonto gufo` from the tonto ontology nucleo.
+# Change the model and export it again, rather than this file.
+
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix gufo: <http://purl.org/nemo/gufo#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix nucleo: <https://example.org/ontologia-portal-transparencia-es/nucleo#> .
+
+<https://example.org/ontologia-portal-transparencia-es/nucleo> a owl:Ontology ;
+    owl:imports <http://purl.org/nemo/gufo#> ;
+    vann:preferredNamespacePrefix "nucleo" ;
+    vann:preferredNamespaceUri "https://example.org/ontologia-portal-transparencia-es/nucleo#" .
+
+nucleo:UnidadeGestora a owl:Class, gufo:Kind ;
+    rdfs:label "UnidadeGestora" ;
+    rdfs:comment """44 Portaria MTP 1.467/2022, Art.2º - Definições: VI - unidade gestora: entidade ou órgão único, de natureza pública, de cada ente federativo, abrangendo todos os poderes, órgãos e entidades autárquicas e fundacionais, que tenha por finalidade a administração, o gerenciamento e a operacionalização do RPPS, incluindo a arrecada.
+Cite Portaria MTP nº 1.467, de 2 junho de 2022: Capítulo I - Definições"""@pt-br ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:subClassOf
+        gufo:FunctionalComplex,
+        [ a owl:Restriction ;
+          owl:onProperty nucleo:UnidadeGestora.codigo ;
+          owl:minCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty nucleo:UnidadeGestora.descricao ;
+          owl:minCardinality "1"^^xsd:nonNegativeInteger ] .
+
+nucleo:PessoaFisica a owl:Class, gufo:Kind ;
+    rdfs:label "PessoaFisica" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:subClassOf
+        gufo:FunctionalComplex,
+        [ a owl:Restriction ;
+          owl:onProperty nucleo:PessoaFisica.cpf ;
+          owl:minCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty nucleo:PessoaFisica.nome ;
+          owl:minCardinality "1"^^xsd:nonNegativeInteger ] .
+
+nucleo:PessoaJuridica a owl:Class, gufo:Kind ;
+    rdfs:label "PessoaJuridica" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:subClassOf
+        gufo:FunctionalComplex,
+        [ a owl:Restriction ;
+          owl:onProperty nucleo:PessoaJuridica.cnpj ;
+          owl:minCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty nucleo:PessoaJuridica.nome ;
+          owl:minCardinality "1"^^xsd:nonNegativeInteger ] .
+
+nucleo:DocumentoContabil a owl:Class, gufo:Kind ;
+    rdfs:label "DocumentoContabil" ;
+    rdfs:comment """O objetivo da elaboração e divulgação da informação contábil é fornecer informação para fins de prestação de contas e responsabilização (accountability) e tomada de decisão.
+Cite MCASP - 11º Edicao: Parte Geral: Seções 2.3 ; 3.1"""@pt-br ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:subClassOf gufo:FunctionalComplex .
+
+nucleo:Regiao a owl:Class, gufo:Kind ;
+    rdfs:label "Regiao" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:subClassOf gufo:FunctionalComplex .
+
+nucleo:MicroRegiao a owl:Class, gufo:Kind ;
+    rdfs:label "MicroRegiao" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:subClassOf
+        gufo:FunctionalComplex,
+        [ a owl:Restriction ;
+          owl:onProperty nucleo:MicroRegiao.isComponentOfRegiao ;
+          owl:onClass nucleo:Regiao ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
+
+nucleo:Municipio a owl:Class, gufo:Kind ;
+    rdfs:label "Municipio" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:subClassOf
+        gufo:FunctionalComplex,
+        [ a owl:Restriction ;
+          owl:onProperty nucleo:Municipio.isComponentOfRegiao ;
+          owl:onClass nucleo:Regiao ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
+
+nucleo:Banco a owl:Class, gufo:Kind ;
+    rdfs:label "Banco" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:subClassOf gufo:FunctionalComplex .
+
+nucleo:Convenio a owl:Class, gufo:Kind ;
+    rdfs:label "Convenio" ;
+    rdfs:comment """Convênios, contratos de repasse e termos de parceria são acordos feitos entre União e entidades governamentais dos demais entes da Federação, ou organizações não-governamentais, para transferência de recursos financeiros a serem utilizados na execução de um objetivo comum. Portanto, as transferências voluntárias e legais serão viabilizadas a partir dos mencionados instrumentos e outros congêneres.
+Cite url https://portaldatransparencia.gov.br/entenda-a-gestao-publica/convenios-e-outros-acordos""" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:subClassOf gufo:FunctionalComplex .
+
+nucleo:PoderDaFederacao a rdfs:Datatype ;
+    rdfs:label "PoderDaFederacao" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    owl:equivalentClass rdfs:Literal .
+
+nucleo:UnidadeGestora.codigo a owl:DatatypeProperty ;
+    rdfs:label "codigo" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:domain nucleo:UnidadeGestora ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+nucleo:UnidadeGestora.descricao a owl:DatatypeProperty ;
+    rdfs:label "descricao" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:domain nucleo:UnidadeGestora ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+nucleo:PessoaFisica.cpf a owl:DatatypeProperty ;
+    rdfs:label "cpf" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:domain nucleo:PessoaFisica ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+nucleo:PessoaFisica.nis a owl:DatatypeProperty ;
+    rdfs:label "nis" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:domain nucleo:PessoaFisica ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+nucleo:PessoaFisica.nome a owl:DatatypeProperty ;
+    rdfs:label "nome" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:domain nucleo:PessoaFisica ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+nucleo:PessoaJuridica.cnpj a owl:DatatypeProperty ;
+    rdfs:label "cnpj" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:domain nucleo:PessoaJuridica ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+nucleo:PessoaJuridica.nome a owl:DatatypeProperty ;
+    rdfs:label "nome" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:domain nucleo:PessoaJuridica ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+nucleo:MicroRegiao.isComponentOfRegiao a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:label "MicroRegiao.isComponentOfRegiao" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:domain nucleo:MicroRegiao ;
+    rdfs:range nucleo:Regiao ;
+    rdfs:subPropertyOf gufo:isComponentOf .
+
+nucleo:Municipio.isComponentOfRegiao a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:label "Municipio.isComponentOfRegiao" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:domain nucleo:Municipio ;
+    rdfs:range nucleo:Regiao ;
+    rdfs:subPropertyOf gufo:isComponentOf .
+
+nucleo:Municipio.isComponentOfMicroRegiao a owl:ObjectProperty ;
+    rdfs:label "Municipio.isComponentOfMicroRegiao" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:domain nucleo:Municipio ;
+    rdfs:range nucleo:MicroRegiao ;
+    rdfs:subPropertyOf gufo:isComponentOf .
+
+[] a owl:AllDisjointClasses ;
+    owl:members (
+        nucleo:Banco
+        nucleo:Convenio
+        nucleo:DocumentoContabil
+        nucleo:MicroRegiao
+        nucleo:Municipio
+        nucleo:PessoaFisica
+        nucleo:PessoaJuridica
+        nucleo:Regiao
+        nucleo:UnidadeGestora
+    ) .
+
+vann:preferredNamespacePrefix a owl:AnnotationProperty .
+
+vann:preferredNamespaceUri a owl:AnnotationProperty .

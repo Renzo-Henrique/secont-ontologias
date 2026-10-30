@@ -1,0 +1,72 @@
+# Written by `tonto gufo` from the tonto ontology base-despesas-orcamentos-execucoes.
+# Change the model and export it again, rather than this file.
+
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix gufo: <http://purl.org/nemo/gufo#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix base-despesas-orcamentos-execucoes: <https://example.org/ontologia-portal-transparencia-es/base-despesas-orcamentos-execucoes#> .
+@prefix nucleo: <https://example.org/ontologia-portal-transparencia-es/nucleo#> .
+
+<https://example.org/ontologia-portal-transparencia-es/base-despesas-orcamentos-execucoes> a owl:Ontology ;
+    owl:imports
+        <http://purl.org/nemo/gufo#>,
+        <https://example.org/ontologia-portal-transparencia-es/base-despesas>,
+        <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    vann:preferredNamespacePrefix "base-despesas-orcamentos-execucoes" ;
+    vann:preferredNamespaceUri "https://example.org/ontologia-portal-transparencia-es/base-despesas-orcamentos-execucoes#" .
+
+base-despesas-orcamentos-execucoes:UnidadeGestoraComOrcamentoDeExecucao a owl:Class, gufo:Role ;
+    rdfs:label "UnidadeGestoraComOrcamentoDeExecucao" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas-orcamentos-execucoes> ;
+    rdfs:subClassOf
+        nucleo:UnidadeGestora,
+        [ a owl:Restriction ;
+          owl:onProperty [ owl:inverseOf base-despesas-orcamentos-execucoes:RegistroDeOrcamentoDeExecucao.mediatesUnidadeGestoraComOrcamentoDeExecucao ] ;
+          owl:someValuesFrom base-despesas-orcamentos-execucoes:RegistroDeOrcamentoDeExecucao ] .
+
+base-despesas-orcamentos-execucoes:DocumentoContabilDeOrcamentoDeExecucao a owl:Class, gufo:Role ;
+    rdfs:label "DocumentoContabilDeOrcamentoDeExecucao" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas-orcamentos-execucoes> ;
+    rdfs:subClassOf
+        nucleo:DocumentoContabil,
+        [ a owl:Restriction ;
+          owl:onProperty [ owl:inverseOf base-despesas-orcamentos-execucoes:RegistroDeOrcamentoDeExecucao.mediatesDocumentoContabilDeOrcamentoDeExecucao ] ;
+          owl:someValuesFrom base-despesas-orcamentos-execucoes:RegistroDeOrcamentoDeExecucao ] .
+
+base-despesas-orcamentos-execucoes:RegistroDeOrcamentoDeExecucao a owl:Class, gufo:Kind ;
+    rdfs:label "RegistroDeOrcamentoDeExecucao" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas-orcamentos-execucoes> ;
+    rdfs:subClassOf
+        gufo:Relator,
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas-orcamentos-execucoes:RegistroDeOrcamentoDeExecucao.mediatesDocumentoContabilDeOrcamentoDeExecucao ;
+          owl:onClass base-despesas-orcamentos-execucoes:DocumentoContabilDeOrcamentoDeExecucao ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas-orcamentos-execucoes:RegistroDeOrcamentoDeExecucao.mediatesUnidadeGestoraComOrcamentoDeExecucao ;
+          owl:onClass base-despesas-orcamentos-execucoes:UnidadeGestoraComOrcamentoDeExecucao ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
+
+base-despesas-orcamentos-execucoes:RegistroDeOrcamentoDeExecucao.mediatesDocumentoContabilDeOrcamentoDeExecucao a
+        owl:ObjectProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "RegistroDeOrcamentoDeExecucao.mediatesDocumentoContabilDeOrcamentoDeExecucao" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas-orcamentos-execucoes> ;
+    rdfs:domain base-despesas-orcamentos-execucoes:RegistroDeOrcamentoDeExecucao ;
+    rdfs:range base-despesas-orcamentos-execucoes:DocumentoContabilDeOrcamentoDeExecucao ;
+    rdfs:subPropertyOf gufo:mediates .
+
+base-despesas-orcamentos-execucoes:RegistroDeOrcamentoDeExecucao.mediatesUnidadeGestoraComOrcamentoDeExecucao a
+        owl:ObjectProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "RegistroDeOrcamentoDeExecucao.mediatesUnidadeGestoraComOrcamentoDeExecucao" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas-orcamentos-execucoes> ;
+    rdfs:domain base-despesas-orcamentos-execucoes:RegistroDeOrcamentoDeExecucao ;
+    rdfs:range base-despesas-orcamentos-execucoes:UnidadeGestoraComOrcamentoDeExecucao ;
+    rdfs:subPropertyOf gufo:mediates .
+
+vann:preferredNamespacePrefix a owl:AnnotationProperty .
+
+vann:preferredNamespaceUri a owl:AnnotationProperty .

@@ -7,6 +7,6 @@ role UnidadeGestoraComOrcamentoDeExecucao specializes nucleo.UnidadeGestora
 role DocumentoContabilDeOrcamentoDeExecucao specializes nucleo.DocumentoContabil
 
 relator RegistroDeOrcamentoDeExecucao{
-  @mediation [1]  -- [1] (const) DocumentoContabilDeOrcamentoDeExecucao
+  @mediation (const) [1]  -- [1] (const) DocumentoContabilDeOrcamentoDeExecucao
   @mediation [1..*] -- [1] (const) UnidadeGestoraComOrcamentoDeExecucao
 }

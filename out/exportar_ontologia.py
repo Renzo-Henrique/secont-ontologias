@@ -96,10 +96,56 @@ def exportarDespesas():
             output_dir=_PREFIX_OUTPUT_DIR+_PREFIX_DESPESAS,
             view_file="../src/bases/despesas/views/base-despesas-restos-a-pagar.tontoview"
     )
+
+
+def exportar_ontologias_operacionais(src_dir: str = "../src", output_dir: str = "./ttl"):
+    """
+    Varre todos os arquivos .tonto na pasta especificada e converte cada um
+    em arquivos .ttl alinhados ao gUFO salvos no diretório de saída.
     
+    :param src_dir: Diretório raiz contendo os arquivos .tonto
+    :param output_dir: Diretório onde os arquivos .ttl de saída serão salvos
+    """
+    root_path = Path(src_dir).resolve()
+    out_dir_path = Path(output_dir).resolve()
+
+    if not root_path.exists():
+        raise FileNotFoundError(f"Diretório de origem não encontrado: {root_path}")
+
+    # Garante que o diretório de saída existe
+    out_dir_path.mkdir(parents=True, exist_ok=True)
+
+    # Busca todos os arquivos .tonto recursivamente dentro da pasta src
+    tonto_files = list(root_path.glob("**/*.tonto"))
+
+    if not tonto_files:
+        print(f"Nenhum arquivo .tonto encontrado em: {root_path}")
+        return
+
+    try:
+        print(f"Encontrados {len(tonto_files)} arquivos .tonto. Exportando para Turtle...")
+
+        # Monta a lista de caminhos dos arquivos encontrados
+        paths_str = [str(f) for f in tonto_files]
+
+        # CORREÇÃO: Utilizar --out-dir=<dir> com '=' conforme sugerido pela mensagem de erro do tonto
+        cmd_parts = ["npx", "tonto", "gufo"] + paths_str + [f"--out-dir={str(out_dir_path)}"]
+
+        # Formata o comando para execução segura via shell
+        cmd_str = " ".join([f'"{p}"' if " " in p else p for p in cmd_parts])
+
+        subprocess.run(cmd_str, shell=True, check=True, text=True)
+        print(f"Ontologias operacionais exportadas com sucesso para o diretório: {out_dir_path}")
+
+    except subprocess.CalledProcessError as e:
+        print(f"Erro ao exportar as ontologias para Turtle: {e}")
+    except FileNotFoundError:
+        print("Erro: O comando 'npx' não foi encontrado no PATH. Verifique se o Node.js está instalado.")
+
 # Exemplo de uso:
 if __name__ == "__main__":
     exportarNucleo()
     exportarReceitas()
     exportarDespesas()
+    exportar_ontologias_operacionais()
     
