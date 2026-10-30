@@ -1,0 +1,180 @@
+{
+  "version": 1,
+  "content": {
+    "scope": "file",
+    "showExternalReferences": true,
+    "showDatatypes": true,
+    "showGensets": true,
+    "derivedMaterialMode": "both",
+    "hidden": [
+      "nucleo::UnidadeGestora",
+      "nucleo::Municipio",
+      "nucleo::MicroRegiao",
+      "despesas::RegistroDeOrcamentoDeDespesa",
+      "despesas::DocumentoContabilDeOrcamentoDeDespesa",
+      "despesas::RegistroDeOrcamentoDeExecucao",
+      "despesas::DocumentoContabilDeOrcamentoDeExecucao",
+      "despesas::UnidadeGestoraComOrcamentoDeExecucao",
+      "despesas::UnidadeGestoraComOrcamentoDeDespesa"
+    ]
+  },
+  "display": {
+    "taxonomyOnly": false,
+    "partonomyOnly": false,
+    "routing": "straight",
+    "fontFamily": "sans",
+    "fontSize": "medium",
+    "showAttributes": true,
+    "showCardinalities": true,
+    "showRelationNames": true,
+    "showRelationStereotypes": true,
+    "showEndDecorations": true,
+    "showRoleNames": true,
+    "showColors": true,
+    "showLegend": false,
+    "showPackageGroups": true,
+    "qualifyNames": false
+  },
+  "layout": {
+    "direction": "DOWN",
+    "associationDistance": 100,
+    "nodeSpacing": 60,
+    "rankSpacing": 100,
+    "groupByPackage": true
+  },
+  "nodes": {
+    "despesas::DocumentoContabilDeDespesaOrcamentaria": {
+      "x": 440,
+      "y": 424
+    },
+    "nucleo::DocumentoContabil": {
+      "x": 520,
+      "y": 160
+    },
+    "despesas::ClassificadorDeDespesaOrcamentaria": {
+      "x": 230,
+      "y": 495
+    },
+    "despesas::ClassificadorInstitucionalDeDespesa": {
+      "x": 232,
+      "y": 192
+    },
+    "despesas::ClassificadorFuncionalDeDespesa": {
+      "x": -48,
+      "y": 200
+    },
+    "despesas::ClassificadorPorEstruturaProgramaticaDeDespesa": {
+      "x": 712,
+      "y": 208
+    },
+    "despesas::ClassificadorPorNaturezaDeDespesa": {
+      "x": 888,
+      "y": 296
+    },
+    "despesas::FonteDaDespesa": {
+      "x": -48,
+      "y": 296
+    },
+    "despesas::TerminoDoExercicioDeDespesaVigente": {
+      "x": 472,
+      "y": 800
+    },
+    "despesas::CriacaoDeDespesaNaoPaga": {
+      "x": 520,
+      "y": 568
+    },
+    "despesas::DocumentoContabilDeRestosAPagar": {
+      "x": -48,
+      "y": 696
+    },
+    "despesas::DespesaDeExercicioVigente": {
+      "x": 936,
+      "y": 568
+    },
+    "despesas::DespesaDeExercicioAnterior": {
+      "x": -48,
+      "y": 568
+    },
+    "despesas::DocumentoContabilDeOrcamentoDeDespesa": {
+      "x": 176,
+      "y": 528
+    },
+    "despesas::UnidadeGestoraComOrcamentoDeDespesa": {
+      "x": -16,
+      "y": 760
+    },
+    "nucleo::UnidadeGestora": {
+      "x": -56,
+      "y": 1000
+    },
+    "despesas::RegistroDeOrcamentoDeDespesa": {
+      "x": 192,
+      "y": 624
+    },
+    "nucleo::MicroRegiao": {
+      "x": 448,
+      "y": 704
+    },
+    "nucleo::Municipio": {
+      "x": 320,
+      "y": 784
+    },
+    "despesas::DocumentoContabilDeOrcamentoDeExecucao": {
+      "x": -136,
+      "y": 424
+    },
+    "despesas::RegistroDeOrcamentoDeExecucao": {
+      "x": -104,
+      "y": 552
+    },
+    "despesas::UnidadeGestoraComOrcamentoDeExecucao": {
+      "x": -136,
+      "y": 656
+    },
+    "despesas::DadosDeRestosAPagarAnonimizados": {
+      "x": 24,
+      "y": 896
+    },
+    "despesas::RegistroDeRestosAPagar": {
+      "x": -8,
+      "y": 824
+    },
+    "despesas::UnidadeGestoraComRestosAPagar": {
+      "x": 240,
+      "y": 696
+    },
+    "despesas::RegistroDeDespesaOrcamentaria": {
+      "x": 872,
+      "y": 888
+    },
+    "despesas::DocumentoContabilDeDespesa": {
+      "x": 928,
+      "y": 768
+    },
+    "despesas::UnidadeGestoraEmitenteDeDespesa": {
+      "x": 464,
+      "y": 912
+    },
+    "despesas::RegistroDeConvenioRecebidoNaDespesaOrcamentaria": {
+      "x": 1216,
+      "y": 320
+    },
+    "despesas::ConvenioRecebido": {
+      "x": 1408,
+      "y": 504
+    },
+    "despesas::ConvenioConcedido": {
+      "x": 1392,
+      "y": 744
+    },
+    "nucleo::Convenio": {
+      "x": 1416,
+      "y": 632
+    },
+    "despesas::RegistroDeConvenioConcedidoNaDespesaOrcamentaria": {
+      "x": 1296,
+      "y": 880
+    }
+  },
+  "edges": {}
+}

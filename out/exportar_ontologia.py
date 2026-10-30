@@ -64,18 +64,22 @@ def exportarNucleo():
 
 def exportarReceitas():
     exportar_diagramas_com_tonto_view(
-            input_path="../src/bases/receitas/base-receitas.tonto",
-            output_dir=_PREFIX_OUTPUT_DIR+_PREFIX_RECEITAS,
-            view_file="../src/bases/receitas/views/versoes_da_view/base-receitas_SEM_atributos.tontoview"
-    )
+                input_path="../src/bases/receitas/receitas.tonto",
+                output_dir=_PREFIX_OUTPUT_DIR+_PREFIX_RECEITAS,
+                view_file="../src/bases/receitas/views/versoes_da_view/receitas_SEM_atributos.tontoview"
+        )
     exportar_diagramas_com_tonto_view(
-            input_path="../src/bases/receitas/base-receitas.tonto",
+            input_path="../src/bases/receitas/receitas.tonto",
             output_dir=_PREFIX_OUTPUT_DIR+_PREFIX_RECEITAS,
-            output_name="base-receitas_atributos",
-            view_file="../src/bases/receitas/views/versoes_da_view/base-receitas_COM_atributos.tontoview"
+            output_name="receitas_atributos",
+            view_file="../src/bases/receitas/views/versoes_da_view/receitas_COM_atributos.tontoview"
         )
 
+
+
+
 def exportarDespesas():
+    
     exportar_diagramas_com_tonto_view(
             input_path="../src/bases/despesas/base-despesas.tonto",
             output_dir=_PREFIX_OUTPUT_DIR+_PREFIX_DESPESAS,
@@ -96,6 +100,41 @@ def exportarDespesas():
             output_dir=_PREFIX_OUTPUT_DIR+_PREFIX_DESPESAS,
             view_file="../src/bases/despesas/views/base-despesas-restos-a-pagar.tontoview"
     )
+
+def exportarReceitas2():
+    exportar_diagramas_com_tonto_view(
+            input_path="../src/bases/receitas/base-receitas.tonto",
+            output_dir=_PREFIX_OUTPUT_DIR+_PREFIX_RECEITAS,
+            view_file="../src/bases/receitas/views/versoes_da_view/base-receitas_SEM_atributos.tontoview"
+    )
+    exportar_diagramas_com_tonto_view(
+            input_path="../src/bases/receitas/base-receitas.tonto",
+            output_dir=_PREFIX_OUTPUT_DIR+_PREFIX_RECEITAS,
+            output_name="base-receitas-atributos",
+            view_file="../src/bases/receitas/views/versoes_da_view/base-receitas_COM_atributos.tontoview"
+        )
+
+
+def exportarDespesas2():
+    exportar_diagramas_com_tonto_view(
+                input_path="../src/bases/despesas/despesas.tonto",
+                output_dir=_PREFIX_OUTPUT_DIR+_PREFIX_DESPESAS,
+                output_name="despesas-completa",
+                view_file="../src/bases/despesas/views/versoes_da_view/despesas-completa.tontoview"
+        )
+    exportar_diagramas_com_tonto_view(
+                input_path="../src/bases/despesas/despesas.tonto",
+                output_dir=_PREFIX_OUTPUT_DIR+_PREFIX_DESPESAS,
+                output_name="despesas-orcamentais",
+                view_file="../src/bases/despesas/views/versoes_da_view/despesas-orcamentais.tontoview"
+        )
+    exportar_diagramas_com_tonto_view(
+                input_path="../src/bases/despesas/despesas.tonto",
+                output_dir=_PREFIX_OUTPUT_DIR+_PREFIX_DESPESAS,
+                output_name="despesas-por-vigencia",
+                view_file="../src/bases/despesas/views/versoes_da_view/despesas-por-vigencia.tontoview"
+        )
+
 
 
 def exportar_ontologias_operacionais(src_dir: str = "../src", output_dir: str = "./ttl"):
@@ -147,5 +186,7 @@ if __name__ == "__main__":
     exportarNucleo()
     exportarReceitas()
     exportarDespesas()
+    exportarReceitas2()
+    exportarDespesas2()
     exportar_ontologias_operacionais()
     

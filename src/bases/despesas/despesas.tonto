@@ -1,0 +1,155 @@
+/// @namespace https://example.org/ontologia-portal-transparencia-es/despesas#
+ontology despesas
+import nucleo from <../../nucleo/nucleo.tonto>
+
+/// @pt-br Despesa orçamentária é toda transação que depende de autorização legislativa, na forma de consignação de dotação orçamentária, para ser efetivada.
+/// Cite MCASP - 11º Edição: Parte I: Seção 4.1
+subkind DocumentoContabilDeDespesaOrcamentaria specializes nucleo.DocumentoContabil
+
+
+/// @pt-br A classificação institucional reflete a estrutura de alocação dos créditos orçamentários e está estruturada em dois níveis hierárquicos: órgão orçamentário e unidade orçamentária. Constitui unidade orçamentária o agrupamento de serviços subordinados ao mesmo órgão ou repartição a que serão consignadas dotações próprias (art. 14 da Lei nº 4.320/1964).
+/// Cite MCASP - 11º Edição: Parte I: Seção 4.2.1
+category ClassificadorInstitucionalDeDespesa of intrinsic-modes{
+  @characterization [0..*] -- [1] (const) DocumentoContabilDeDespesaOrcamentaria
+}
+
+/// @pt-br A classificação funcional segrega as dotações orçamentárias em funções e subfunções, buscando responder basicamente à indagação "em que área" de ação governamental a despesa será realizada. A atual classificação funcional foi instituída pela Portaria nº 42/1999, do então Ministério do Orçamento e Gestão, divulgada pela Portaria SOF/ME nº 2.520/2022, e é composta de um rol de funções e subfunções prefixadas, que servem como agregador dos gastos públicos por área de ação governamental nas três esferas de Governo. Trata-se de uma classificação independente dos programas e de aplicação comum e obrigatória, no âmbito da União, dos Estados, do Distrito Federal e dos Municípios, o que permite a consolidação nacional dos gastos do setor público.
+/// Cite MCASP - 11º Edição: Parte I: Seção 4.2.2
+category ClassificadorFuncionalDeDespesa  of intrinsic-modes{
+  @characterization [0..*] -- [1] (const) DocumentoContabilDeDespesaOrcamentaria
+}
+/// @pt-br Toda ação do Governo está estruturada em programas orientados para a realização dos objetivos estratégicos definidos no Plano Plurianual (PPA) para o período de quatro anos. Conforme estabelecido no art. 3º da Portaria SOF/SETO/ME nº 42/1999 (divulgada pela Portaria SOF/ME nº 2.520/2022), a União, os Estados, o Distrito Federal e os Municípios estabelecerão, em atos próprios, suas estruturas de programas, códigos e identificação, respeitados os conceitos e determinações nela contidos. Ou seja, todos os entes devem ter seus trabalhos organizados por programas e ações, mas cada um estabelecerá seus próprios programas e ações de acordo com a referida Portaria
+/// Cite MCASP - 11º Edição: Parte I: Seção 4.2.3
+/// Na União, o subtítulo representa o menor nível de categoria de programação e será detalhado por esfera orçamentária (fiscal, seguridade e investimento), grupo de natureza de despesa, modalidade de aplicação, identificador de resultado primário, identificador de uso e fonte de recursos, sendo o produto e a unidade de medida os mesmos da ação orçamentária.
+/// Cite MCASP - 11º Edição: Parte I: Seção 4.2.3.3
+category ClassificadorPorEstruturaProgramaticaDeDespesa of intrinsic-modes{
+  @characterization [0..*] -- [1] (const) DocumentoContabilDeDespesaOrcamentaria
+}
+
+/// @pt-br A classificação da despesa orçamentária, segundo a sua natureza, compõe-se de: a. Categoria Econômica ; b. Grupo de Natureza da Despesa ; c. Elemento de Despesa.  A natureza da despesa será complementada pela informação gerencial denominada "Modalidade de Aplicação", a qual tem por finalidade indicar se os recursos são aplicados diretamente por órgãos ou entidades no âmbito da mesma esfera de Governo ou por outro ente da Federação e suas respectivas entidades, e objetiva, precipuamente, possibilitar a eliminação da dupla contagem dos recursos transferidos ou descentralizados.
+/// Cite MCASP - 11º Edição: Parte I: Seção 4.2.4
+category ClassificadorPorNaturezaDeDespesa  of intrinsic-modes{
+  @characterization [0..*] -- [1] (const) DocumentoContabilDeDespesaOrcamentaria
+}
+
+/// @pt-br A classificação por fontes ou destinações de recursos (FR) tem como objetivo agrupar receitas que possuam as mesmas normas de aplicação na despesa. Em regra, as fontes ou destinações de recursos reúnem recursos oriundos de determinados códigos da classificação por natureza da receita orçamentária, conforme regras previamente estabelecidas. Por meio do orçamento público, essas fontes ou destinações são associadas a determinadas despesas de forma a evidenciar os meios para atingir os objetivos públicos.
+/// Cite MCASP - 11º Edição: Parte I: Seção 5.1
+/// Na execução orçamentária da despesa, a FR estará associada, desde o momento do empenho, às contas de controle orçamentário (classe 6 do PCASP), às contas do passivo financeiro (classe 2 com atributo “F”) e às contas de controle da disponibilidade por destinação de recursos (na classe 8)
+/// Cite MCASP - 11º Edição: Parte I: Seção 5.2
+category FonteDaDespesa  of intrinsic-modes{
+  @characterization [0..*] -- [1] (const) DocumentoContabilDeDespesaOrcamentaria
+}
+
+/// Documento contabil referente aos arquivos "Despesas"
+role DocumentoContabilDeDespesa specializes DespesaDeExercicioVigente
+
+role UnidadeGestoraEmitenteDeDespesa specializes nucleo.UnidadeGestora
+relator RegistroDeDespesaOrcamentaria {
+  @mediation (const) [1]  -- [1] (const) DocumentoContabilDeDespesa
+  @mediation [1..*] --  [1] (const) UnidadeGestoraEmitenteDeDespesa
+
+  dadosAnonimizados: const nucleo.DadosPessoaisAnonimizados [1]
+}
+
+
+role ConvenioConcedido specializes nucleo.Convenio
+
+role ConvenioRecebido specializes nucleo.Convenio
+
+relator RegistroDeConvenioConcedidoNaDespesaOrcamentaria {
+  @mediation (const) [1] -- [1] (const) ConvenioConcedido
+  @mediation (const) [0..1] -- [1] (const) DocumentoContabilDeDespesa
+}
+
+relator RegistroDeConvenioRecebidoNaDespesaOrcamentaria {
+  @mediation (const) [1] -- [1] (const) ConvenioRecebido
+  @mediation (const) [0..1] -- [1] (const) DocumentoContabilDeDespesa
+}
+
+
+
+
+
+
+
+/**
+
+RestosAPagar
+
+
+**/
+
+role UnidadeGestoraComRestosAPagar specializes nucleo.UnidadeGestora
+
+/// Despesa empenhada que foi paga no mesmo exercício vigente em que foi emitida
+subkind DespesaDeExercicioVigente specializes DocumentoContabilDeDespesaOrcamentaria
+
+/// São Restos a Pagar todas as despesas regularmente empenhadas, do exercício atual ou anterior, mas não pagas até 31 de dezembro do exercício financeiro vigente. 
+/// Cite MCASP - 11º Edição: Parte I: Seção 4.7
+subkind DespesaDeExercicioAnterior specializes DocumentoContabilDeDespesaOrcamentaria
+/// Separação de despesas por empenhadas, mas subdividindo em "Pagas no exercício vigente ao da emissão da despesa" e "Não pagas no exercício vigente ao da emissão da despesa"
+disjoint complete genset DespesaPorVigencia where DespesaDeExercicioVigente, DespesaDeExercicioAnterior specializes DocumentoContabilDeDespesaOrcamentaria
+
+
+/// No fim do exercício, as despesas orçamentárias empenhadas e não pagas serão inscritas em restos a pagar.
+/// Cite MCASP - 11º Edição: Parte I: Seção 4.7.1
+situation TerminoDoExercicioDeDespesaVigente{
+  @triggering (const) [1] -- triggers -- [0..*] (addOnly) CriacaoDeDespesaNaoPaga
+}
+
+/// Evento de criação de uma despesa empenhada que NÃO foi paga no mesmo exercício vigente em que foi emitida
+event CriacaoDeDespesaNaoPaga
+@termination relation DespesaDeExercicioVigente (const) [1]  -- [0..1] CriacaoDeDespesaNaoPaga
+@creation relation DespesaDeExercicioAnterior (const) [1] -- [1] (const) CriacaoDeDespesaNaoPaga
+
+
+
+
+/// Documento contabil referente aos arquivos "RestosAPagar"
+role DocumentoContabilDeRestosAPagar specializes DespesaDeExercicioAnterior
+
+
+
+relator RegistroDeRestosAPagar{
+  @mediation (const) [1]  -- [1] (const) DocumentoContabilDeRestosAPagar
+  @mediation [1..*] -- [1] (const) UnidadeGestoraComRestosAPagar
+
+  dadosAnonimizados: const  nucleo.DadosPessoaisAnonimizados [1]
+  poder: const  nucleo.PoderDaFederacao [1]
+}
+
+/**
+
+Orcamentos-despesa
+
+
+**/
+
+role UnidadeGestoraComOrcamentoDeDespesa specializes nucleo.UnidadeGestora
+/// Documento contabil referente aos arquivos "OrcamentosDespesa"
+role DocumentoContabilDeOrcamentoDeDespesa specializes DocumentoContabilDeDespesaOrcamentaria
+
+relator RegistroDeOrcamentoDeDespesa{
+  @mediation [1]  -- [1] (const) DocumentoContabilDeOrcamentoDeDespesa
+  @mediation [1..*] -- [1] (const) UnidadeGestoraComOrcamentoDeDespesa
+  @mediation [0..*] -- [1] (const) nucleo.MicroRegiao
+  @mediation [0..*] -- [1] (const) nucleo.Municipio
+}
+
+
+/**
+
+Orcamentos-execucoes
+
+
+**/
+
+role UnidadeGestoraComOrcamentoDeExecucao specializes nucleo.UnidadeGestora
+
+/// Documento contabil referente aos arquivos "OrcamentosExecucoes"
+role DocumentoContabilDeOrcamentoDeExecucao specializes DocumentoContabilDeDespesaOrcamentaria
+
+relator RegistroDeOrcamentoDeExecucao{
+  @mediation (const) [1]  -- [1] (const) DocumentoContabilDeOrcamentoDeExecucao
+  @mediation [1..*] -- [1] (const) UnidadeGestoraComOrcamentoDeExecucao
+}

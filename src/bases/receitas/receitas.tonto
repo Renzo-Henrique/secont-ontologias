@@ -1,0 +1,123 @@
+/// @namespace https://example.org/ontologia-portal-transparencia-es/receitas#
+ontology receitas
+import nucleo from <../../nucleo/nucleo.tonto>
+
+
+/// @pt-br O § 1º do art. 8º da Lei nº 4.320/1964 define que os itens da discriminação da receita, mencionados no art. 11 dessa lei, serão identificados por números de código decimal. Convencionou-se denominar este código de natureza de receita.
+/// Importante destacar que a classificação da receita orçamentária por natureza é utilizada por todos os entes da Federação e visa identificar a origem do recurso segundo o fato gerador: acontecimento real que ocasionou o ingresso da receita nos cofres públicos.
+/// A classificação por Natureza de Receita Orçamentária é composta por um código de oito dígitos numéricos que representam: a Categoria Econômica, a Origem, a Espécie, os Desdobramentos e o Tipo de Receita.
+/// Cite MCASP - 11º Edicao: Parte I: Seção 3.2.1
+category NaturezaDaReceita of intrinsic-modes {
+    @characterization [0..*] -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
+
+    codigoNatureza: const string [1]
+    descricaoNatureza: const string [1]
+
+    codigoCategoria: const string [1]
+    descricaoCategoria: const string [1]
+
+    codigoOrigem: const string [1]
+    descricaoOrigem: const string [1]
+
+    codigoEspecie: const string [1]
+    descricaoEspecie: const string [1]
+
+    codigoDetalhamento1: const string [1]
+    descricaoDetalhamento1: const string [1]
+
+    codigoDetalhamento2: const string [1]
+    descricaoDetalhamento2: const string [1]
+
+    codigoDetalhamento3: const string [1]
+    descricaoDetalhamento3: const string [1]
+
+    codigoTipo: const string [1]
+    descricaoTipo: const string [1]
+
+}
+
+/// @pt-br A classificação por fontes ou destinações de recursos (FR) tem como objetivo agrupar receitas que possuam as mesmas normas de aplicação na despesa. Em regra, as fontes ou destinações de recursos reúnem recursos oriundos de determinados códigos da classificação por natureza da receita orçamentária, conforme regras previamente estabelecidas. Por meio do orçamento público, essas fontes ou destinações são associadas a determinadas despesas de forma a evidenciar os meios para atingir os objetivos públicos.
+/// Cite MCASP - 11º Edicao: Parte I: Seção 5.1
+/// No momento da arrecadação, a FR deverá ser informada no registro da realização da receita orçamentária (classe 6 do PCASP), no registro do ingresso dos recursos financeiros no ativo financeiro (classe 1 com atributo "F") e em contas de controle da Disponibilidade por Destinação de Recursos - DDR (nas classes 7 e 8 do PCASP). A partir desse momento, a FR informada para os recursos financeiros não deverá ser alterada
+/// Cite MCASP - 11º Edicao: Parte I: Seção 5.2
+category FonteDaReceita of intrinsic-modes {
+    @characterization [0..*] -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
+
+    codigoFonte: const string [1]
+    descricaoFonte: const string [1]
+
+    codigoGrupoFonte: const string [1]
+    descricaoGrupoFonte: const string [1]
+
+    codigoDetalhamentoFonte: const string [1]
+    codigoDetalhamentoFonteAux: const string [1]
+    descricaoDetalhamentoFonte: const string [1]
+
+}
+
+
+/// @pt-br Conta é a expressão qualitativa e quantitativa de fatos de mesma natureza, que evidencia a composição, variação e estado do patrimônio, bem como de bens, direitos, obrigações e situações nele não compreendidas, mas que, direta ou indiretamente, possam vir a afetá-lo.
+/// Cite MCASP - 11º Edicao: Parte IV: Seções 2.3 ; 3.1
+category ContaContabil of intrinsic-modes{
+    @characterization [0..*] -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
+
+    codigo: const string [1]
+    descricao: const string [1]
+
+}
+
+
+
+role UnidadeGestoraEmitenteDeReceita specializes nucleo.UnidadeGestora
+
+role UnidadeGestoraBeneficiadaDeReceita specializes nucleo.UnidadeGestora
+
+
+
+
+/// @pt-br O orçamento é um importante instrumento de planejamento de qualquer entidade, seja pública ou privada, e representa o fluxo previsto de ingressos e de aplicações de recursos em determinado período.
+/// Cite MCASP - 11º Edicao: Parte I: Seção 3.1
+/// São disponibilidades de recursos financeiros que ingressam durante o exercício e que aumentam o saldo financeiro da instituição. Instrumento por meio do qual se viabiliza a execução das políticas públicas, as receitas orçamentárias são fontes de recursos utilizadas pelo Estado em programas e ações cuja finalidade precípua é atender às necessidades públicas e demandas da sociedade.
+/// Essas receitas pertencem ao Estado, transitam pelo patrimônio do Poder Público e, via de regra, por força do princípio orçamentário da universalidade, estão previstas na Lei Orçamentária Anual - LOA.
+/// Cite MCASP - 11º Edicao: Parte I: Seção 3.1.2
+subkind DocumentoContabilDeReceitaOrcamentaria specializes nucleo.DocumentoContabil
+
+role DocumentoContabilDeReceita specializes DocumentoContabilDeReceitaOrcamentaria{
+    codigoIdUso: const string [1]
+    descricaoIdUso: const string [1]
+    valorPrevista: const string [1]
+    valorArrecadada: const string [1]
+    valorRecolhida: const string [1]
+    tipoLancamento: const string [1]
+    dataEmissao: const string [1]
+    dataContabilizacao: const string [1]
+    documento: const string [1]
+    tipo: const string [1]
+    valorPrevistaBruta: const string [1]
+    valorPrevistaDeducao: const string [1]
+    valorPrevistaLiquida: const string [1]
+    valorArrecadadaBruta: const string [1]
+    valorArrecadadaDeducao: const string [1]
+    valorArrecadadaLiquida: const string [1]
+    valorRecolhidaBruta: const string [1]
+    ano: const string [1]
+}
+
+relator RegistroDeReceitaOrcamentaria{
+    @mediation (const) [1]  -- formalizadaPor -- [1] (const) DocumentoContabilDeReceita
+    @mediation [1..*] -- temUnidadeGestoraEmitente -- [1] (const) UnidadeGestoraEmitenteDeReceita
+    @mediation [1..*] -- temUnidadeGestoraBeneficiada -- [1] (const) UnidadeGestoraBeneficiadaDeReceita 
+    
+}
+
+/**
+
+    Relacoes
+
+**/
+
+@material relation DocumentoContabilDeReceita [1..*] -- emitidaPor -- [1] (const) UnidadeGestoraEmitenteDeReceita derivedFrom RegistroDeReceitaOrcamentaria
+@material relation DocumentoContabilDeReceita [1..*] -- emitidaPara -- [1] (const) UnidadeGestoraBeneficiadaDeReceita derivedFrom RegistroDeReceitaOrcamentaria
+
+
+

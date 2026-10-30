@@ -54,3 +54,4 @@ kind Banco
 kind Convenio
 
 datatype PoderDaFederacao
+datatype DadosPessoaisAnonimizados

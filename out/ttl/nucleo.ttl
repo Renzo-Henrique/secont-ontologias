@@ -100,6 +100,11 @@ nucleo:PoderDaFederacao a rdfs:Datatype ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
     owl:equivalentClass rdfs:Literal .
 
+nucleo:DadosPessoaisAnonimizados a rdfs:Datatype ;
+    rdfs:label "DadosPessoaisAnonimizados" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    owl:equivalentClass rdfs:Literal .
+
 nucleo:UnidadeGestora.codigo a owl:DatatypeProperty ;
     rdfs:label "codigo" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
