@@ -37,56 +37,60 @@
   },
   "nodes": {
     "base-despesas-orcamentos-despesa::UnidadeGestoraComOrcamentoDeDespesa": {
-      "x": 592,
-      "y": 296
+      "x": 712,
+      "y": 568
     },
     "nucleo::UnidadeGestora": {
       "x": 654,
       "y": 901
     },
     "base-despesas-orcamentos-despesa::DocumentoContabilDeOrcamentoDeDespesa": {
-      "x": 960,
-      "y": 288
+      "x": 1072,
+      "y": 432
     },
     "nucleo::DocumentoContabil": {
       "x": 30,
       "y": 943
     },
     "base-despesas-orcamentos-despesa::ClassificadorDeOrcamentoDeDespesa": {
-      "x": 1240,
-      "y": 400
+      "x": 1104,
+      "y": 568
     },
     "base-despesas-orcamentos-despesa::RegistroDeOrcamentoDeDespesa": {
       "x": 720,
       "y": 432
     },
     "base-despesas::ClassificadorInstitucionalDeDespesa": {
-      "x": 1176,
-      "y": 736
+      "x": 1552,
+      "y": 648
     },
     "base-despesas::ClassificadorFuncionalDeDespesa": {
-      "x": 1000,
-      "y": 664
+      "x": 1552,
+      "y": 736
     },
     "base-despesas::ClassificadorPorEstruturaProgramaticaDeDespesa": {
-      "x": 1392,
-      "y": 640
+      "x": 1552,
+      "y": 568
     },
     "base-despesas::ClassificadorPorNaturezaDeDespesa": {
-      "x": 1600,
-      "y": 568
+      "x": 1552,
+      "y": 480
     },
     "base-despesas::FonteDaDespesa": {
-      "x": 984,
-      "y": 568
+      "x": 1552,
+      "y": 400
     },
     "nucleo::MicroRegiao": {
-      "x": 832,
-      "y": 568
+      "x": 944,
+      "y": 248
     },
     "nucleo::Municipio": {
-      "x": 592,
-      "y": 560
+      "x": 744,
+      "y": 264
+    },
+    "base-despesas::DocumentoContabilDeDespesaOrcamentaria": {
+      "x": 1456,
+      "y": 288
     }
   },
   "edges": {}

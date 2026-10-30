@@ -31,7 +31,7 @@ base-despesas-orcamentos-despesa:DocumentoContabilDeOrcamentoDeDespesa a owl:Cla
     rdfs:label "DocumentoContabilDeOrcamentoDeDespesa" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas-orcamentos-despesa> ;
     rdfs:subClassOf
-        nucleo:DocumentoContabil,
+        base-despesas:DocumentoContabilDeDespesaOrcamentaria,
         [ a owl:Restriction ;
           owl:onProperty [ owl:inverseOf base-despesas-orcamentos-despesa:ClassificadorDeOrcamentoDeDespesa.ClassificadorDocumentalDe ] ;
           owl:someValuesFrom base-despesas-orcamentos-despesa:ClassificadorDeOrcamentoDeDespesa ],

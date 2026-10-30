@@ -4,7 +4,7 @@ import nucleo from <../../nucleo/nucleo.tonto>
 import base-despesas from <base-despesas.tonto>
 
 role UnidadeGestoraComOrcamentoDeExecucao specializes nucleo.UnidadeGestora
-role DocumentoContabilDeOrcamentoDeExecucao specializes nucleo.DocumentoContabil
+role DocumentoContabilDeOrcamentoDeExecucao specializes base-despesas.DocumentoContabilDeDespesaOrcamentaria
 
 relator RegistroDeOrcamentoDeExecucao{
   @mediation (const) [1]  -- [1] (const) DocumentoContabilDeOrcamentoDeExecucao

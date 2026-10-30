@@ -51,6 +51,10 @@
     "base-despesas-orcamentos-execucoes::RegistroDeOrcamentoDeExecucao": {
       "x": 168,
       "y": 488
+    },
+    "base-despesas::DocumentoContabilDeDespesaOrcamentaria": {
+      "x": 368,
+      "y": 304
     }
   },
   "edges": {}

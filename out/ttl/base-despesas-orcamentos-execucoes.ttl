@@ -6,6 +6,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix gufo: <http://purl.org/nemo/gufo#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
+@prefix base-despesas: <https://example.org/ontologia-portal-transparencia-es/base-despesas#> .
 @prefix base-despesas-orcamentos-execucoes: <https://example.org/ontologia-portal-transparencia-es/base-despesas-orcamentos-execucoes#> .
 @prefix nucleo: <https://example.org/ontologia-portal-transparencia-es/nucleo#> .
 
@@ -30,7 +31,7 @@ base-despesas-orcamentos-execucoes:DocumentoContabilDeOrcamentoDeExecucao a owl:
     rdfs:label "DocumentoContabilDeOrcamentoDeExecucao" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas-orcamentos-execucoes> ;
     rdfs:subClassOf
-        nucleo:DocumentoContabil,
+        base-despesas:DocumentoContabilDeDespesaOrcamentaria,
         [ a owl:Restriction ;
           owl:onProperty [ owl:inverseOf base-despesas-orcamentos-execucoes:RegistroDeOrcamentoDeExecucao.mediatesDocumentoContabilDeOrcamentoDeExecucao ] ;
           owl:someValuesFrom base-despesas-orcamentos-execucoes:RegistroDeOrcamentoDeExecucao ] .

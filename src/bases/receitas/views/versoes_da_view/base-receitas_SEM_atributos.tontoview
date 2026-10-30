@@ -41,8 +41,8 @@
       "y": 720
     },
     "base-receitas::ContaContabil": {
-      "x": 112,
-      "y": 440
+      "x": 120,
+      "y": 432
     },
     "base-receitas::UnidadeGestoraEmitente": {
       "x": 832,
@@ -61,11 +61,11 @@
       "y": 232
     },
     "base-receitas::DocumentoContabilDeReceitaOrcamentaria": {
-      "x": 432,
-      "y": 592
+      "x": 440,
+      "y": 720
     },
     "base-receitas::RegistroDeReceitaOrcamentaria": {
-      "x": 904,
+      "x": 944,
       "y": 352
     },
     "base-receitas::UnidadeGestoraEmitenteDeReceita": {
@@ -73,7 +73,7 @@
       "y": 592
     },
     "base-receitas::UnidadeGestoraBeneficiadaDeReceita": {
-      "x": 448,
+      "x": 464,
       "y": 352
     },
     "base-receitas::ClassificacaoDeReceitaOrcamentaria": {
@@ -83,6 +83,10 @@
     "nucleo::DocumentoContabil": {
       "x": 512,
       "y": 704
+    },
+    "base-receitas::ReceitaOrcamentaria": {
+      "x": 512,
+      "y": 592
     }
   },
   "edges": {}

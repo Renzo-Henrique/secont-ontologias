@@ -4,9 +4,17 @@ import nucleo from <../../nucleo/nucleo.tonto>
 import base-despesas from <base-despesas.tonto>
 
 role UnidadeGestoraComRestosAPagar specializes nucleo.UnidadeGestora
-role DocumentoContabilDeRestosAPagar specializes nucleo.DocumentoContabil
 
 
+
+subkind DespesaDeExercicioAnterior specializes nucleo.DocumentoContabil
+disjoint genset DespesaPorVigencia where base-despesas.DespesaDeExercicioVigente, DespesaDeExercicioAnterior specializes nucleo.DocumentoContabil
+
+/// São Restos a Pagar todas as despesas regularmente empenhadas, do exercício atual ou anterior, mas não pagas até 31 de dezembro do exercício financeiro vigente. Distingue-se dois tipos de restos a pagar: os processados (despesas já liquidadas); e os não processados (despesas a liquidar ou em liquidação).
+/// Cite MCASP - 11º Edição: Parte I: Seção 4.7
+historicalRole DocumentoContabilDeRestosAPagar specializes DespesaDeExercicioAnterior{
+    @creation (const) [1] -- [1] (const) CriacaoDeDespesaNaoPaga
+}
 
 datatype DadosDeRestosAPagarAnonimizados
 
@@ -18,4 +26,15 @@ relator RegistroDeRestosAPagar{
   dadosAnonimizados: const  DadosDeRestosAPagarAnonimizados [1]
   poder: const  nucleo.PoderDaFederacao [1]
 }
+
+event CriacaoDeDespesaNaoPaga
+
+/// No fim do exercício, as despesas orçamentárias empenhadas e não pagas serão inscritas em restos a pagar.
+/// Cite MCASP - 11º Edição: Parte I: Seção 4.7.1
+situation TerminoDoExercicioDeDespesaVigente{
+  @triggering (const) [1] -- triggers -- [0..*] (addOnly) CriacaoDeDespesaNaoPaga
+}
+
+@termination relation base-despesas.DespesaDeExercicioVigente (const) [1]  -- [0..1] (addOnly) CriacaoDeDespesaNaoPaga
+
 

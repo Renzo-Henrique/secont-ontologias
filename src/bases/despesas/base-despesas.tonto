@@ -5,16 +5,21 @@ import nucleo from <../../nucleo/nucleo.tonto>
 
 /// @pt-br Despesa orçamentária é toda transação que depende de autorização legislativa, na forma de consignação de dotação orçamentária, para ser efetivada.
 /// Cite MCASP - 11º Edição: Parte I: Seção 4.1
-role DocumentoContabilDeDespesaOrcamentaria specializes nucleo.DocumentoContabil{
+subkind DocumentoContabilDeDespesaOrcamentaria specializes nucleo.DocumentoContabil{
   
 }
+
+role DespesaOrcamentaria specializes DespesaDeExercicioVigente
+
+subkind DespesaDeExercicioVigente specializes DocumentoContabilDeDespesaOrcamentaria
+
 
 
 role UnidadeGestoraEmitenteDeDespesa specializes nucleo.UnidadeGestora
 
 datatype DadosAnonimizadosDeDespesa
 relator RegistroDeDespesaOrcamentaria {
-  @mediation (const) [1]  -- formalizadaPor -- [1] (const) DocumentoContabilDeDespesaOrcamentaria
+  @mediation (const) [1]  -- formalizadaPor -- [1] (const) DespesaOrcamentaria
   @mediation [1..*] -- temUnidadeGestoraEmitenteDeDespesa -- [1] (const) UnidadeGestoraEmitenteDeDespesa
 
   dadosAnonimizados: const DadosAnonimizadosDeDespesa [1]
@@ -28,7 +33,7 @@ relator ClassificadorDeDespesaOrcamentaria {
   @mediation [0..*] -- [1] (const) ClassificadorPorEstruturaProgramaticaDeDespesa
   @mediation [0..*] -- [1] (const) ClassificadorPorNaturezaDeDespesa
   @mediation [0..*] -- [1] (const) FonteDaDespesa
-  @mediation (const) [1]  -- ClassificadorDocumentalDe -- [1] (const) DocumentoContabilDeDespesaOrcamentaria
+  @mediation (const) [1]  -- ClassificadorDocumentalDe -- [1] (const) DespesaOrcamentaria
 }
 
 // kind Banco
@@ -82,12 +87,12 @@ role ConvenioRecebido specializes nucleo.Convenio
 
 relator RegistroDeConvenioConcedidoNaDespesaOrcamentaria {
   @mediation (const) [1] -- [1] (const) ConvenioConcedido
-  @mediation (const) [0..1] -- [1] (const) DocumentoContabilDeDespesaOrcamentaria
+  @mediation (const) [0..1] -- [1] (const) DespesaOrcamentaria
 }
 
 relator RegistroDeConvenioRecebidoNaDespesaOrcamentaria {
   @mediation (const) [1] -- [1] (const) ConvenioRecebido
-  @mediation (const) [0..1] -- [1] (const) DocumentoContabilDeDespesaOrcamentaria
+  @mediation (const) [0..1] -- [1] (const) DespesaOrcamentaria
 }
 
 

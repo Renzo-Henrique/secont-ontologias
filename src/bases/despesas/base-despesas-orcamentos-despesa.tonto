@@ -4,7 +4,7 @@ import nucleo from <../../nucleo/nucleo.tonto>
 import base-despesas from <base-despesas.tonto>
 
 role UnidadeGestoraComOrcamentoDeDespesa specializes nucleo.UnidadeGestora
-role DocumentoContabilDeOrcamentoDeDespesa specializes nucleo.DocumentoContabil
+role DocumentoContabilDeOrcamentoDeDespesa specializes base-despesas.DocumentoContabilDeDespesaOrcamentaria
 
 relator ClassificadorDeOrcamentoDeDespesa {
   @mediation [0..*] -- [1] (const) base-despesas.ClassificadorInstitucionalDeDespesa

@@ -5,7 +5,10 @@
     "showExternalReferences": true,
     "showDatatypes": true,
     "showGensets": true,
-    "derivedMaterialMode": "both"
+    "derivedMaterialMode": "both",
+    "hidden": [
+      "nucleo::UnidadeGestora"
+    ]
   },
   "display": {
     "taxonomyOnly": false,
@@ -41,26 +44,52 @@
       "y": 208
     },
     "base-despesas-restos-a-pagar::DocumentoContabilDeRestosAPagar": {
-      "x": 408,
-      "y": 392
+      "x": 400,
+      "y": 496
     },
     "nucleo::DocumentoContabil": {
-      "x": 464,
-      "y": 248
+      "x": 472,
+      "y": 1008
     },
     "base-despesas-restos-a-pagar::DadosDeRestosAPagarAnonimizados": {
-      "x": 480,
-      "y": 704
+      "x": 392,
+      "y": 400
     },
     "base-despesas-restos-a-pagar::RegistroDeRestosAPagar": {
-      "x": 157,
-      "y": 537,
-      "width": 347,
-      "height": 84
+      "x": 48,
+      "y": 640
     },
     "base-despesas::ClassificadorPorNaturezaDeDespesa": {
-      "x": 184,
-      "y": 864
+      "x": 104,
+      "y": 856
+    },
+    "base-despesas-restos-a-pagar::CriacaoDeDespesaNaoPaga": {
+      "x": 664,
+      "y": 656
+    },
+    "base-despesas-restos-a-pagar::TerminoDoExercicioFinanceitoVigente": {
+      "x": 688,
+      "y": 408
+    },
+    "base-despesas::DocumentoContabilDeDespesaOrcamentariaExercicioVigente": {
+      "x": 888,
+      "y": 792
+    },
+    "base-despesas-restos-a-pagar::DocumentoContabilDeDespesaOrcamentariaExercicioAnterior": {
+      "x": 408,
+      "y": 368
+    },
+    "base-despesas::DespesaDeExercicioVigente": {
+      "x": 664,
+      "y": 856
+    },
+    "base-despesas-restos-a-pagar::DespesaDeExercicioAnterior": {
+      "x": 416,
+      "y": 736
+    },
+    "base-despesas-restos-a-pagar::TerminoDoExercicioDeDespesaVigente": {
+      "x": 720,
+      "y": 496
     }
   },
   "edges": {}

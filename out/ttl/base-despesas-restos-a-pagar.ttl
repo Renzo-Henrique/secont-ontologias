@@ -27,14 +27,26 @@ base-despesas-restos-a-pagar:UnidadeGestoraComRestosAPagar a owl:Class, gufo:Rol
           owl:onProperty [ owl:inverseOf base-despesas-restos-a-pagar:RegistroDeRestosAPagar.mediatesUnidadeGestoraComRestosAPagar ] ;
           owl:someValuesFrom base-despesas-restos-a-pagar:RegistroDeRestosAPagar ] .
 
+base-despesas-restos-a-pagar:DespesaDeExercicioAnterior a owl:Class, gufo:SubKind ;
+    rdfs:label "DespesaDeExercicioAnterior" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas-restos-a-pagar> ;
+    rdfs:subClassOf nucleo:DocumentoContabil .
+
 base-despesas-restos-a-pagar:DocumentoContabilDeRestosAPagar a owl:Class, gufo:Role ;
     rdfs:label "DocumentoContabilDeRestosAPagar" ;
+    rdfs:comment """São Restos a Pagar todas as despesas regularmente empenhadas, do exercício atual ou anterior, mas não pagas até 31 de dezembro do exercício financeiro vigente. Distingue-se dois tipos de restos a pagar: os processados (despesas já liquidadas); e os não processados (despesas a liquidar ou em liquidação).
+Cite MCASP - 11º Edição: Parte I: Seção 4.7""" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas-restos-a-pagar> ;
     rdfs:subClassOf
-        nucleo:DocumentoContabil,
+        base-despesas-restos-a-pagar:DespesaDeExercicioAnterior,
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas-restos-a-pagar:DocumentoContabilDeRestosAPagar.wasCreatedInCriacaoDeDespesaNaoPaga ;
+          owl:onClass base-despesas-restos-a-pagar:CriacaoDeDespesaNaoPaga ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
           owl:onProperty [ owl:inverseOf base-despesas-restos-a-pagar:RegistroDeRestosAPagar.mediatesDocumentoContabilDeRestosAPagar ] ;
-          owl:someValuesFrom base-despesas-restos-a-pagar:RegistroDeRestosAPagar ] .
+          owl:onClass base-despesas-restos-a-pagar:RegistroDeRestosAPagar ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
 
 base-despesas-restos-a-pagar:DadosDeRestosAPagarAnonimizados a rdfs:Datatype ;
     rdfs:label "DadosDeRestosAPagarAnonimizados" ;
@@ -65,6 +77,44 @@ base-despesas-restos-a-pagar:RegistroDeRestosAPagar a owl:Class, gufo:Kind ;
           owl:onClass base-despesas:ClassificadorPorNaturezaDeDespesa ;
           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
 
+base-despesas-restos-a-pagar:CriacaoDeDespesaNaoPaga a owl:Class, gufo:EventType ;
+    rdfs:label "CriacaoDeDespesaNaoPaga" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas-restos-a-pagar> ;
+    rdfs:subClassOf
+        gufo:Event,
+        [ a owl:Restriction ;
+          owl:onProperty [ owl:inverseOf base-despesas-restos-a-pagar:DocumentoContabilDeRestosAPagar.wasCreatedInCriacaoDeDespesaNaoPaga ] ;
+          owl:onClass base-despesas-restos-a-pagar:DocumentoContabilDeRestosAPagar ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty [ owl:inverseOf base-despesas-restos-a-pagar:TerminoDoExercicioDeDespesaVigente.triggers ] ;
+          owl:onClass base-despesas-restos-a-pagar:TerminoDoExercicioDeDespesaVigente ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty [ owl:inverseOf base-despesas-restos-a-pagar:DespesaDeExercicioVigente.wasTerminatedInCriacaoDeDespesaNaoPaga ] ;
+          owl:onClass base-despesas:DespesaDeExercicioVigente ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
+
+base-despesas-restos-a-pagar:TerminoDoExercicioDeDespesaVigente a owl:Class, gufo:SituationType ;
+    rdfs:label "TerminoDoExercicioDeDespesaVigente" ;
+    rdfs:comment """No fim do exercício, as despesas orçamentárias empenhadas e não pagas serão inscritas em restos a pagar.
+Cite MCASP - 11º Edição: Parte I: Seção 4.7.1""" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas-restos-a-pagar> ;
+    rdfs:subClassOf gufo:Situation .
+
+base-despesas:DespesaDeExercicioVigente rdfs:subClassOf
+        nucleo:DocumentoContabil,
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas-restos-a-pagar:DespesaDeExercicioVigente.wasTerminatedInCriacaoDeDespesaNaoPaga ;
+          owl:onClass base-despesas-restos-a-pagar:CriacaoDeDespesaNaoPaga ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
+
+[] a owl:AllDisjointClasses ;
+    owl:members (
+        base-despesas-restos-a-pagar:DespesaDeExercicioAnterior
+        base-despesas:DespesaDeExercicioVigente
+    ) .
+
 base-despesas-restos-a-pagar:RegistroDeRestosAPagar.dadosAnonimizados a
         owl:DatatypeProperty,
         owl:FunctionalProperty ;
@@ -83,9 +133,20 @@ base-despesas-restos-a-pagar:RegistroDeRestosAPagar.poder a
     rdfs:range nucleo:PoderDaFederacao ;
     rdfs:subPropertyOf gufo:hasQualityValue .
 
+base-despesas-restos-a-pagar:DocumentoContabilDeRestosAPagar.wasCreatedInCriacaoDeDespesaNaoPaga a
+        owl:ObjectProperty,
+        owl:FunctionalProperty,
+        owl:InverseFunctionalProperty ;
+    rdfs:label "DocumentoContabilDeRestosAPagar.wasCreatedInCriacaoDeDespesaNaoPaga" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas-restos-a-pagar> ;
+    rdfs:domain base-despesas-restos-a-pagar:DocumentoContabilDeRestosAPagar ;
+    rdfs:range base-despesas-restos-a-pagar:CriacaoDeDespesaNaoPaga ;
+    rdfs:subPropertyOf gufo:wasCreatedIn .
+
 base-despesas-restos-a-pagar:RegistroDeRestosAPagar.mediatesDocumentoContabilDeRestosAPagar a
         owl:ObjectProperty,
-        owl:FunctionalProperty ;
+        owl:FunctionalProperty,
+        owl:InverseFunctionalProperty ;
     rdfs:label "RegistroDeRestosAPagar.mediatesDocumentoContabilDeRestosAPagar" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas-restos-a-pagar> ;
     rdfs:domain base-despesas-restos-a-pagar:RegistroDeRestosAPagar ;
@@ -115,6 +176,32 @@ base-despesas:ClassificadorPorNaturezaDeDespesa rdfs:subClassOf [ a owl:Restrict
                                                                   owl:onProperty [ owl:inverseOf base-despesas-restos-a-pagar:RegistroDeRestosAPagar.ClassificadoPor ] ;
                                                                   owl:onClass base-despesas-restos-a-pagar:RegistroDeRestosAPagar ;
                                                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
+
+base-despesas-restos-a-pagar:TerminoDoExercicioDeDespesaVigente.triggers a
+        owl:ObjectProperty,
+        owl:InverseFunctionalProperty ;
+    rdfs:label "triggers" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas-restos-a-pagar> ;
+    rdfs:domain base-despesas-restos-a-pagar:TerminoDoExercicioDeDespesaVigente ;
+    rdfs:range base-despesas-restos-a-pagar:CriacaoDeDespesaNaoPaga ;
+    rdfs:subPropertyOf gufo:contributedToTrigger .
+
+base-despesas-restos-a-pagar:DespesaDeExercicioVigente.wasTerminatedInCriacaoDeDespesaNaoPaga a
+        owl:ObjectProperty,
+        owl:FunctionalProperty,
+        owl:InverseFunctionalProperty ;
+    rdfs:label "DespesaDeExercicioVigente.wasTerminatedInCriacaoDeDespesaNaoPaga" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas-restos-a-pagar> ;
+    rdfs:domain base-despesas:DespesaDeExercicioVigente ;
+    rdfs:range base-despesas-restos-a-pagar:CriacaoDeDespesaNaoPaga ;
+    rdfs:subPropertyOf gufo:wasTerminatedIn .
+
+[] a owl:AllDisjointClasses ;
+    owl:members (
+        base-despesas-restos-a-pagar:CriacaoDeDespesaNaoPaga
+        base-despesas-restos-a-pagar:RegistroDeRestosAPagar
+        base-despesas-restos-a-pagar:TerminoDoExercicioDeDespesaVigente
+    ) .
 
 vann:preferredNamespacePrefix a owl:AnnotationProperty .
 
