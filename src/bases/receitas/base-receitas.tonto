@@ -33,7 +33,6 @@ category NaturezaDaReceita of intrinsic-modes {
 
     codigoTipo: const string [1]
     descricaoTipo: const string [1]
-
 }
 
 /// @pt-br A classificação por fontes ou destinações de recursos (FR) tem como objetivo agrupar receitas que possuam as mesmas normas de aplicação na despesa. Em regra, as fontes ou destinações de recursos reúnem recursos oriundos de determinados códigos da classificação por natureza da receita orçamentária, conforme regras previamente estabelecidas. Por meio do orçamento público, essas fontes ou destinações são associadas a determinadas despesas de forma a evidenciar os meios para atingir os objetivos públicos.
@@ -52,24 +51,24 @@ category FonteDaReceita of intrinsic-modes {
     codigoDetalhamentoFonte: const string [1]
     codigoDetalhamentoFonteAux: const string [1]
     descricaoDetalhamentoFonte: const string [1]
-
 }
 
 
 /// @pt-br Conta é a expressão qualitativa e quantitativa de fatos de mesma natureza, que evidencia a composição, variação e estado do patrimônio, bem como de bens, direitos, obrigações e situações nele não compreendidas, mas que, direta ou indiretamente, possam vir a afetá-lo.
 /// Cite MCASP - 11º Edicao: Parte IV: Seções 2.3 ; 3.1
-category ContaContabil of intrinsic-modes{
+category ContaContabil of intrinsic-modes {
     @characterization [0..*] -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
 
     codigo: const string [1]
     descricao: const string [1]
-
 }
 
 
 
+/// @pt-br Unidade gestora responsável pela emissão do documento contábil de receita.
 role UnidadeGestoraEmitenteDeReceita specializes nucleo.UnidadeGestora
 
+/// @pt-br Unidade gestora beneficiada pela receita registrada no documento contábil.
 role UnidadeGestoraBeneficiadaDeReceita specializes nucleo.UnidadeGestora
 
 
@@ -82,7 +81,8 @@ role UnidadeGestoraBeneficiadaDeReceita specializes nucleo.UnidadeGestora
 /// Cite MCASP - 11º Edicao: Parte I: Seção 3.1.2
 subkind DocumentoContabilDeReceitaOrcamentaria specializes nucleo.DocumentoContabil
 
-role DocumentoContabilDeReceita specializes DocumentoContabilDeReceitaOrcamentaria{
+/// @pt-br Documento contabil referente aos arquivos "Receitas"
+role DocumentoContabilDeReceita specializes DocumentoContabilDeReceitaOrcamentaria {
     codigoIdUso: const string [1]
     descricaoIdUso: const string [1]
     valorPrevista: const string [1]
@@ -103,11 +103,11 @@ role DocumentoContabilDeReceita specializes DocumentoContabilDeReceitaOrcamentar
     ano: const string [1]
 }
 
-relator RegistroDeReceitaOrcamentaria{
+/// @pt-br Registro que associa o documento contábil de receita às unidades gestoras emitente e beneficiada.
+relator RegistroDeReceitaOrcamentaria {
     @mediation (const) [1]  -- formalizadaPor -- [1] (const) DocumentoContabilDeReceita
     @mediation [1..*] -- temUnidadeGestoraEmitente -- [1] (const) UnidadeGestoraEmitenteDeReceita
-    @mediation [1..*] -- temUnidadeGestoraBeneficiada -- [1] (const) UnidadeGestoraBeneficiadaDeReceita 
-    
+    @mediation [1..*] -- temUnidadeGestoraBeneficiada -- [1] (const) UnidadeGestoraBeneficiadaDeReceita
 }
 
 /**

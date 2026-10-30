@@ -12,6 +12,7 @@ kind UnidadeGestora {
 
 // datatype Cpf specializes string
 // datatype Nis specializes string
+/// @pt-br Pessoa natural identificada no modelo por CPF e nome, podendo também ter NIS informado.
 kind PessoaFisica {
     
     // cpf: Cpf [1] {const}
@@ -23,6 +24,7 @@ kind PessoaFisica {
 
 //datatype Cnpj specializes string
 
+/// @pt-br Entidade com personalidade jurídica identificada no modelo por CNPJ e nome.
 kind PessoaJuridica {
  
     //cnpj: Cnpj [1] {const}
@@ -36,22 +38,28 @@ kind DocumentoContabil
 
 
 
+/// @pt-br Unidade territorial usada para agrupar municípios no contexto geográfico da ontologia.
 kind Regiao
 
-kind MicroRegiao{
+/// @pt-br Recorte geográfico formado por municípios e vinculado a uma região no modelo.
+kind MicroRegiao {
     @componenthood [0..*] --<> [1] (const) Regiao
 }
 
-kind Municipio{
+/// @pt-br Unidade territorial municipal relacionada à região e à microrregião correspondentes.
+kind Municipio {
     @componenthood [0..*] --<> [1] (const) Regiao
     @componenthood [0..*] --<> [0..*] (const) MicroRegiao
 }
 
+/// @pt-br Instituição financeira referenciada nos dados do Portal da Transparência.
 kind Banco
 
-/// Convênios, contratos de repasse e termos de parceria são acordos feitos entre União e entidades governamentais dos demais entes da Federação, ou organizações não-governamentais, para transferência de recursos financeiros a serem utilizados na execução de um objetivo comum. Portanto, as transferências voluntárias e legais serão viabilizadas a partir dos mencionados instrumentos e outros congêneres.
+/// @pt-br  Convênios, contratos de repasse e termos de parceria são acordos feitos entre União e entidades governamentais dos demais entes da Federação, ou organizações não-governamentais, para transferência de recursos financeiros a serem utilizados na execução de um objetivo comum. Portanto, as transferências voluntárias e legais serão viabilizadas a partir dos mencionados instrumentos e outros congêneres.
 /// Cite url https://portaldatransparencia.gov.br/entenda-a-gestao-publica/convenios-e-outros-acordos
 kind Convenio
 
+/// @pt-br Classificação que identifica o Poder da Federação ao qual uma unidade gestora está vinculada.
 datatype PoderDaFederacao
+/// @pt-br Representação de informações pessoais que foram submetidas a processo de anonimização.
 datatype DadosPessoaisAnonimizados
