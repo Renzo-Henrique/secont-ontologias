@@ -4,8 +4,11 @@ import nucleo from <../../nucleo/nucleo.tonto>
 
 /// @pt-br Despesa orçamentária é toda transação que depende de autorização legislativa, na forma de consignação de dotação orçamentária, para ser efetivada.
 /// Cite MCASP - 11º Edição: Parte I: Seção 4.1
-subkind DocumentoContabilDeDespesaOrcamentaria specializes nucleo.DocumentoContabil
+subkind DocumentoContabilDeDespesaOrcamentaria specializes nucleo.DocumentoContabil{
 
+    // [0..*] -- convenioRecebidoDe -- [0..1] (const) nucleo.Convenio
+    // [0..*] -- convenioConcedidoDe -- [0..1] (const) nucleo.Convenio
+}
 
 
 /// @pt-br A classificação institucional reflete a estrutura de alocação dos créditos orçamentários e está estruturada em dois níveis hierárquicos: órgão orçamentário e unidade orçamentária. Constitui unidade orçamentária o agrupamento de serviços subordinados ao mesmo órgão ou repartição a que serão consignadas dotações próprias (art. 14 da Lei nº 4.320/1964).
@@ -45,7 +48,7 @@ category FonteDaDespesa of functional-complexes {
 
 
 /// @pt-br  Documento contabil referente aos arquivos "Despesas"
-role DocumentoContabilDeDespesa specializes DespesaDeExercicioVigente
+role DocumentoContabilDeDespesa specializes DespesaDeExercicioVigente, DespesaDePagamento
 
 /// @pt-br Unidade gestora responsável pela emissão do documento contábil de despesa.
 role UnidadeGestoraEmitenteDeDespesa specializes nucleo.UnidadeGestora
@@ -57,23 +60,45 @@ relator RegistroDeDespesaOrcamentaria {
     dadosAnonimizados: const nucleo.DadosPessoaisAnonimizados [1]
 }
 
-/// @pt-br Convênio no qual a unidade gestora concede recursos relacionados à despesa.
-role ConvenioConcedido specializes nucleo.Convenio
+// /// @pt-br Convênio no qual a unidade gestora concede recursos relacionados à despesa.
+// role ConvenioConcedido specializes nucleo.Convenio
 
-/// @pt-br Convênio no qual a unidade gestora recebe recursos relacionados à despesa.
-role ConvenioRecebido specializes nucleo.Convenio
+// /// @pt-br Convênio no qual a unidade gestora recebe recursos relacionados à despesa.
+// role ConvenioRecebido specializes nucleo.Convenio
 
-/// @pt-br Registro da associação entre um convênio concedido e o documento contábil de despesa correspondente.
-relator RegistroDeConvenioConcedidoNaDespesaOrcamentaria {
-    @mediation (const) [1] -- [1] (const) ConvenioConcedido
-    @mediation (const) [0..1] -- [1] (const) DocumentoContabilDeDespesa
-}
+// /// @pt-br Registro da associação entre um convênio concedido e o documento contábil de despesa correspondente.
+// relator RegistroDeConvenioConcedidoNaDespesaOrcamentaria {
+//     @mediation (const) [1] -- [1] (const) ConvenioConcedido
+//     @mediation (const) [0..1] -- [1] (const) DocumentoContabilDeDespesa
+// }
 
-/// @pt-br Registro da associação entre um convênio recebido e o documento contábil de despesa correspondente.
-relator RegistroDeConvenioRecebidoNaDespesaOrcamentaria {
-    @mediation (const) [1] -- [1] (const) ConvenioRecebido
-    @mediation (const) [0..1] -- [1] (const) DocumentoContabilDeDespesa
-}
+// /// @pt-br Registro da associação entre um convênio recebido e o documento contábil de despesa correspondente.
+// relator RegistroDeConvenioRecebidoNaDespesaOrcamentaria {
+//     @mediation (const) [1] -- [1] (const) ConvenioRecebido
+//     @mediation (const) [0..1] -- [1] (const) DocumentoContabilDeDespesa
+// }
+
+
+
+/// @pt-br A etapa do planejamento abrange, de modo geral, toda a análise para a formulação do plano e ações governamentais que servirão de base para a fixação da despesa orçamentária, a descentralização/movimentação de créditos, a programação orçamentária e financeira, e o processo de licitação e contratação.
+/// Cite MCASP - 11º Edição: Parte I: Seção 4.4.2.1
+phase DespesaDeEmpenho specializes DocumentoContabilDeDespesaOrcamentaria
+
+/// @pt-br Conforme dispõe o art. 63 da Lei nº 4.320/1964, a liquidação consiste na verificação do direito adquirido pelo credor tendo por base os títulos e documentos comprobatórios do respectivo crédito
+/// Cite MCASP - 11º Edição: Parte I: Seção 4.4.2.3
+phase DespesaDeLiquidacao specializes DocumentoContabilDeDespesaOrcamentaria
+
+/// @pt-br O pagamento consiste na entrega de numerário ao credor por meio de cheque nominativo, ordens de pagamentos ou crédito em conta, e só pode ser efetuado após a regular liquidação da despesa. A Lei nº 4.320/1964, no art. 64, define ordem de pagamento como sendo o despacho exarado por autoridade competente, determinando que a despesa liquidada seja paga. A ordem de pagamento só pode ser exarada em documentos processados pelos serviços de contabilidade.
+/// Cite MCASP - 11º Edição: Parte I: Seção 4.4.2.4
+phase DespesaDePagamento specializes DocumentoContabilDeDespesaOrcamentaria
+
+
+/// @pt-br A execução da despesa orçamentária se dá em três estágios, na forma prevista na Lei nº 4.320/1964: empenho, liquidação e pagamento.
+/// Cite MCASP - 11º Edição: Parte I: Seção 4.4.2
+/// Uma Despesa em Execução é primeiro uma DespesaDeEmpenho. Após ocorrência do fato gerador vira uma DespesaDeLiquidacao. Após a liquidação, vira uma DespesaDePagamento.
+/// Note que a Despesa não considera etapas de planejamento. Note que apenas as etapas de empenho e pagamento são consideradas no escopo vertical da ontologia para aprofundamento dos conceitos.
+disjoint complete genset EstagiosDaDespesaEmExecucao where DespesaDeEmpenho, DespesaDeLiquidacao, DespesaDePagamento specializes DocumentoContabilDeDespesaOrcamentaria
+
 
 
 
@@ -87,36 +112,39 @@ RestosAPagar
 
 **/
 
-/// @pt-br Unidade gestora associada ao registro de despesas inscritas em restos a pagar.
-role UnidadeGestoraComRestosAPagar specializes nucleo.UnidadeGestora
+
 
 /// @pt-br  Despesa empenhada que foi paga no mesmo exercício vigente em que foi emitida
-historicalRole DespesaDeExercicioVigente specializes DocumentoContabilDeDespesaOrcamentaria
+subkind DespesaDeExercicioVigente specializes DocumentoContabilDeDespesaOrcamentaria
 
 /// @pt-br  São Restos a Pagar todas as despesas regularmente empenhadas, do exercício atual ou anterior, mas não pagas até 31 de dezembro do exercício financeiro vigente. 
 /// Cite MCASP - 11º Edição: Parte I: Seção 4.7
-historicalRole DespesaDeExercicioAnterior specializes DocumentoContabilDeDespesaOrcamentaria
+subkind DespesaDeExercicioAnterior specializes DocumentoContabilDeDespesaOrcamentaria
+
 /// Separação de despesas por empenhadas, mas subdividindo em "Pagas no exercício vigente ao da emissão da despesa" e "Não pagas no exercício vigente ao da emissão da despesa"
 disjoint complete genset DespesaPorVigencia where DespesaDeExercicioVigente, DespesaDeExercicioAnterior specializes DocumentoContabilDeDespesaOrcamentaria
 
 
 /// @pt-br  No fim do exercício, as despesas orçamentárias empenhadas e não pagas serão inscritas em restos a pagar.
 /// Cite MCASP - 11º Edição: Parte I: Seção 4.7.1
-situation TerminoDoExercicioDeDespesaVigente {
+situation TerminoDoExercicioVigenteDaDespesa{
     @triggering (const) [1] -- triggers -- [0..*] (addOnly) CriacaoDeDespesaNaoPaga
 }
 
+
 /// @pt-br  Evento de criação de uma despesa empenhada que NÃO foi paga no mesmo exercício vigente em que foi emitida
 event CriacaoDeDespesaNaoPaga
-@termination relation DespesaDeExercicioVigente (const) [1]  -- [0..1] CriacaoDeDespesaNaoPaga
+
+@termination relation DespesaDeExercicioVigente (const) [1]  -- [0..1] (const) CriacaoDeDespesaNaoPaga
 @creation relation DespesaDeExercicioAnterior (const) [1] -- [1] (const) CriacaoDeDespesaNaoPaga
 
 
 
 
 /// @pt-br  Documento contabil referente aos arquivos "RestosAPagar"
-role DocumentoContabilDeRestosAPagar specializes DespesaDeExercicioAnterior
-
+role DocumentoContabilDeRestosAPagar specializes DespesaDeExercicioAnterior, DespesaDePagamento
+/// @pt-br Unidade gestora associada ao registro de despesas inscritas em restos a pagar.
+role UnidadeGestoraComRestosAPagar specializes nucleo.UnidadeGestora
 
 /// @pt-br Registro de uma despesa inscrita em restos a pagar e da unidade gestora associada, com dados de anonimização e Poder da Federação.
 relator RegistroDeRestosAPagar {
@@ -137,7 +165,7 @@ Orcamentos-despesa
 /// @pt-br Unidade gestora associada ao registro de orçamento de despesa.
 role UnidadeGestoraComOrcamentoDeDespesa specializes nucleo.UnidadeGestora
 /// @pt-br  Documento contabil referente aos arquivos "OrcamentosDespesa"
-role DocumentoContabilDeOrcamentoDeDespesa specializes DocumentoContabilDeDespesaOrcamentaria
+role DocumentoContabilDeOrcamentoDeDespesa specializes DespesaDeEmpenho
 
 /// @pt-br Registro do orçamento de despesa, associado à unidade gestora e às localidades geográficas aplicáveis.
 relator RegistroDeOrcamentoDeDespesa {
@@ -154,14 +182,14 @@ Orcamentos-execucoes
 
 **/
 
-/// @pt-br Unidade gestora associada ao registro de execução do orçamento de despesa.
-role UnidadeGestoraComOrcamentoDeExecucao specializes nucleo.UnidadeGestora
+// /// @pt-br Unidade gestora associada ao registro de execução do orçamento de despesa.
+// role UnidadeGestoraComOrcamentoDeExecucao specializes nucleo.UnidadeGestora
 
-/// @pt-br  Documento contabil referente aos arquivos "OrcamentosExecucoes"
-role DocumentoContabilDeOrcamentoDeExecucao specializes DocumentoContabilDeDespesaOrcamentaria
+// /// @pt-br  Documento contabil referente aos arquivos "OrcamentosExecucoes"
+// role DocumentoContabilDeOrcamentoDeExecucao specializes DocumentoContabilDeDespesaOrcamentaria
 
-/// @pt-br Registro da execução do orçamento de despesa, associado ao documento contábil e à unidade gestora.
-relator RegistroDeOrcamentoDeExecucao {
-    @mediation (const) [1]  -- [1] (const) DocumentoContabilDeOrcamentoDeExecucao
-    @mediation [1..*] -- [1] (const) UnidadeGestoraComOrcamentoDeExecucao
-}
+// /// @pt-br Registro da execução do orçamento de despesa, associado ao documento contábil e à unidade gestora.
+// relator RegistroDeOrcamentoDeExecucao {
+//     @mediation (const) [1]  -- [1] (const) DocumentoContabilDeOrcamentoDeExecucao
+//     @mediation [1..*] -- [1] (const) UnidadeGestoraComOrcamentoDeExecucao
+// }
