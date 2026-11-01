@@ -32,6 +32,8 @@ category NaturezaDaReceita of functional-complexes{
 
     codigoTipo: const string [1]
     descricaoTipo: const string [1]
+
+    [1] -- classifica -- [0..*] (const) DocumentoContabilDeReceitaOrcamentaria
 }
 
 /// @pt-br A classificação por fontes ou destinações de recursos (FR) tem como objetivo agrupar receitas que possuam as mesmas normas de aplicação na despesa. Em regra, as fontes ou destinações de recursos reúnem recursos oriundos de determinados códigos da classificação por natureza da receita orçamentária, conforme regras previamente estabelecidas. Por meio do orçamento público, essas fontes ou destinações são associadas a determinadas despesas de forma a evidenciar os meios para atingir os objetivos públicos.
@@ -49,6 +51,8 @@ category FonteDaReceita of functional-complexes{
     codigoDetalhamentoFonte: const string [1]
     codigoDetalhamentoFonteAux: const string [1]
     descricaoDetalhamentoFonte: const string [1]
+
+    [1] -- classifica -- [0..*] (const) DocumentoContabilDeReceitaOrcamentaria
 }
 
 
@@ -58,6 +62,8 @@ category ContaContabil of functional-complexes{
 
     codigo: const string [1]
     descricao: const string [1]
+
+    [1] -- classifica -- [0..*] (const) DocumentoContabilDeReceitaOrcamentaria
 }
 
 
@@ -77,8 +83,11 @@ role UnidadeGestoraBeneficiadaDeReceita specializes nucleo.UnidadeGestora
 /// São disponibilidades de recursos financeiros que ingressam durante o exercício e que aumentam o saldo financeiro da instituição. Instrumento por meio do qual se viabiliza a execução das políticas públicas, as receitas orçamentárias são fontes de recursos utilizadas pelo Estado em programas e ações cuja finalidade precípua é atender às necessidades públicas e demandas da sociedade.
 /// Essas receitas pertencem ao Estado, transitam pelo patrimônio do Poder Público e, via de regra, por força do princípio orçamentário da universalidade, estão previstas na Lei Orçamentária Anual - LOA.
 /// Cite MCASP - 11º Edicao: Parte I: Seção 3.1.2
-/// É o Documento contabil referente aos arquivos "Receitas"
-role DocumentoContabilDeReceitaOrcamentaria specializes nucleo.DocumentoContabil{
+subkind DocumentoContabilDeReceitaOrcamentaria specializes nucleo.DocumentoContabil{
+    
+}
+
+role DocumentoContabilDeReceita specializes DocumentoContabilDeReceitaOrcamentaria{
     codigoIdUso: const string [1]
     descricaoIdUso: const string [1]
     valorPrevista: const string [1]
@@ -101,18 +110,12 @@ role DocumentoContabilDeReceitaOrcamentaria specializes nucleo.DocumentoContabil
 
 /// @pt-br Registro que associa o documento contábil de receita às unidades gestoras emitente e beneficiada.
 relator RegistroDeReceitaOrcamentaria {
-    @mediation (const) [1]  -- formalizadaPor -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
+    @mediation (const) [1]  -- formalizadaPor -- [1] (const) DocumentoContabilDeReceita
     @mediation [1..*] -- temUnidadeGestoraEmitente -- [1] (const) UnidadeGestoraEmitenteDeReceita
     @mediation [1..*] -- temUnidadeGestoraBeneficiada -- [1] (const) UnidadeGestoraBeneficiadaDeReceita
 }
 
-/// @pt-br Classificador que associa o documento contábil de receita à natureza da receita, à fonte da receita e à conta contábil.
-relator ClassificadorDeReceitaOrcamentaria {
-    @mediation (const) [1] -- classifica -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
-    @mediation [0..*] -- temNaturezaDaReceita -- [1] (const) NaturezaDaReceita
-    @mediation [0..*] -- temFonteDaReceita -- [1] (const) FonteDaReceita
-    @mediation [0..*] -- temContaContabil -- [1] (const) ContaContabil
-}
+
 
 /**
 
@@ -120,8 +123,8 @@ relator ClassificadorDeReceitaOrcamentaria {
 
 **/
 
-@material relation DocumentoContabilDeReceitaOrcamentaria [1..*] -- emitidaPor -- [1] (const) UnidadeGestoraEmitenteDeReceita derivedFrom RegistroDeReceitaOrcamentaria
-@material relation DocumentoContabilDeReceitaOrcamentaria [1..*] -- emitidaPara -- [1] (const) UnidadeGestoraBeneficiadaDeReceita derivedFrom RegistroDeReceitaOrcamentaria
+@material relation DocumentoContabilDeReceita [1..*] -- emitidaPor -- [1] (const) UnidadeGestoraEmitenteDeReceita derivedFrom RegistroDeReceitaOrcamentaria
+@material relation DocumentoContabilDeReceita [1..*] -- emitidaPara -- [1] (const) UnidadeGestoraBeneficiadaDeReceita derivedFrom RegistroDeReceitaOrcamentaria
 
 
 

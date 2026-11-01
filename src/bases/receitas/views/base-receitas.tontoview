@@ -36,44 +36,44 @@
   },
   "nodes": {
     "base-receitas::NaturezaDaReceita": {
-      "x": 1056,
-      "y": 384
+      "x": 1232,
+      "y": 440
     },
     "base-receitas::FonteDaReceita": {
-      "x": 1056,
-      "y": 768
+      "x": 1952,
+      "y": 328
     },
     "base-receitas::ContaContabil": {
-      "x": 1472,
-      "y": 960
+      "x": 1256,
+      "y": 320
     },
     "base-receitas::UnidadeGestoraEmitenteDeReceita": {
-      "x": 1728,
-      "y": 872
+      "x": 1576,
+      "y": 952
     },
     "nucleo::UnidadeGestora": {
       "x": 1843,
       "y": 50
     },
     "base-receitas::UnidadeGestoraBeneficiadaDeReceita": {
-      "x": 2016,
-      "y": 480
+      "x": 1984,
+      "y": 672
     },
     "base-receitas::DocumentoContabilDeReceitaOrcamentaria": {
       "x": 1544,
       "y": 384
     },
     "nucleo::DocumentoContabil": {
-      "x": 1600,
-      "y": 280
+      "x": 1616,
+      "y": 232
     },
     "base-receitas::ReceitaOrcamentaria": {
       "x": 1700,
       "y": 1028
     },
     "base-receitas::RegistroDeReceitaOrcamentaria": {
-      "x": 2056,
-      "y": 728
+      "x": 2008,
+      "y": 944
     },
     "base-receitas::ClassificacaoDeReceitaOrcamentaria": {
       "x": 1279,
@@ -144,13 +144,30 @@
       "y": 1987
     },
     "base-receitas::DocumentoContabilDeReceita": {
-      "x": 1560,
-      "y": 656
+      "x": 1584,
+      "y": 512
     },
     "base-receitas::ClassificadorDeReceitaOrcamentaria": {
       "x": 1416,
       "y": 832
     }
   },
-  "edges": {}
+  "edges": {
+    "rel:base-receitas::NaturezaDaReceita->base-receitas::DocumentoContabilDeReceitaOrcamentaria::classifica": {
+      "points": [
+        {
+          "x": 1451,
+          "y": 539
+        },
+        {
+          "x": 1520,
+          "y": 464
+        },
+        {
+          "x": 1650,
+          "y": 426
+        }
+      ]
+    }
+  }
 }
