@@ -44,39 +44,40 @@ category FonteDaDespesa of functional-complexes {
     [1] -- classifica -- [0..*] (const) DocumentoContabilDeDespesaOrcamentaria
 }
 
+/// @pt-br Registro que associa o documento contábil de despesa à unidade gestora emitente.
+relator RegistroDeDespesaOrcamentaria{
+    @mediation (const) [1]  -- [1] (const) DespesaRegistrada
+    @mediation [1..*] --  [1] (const) UnidadeGestoraEmitenteDeDespesa
+    dadosAnonimizados: const nucleo.DadosPessoaisAnonimizados [1]
+    poder: const  nucleo.PoderDaFederacao [0..1]
+}
 
+subkind RegistroDeDespesaOrcamentariaComOpcionais specializes RegistroDeDespesaOrcamentaria{
+    [0..*] -- [0..1] (const) nucleo.MicroRegiao
+    [0..*] -- [0..1] (const) nucleo.Municipio
+    [0..*] -- [0..1] (const) nucleo.Banco
+    [0..*] -- [0..1] (const) ConcedorDeConvenio
+    [0..*] -- [0..1] (const) RecebedorDeConvenio
+}
 
+role ConcedorDeConvenio specializes nucleo.Convenio
+role RecebedorDeConvenio specializes nucleo.Convenio
 
 /// @pt-br  Documento contabil referente aos arquivos "Despesas"
-role DocumentoContabilDeDespesa specializes DespesaDeExercicioVigente, DespesaDePagamento
+role Despesa specializes DespesaDeExercicioVigente, DespesaDePagamento, DespesaRegistrada
 
 /// @pt-br Unidade gestora responsável pela emissão do documento contábil de despesa.
 role UnidadeGestoraEmitenteDeDespesa specializes nucleo.UnidadeGestora
-/// @pt-br Registro que associa o documento contábil de despesa à unidade gestora emitente.
-relator RegistroDeDespesaOrcamentaria {
-    @mediation (const) [1]  -- [1] (const) DocumentoContabilDeDespesa
-    @mediation [1..*] --  [1] (const) UnidadeGestoraEmitenteDeDespesa
 
-    dadosAnonimizados: const nucleo.DadosPessoaisAnonimizados [1]
-}
+// relator RegistroDeDespesa specializes RegistroDeDespesaOrcamentaria{
+//     @mediation (const) [1]  -- [1] (const) Despesa
+//     //@mediation [1..*] --  [1] (const) UnidadeGestoraEmitenteDeDespesa
 
-// /// @pt-br Convênio no qual a unidade gestora concede recursos relacionados à despesa.
-// role ConvenioConcedido specializes nucleo.Convenio
-
-// /// @pt-br Convênio no qual a unidade gestora recebe recursos relacionados à despesa.
-// role ConvenioRecebido specializes nucleo.Convenio
-
-// /// @pt-br Registro da associação entre um convênio concedido e o documento contábil de despesa correspondente.
-// relator RegistroDeConvenioConcedidoNaDespesaOrcamentaria {
-//     @mediation (const) [1] -- [1] (const) ConvenioConcedido
-//     @mediation (const) [0..1] -- [1] (const) DocumentoContabilDeDespesa
+//     dadosAnonimizados: const nucleo.DadosPessoaisAnonimizados [1]
+//     poder: const  nucleo.PoderDaFederacao [0..1]
 // }
 
-// /// @pt-br Registro da associação entre um convênio recebido e o documento contábil de despesa correspondente.
-// relator RegistroDeConvenioRecebidoNaDespesaOrcamentaria {
-//     @mediation (const) [1] -- [1] (const) ConvenioRecebido
-//     @mediation (const) [0..1] -- [1] (const) DocumentoContabilDeDespesa
-// }
+
 
 
 
@@ -100,9 +101,9 @@ phase DespesaDePagamento specializes DocumentoContabilDeDespesaOrcamentaria
 disjoint complete genset EstagiosDaDespesaEmExecucao where DespesaDeEmpenho, DespesaDeLiquidacao, DespesaDePagamento specializes DocumentoContabilDeDespesaOrcamentaria
 
 
-
-
-
+/// Agrupa os papeis das despesas que são representadas por arquivos no Portal da Transparência.
+roleMixin DespesaRegistrada of functional-complexes
+disjoint complete genset arquivosDaBaseDeDespesa where Despesa, RestosAPagar, OrcamentoDeDespesa specializes DespesaRegistrada
 
 
 /**
@@ -142,18 +143,13 @@ event CriacaoDeDespesaNaoPaga
 
 
 /// @pt-br  Documento contabil referente aos arquivos "RestosAPagar"
-role DocumentoContabilDeRestosAPagar specializes DespesaDeExercicioAnterior, DespesaDePagamento
-/// @pt-br Unidade gestora associada ao registro de despesas inscritas em restos a pagar.
-role UnidadeGestoraComRestosAPagar specializes nucleo.UnidadeGestora
+role RestosAPagar specializes DespesaDeExercicioAnterior, DespesaDePagamento, DespesaRegistrada
 
 /// @pt-br Registro de uma despesa inscrita em restos a pagar e da unidade gestora associada, com dados de anonimização e Poder da Federação.
-relator RegistroDeRestosAPagar {
-    @mediation (const) [1]  -- [1] (const) DocumentoContabilDeRestosAPagar
-    @mediation [1..*] -- [1] (const) UnidadeGestoraComRestosAPagar
+// relator RegistroDeRestosAPagar specializes RegistroDeDespesaOrcamentaria{
+//     @mediation (const) [1]  -- [1] (const) RestosAPagar
 
-    dadosAnonimizados: const  nucleo.DadosPessoaisAnonimizados [1]
-    poder: const  nucleo.PoderDaFederacao [1]
-}
+// }
 
 /**
 
@@ -162,34 +158,7 @@ Orcamentos-despesa
 
 **/
 
-/// @pt-br Unidade gestora associada ao registro de orçamento de despesa.
-role UnidadeGestoraComOrcamentoDeDespesa specializes nucleo.UnidadeGestora
 /// @pt-br  Documento contabil referente aos arquivos "OrcamentosDespesa"
-role DocumentoContabilDeOrcamentoDeDespesa specializes DespesaDeEmpenho
-
-/// @pt-br Registro do orçamento de despesa, associado à unidade gestora e às localidades geográficas aplicáveis.
-relator RegistroDeOrcamentoDeDespesa {
-    @mediation [1]  -- [1] (const) DocumentoContabilDeOrcamentoDeDespesa
-    @mediation [1..*] -- [1] (const) UnidadeGestoraComOrcamentoDeDespesa
-    @mediation [0..*] -- [1] (const) nucleo.MicroRegiao
-    @mediation [0..*] -- [1] (const) nucleo.Municipio
-}
-
-/**
-
-Orcamentos-execucoes
+role OrcamentoDeDespesa specializes DespesaDeEmpenho, DespesaRegistrada
 
 
-**/
-
-// /// @pt-br Unidade gestora associada ao registro de execução do orçamento de despesa.
-// role UnidadeGestoraComOrcamentoDeExecucao specializes nucleo.UnidadeGestora
-
-// /// @pt-br  Documento contabil referente aos arquivos "OrcamentosExecucoes"
-// role DocumentoContabilDeOrcamentoDeExecucao specializes DocumentoContabilDeDespesaOrcamentaria
-
-// /// @pt-br Registro da execução do orçamento de despesa, associado ao documento contábil e à unidade gestora.
-// relator RegistroDeOrcamentoDeExecucao {
-//     @mediation (const) [1]  -- [1] (const) DocumentoContabilDeOrcamentoDeExecucao
-//     @mediation [1..*] -- [1] (const) UnidadeGestoraComOrcamentoDeExecucao
-// }

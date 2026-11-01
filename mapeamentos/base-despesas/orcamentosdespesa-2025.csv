@@ -1,5 +1,5 @@
-CodigoUnidadeGestora ; base-despesas.UnidadeGestoraComOrcamentoDeDespesa
-UnidadeGestora ; base-despesas.UnidadeGestoraComOrcamentoDeDespesa
+CodigoUnidadeGestora ; base-despesas.UnidadeGestoraEmitenteDeDespesa
+UnidadeGestora ; base-despesas.UnidadeGestoraEmitenteDeDespesa
 CodigoPrograma ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa
 Programa ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa
 CodigoAcao ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa

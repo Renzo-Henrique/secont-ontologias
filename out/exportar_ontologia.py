@@ -80,20 +80,20 @@ def exportarDespesas():
     exportar_diagramas_com_tonto_view(
                 input_path="../src/bases/despesas/base-despesas.tonto",
                 output_dir=_PREFIX_OUTPUT_DIR+_PREFIX_DESPESAS,
-                output_name="base-despesas-completa",
-                view_file="../src/bases/despesas/views/versoes_da_view/base-despesas-completa.tontoview"
+                output_name="base-despesas-classificacao",
+                view_file="../src/bases/despesas/views/versoes_da_view/base-despesas-classificacao.tontoview"
         )
     exportar_diagramas_com_tonto_view(
                 input_path="../src/bases/despesas/base-despesas.tonto",
                 output_dir=_PREFIX_OUTPUT_DIR+_PREFIX_DESPESAS,
-                output_name="base-despesas-orcamentais",
-                view_file="../src/bases/despesas/views/versoes_da_view/base-despesas-orcamentais.tontoview"
+                output_name="base-despesas-subclasses",
+                view_file="../src/bases/despesas/views/versoes_da_view/base-despesas-subclasses.tontoview"
         )
     exportar_diagramas_com_tonto_view(
                 input_path="../src/bases/despesas/base-despesas.tonto",
                 output_dir=_PREFIX_OUTPUT_DIR+_PREFIX_DESPESAS,
-                output_name="base-despesas-por-vigencia",
-                view_file="../src/bases/despesas/views/versoes_da_view/base-despesas-por-vigencia.tontoview"
+                output_name="base-despesas-registro",
+                view_file="../src/bases/despesas/views/versoes_da_view/base-despesas-registro.tontoview"
         )
 
 

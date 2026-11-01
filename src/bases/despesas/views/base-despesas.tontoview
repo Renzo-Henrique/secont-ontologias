@@ -18,20 +18,30 @@
       "nucleo::Municipio",
       "nucleo::MicroRegiao",
       "base-despesas::RegistroDeOrcamentoDeExecucao",
-      "nucleo::DocumentoContabil",
-      "base-despesas::ClassificadorFuncionalDeDespesa",
-      "base-despesas::ClassificadorInstitucionalDeDespesa",
-      "base-despesas::ClassificadorPorEstruturaProgramaticaDeDespesa",
-      "base-despesas::ClassificadorPorNaturezaDeDespesa",
-      "base-despesas::CriacaoDeDespesaNaoPaga",
-      "base-despesas::TerminoDoExercicioVigenteDaDespesa",
       "base-despesas::RegistroDeRestosAPagar",
       "base-despesas::RegistroDeOrcamentoDeDespesa",
       "base-despesas::RegistroDeDespesaOrcamentaria",
-      "base-despesas::FonteDaDespesa",
       "base-despesas::UnidadeGestoraComOrcamentoDeDespesa",
       "base-despesas::UnidadeGestoraComRestosAPagar",
-      "base-despesas::UnidadeGestoraEmitenteDeDespesa"
+      "base-despesas::UnidadeGestoraEmitenteDeDespesa",
+      "base-despesas::RegistroDeConvenioConcedido",
+      "base-despesas::RegistroDeConvenioRecebido",
+      "nucleo::Convenio",
+      "base-despesas::DespesaRegistrada",
+      "base-despesas::CriacaoDeDespesaNaoPaga",
+      "base-despesas::Despesa",
+      "base-despesas::DespesaDeEmpenho",
+      "base-despesas::DespesaDeExercicioAnterior",
+      "base-despesas::DespesaDeExercicioVigente",
+      "base-despesas::DespesaDeLiquidacao",
+      "base-despesas::DespesaDePagamento",
+      "base-despesas::OrcamentoDeDespesa",
+      "base-despesas::TerminoDoExercicioVigenteDaDespesa",
+      "base-despesas::RestosAPagar",
+      "base-despesas::RegistroDeDespesaOrcamentariaComOpcionais",
+      "nucleo::Banco",
+      "base-despesas::ConcedorDeConvenio",
+      "base-despesas::RecebedorDeConvenio"
     ]
   },
   "display": {
@@ -64,7 +74,7 @@
       "y": 456
     },
     "nucleo::DocumentoContabil": {
-      "x": 616,
+      "x": 536,
       "y": 216
     },
     "base-despesas::ClassificadorDeDespesaOrcamentaria": {
@@ -73,31 +83,31 @@
     },
     "base-despesas::ClassificadorInstitucionalDeDespesa": {
       "x": 784,
-      "y": 344
+      "y": 368
     },
     "base-despesas::ClassificadorFuncionalDeDespesa": {
-      "x": 288,
-      "y": 336
+      "x": 64,
+      "y": 432
     },
     "base-despesas::ClassificadorPorEstruturaProgramaticaDeDespesa": {
       "x": 728,
-      "y": 544
+      "y": 552
     },
     "base-despesas::ClassificadorPorNaturezaDeDespesa": {
-      "x": -8,
+      "x": 232,
       "y": 552
     },
     "base-despesas::FonteDaDespesa": {
-      "x": 256,
-      "y": 472
+      "x": 360,
+      "y": 336
     },
     "base-despesas::TerminoDoExercicioDeDespesaVigente": {
       "x": 992,
       "y": 800
     },
     "base-despesas::CriacaoDeDespesaNaoPaga": {
-      "x": 1104,
-      "y": 560
+      "x": 968,
+      "y": 720
     },
     "base-despesas::DocumentoContabilDeRestosAPagar": {
       "x": 624,
@@ -112,8 +122,8 @@
       "y": 576
     },
     "base-despesas::DocumentoContabilDeOrcamentoDeDespesa": {
-      "x": 304,
-      "y": 768
+      "x": 256,
+      "y": 776
     },
     "base-despesas::UnidadeGestoraComOrcamentoDeDespesa": {
       "x": -16,
@@ -208,7 +218,23 @@
       "y": 656
     },
     "base-despesas::TerminoDoExercicioVigenteDaDespesa": {
-      "x": 1064,
+      "x": 920,
+      "y": 864
+    },
+    "base-despesas::DespesaRegistrada": {
+      "x": 800,
+      "y": 784
+    },
+    "base-despesas::RestosAPagar": {
+      "x": 1000,
+      "y": 960
+    },
+    "base-despesas::OrcamentoDeDespesa": {
+      "x": 336,
+      "y": 800
+    },
+    "base-despesas::Despesa": {
+      "x": 808,
       "y": 744
     }
   },
@@ -286,6 +312,26 @@
         {
           "x": 1157,
           "y": 618
+        }
+      ]
+    },
+    "gen:base-despesas::RestosAPagar->base-despesas::DespesaDePagamento": {
+      "points": [
+        {
+          "x": 1034,
+          "y": 960
+        },
+        {
+          "x": 898,
+          "y": 928
+        },
+        {
+          "x": 768,
+          "y": 928
+        },
+        {
+          "x": 761,
+          "y": 666
         }
       ]
     }
