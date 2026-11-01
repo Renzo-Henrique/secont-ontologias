@@ -109,9 +109,9 @@ relator RegistroDeReceitaOrcamentaria {
 /// @pt-br Classificador que associa o documento contábil de receita à natureza da receita, à fonte da receita e à conta contábil.
 relator ClassificadorDeReceitaOrcamentaria {
     @mediation (const) [1] -- classifica -- [1] (const) DocumentoContabilDeReceitaOrcamentaria
-    @mediation [1..*] -- temNaturezaDaReceita -- [1] (const) NaturezaDaReceita
-    @mediation [1..*] -- temFonteDaReceita -- [1] (const) FonteDaReceita
-    @mediation [1..*] -- temContaContabil -- [1] (const) ContaContabil
+    @mediation [0..*] -- temNaturezaDaReceita -- [1] (const) NaturezaDaReceita
+    @mediation [0..*] -- temFonteDaReceita -- [1] (const) FonteDaReceita
+    @mediation [0..*] -- temContaContabil -- [1] (const) ContaContabil
 }
 
 /**
