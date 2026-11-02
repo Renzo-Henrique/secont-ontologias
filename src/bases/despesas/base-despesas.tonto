@@ -56,8 +56,8 @@ subkind RegistroDeDespesaOrcamentariaComOpcionais specializes RegistroDeDespesaO
     [0..*] -- [0..1] (const) nucleo.MicroRegiao
     [0..*] -- [0..1] (const) nucleo.Municipio
     [0..*] -- [0..1] (const) nucleo.Banco
-    [0..*] -- [0..1] (const) ConcedorDeConvenio
-    [0..*] -- [0..1] (const) RecebedorDeConvenio
+    [1..*] -- [0..1] (const) ConcedorDeConvenio
+    [1..*] -- [0..1] (const) RecebedorDeConvenio
 }
 
 role ConcedorDeConvenio specializes nucleo.Convenio

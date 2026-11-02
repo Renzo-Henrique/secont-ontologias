@@ -140,12 +140,20 @@ base-despesas:RegistroDeDespesaOrcamentariaComOpcionais a owl:Class, gufo:SubKin
 base-despesas:ConcedorDeConvenio a owl:Class, gufo:Role ;
     rdfs:label "ConcedorDeConvenio" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
-    rdfs:subClassOf nucleo:Convenio .
+    rdfs:subClassOf
+        nucleo:Convenio,
+        [ a owl:Restriction ;
+          owl:onProperty [ owl:inverseOf base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasConcedorDeConvenio ] ;
+          owl:someValuesFrom base-despesas:RegistroDeDespesaOrcamentariaComOpcionais ] .
 
 base-despesas:RecebedorDeConvenio a owl:Class, gufo:Role ;
     rdfs:label "RecebedorDeConvenio" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
-    rdfs:subClassOf nucleo:Convenio .
+    rdfs:subClassOf
+        nucleo:Convenio,
+        [ a owl:Restriction ;
+          owl:onProperty [ owl:inverseOf base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasRecebedorDeConvenio ] ;
+          owl:someValuesFrom base-despesas:RegistroDeDespesaOrcamentariaComOpcionais ] .
 
 base-despesas:Despesa a owl:Class, gufo:Role ;
     rdfs:label "Despesa" ;
