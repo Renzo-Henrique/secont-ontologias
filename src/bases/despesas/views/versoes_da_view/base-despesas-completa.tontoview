@@ -160,8 +160,8 @@
       "y": 720
     },
     "base-despesas::UnidadeGestoraEmitenteDeDespesa": {
-      "x": 1104,
-      "y": 1240
+      "x": 608,
+      "y": 1408
     },
     "base-despesas::RegistroDeConvenioRecebidoNaDespesaOrcamentaria": {
       "x": 1216,
@@ -200,8 +200,8 @@
       "y": 656
     },
     "base-despesas::TerminoDoExercicioVigenteDaDespesa": {
-      "x": 1000,
-      "y": 992
+      "x": 928,
+      "y": 1000
     },
     "base-despesas::DespesaRegistrada": {
       "x": 664,
