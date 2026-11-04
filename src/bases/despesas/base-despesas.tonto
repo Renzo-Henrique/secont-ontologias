@@ -81,7 +81,7 @@ role UnidadeGestoraEmitenteDeDespesa specializes nucleo.UnidadeGestora
 
 
 
-/// @pt-br A etapa do planejamento abrange, de modo geral, toda a análise para a formulação do plano e ações governamentais que servirão de base para a fixação da despesa orçamentária, a descentralização/movimentação de créditos, a programação orçamentária e financeira, e o processo de licitação e contratação.
+/// @pt-br Empenho, segundo o art. 58 da Lei nº 4.320/1964, é o ato emanado de autoridade competente que cria para o Estado obrigação de pagamento pendente ou não de implemento de condição. Consiste na reserva de dotação orçamentária para um fim específico. 
 /// Cite MCASP - 11º Edição: Parte I: Seção 4.4.2.1
 phase DespesaDeEmpenho specializes DocumentoContabilDeDespesaOrcamentaria
 
