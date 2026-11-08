@@ -36,44 +36,44 @@
   },
   "nodes": {
     "base-receitas::NaturezaDaReceita": {
-      "x": 1200,
-      "y": 384
+      "x": 1952,
+      "y": 752
     },
     "base-receitas::FonteDaReceita": {
-      "x": 1232,
-      "y": 488
+      "x": 1736,
+      "y": 904
     },
     "base-receitas::ContaContabil": {
-      "x": 1960,
-      "y": 384
+      "x": 1464,
+      "y": 896
     },
     "base-receitas::UnidadeGestoraEmitenteDeReceita": {
-      "x": 1568,
-      "y": 656
+      "x": 1160,
+      "y": 584
     },
     "nucleo::UnidadeGestora": {
       "x": 1843,
       "y": 50
     },
     "base-receitas::UnidadeGestoraBeneficiadaDeReceita": {
-      "x": 1992,
-      "y": 512
+      "x": 1952,
+      "y": 584
     },
     "base-receitas::DocumentoContabilDeReceitaOrcamentaria": {
       "x": 1544,
       "y": 384
     },
     "nucleo::DocumentoContabil": {
-      "x": 1600,
-      "y": 280
+      "x": 1616,
+      "y": 232
     },
     "base-receitas::ReceitaOrcamentaria": {
-      "x": 1700,
-      "y": 1028
+      "x": 1592,
+      "y": 448
     },
     "base-receitas::RegistroDeReceitaOrcamentaria": {
-      "x": 2016,
-      "y": 656
+      "x": 1568,
+      "y": 760
     },
     "base-receitas::ClassificacaoDeReceitaOrcamentaria": {
       "x": 1279,
@@ -150,7 +150,44 @@
     "base-receitas::ClassificadorDeReceitaOrcamentaria": {
       "x": 1416,
       "y": 832
+    },
+    "base-receitas::ReceitaOrcamentariaRegistrada": {
+      "x": 1560,
+      "y": 584
+    },
+    "base-receitas::DocumentoFiscalDeReceita": {
+      "x": 1424,
+      "y": 784
+    },
+    "base-receitas::ValorAtreladoNaReceita": {
+      "x": 1192,
+      "y": 736
+    },
+    "base-receitas::DocumentoFiscal": {
+      "x": 1440,
+      "y": 1304
+    },
+    "nucleo::DocumentoFiscal": {
+      "x": 1464,
+      "y": 1104
     }
   },
-  "edges": {}
+  "edges": {
+    "rel:base-receitas::NaturezaDaReceita->base-receitas::DocumentoContabilDeReceitaOrcamentaria::classifica": {
+      "points": [
+        {
+          "x": 1451,
+          "y": 539
+        },
+        {
+          "x": 1520,
+          "y": 464
+        },
+        {
+          "x": 1650,
+          "y": 426
+        }
+      ]
+    }
+  }
 }
