@@ -152,16 +152,16 @@
       "y": 948
     },
     "base-despesas::RegistroDeDespesaOrcamentaria": {
-      "x": 568,
-      "y": 1216
+      "x": 488,
+      "y": 968
     },
     "base-despesas::DocumentoContabilDeDespesa": {
       "x": 872,
       "y": 720
     },
     "base-despesas::UnidadeGestoraEmitenteDeDespesa": {
-      "x": 608,
-      "y": 1408
+      "x": 672,
+      "y": 1208
     },
     "base-despesas::RegistroDeConvenioRecebidoNaDespesaOrcamentaria": {
       "x": 1216,
@@ -234,6 +234,18 @@
     "base-despesas::ConcedorDeConvenio": {
       "x": 80,
       "y": 1072
+    },
+    "base-despesas::DespesaOrcamentaria": {
+      "x": 432,
+      "y": 456
+    },
+    "base-despesas::DespesaOrcamentariaRegistrada": {
+      "x": 536,
+      "y": 792
+    },
+    "base-despesas::UnidadeGestoraNaDespesa": {
+      "x": 192,
+      "y": 920
     }
   },
   "edges": {
@@ -334,6 +346,30 @@
         {
           "x": 1069,
           "y": 832
+        }
+      ]
+    },
+    "gen:base-despesas::DespesaOrcamentariaRegistrada->base-despesas::DespesaOrcamentaria": {
+      "points": [
+        {
+          "x": 638,
+          "y": 792
+        },
+        {
+          "x": 616,
+          "y": 677
+        },
+        {
+          "x": 608,
+          "y": 624
+        },
+        {
+          "x": 560,
+          "y": 624
+        },
+        {
+          "x": 517,
+          "y": 498
         }
       ]
     }
