@@ -36,16 +36,16 @@
   },
   "nodes": {
     "base-receitas::NaturezaDaReceita": {
-      "x": 1952,
-      "y": 752
-    },
-    "base-receitas::FonteDaReceita": {
-      "x": 1736,
+      "x": 1968,
       "y": 904
     },
+    "base-receitas::FonteDaReceita": {
+      "x": 1216,
+      "y": 888
+    },
     "base-receitas::ContaContabil": {
-      "x": 1464,
-      "y": 896
+      "x": 1328,
+      "y": 1000
     },
     "base-receitas::UnidadeGestoraEmitenteDeReceita": {
       "x": 1160,
@@ -170,6 +170,10 @@
     "nucleo::DocumentoFiscal": {
       "x": 1464,
       "y": 1104
+    },
+    "base-receitas::ClassificacaoDoRegistroDeReceitaOrcamentaria": {
+      "x": 1528,
+      "y": 904
     }
   },
   "edges": {

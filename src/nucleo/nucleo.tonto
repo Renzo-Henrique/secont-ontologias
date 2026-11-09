@@ -60,3 +60,6 @@ datatype PoderDaFederacao
 
 /// @pt-br Representação de informações pessoais que foram submetidas a processo de anonimização.
 datatype DadosPessoaisAnonimizados
+
+
+category DocumentoFiscal

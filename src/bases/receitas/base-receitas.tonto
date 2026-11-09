@@ -32,8 +32,6 @@ category NaturezaDaReceita of functional-complexes{
 
     codigoTipo: const string [1]
     descricaoTipo: const string [1]
-
-    // [1] -- classifica -- [0..*] (const) ReceitaOrcamentaria
 }
 
 /// @pt-br A classificação por fontes ou destinações de recursos (FR) tem como objetivo agrupar receitas que possuam as mesmas normas de aplicação na despesa. Em regra, as fontes ou destinações de recursos reúnem recursos oriundos de determinados códigos da classificação por natureza da receita orçamentária, conforme regras previamente estabelecidas. Por meio do orçamento público, essas fontes ou destinações são associadas a determinadas despesas de forma a evidenciar os meios para atingir os objetivos públicos.
@@ -51,19 +49,14 @@ category FonteDaReceita of functional-complexes{
     codigoDetalhamentoFonte: const string [1]
     codigoDetalhamentoFonteAux: const string [1]
     descricaoDetalhamentoFonte: const string [1]
-
-    // [1] -- classifica -- [0..*] (const) ReceitaOrcamentaria
 }
 
 
 /// @pt-br Conta é a expressão qualitativa e quantitativa de fatos de mesma natureza, que evidencia a composição, variação e estado do patrimônio, bem como de bens, direitos, obrigações e situações nele não compreendidas, mas que, direta ou indiretamente, possam vir a afetá-lo.
 /// Cite MCASP - 11º Edicao: Parte IV: Seções 2.3 ; 3.1
 category ContaContabil of functional-complexes{
-
     codigo: const string [1]
     descricao: const string [1]
-
-    // [1] -- classifica -- [0..*] (const) ReceitaOrcamentaria
 }
 
 
@@ -85,31 +78,19 @@ role UnidadeGestoraBeneficiadaDeReceita specializes nucleo.UnidadeGestora
 /// Cite MCASP - 11º Edicao: Parte I: Seção 3.1.2
 kind ReceitaOrcamentaria
 
+/// @pt-br Receita orçamentária registrada emitida por uma unidade gestora e beneficiando outra unidade gestora.
 role ReceitaOrcamentariaRegistrada specializes ReceitaOrcamentaria{
-    // codigoIdUso: const string [1]
-    // descricaoIdUso: const string [1]
-    // // valorPrevista: const string [1]
-    // // valorArrecadada: const string [1]
-    // // valorRecolhida: const string [1]
-    // tipoLancamento: const string [1]
     dataEmissao: const string [1]
-    // dataContabilizacao: const string [1]
     documento: const string [1]
-    // tipo: const string [1]
-    // // valorPrevistaBruta: const string [1]
-    // // valorPrevistaDeducao: const string [1]
-    // // valorPrevistaLiquida: const string [1]
-    // // valorArrecadadaBruta: const string [1]
-    // // valorArrecadadaDeducao: const string [1]
-    // // valorArrecadadaLiquida: const string [1]
-    // // valorRecolhidaBruta: const string [1]
     ano: const string [1]
 }
 
+/// @pt-br Tipo de dados que agrupa os valores que um Registro de Receita Orçamentária pode ter.
 datatype ValorAtreladoNaReceita {
     valorPrevista:  const number
     valorArrecadada:  const number
     valorRecolhida:  const number
+    
     valorPrevistaBruta:  const number
     valorPrevistaDeducao:  const number
     valorPrevistaLiquida:  const number
@@ -118,24 +99,28 @@ datatype ValorAtreladoNaReceita {
     valorArrecadadaLiquida:  const number
     valorRecolhidaBruta:  const number
 }
-/// @pt-br Registro que associa o documento contábil de receita às unidades gestoras emitente e beneficiada.
+/// @pt-br Registro que associa a Receita às unidades gestoras emitente e beneficiada.
 relator RegistroDeReceitaOrcamentaria {
     @mediation (const) [1]  -- formalizadaPor -- [1] (const) ReceitaOrcamentariaRegistrada
     @mediation [1..*] -- temUnidadeGestoraEmitente -- [1] (const) UnidadeGestoraEmitenteDeReceita
     @mediation [1..*] -- temUnidadeGestoraBeneficiada -- [1] (const) UnidadeGestoraBeneficiadaDeReceita
 
-    [1] -- naturezaClassificadaPor -- [0..*] (const) NaturezaDaReceita
-	[1] -- fonteClassificadaPor -- [0..*] (const) FonteDaReceita
-	[1] -- contabilClassificadaPor -- [0..*] (const) ContaContabil
-
 
     valorAtreladoNaReceita: ValorAtreladoNaReceita [1..*]
 
-	// codigoIdUso: const string [1]
-    // descricaoIdUso: const string [1]
+    codigoIdUso: const string [1]
+    descricaoIdUso: const string [1]
     tipoLancamento: const string [1]
     dataContabilizacao: const string [1]
     tipo: const string [1]
+}
+
+/// @pt-br Relator que associa a Receita às classificações de natureza, fonte e conta contábil.
+relator ClassificacaoDoRegistroDeReceitaOrcamentaria {
+    @mediation (const) [1]  -- classifica -- [1] (const) RegistroDeReceitaOrcamentaria
+    @mediation [0..*] -- naturezaClassificadaPor -- [1] (const) NaturezaDaReceita
+    @mediation [0..*] -- fonteClassificadaPor -- [1] (const) FonteDaReceita
+    @mediation [0..*] -- contabilClassificadaPor -- [1] (const) ContaContabil
 }
 
 
