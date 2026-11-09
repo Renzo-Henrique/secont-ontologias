@@ -6,9 +6,7 @@
     "showDatatypes": true,
     "showGensets": true,
     "derivedMaterialMode": "both",
-    "hidden": [
-      "nucleo::UnidadeGestora"
-    ]
+    "hidden": []
   },
   "display": {
     "taxonomyOnly": false,
@@ -37,7 +35,7 @@
   "nodes": {
     "base-receitas::NaturezaDaReceita": {
       "x": 1968,
-      "y": 952
+      "y": 840
     },
     "base-receitas::FonteDaReceita": {
       "x": 1176,
@@ -45,15 +43,15 @@
     },
     "base-receitas::ContaContabil": {
       "x": 1616,
-      "y": 1080
+      "y": 1112
     },
     "base-receitas::UnidadeGestoraEmitenteDeReceita": {
       "x": 1160,
       "y": 584
     },
     "nucleo::UnidadeGestora": {
-      "x": 1843,
-      "y": 50
+      "x": 1616,
+      "y": 320
     },
     "base-receitas::UnidadeGestoraBeneficiadaDeReceita": {
       "x": 1952,
@@ -172,8 +170,8 @@
       "y": 1104
     },
     "base-receitas::ClassificacaoDoRegistroDeReceitaOrcamentaria": {
-      "x": 1528,
-      "y": 904
+      "x": 1544,
+      "y": 984
     }
   },
   "edges": {

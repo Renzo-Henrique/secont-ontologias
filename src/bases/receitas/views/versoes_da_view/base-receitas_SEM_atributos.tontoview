@@ -6,9 +6,7 @@
     "showDatatypes": true,
     "showGensets": true,
     "derivedMaterialMode": "both",
-    "hidden": [
-      "nucleo::UnidadeGestora"
-    ]
+    "hidden": []
   },
   "display": {
     "taxonomyOnly": false,
@@ -52,8 +50,8 @@
       "y": 584
     },
     "nucleo::UnidadeGestora": {
-      "x": 1843,
-      "y": 50
+      "x": 1600,
+      "y": 320
     },
     "base-receitas::UnidadeGestoraBeneficiadaDeReceita": {
       "x": 1952,

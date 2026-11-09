@@ -20,7 +20,7 @@ codigoTipo ; base-receitas.NaturezaDaReceita.codigoTipo
 descricaoTipo ; base-receitas.NaturezaDaReceita.descricaoTipo
 codigoIdUso ; base-receitas.RegistroDeReceitaOrcamentaria.codigoIdUso
 descricaoIdUso ; base-receitas.RegistroDeReceitaOrcamentaria.descricaoIdUso
-codigoFonte ; base-receitas.codigoFonte.codigoFonte
+codigoFonte ; base-receitas.FonteDaReceita.codigoFonte
 descricaoFonte ; base-receitas.FonteDaReceita.descricaoFonte
 codigoGrupoFonte ; base-receitas.FonteDaReceita.codigoGrupoFonte
 descricaoGrupoFonte ; base-receitas.FonteDaReceita.descricaoGrupoFonte
