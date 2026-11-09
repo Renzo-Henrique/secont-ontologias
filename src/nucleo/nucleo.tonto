@@ -3,18 +3,43 @@ ontology nucleo
 
 /// @pt-br 44 Portaria MTP 1.467/2022, Art.2º - Definições: VI - unidade gestora: entidade ou órgão único, de natureza pública, de cada ente federativo, abrangendo todos os poderes, órgãos e entidades autárquicas e fundacionais, que tenha por finalidade a administração, o gerenciamento e a operacionalização do RPPS, incluindo a arrecada.
 /// Cite Portaria MTP nº 1.467, de 2 junho de 2022: Capítulo I - Definições
-kind UnidadeGestora {
-    
+role UnidadeGestora  specializes OrgaoPublico
+
+/// @pt-br É a unidade de atuação dotada de personalidade jurídica;;
+/// Cite LEI Nº 9.784 , DE 29 DE JANEIRO DE 1999.
+role EntidadePublica specializes PessoaJuridica
+
+/// @pt-br É a unidade de atuação integrante da estrutura da Administração direta e da estrutura da Administração indireta;
+/// Cite LEI Nº 9.784 , DE 29 DE JANEIRO DE 1999.
+kind OrgaoPublico {
     codigo: string [1]
     descricao: string [1]
+
+    @componenthood [1..*] --<> [1] (const) EntidadePublica
+}
+
+/// @pt-br Os órgãos orçamentários, por sua vez, correspondem a agrupamentos de unidades orçamentárias. As dotações são consignadas às unidades orçamentárias, responsáveis pela realização das ações.
+/// Cite MCASP - 11º Edicao: Parte Il: Seções 4.2.1
+subkind OrgaoOrcamentario specializes OrgaoPublico{
+
+}
+
+/// @pt-br Constitui unidade orçamentária o agrupamento de serviços subordinados ao mesmo órgão ou repartição a que serão consignadas dotações próprias.
+/// Cite LEI No 4.320, DE 17 DE MARÇO DE 1964
+subkind UnidadeOrcamentaria specializes OrgaoPublico{
+
+}
+
+/// @pt-br Hierarquia que representa a estrutura de órgãos e unidades orçamentárias de um Órgão Público.
+disjoint complete genset HierarquiaOrcamentariaDeOrgaoPublico {
+    general OrgaoPublico
+    specifics OrgaoOrcamentario, UnidadeOrcamentaria
 }
 
 
 /// @pt-br Pessoa natural identificada no modelo por CPF e nome, podendo também ter NIS informado.
 kind PessoaFisica {
     
-    // cpf: Cpf [1] {const}
-    // nis: Nis [0..1] {const}
     cpf: string [1]
     nis: string [0..1]
     nome: string [1]
@@ -27,12 +52,6 @@ kind PessoaJuridica {
     cnpj: string [1]
     nome: string [1]
 }
-
-/// @pt-br O objetivo da elaboração e divulgação da informação contábil é fornecer informação para fins de prestação de contas e responsabilização (accountability) e tomada de decisão.
-/// Cite MCASP - 11º Edicao: Parte Geral: Seções 2.3 ; 3.1
-kind DocumentoContabil
-
-
 
 /// @pt-br Unidade territorial usada para agrupar municípios no contexto geográfico da ontologia.
 kind Regiao
@@ -60,6 +79,3 @@ datatype PoderDaFederacao
 
 /// @pt-br Representação de informações pessoais que foram submetidas a processo de anonimização.
 datatype DadosPessoaisAnonimizados
-
-
-category DocumentoFiscal
