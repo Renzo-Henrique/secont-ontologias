@@ -247,12 +247,10 @@ base-receitas:RegistroDeReceitaOrcamentaria a owl:Class, gufo:Kind ;
           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
           owl:onProperty base-receitas:RegistroDeReceitaOrcamentaria.temUnidadeGestoraEmitente ;
-          owl:onClass base-receitas:UnidadeGestoraEmitenteDeReceita ;
-          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+          owl:someValuesFrom base-receitas:UnidadeGestoraEmitenteDeReceita ],
         [ a owl:Restriction ;
           owl:onProperty base-receitas:RegistroDeReceitaOrcamentaria.temUnidadeGestoraBeneficiada ;
-          owl:onClass base-receitas:UnidadeGestoraBeneficiadaDeReceita ;
-          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+          owl:someValuesFrom base-receitas:UnidadeGestoraBeneficiadaDeReceita ],
         [ a owl:Restriction ;
           owl:onProperty [ owl:inverseOf base-receitas:ClassificacaoDoRegistroDeReceitaOrcamentaria.classifica ] ;
           owl:onClass base-receitas:ClassificacaoDoRegistroDeReceitaOrcamentaria ;
@@ -472,7 +470,7 @@ base-receitas:ReceitaOrcamentariaRegistrada.dataEmissao a owl:DatatypeProperty ;
     rdfs:label "dataEmissao" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:domain base-receitas:ReceitaOrcamentariaRegistrada ;
-    rdfs:range xsd:string ;
+    rdfs:range xsd:dateTime ;
     rdfs:subPropertyOf gufo:hasQualityValue .
 
 base-receitas:ReceitaOrcamentariaRegistrada.documento a owl:DatatypeProperty ;
@@ -615,7 +613,7 @@ base-receitas:RegistroDeReceitaOrcamentaria.dataContabilizacao a
     rdfs:label "dataContabilizacao" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:domain base-receitas:RegistroDeReceitaOrcamentaria ;
-    rdfs:range xsd:string ;
+    rdfs:range xsd:dateTime ;
     rdfs:subPropertyOf gufo:hasQualityValue .
 
 base-receitas:RegistroDeReceitaOrcamentaria.tipo a owl:DatatypeProperty, owl:FunctionalProperty ;
@@ -634,18 +632,14 @@ base-receitas:RegistroDeReceitaOrcamentaria.formalizadaPor a
     rdfs:range base-receitas:ReceitaOrcamentariaRegistrada ;
     rdfs:subPropertyOf gufo:mediates .
 
-base-receitas:RegistroDeReceitaOrcamentaria.temUnidadeGestoraEmitente a
-        owl:ObjectProperty,
-        owl:FunctionalProperty ;
+base-receitas:RegistroDeReceitaOrcamentaria.temUnidadeGestoraEmitente a owl:ObjectProperty ;
     rdfs:label "temUnidadeGestoraEmitente" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:domain base-receitas:RegistroDeReceitaOrcamentaria ;
     rdfs:range base-receitas:UnidadeGestoraEmitenteDeReceita ;
     rdfs:subPropertyOf gufo:mediates .
 
-base-receitas:RegistroDeReceitaOrcamentaria.temUnidadeGestoraBeneficiada a
-        owl:ObjectProperty,
-        owl:FunctionalProperty ;
+base-receitas:RegistroDeReceitaOrcamentaria.temUnidadeGestoraBeneficiada a owl:ObjectProperty ;
     rdfs:label "temUnidadeGestoraBeneficiada" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:domain base-receitas:RegistroDeReceitaOrcamentaria ;

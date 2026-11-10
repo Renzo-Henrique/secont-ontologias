@@ -80,7 +80,7 @@ kind ReceitaOrcamentaria
 
 /// @pt-br Receita orçamentária registrada emitida por uma unidade gestora e beneficiando outra unidade gestora.
 role ReceitaOrcamentariaRegistrada specializes ReceitaOrcamentaria{
-    dataEmissao: const string [1]
+    dataEmissao: const datetime [1]
     documento: const string [1]
     ano: const string [1]
 }
@@ -101,9 +101,9 @@ datatype ValorAtreladoNaReceita {
 }
 /// @pt-br Registro que associa a Receita às unidades gestoras emitente e beneficiada.
 relator RegistroDeReceitaOrcamentaria {
-    @mediation (const) [1]  -- formalizadaPor -- [1] (const) ReceitaOrcamentariaRegistrada
-    @mediation [1..*] -- temUnidadeGestoraEmitente -- [1] (const) UnidadeGestoraEmitenteDeReceita
-    @mediation [1..*] -- temUnidadeGestoraBeneficiada -- [1] (const) UnidadeGestoraBeneficiadaDeReceita
+    @mediation (const) [1..*]  -- formalizadaPor -- [1] (const) ReceitaOrcamentariaRegistrada
+    @mediation [1..*] -- temUnidadeGestoraEmitente -- [1..*] (const) UnidadeGestoraEmitenteDeReceita
+    @mediation [1..*] -- temUnidadeGestoraBeneficiada -- [1..*] (const) UnidadeGestoraBeneficiadaDeReceita
 
 
     valorAtreladoNaReceita: ValorAtreladoNaReceita [1..*]
@@ -111,7 +111,7 @@ relator RegistroDeReceitaOrcamentaria {
     codigoIdUso: const string [1]
     descricaoIdUso: const string [1]
     tipoLancamento: const string [1]
-    dataContabilizacao: const string [1]
+    dataContabilizacao: const datetime [1]
     tipo: const string [1]
 }
 
@@ -132,6 +132,6 @@ relator ClassificacaoDoRegistroDeReceitaOrcamentaria {
 
 **/
 
-@material relation ReceitaOrcamentariaRegistrada [1..*] -- emitidaPara -- [1] (const) UnidadeGestoraBeneficiadaDeReceita derivedFrom RegistroDeReceitaOrcamentaria
-@material relation ReceitaOrcamentariaRegistrada [1..*] -- emitidaPor -- [1] (const) UnidadeGestoraEmitenteDeReceita derivedFrom RegistroDeReceitaOrcamentaria
+@material relation ReceitaOrcamentariaRegistrada [1..*] -- emitidaPara -- [1..*] (const) UnidadeGestoraBeneficiadaDeReceita derivedFrom RegistroDeReceitaOrcamentaria
+@material relation ReceitaOrcamentariaRegistrada [1..*] -- emitidaPor -- [1..*] (const) UnidadeGestoraEmitenteDeReceita derivedFrom RegistroDeReceitaOrcamentaria
 
