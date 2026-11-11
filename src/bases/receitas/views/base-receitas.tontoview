@@ -38,12 +38,12 @@
       "y": 840
     },
     "base-receitas::FonteDaReceita": {
-      "x": 1176,
-      "y": 1016
+      "x": 1032,
+      "y": 1040
     },
     "base-receitas::ContaContabil": {
-      "x": 1616,
-      "y": 1112
+      "x": 1560,
+      "y": 1128
     },
     "base-receitas::UnidadeGestoraEmitenteDeReceita": {
       "x": 1160,
@@ -172,6 +172,10 @@
     "base-receitas::ClassificacaoDoRegistroDeReceitaOrcamentaria": {
       "x": 1544,
       "y": 984
+    },
+    "nucleo::FonteOrcamentaria": {
+      "x": 1048,
+      "y": 312
     }
   },
   "edges": {

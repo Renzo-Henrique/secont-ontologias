@@ -62,24 +62,24 @@
       "y": 480
     },
     "base-despesas::ClassificadorInstitucionalDeDespesa": {
-      "x": 832,
-      "y": 296
+      "x": 464,
+      "y": 1472
     },
     "base-despesas::ClassificadorFuncionalDeDespesa": {
-      "x": 40,
-      "y": 360
+      "x": 1008,
+      "y": 1472
     },
     "base-despesas::ClassificadorPorEstruturaProgramaticaDeDespesa": {
-      "x": 152,
-      "y": 280
+      "x": 864,
+      "y": 1128
     },
     "base-despesas::ClassificadorPorNaturezaDeDespesa": {
-      "x": -8,
-      "y": 448
+      "x": 1064,
+      "y": 1312
     },
     "base-despesas::FonteDaDespesa": {
-      "x": 656,
-      "y": 288
+      "x": 872,
+      "y": 1536
     },
     "base-despesas::TerminoDoExercicioDeDespesaVigente": {
       "x": 992,
@@ -246,6 +246,34 @@
     "base-despesas::UnidadeGestoraNaDespesa": {
       "x": 192,
       "y": 920
+    },
+    "nucleo::OrgaoPublico": {
+      "x": 304,
+      "y": 1776
+    },
+    "base-despesas::ClassificacaoDoRegistroDeDespesaOrcamentaria": {
+      "x": 656,
+      "y": 1328
+    },
+    "nucleo::UnidadeOrcamentaria": {
+      "x": 616,
+      "y": 1592
+    },
+    "nucleo::OrgaoPublicoOrcamentario": {
+      "x": 368,
+      "y": 1592
+    },
+    "base-despesas::OrgaoPublicoOrcamentario": {
+      "x": 280,
+      "y": 1648
+    },
+    "base-despesas::UnidadeOrcamentaria": {
+      "x": 592,
+      "y": 1648
+    },
+    "nucleo::UnidadeDeOrgaoPublico": {
+      "x": 576,
+      "y": 1776
     }
   },
   "edges": {

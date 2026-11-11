@@ -76,16 +76,16 @@
       "y": 592
     },
     "nucleo::OrgaoOrcamentario": {
-      "x": 296,
-      "y": 816
+      "x": 56,
+      "y": 808
     },
     "nucleo::OrgaoPublico": {
       "x": 80,
       "y": 680
     },
     "nucleo::UnidadeOrcamentaria": {
-      "x": 64,
-      "y": 816
+      "x": 72,
+      "y": 1024
     },
     "nucleo::EntidadePublica": {
       "x": 272,
@@ -96,8 +96,16 @@
       "y": 384
     },
     "nucleo::DadosPessoaisAnonimizados": {
-      "x": -168,
-      "y": 728
+      "x": 392,
+      "y": 680
+    },
+    "nucleo::OrgaoPublicoOrcamentario": {
+      "x": 224,
+      "y": 880
+    },
+    "nucleo::UnidadeDeOrgaoPublico": {
+      "x": -104,
+      "y": 848
     }
   },
   "edges": {

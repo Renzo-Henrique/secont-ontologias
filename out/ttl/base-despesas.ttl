@@ -21,23 +21,7 @@ base-despesas:DespesaOrcamentaria a owl:Class, gufo:Kind ;
     rdfs:comment """Despesa orçamentária é toda transação que depende de autorização legislativa, na forma de consignação de dotação orçamentária, para ser efetivada.
 Cite MCASP - 11º Edição: Parte I: Seção 4.1"""@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
-    rdfs:subClassOf
-        gufo:FunctionalComplex,
-        [ a owl:Restriction ;
-          owl:onProperty [ owl:inverseOf base-despesas:ClassificadorInstitucionalDeDespesa.classifica ] ;
-          owl:someValuesFrom base-despesas:ClassificadorInstitucionalDeDespesa ],
-        [ a owl:Restriction ;
-          owl:onProperty [ owl:inverseOf base-despesas:ClassificadorFuncionalDeDespesa.classifica ] ;
-          owl:someValuesFrom base-despesas:ClassificadorFuncionalDeDespesa ],
-        [ a owl:Restriction ;
-          owl:onProperty [ owl:inverseOf base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa.classifica ] ;
-          owl:someValuesFrom base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa ],
-        [ a owl:Restriction ;
-          owl:onProperty [ owl:inverseOf base-despesas:ClassificadorPorNaturezaDeDespesa.classifica ] ;
-          owl:someValuesFrom base-despesas:ClassificadorPorNaturezaDeDespesa ],
-        [ a owl:Restriction ;
-          owl:onProperty [ owl:inverseOf base-despesas:FonteDaDespesa.classifica ] ;
-          owl:someValuesFrom base-despesas:FonteDaDespesa ] ;
+    rdfs:subClassOf gufo:FunctionalComplex ;
     owl:equivalentClass
         [ a owl:Class ;
           owl:unionOf (
@@ -51,12 +35,25 @@ Cite MCASP - 11º Edição: Parte I: Seção 4.1"""@pt-br ;
               base-despesas:DespesaDeExercicioVigente
           ) ] .
 
-base-despesas:ClassificadorInstitucionalDeDespesa a owl:Class, gufo:Category ;
+base-despesas:ClassificadorInstitucionalDeDespesa a owl:Class, gufo:Kind ;
     rdfs:label "ClassificadorInstitucionalDeDespesa" ;
     rdfs:comment """A classificação institucional reflete a estrutura de alocação dos créditos orçamentários e está estruturada em dois níveis hierárquicos: órgão orçamentário e unidade orçamentária. Constitui unidade orçamentária o agrupamento de serviços subordinados ao mesmo órgão ou repartição a que serão consignadas dotações próprias (art. 14 da Lei nº 4.320/1964).
 Cite MCASP - 11º Edição: Parte I: Seção 4.2.1"""@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
-    rdfs:subClassOf gufo:FunctionalComplex .
+    rdfs:subClassOf
+        gufo:Relator,
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificadorInstitucionalDeDespesa.mediatesClassificacaoDoRegistroDeDespesaOrcamentaria ;
+          owl:onClass base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificadorInstitucionalDeDespesa.mediatesOrgaoPublicoOrcamentario ;
+          owl:onClass base-despesas:OrgaoPublicoOrcamentario ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificadorInstitucionalDeDespesa.mediatesUnidadeOrcamentaria ;
+          owl:onClass base-despesas:UnidadeOrcamentaria ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
 
 base-despesas:ClassificadorFuncionalDeDespesa a owl:Class, gufo:Category ;
     rdfs:label "ClassificadorFuncionalDeDespesa" ;
@@ -88,7 +85,7 @@ Cite MCASP - 11º Edição: Parte I: Seção 5.1
 Na execução orçamentária da despesa, a FR estará associada, desde o momento do empenho, às contas de controle orçamentário (classe 6 do PCASP), às contas do passivo financeiro (classe 2 com atributo “F”) e às contas de controle da disponibilidade por destinação de recursos (na classe 8)
 Cite MCASP - 11º Edição: Parte I: Seção 5.2"""@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
-    rdfs:subClassOf gufo:FunctionalComplex .
+    rdfs:subClassOf nucleo:FonteOrcamentaria .
 
 base-despesas:RegistroDeDespesaOrcamentaria a owl:Class, gufo:Kind ;
     rdfs:label "RegistroDeDespesaOrcamentaria" ;
@@ -109,6 +106,10 @@ base-despesas:RegistroDeDespesaOrcamentaria a owl:Class, gufo:Kind ;
         [ a owl:Restriction ;
           owl:onProperty base-despesas:RegistroDeDespesaOrcamentaria.mediatesUnidadeGestoraNaDespesa ;
           owl:onClass base-despesas:UnidadeGestoraNaDespesa ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty [ owl:inverseOf base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria.classifica ] ;
+          owl:onClass base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria ;
           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
 
 base-despesas:RegistroDeDespesaOrcamentariaComOpcionais a owl:Class, gufo:SubKind ;
@@ -137,6 +138,37 @@ base-despesas:RegistroDeDespesaOrcamentariaComOpcionais a owl:Class, gufo:SubKin
           owl:onClass base-despesas:RecebedorDeConvenio ;
           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
 
+base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria a owl:Class, gufo:Kind ;
+    rdfs:label "ClassificacaoDoRegistroDeDespesaOrcamentaria" ;
+    rdfs:comment "Relator que associa a Receita às classificações de natureza, fonte e conta contábil."@pt-br ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:subClassOf
+        gufo:Relator,
+        [ a owl:Restriction ;
+          owl:onProperty [ owl:inverseOf base-despesas:ClassificadorInstitucionalDeDespesa.mediatesClassificacaoDoRegistroDeDespesaOrcamentaria ] ;
+          owl:onClass base-despesas:ClassificadorInstitucionalDeDespesa ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria.classifica ;
+          owl:onClass base-despesas:RegistroDeDespesaOrcamentaria ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria.funcionalClassificadaPor ;
+          owl:onClass base-despesas:ClassificadorFuncionalDeDespesa ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria.programaticaClassificadaPor ;
+          owl:onClass base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria.naturezaClassificadaPor ;
+          owl:onClass base-despesas:ClassificadorPorNaturezaDeDespesa ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria.fonteClassificadaPor ;
+          owl:onClass base-despesas:FonteDaDespesa ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
+
 base-despesas:ConcedorDeConvenio a owl:Class, gufo:Role ;
     rdfs:label "ConcedorDeConvenio" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
@@ -164,6 +196,32 @@ base-despesas:UnidadeGestoraNaDespesa a owl:Class, gufo:Role ;
         [ a owl:Restriction ;
           owl:onProperty [ owl:inverseOf base-despesas:RegistroDeDespesaOrcamentaria.mediatesUnidadeGestoraNaDespesa ] ;
           owl:someValuesFrom base-despesas:RegistroDeDespesaOrcamentaria ] .
+
+base-despesas:OrgaoPublicoOrcamentario a owl:Class, gufo:Role ;
+    rdfs:label "OrgaoPublicoOrcamentario" ;
+    rdfs:comment """Os órgãos orçamentários, por sua vez, correspondem a agrupamentos de unidades orçamentárias. As dotações são consignadas às unidades orçamentárias, responsáveis pela realização das ações.
+Cite MCASP - 11º Edicao: Parte Il: Seções 4.2.1"""@pt-br ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:subClassOf
+        nucleo:OrgaoPublico,
+        [ a owl:Restriction ;
+          owl:onProperty [ owl:inverseOf base-despesas:ClassificadorInstitucionalDeDespesa.mediatesOrgaoPublicoOrcamentario ] ;
+          owl:someValuesFrom base-despesas:ClassificadorInstitucionalDeDespesa ],
+        [ a owl:Restriction ;
+          owl:onProperty [ owl:inverseOf base-despesas:UnidadeOrcamentaria.isComponentOfOrgaoPublicoOrcamentario ] ;
+          owl:someValuesFrom base-despesas:UnidadeOrcamentaria ] .
+
+base-despesas:UnidadeOrcamentaria a owl:Class, gufo:Role ;
+    rdfs:label "UnidadeOrcamentaria" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:subClassOf
+        nucleo:UnidadeDeOrgaoPublico,
+        [ a owl:Restriction ;
+          owl:onProperty [ owl:inverseOf base-despesas:ClassificadorInstitucionalDeDespesa.mediatesUnidadeOrcamentaria ] ;
+          owl:someValuesFrom base-despesas:ClassificadorInstitucionalDeDespesa ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:UnidadeOrcamentaria.isComponentOfOrgaoPublicoOrcamentario ;
+          owl:someValuesFrom base-despesas:OrgaoPublicoOrcamentario ] .
 
 base-despesas:DespesaDeEmpenho a owl:Class, gufo:Phase ;
     rdfs:label "DespesaDeEmpenho" ;
@@ -267,35 +325,33 @@ base-despesas:RegistroDeDespesaOrcamentaria.poder a owl:DatatypeProperty, owl:Fu
     rdfs:range nucleo:PoderDaFederacao ;
     rdfs:subPropertyOf gufo:hasQualityValue .
 
-base-despesas:ClassificadorInstitucionalDeDespesa.classifica a owl:ObjectProperty ;
-    rdfs:label "classifica" ;
+base-despesas:ClassificadorInstitucionalDeDespesa.mediatesClassificacaoDoRegistroDeDespesaOrcamentaria a
+        owl:ObjectProperty,
+        owl:FunctionalProperty,
+        owl:InverseFunctionalProperty ;
+    rdfs:label "ClassificadorInstitucionalDeDespesa.mediatesClassificacaoDoRegistroDeDespesaOrcamentaria" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:domain base-despesas:ClassificadorInstitucionalDeDespesa ;
-    rdfs:range base-despesas:DespesaOrcamentaria .
+    rdfs:range base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria ;
+    rdfs:subPropertyOf gufo:mediates .
 
-base-despesas:ClassificadorFuncionalDeDespesa.classifica a owl:ObjectProperty ;
-    rdfs:label "classifica" ;
+base-despesas:ClassificadorInstitucionalDeDespesa.mediatesOrgaoPublicoOrcamentario a
+        owl:ObjectProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "ClassificadorInstitucionalDeDespesa.mediatesOrgaoPublicoOrcamentario" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
-    rdfs:domain base-despesas:ClassificadorFuncionalDeDespesa ;
-    rdfs:range base-despesas:DespesaOrcamentaria .
+    rdfs:domain base-despesas:ClassificadorInstitucionalDeDespesa ;
+    rdfs:range base-despesas:OrgaoPublicoOrcamentario ;
+    rdfs:subPropertyOf gufo:mediates .
 
-base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa.classifica a owl:ObjectProperty ;
-    rdfs:label "classifica" ;
+base-despesas:ClassificadorInstitucionalDeDespesa.mediatesUnidadeOrcamentaria a
+        owl:ObjectProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "ClassificadorInstitucionalDeDespesa.mediatesUnidadeOrcamentaria" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
-    rdfs:domain base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa ;
-    rdfs:range base-despesas:DespesaOrcamentaria .
-
-base-despesas:ClassificadorPorNaturezaDeDespesa.classifica a owl:ObjectProperty ;
-    rdfs:label "classifica" ;
-    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
-    rdfs:domain base-despesas:ClassificadorPorNaturezaDeDespesa ;
-    rdfs:range base-despesas:DespesaOrcamentaria .
-
-base-despesas:FonteDaDespesa.classifica a owl:ObjectProperty ;
-    rdfs:label "classifica" ;
-    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
-    rdfs:domain base-despesas:FonteDaDespesa ;
-    rdfs:range base-despesas:DespesaOrcamentaria .
+    rdfs:domain base-despesas:ClassificadorInstitucionalDeDespesa ;
+    rdfs:range base-despesas:UnidadeOrcamentaria ;
+    rdfs:subPropertyOf gufo:mediates .
 
 base-despesas:RegistroDeDespesaOrcamentaria.mediatesDespesaOrcamentariaRegistrada a
         owl:ObjectProperty,
@@ -355,6 +411,59 @@ base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasRecebedorDeConvenio a
     rdfs:domain base-despesas:RegistroDeDespesaOrcamentariaComOpcionais ;
     rdfs:range base-despesas:RecebedorDeConvenio .
 
+base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria.classifica a
+        owl:ObjectProperty,
+        owl:FunctionalProperty,
+        owl:InverseFunctionalProperty ;
+    rdfs:label "classifica" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria ;
+    rdfs:range base-despesas:RegistroDeDespesaOrcamentaria ;
+    rdfs:subPropertyOf gufo:mediates .
+
+base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria.funcionalClassificadaPor a
+        owl:ObjectProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "funcionalClassificadaPor" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria ;
+    rdfs:range base-despesas:ClassificadorFuncionalDeDespesa ;
+    rdfs:subPropertyOf gufo:mediates .
+
+base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria.programaticaClassificadaPor a
+        owl:ObjectProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "programaticaClassificadaPor" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria ;
+    rdfs:range base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa ;
+    rdfs:subPropertyOf gufo:mediates .
+
+base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria.naturezaClassificadaPor a
+        owl:ObjectProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "naturezaClassificadaPor" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria ;
+    rdfs:range base-despesas:ClassificadorPorNaturezaDeDespesa ;
+    rdfs:subPropertyOf gufo:mediates .
+
+base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria.fonteClassificadaPor a
+        owl:ObjectProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "fonteClassificadaPor" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria ;
+    rdfs:range base-despesas:FonteDaDespesa ;
+    rdfs:subPropertyOf gufo:mediates .
+
+base-despesas:UnidadeOrcamentaria.isComponentOfOrgaoPublicoOrcamentario a owl:ObjectProperty ;
+    rdfs:label "UnidadeOrcamentaria.isComponentOfOrgaoPublicoOrcamentario" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:UnidadeOrcamentaria ;
+    rdfs:range base-despesas:OrgaoPublicoOrcamentario ;
+    rdfs:subPropertyOf gufo:isComponentOf .
+
 base-despesas:TerminoDoExercicioVigenteDaDespesa.triggers a
         owl:ObjectProperty,
         owl:InverseFunctionalProperty ;
@@ -386,6 +495,8 @@ base-despesas:DespesaDeExercicioAnterior.wasCreatedInCriacaoDeDespesaNaoPaga a
 
 [] a owl:AllDisjointClasses ;
     owl:members (
+        base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria
+        base-despesas:ClassificadorInstitucionalDeDespesa
         base-despesas:CriacaoDeDespesaNaoPaga
         base-despesas:DespesaOrcamentaria
         base-despesas:RegistroDeDespesaOrcamentaria

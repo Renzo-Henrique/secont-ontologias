@@ -18,23 +18,23 @@ kind OrgaoPublico {
     @componenthood [1..*] --<> [1] (const) EntidadePublica
 }
 
-/// @pt-br Os órgãos orçamentários, por sua vez, correspondem a agrupamentos de unidades orçamentárias. As dotações são consignadas às unidades orçamentárias, responsáveis pela realização das ações.
-/// Cite MCASP - 11º Edicao: Parte Il: Seções 4.2.1
-subkind OrgaoOrcamentario specializes OrgaoPublico{
 
-}
 
 /// @pt-br Constitui unidade orçamentária o agrupamento de serviços subordinados ao mesmo órgão ou repartição a que serão consignadas dotações próprias.
 /// Cite LEI No 4.320, DE 17 DE MARÇO DE 1964
-subkind UnidadeOrcamentaria specializes OrgaoPublico{
+kind UnidadeDeOrgaoPublico{
+    codigo: string [1]
+    descricao: string [1]
 
+    @componenthood [1..*] --<> [1] (const) OrgaoPublico
 }
 
-/// @pt-br Hierarquia que representa a estrutura de órgãos e unidades orçamentárias de um Órgão Público.
-disjoint complete genset HierarquiaOrcamentariaDeOrgaoPublico {
-    general OrgaoPublico
-    specifics OrgaoOrcamentario, UnidadeOrcamentaria
-}
+
+// /// @pt-br Hierarquia que representa a estrutura de órgãos e unidades orçamentárias de um Órgão Público.
+// disjoint genset HierarquiaOrcamentariaDeOrgaoPublico {
+//     general OrgaoPublico
+//     specifics OrgaoOrcamentario, UnidadeOrcamentaria
+// }
 
 
 /// @pt-br Pessoa natural identificada no modelo por CPF e nome, podendo também ter NIS informado.
@@ -79,3 +79,6 @@ datatype PoderDaFederacao
 
 /// @pt-br Representação de informações pessoais que foram submetidas a processo de anonimização.
 datatype DadosPessoaisAnonimizados
+
+category FonteOrcamentaria of functional-complexes{
+}

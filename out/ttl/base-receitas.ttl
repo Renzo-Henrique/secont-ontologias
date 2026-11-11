@@ -82,7 +82,7 @@ No momento da arrecadação, a FR deverá ser informada no registro da realizaç
 Cite MCASP - 11º Edicao: Parte I: Seção 5.2"""@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:subClassOf
-        gufo:FunctionalComplex,
+        nucleo:FonteOrcamentaria,
         [ a owl:Restriction ;
           owl:onProperty base-receitas:FonteDaReceita.codigoFonte ;
           owl:cardinality "1"^^xsd:nonNegativeInteger ],

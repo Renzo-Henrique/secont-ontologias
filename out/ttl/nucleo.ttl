@@ -47,23 +47,28 @@ Cite LEI Nº 9.784 , DE 29 DE JANEIRO DE 1999."""@pt-br ;
         [ a owl:Restriction ;
           owl:onProperty nucleo:OrgaoPublico.isComponentOfEntidadePublica ;
           owl:onClass nucleo:EntidadePublica ;
-          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
-    owl:equivalentClass [ a owl:Class ;
-                          owl:unionOf ( nucleo:OrgaoOrcamentario nucleo:UnidadeOrcamentaria ) ] .
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty [ owl:inverseOf nucleo:UnidadeDeOrgaoPublico.isComponentOfOrgaoPublico ] ;
+          owl:someValuesFrom nucleo:UnidadeDeOrgaoPublico ] .
 
-nucleo:OrgaoOrcamentario a owl:Class, gufo:SubKind ;
-    rdfs:label "OrgaoOrcamentario" ;
-    rdfs:comment """Os órgãos orçamentários, por sua vez, correspondem a agrupamentos de unidades orçamentárias. As dotações são consignadas às unidades orçamentárias, responsáveis pela realização das ações.
-Cite MCASP - 11º Edicao: Parte Il: Seções 4.2.1"""@pt-br ;
-    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
-    rdfs:subClassOf nucleo:OrgaoPublico .
-
-nucleo:UnidadeOrcamentaria a owl:Class, gufo:SubKind ;
-    rdfs:label "UnidadeOrcamentaria" ;
+nucleo:UnidadeDeOrgaoPublico a owl:Class, gufo:Kind ;
+    rdfs:label "UnidadeDeOrgaoPublico" ;
     rdfs:comment """Constitui unidade orçamentária o agrupamento de serviços subordinados ao mesmo órgão ou repartição a que serão consignadas dotações próprias.
 Cite LEI No 4.320, DE 17 DE MARÇO DE 1964"""@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
-    rdfs:subClassOf nucleo:OrgaoPublico .
+    rdfs:subClassOf
+        gufo:FunctionalComplex,
+        [ a owl:Restriction ;
+          owl:onProperty nucleo:UnidadeDeOrgaoPublico.codigo ;
+          owl:minCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty nucleo:UnidadeDeOrgaoPublico.descricao ;
+          owl:minCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty nucleo:UnidadeDeOrgaoPublico.isComponentOfOrgaoPublico ;
+          owl:onClass nucleo:OrgaoPublico ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
 
 nucleo:PessoaFisica a owl:Class, gufo:Kind ;
     rdfs:label "PessoaFisica" ;
@@ -144,8 +149,10 @@ nucleo:DadosPessoaisAnonimizados a rdfs:Datatype ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
     owl:equivalentClass rdfs:Literal .
 
-[] a owl:AllDisjointClasses ;
-    owl:members ( nucleo:OrgaoOrcamentario nucleo:UnidadeOrcamentaria ) .
+nucleo:FonteOrcamentaria a owl:Class, gufo:Category ;
+    rdfs:label "FonteOrcamentaria" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:subClassOf gufo:FunctionalComplex .
 
 nucleo:OrgaoPublico.codigo a owl:DatatypeProperty ;
     rdfs:label "codigo" ;
@@ -158,6 +165,20 @@ nucleo:OrgaoPublico.descricao a owl:DatatypeProperty ;
     rdfs:label "descricao" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
     rdfs:domain nucleo:OrgaoPublico ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+nucleo:UnidadeDeOrgaoPublico.codigo a owl:DatatypeProperty ;
+    rdfs:label "codigo" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:domain nucleo:UnidadeDeOrgaoPublico ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+nucleo:UnidadeDeOrgaoPublico.descricao a owl:DatatypeProperty ;
+    rdfs:label "descricao" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:domain nucleo:UnidadeDeOrgaoPublico ;
     rdfs:range xsd:string ;
     rdfs:subPropertyOf gufo:hasQualityValue .
 
@@ -203,6 +224,15 @@ nucleo:OrgaoPublico.isComponentOfEntidadePublica a owl:ObjectProperty, owl:Funct
     rdfs:range nucleo:EntidadePublica ;
     rdfs:subPropertyOf gufo:isComponentOf .
 
+nucleo:UnidadeDeOrgaoPublico.isComponentOfOrgaoPublico a
+        owl:ObjectProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "UnidadeDeOrgaoPublico.isComponentOfOrgaoPublico" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
+    rdfs:domain nucleo:UnidadeDeOrgaoPublico ;
+    rdfs:range nucleo:OrgaoPublico ;
+    rdfs:subPropertyOf gufo:isComponentOf .
+
 nucleo:MicroRegiao.isComponentOfRegiao a owl:ObjectProperty, owl:FunctionalProperty ;
     rdfs:label "MicroRegiao.isComponentOfRegiao" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
@@ -234,6 +264,7 @@ nucleo:Municipio.isComponentOfMicroRegiao a owl:ObjectProperty ;
         nucleo:PessoaFisica
         nucleo:PessoaJuridica
         nucleo:Regiao
+        nucleo:UnidadeDeOrgaoPublico
     ) .
 
 vann:preferredNamespacePrefix a owl:AnnotationProperty .
