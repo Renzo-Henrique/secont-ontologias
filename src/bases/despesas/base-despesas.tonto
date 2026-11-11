@@ -56,12 +56,16 @@ relator RegistroDeDespesaOrcamentaria{
 }
 
 subkind RegistroDeDespesaOrcamentariaComOpcionais specializes RegistroDeDespesaOrcamentaria{
-    [0..*] -- [0..1] (const) nucleo.MicroRegiao
-    [0..*] -- [0..1] (const) nucleo.Municipio
-    [0..*] -- [0..1] (const) nucleo.Banco
+    [1..*] -- [0..1] (const) MicroRegiaoNaDespesa
+    [1..*] -- [0..1] (const) MunicipioNaDespesa
+    [1..*] -- [0..1] (const) BancoNaDespesa
     [1..*] -- [0..1] (const) ConcedorDeConvenio
     [1..*] -- [0..1] (const) RecebedorDeConvenio
 }
+
+role MicroRegiaoNaDespesa specializes nucleo.MicroRegiao
+role MunicipioNaDespesa specializes nucleo.Municipio
+role BancoNaDespesa specializes nucleo.Banco
 
 /// @pt-br Relator que associa a Receita às classificações de natureza, fonte e conta contábil.
 relator ClassificacaoDoRegistroDeDespesaOrcamentaria {
