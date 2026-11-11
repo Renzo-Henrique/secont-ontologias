@@ -86,8 +86,8 @@ def exportarDespesas():
     exportar_diagramas_com_tonto_view(
                 input_path="../src/bases/despesas/base-despesas.tonto",
                 output_dir=_PREFIX_OUTPUT_DIR+_PREFIX_DESPESAS,
-                output_name="base-despesas-classificacao",
-                view_file="../src/bases/despesas/views/versoes_da_view/base-despesas-classificacao.tontoview"
+                output_name="base-despesas-classificadores",
+                view_file="../src/bases/despesas/views/versoes_da_view/base-despesas-classificadores.tontoview"
         )
     exportar_diagramas_com_tonto_view(
                 input_path="../src/bases/despesas/base-despesas.tonto",

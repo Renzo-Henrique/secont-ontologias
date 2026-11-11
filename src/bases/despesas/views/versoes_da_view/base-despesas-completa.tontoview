@@ -20,8 +20,7 @@
       "base-despesas::UnidadeGestoraComOrcamentoDeDespesa",
       "base-despesas::UnidadeGestoraComRestosAPagar",
       "base-despesas::RegistroDeConvenioConcedido",
-      "base-despesas::RegistroDeConvenioRecebido",
-      "nucleo::UnidadeGestora"
+      "base-despesas::RegistroDeConvenioRecebido"
     ]
   },
   "display": {
@@ -30,7 +29,7 @@
     "routing": "straight",
     "fontFamily": "sans",
     "fontSize": "medium",
-    "showAttributes": true,
+    "showAttributes": false,
     "showCardinalities": true,
     "showRelationNames": true,
     "showRelationStereotypes": true,
@@ -62,46 +61,44 @@
       "y": 480
     },
     "base-despesas::ClassificadorInstitucionalDeDespesa": {
-      "x": 464,
-      "y": 1472
+      "x": -256,
+      "y": 1152
     },
     "base-despesas::ClassificadorFuncionalDeDespesa": {
-      "x": 1008,
-      "y": 1472
+      "x": 96,
+      "y": 1328
     },
     "base-despesas::ClassificadorPorEstruturaProgramaticaDeDespesa": {
-      "x": 864,
-      "y": 1128
+      "x": 504,
+      "y": 1440
     },
     "base-despesas::ClassificadorPorNaturezaDeDespesa": {
-      "x": 1064,
-      "y": 1312
+      "x": 16,
+      "y": 952
     },
     "base-despesas::FonteDaDespesa": {
-      "x": 872,
-      "y": 1536
+      "x": 360,
+      "y": 1408
     },
     "base-despesas::TerminoDoExercicioDeDespesaVigente": {
       "x": 992,
       "y": 800
     },
     "base-despesas::CriacaoDeDespesaNaoPaga": {
-      "x": 928,
-      "y": 832,
-      "width": 291,
-      "height": 42
+      "x": 760,
+      "y": 224
     },
     "base-despesas::DocumentoContabilDeRestosAPagar": {
       "x": 624,
       "y": 792
     },
     "base-despesas::DespesaDeExercicioVigente": {
-      "x": 672,
-      "y": 648
+      "x": 664,
+      "y": 352
     },
     "base-despesas::DespesaDeExercicioAnterior": {
-      "x": 936,
-      "y": 648
+      "x": 944,
+      "y": 352
     },
     "base-despesas::DocumentoContabilDeOrcamentoDeDespesa": {
       "x": 256,
@@ -112,20 +109,20 @@
       "y": 760
     },
     "nucleo::UnidadeGestora": {
-      "x": -56,
-      "y": 1000
+      "x": 56,
+      "y": 680
     },
     "base-despesas::RegistroDeOrcamentoDeDespesa": {
       "x": 192,
       "y": 624
     },
     "nucleo::MicroRegiao": {
-      "x": 40,
-      "y": 1464
+      "x": 984,
+      "y": 976
     },
     "nucleo::Municipio": {
-      "x": -48,
-      "y": 1288
+      "x": 864,
+      "y": 1304
     },
     "base-despesas::DocumentoContabilDeOrcamentoDeExecucao": {
       "x": 360,
@@ -152,8 +149,10 @@
       "y": 948
     },
     "base-despesas::RegistroDeDespesaOrcamentaria": {
-      "x": 488,
-      "y": 968
+      "x": 360,
+      "y": 848,
+      "width": 320,
+      "height": 52
     },
     "base-despesas::DocumentoContabilDeDespesa": {
       "x": 872,
@@ -176,8 +175,8 @@
       "y": 744
     },
     "nucleo::Convenio": {
-      "x": -88,
-      "y": 1032
+      "x": 936,
+      "y": 664
     },
     "base-despesas::RegistroDeConvenioConcedidoNaDespesaOrcamentaria": {
       "x": 1296,
@@ -188,20 +187,20 @@
       "y": 736
     },
     "base-despesas::DespesaDeLiquidacao": {
-      "x": 232,
-      "y": 656
+      "x": 200,
+      "y": 344
     },
     "base-despesas::DespesaDePagamento": {
-      "x": 440,
-      "y": 656
+      "x": 384,
+      "y": 344
     },
     "base-despesas::DespesaDeEmpenho": {
-      "x": 48,
-      "y": 656
+      "x": 40,
+      "y": 352
     },
     "base-despesas::TerminoDoExercicioVigenteDaDespesa": {
-      "x": 928,
-      "y": 1000
+      "x": 272,
+      "y": 224
     },
     "base-despesas::DespesaRegistrada": {
       "x": 664,
@@ -220,40 +219,40 @@
       "y": 800
     },
     "base-despesas::RegistroDeDespesaOrcamentariaComOpcionais": {
-      "x": 144,
-      "y": 1264
+      "x": 544,
+      "y": 1032
     },
     "nucleo::Banco": {
-      "x": -48,
-      "y": 1384
+      "x": 664,
+      "y": 1328
     },
     "base-despesas::RecebedorDeConvenio": {
-      "x": -96,
-      "y": 1160
+      "x": 936,
+      "y": 824
     },
     "base-despesas::ConcedorDeConvenio": {
-      "x": 80,
-      "y": 1072
+      "x": 736,
+      "y": 808
     },
     "base-despesas::DespesaOrcamentaria": {
-      "x": 432,
-      "y": 456
+      "x": 440,
+      "y": 536
     },
     "base-despesas::DespesaOrcamentariaRegistrada": {
-      "x": 536,
-      "y": 792
+      "x": 408,
+      "y": 664
     },
     "base-despesas::UnidadeGestoraNaDespesa": {
-      "x": 192,
-      "y": 920
+      "x": 24,
+      "y": 840
     },
     "nucleo::OrgaoPublico": {
-      "x": 904,
-      "y": 384
+      "x": -216,
+      "y": 1640
     },
     "base-despesas::ClassificacaoDoRegistroDeDespesaOrcamentaria": {
-      "x": 656,
-      "y": 1328
+      "x": 160,
+      "y": 1136
     },
     "nucleo::UnidadeOrcamentaria": {
       "x": 616,
@@ -262,6 +261,34 @@
     "nucleo::OrgaoPublicoOrcamentario": {
       "x": 368,
       "y": 1592
+    },
+    "base-despesas::OrgaoPublicoOrcamentario": {
+      "x": -264,
+      "y": 1480
+    },
+    "base-despesas::UnidadeOrcamentaria": {
+      "x": 48,
+      "y": 1480
+    },
+    "nucleo::UnidadeDeOrgaoPublico": {
+      "x": 40,
+      "y": 1632
+    },
+    "nucleo::FonteOrcamentaria": {
+      "x": 352,
+      "y": 1560
+    },
+    "base-despesas::BancoNaDespesa": {
+      "x": 656,
+      "y": 1216
+    },
+    "base-despesas::MunicipioNaDespesa": {
+      "x": 840,
+      "y": 1200
+    },
+    "base-despesas::MicroRegiaoNaDespesa": {
+      "x": 960,
+      "y": 1096
     }
   },
   "edges": {
@@ -338,54 +365,6 @@
         {
           "x": 1157,
           "y": 618
-        }
-      ]
-    },
-    "rel:base-despesas::DespesaDeExercicioAnterior->base-despesas::CriacaoDeDespesaNaoPaga:creation:": {
-      "points": [
-        {
-          "x": 1038,
-          "y": 690
-        },
-        {
-          "x": 1080,
-          "y": 728
-        },
-        {
-          "x": 1136,
-          "y": 768
-        },
-        {
-          "x": 1136,
-          "y": 840
-        },
-        {
-          "x": 1069,
-          "y": 832
-        }
-      ]
-    },
-    "gen:base-despesas::DespesaOrcamentariaRegistrada->base-despesas::DespesaOrcamentaria": {
-      "points": [
-        {
-          "x": 638,
-          "y": 792
-        },
-        {
-          "x": 616,
-          "y": 677
-        },
-        {
-          "x": 608,
-          "y": 624
-        },
-        {
-          "x": 560,
-          "y": 624
-        },
-        {
-          "x": 517,
-          "y": 498
         }
       ]
     }

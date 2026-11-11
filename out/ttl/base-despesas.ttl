@@ -118,16 +118,16 @@ base-despesas:RegistroDeDespesaOrcamentariaComOpcionais a owl:Class, gufo:SubKin
     rdfs:subClassOf
         base-despesas:RegistroDeDespesaOrcamentaria,
         [ a owl:Restriction ;
-          owl:onProperty base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasMicroRegiao ;
-          owl:onClass nucleo:MicroRegiao ;
+          owl:onProperty base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasMicroRegiaoNaDespesa ;
+          owl:onClass base-despesas:MicroRegiaoNaDespesa ;
           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-          owl:onProperty base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasMunicipio ;
-          owl:onClass nucleo:Municipio ;
+          owl:onProperty base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasMunicipioNaDespesa ;
+          owl:onClass base-despesas:MunicipioNaDespesa ;
           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-          owl:onProperty base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasBanco ;
-          owl:onClass nucleo:Banco ;
+          owl:onProperty base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasBancoNaDespesa ;
+          owl:onClass base-despesas:BancoNaDespesa ;
           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
           owl:onProperty base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasConcedorDeConvenio ;
@@ -137,6 +137,33 @@ base-despesas:RegistroDeDespesaOrcamentariaComOpcionais a owl:Class, gufo:SubKin
           owl:onProperty base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasRecebedorDeConvenio ;
           owl:onClass base-despesas:RecebedorDeConvenio ;
           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
+
+base-despesas:MicroRegiaoNaDespesa a owl:Class, gufo:Role ;
+    rdfs:label "MicroRegiaoNaDespesa" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:subClassOf
+        nucleo:MicroRegiao,
+        [ a owl:Restriction ;
+          owl:onProperty [ owl:inverseOf base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasMicroRegiaoNaDespesa ] ;
+          owl:someValuesFrom base-despesas:RegistroDeDespesaOrcamentariaComOpcionais ] .
+
+base-despesas:MunicipioNaDespesa a owl:Class, gufo:Role ;
+    rdfs:label "MunicipioNaDespesa" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:subClassOf
+        nucleo:Municipio,
+        [ a owl:Restriction ;
+          owl:onProperty [ owl:inverseOf base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasMunicipioNaDespesa ] ;
+          owl:someValuesFrom base-despesas:RegistroDeDespesaOrcamentariaComOpcionais ] .
+
+base-despesas:BancoNaDespesa a owl:Class, gufo:Role ;
+    rdfs:label "BancoNaDespesa" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:subClassOf
+        nucleo:Banco,
+        [ a owl:Restriction ;
+          owl:onProperty [ owl:inverseOf base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasBancoNaDespesa ] ;
+          owl:someValuesFrom base-despesas:RegistroDeDespesaOrcamentariaComOpcionais ] .
 
 base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria a owl:Class, gufo:Kind ;
     rdfs:label "ClassificacaoDoRegistroDeDespesaOrcamentaria" ;
@@ -371,29 +398,29 @@ base-despesas:RegistroDeDespesaOrcamentaria.mediatesUnidadeGestoraNaDespesa a
     rdfs:range base-despesas:UnidadeGestoraNaDespesa ;
     rdfs:subPropertyOf gufo:mediates .
 
-base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasMicroRegiao a
+base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasMicroRegiaoNaDespesa a
         owl:ObjectProperty,
         owl:FunctionalProperty ;
-    rdfs:label "RegistroDeDespesaOrcamentariaComOpcionais.hasMicroRegiao" ;
+    rdfs:label "RegistroDeDespesaOrcamentariaComOpcionais.hasMicroRegiaoNaDespesa" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:domain base-despesas:RegistroDeDespesaOrcamentariaComOpcionais ;
-    rdfs:range nucleo:MicroRegiao .
+    rdfs:range base-despesas:MicroRegiaoNaDespesa .
 
-base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasMunicipio a
+base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasMunicipioNaDespesa a
         owl:ObjectProperty,
         owl:FunctionalProperty ;
-    rdfs:label "RegistroDeDespesaOrcamentariaComOpcionais.hasMunicipio" ;
+    rdfs:label "RegistroDeDespesaOrcamentariaComOpcionais.hasMunicipioNaDespesa" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:domain base-despesas:RegistroDeDespesaOrcamentariaComOpcionais ;
-    rdfs:range nucleo:Municipio .
+    rdfs:range base-despesas:MunicipioNaDespesa .
 
-base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasBanco a
+base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasBancoNaDespesa a
         owl:ObjectProperty,
         owl:FunctionalProperty ;
-    rdfs:label "RegistroDeDespesaOrcamentariaComOpcionais.hasBanco" ;
+    rdfs:label "RegistroDeDespesaOrcamentariaComOpcionais.hasBancoNaDespesa" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:domain base-despesas:RegistroDeDespesaOrcamentariaComOpcionais ;
-    rdfs:range nucleo:Banco .
+    rdfs:range base-despesas:BancoNaDespesa .
 
 base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasConcedorDeConvenio a
         owl:ObjectProperty,
