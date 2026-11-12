@@ -32,8 +32,8 @@ CodigoFonte ;
 Fonte ; 
 CodigoDetalhamentoFonte ; 
 DetalhamentoFonte ; 
-CodigoOrgao ; 
-Orgao ; 
+CodigoOrgao ; base-receitas.OrgaoPublicoOrcamentarioNaDespesa.codigo
+Orgao ; base-receitas.OrgaoPublicoOrcamentarioNaDespesa.descricao
 CodigoFuncao ; 
 Funcao ; 
 CodigoSubFuncao ; 

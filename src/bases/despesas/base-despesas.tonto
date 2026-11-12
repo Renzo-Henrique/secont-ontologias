@@ -14,8 +14,8 @@ kind DespesaOrcamentaria {
 relator ClassificadorInstitucionalDeDespesa {
     @mediation (const) [1]  -- [1] (const) ClassificacaoDoRegistroDeDespesaOrcamentaria
 
-    @mediation (const) [1]  -- [1] (const) OrgaoPublicoOrcamentario
-    @mediation (const) [1]  -- [1] (const) UnidadeOrcamentaria
+    @mediation (const) [1]  -- [1] (const) OrgaoPublicoOrcamentarioNaDespesa
+    @mediation (const) [1]  -- [1] (const) UnidadeOrcamentariaNaDespesa
 }
 
 /// @pt-br A classificação funcional segrega as dotações orçamentárias em funções e subfunções, buscando responder basicamente à indagação "em que área" de ação governamental a despesa será realizada. A atual classificação funcional foi instituída pela Portaria nº 42/1999, do então Ministério do Orçamento e Gestão, divulgada pela Portaria SOF/ME nº 2.520/2022, e é composta de um rol de funções e subfunções prefixadas, que servem como agregador dos gastos públicos por área de ação governamental nas três esferas de Governo. Trata-se de uma classificação independente dos programas e de aplicação comum e obrigatória, no âmbito da União, dos Estados, do Distrito Federal e dos Municípios, o que permite a consolidação nacional dos gastos do setor público.
@@ -95,14 +95,12 @@ role UnidadeGestoraNaDespesa specializes nucleo.UnidadeGestora
 
 
 
-/// @pt-br Os órgãos orçamentários, por sua vez, correspondem a agrupamentos de unidades orçamentárias. As dotações são consignadas às unidades orçamentárias, responsáveis pela realização das ações.
-/// Cite MCASP - 11º Edicao: Parte Il: Seções 4.2.1
-role OrgaoPublicoOrcamentario specializes nucleo.OrgaoPublico{
+
+role OrgaoPublicoOrcamentarioNaDespesa specializes nucleo.OrgaoPublicoOrcamentario{
 
 }
 
-role UnidadeOrcamentaria specializes nucleo.UnidadeDeOrgaoPublico{
-    @componenthood [1..*] --<> [1] (const) OrgaoPublicoOrcamentario
+role UnidadeOrcamentariaNaDespesa specializes nucleo.UnidadeOrcamentaria{
 }
 
 

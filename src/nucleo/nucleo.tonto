@@ -31,11 +31,15 @@ kind UnidadeDeOrgaoPublico{
 }
 
 
-// /// @pt-br Hierarquia que representa a estrutura de órgãos e unidades orçamentárias de um Órgão Público.
-// disjoint genset HierarquiaOrcamentariaDeOrgaoPublico {
-//     general OrgaoPublico
-//     specifics OrgaoOrcamentario, UnidadeOrcamentaria
-// }
+/// @pt-br Os órgãos orçamentários, por sua vez, correspondem a agrupamentos de unidades orçamentárias. As dotações são consignadas às unidades orçamentárias, responsáveis pela realização das ações.
+/// Cite MCASP - 11º Edicao: Parte Il: Seções 4.2.1
+role OrgaoPublicoOrcamentario specializes OrgaoPublico{
+
+}
+
+role UnidadeOrcamentaria specializes UnidadeDeOrgaoPublico{
+    @componenthood [1..*] --<> [1] (const) OrgaoPublicoOrcamentario
+}
 
 
 /// @pt-br Pessoa natural identificada no modelo por CPF e nome, podendo também ter NIS informado.

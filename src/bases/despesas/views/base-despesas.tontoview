@@ -274,12 +274,12 @@
       "y": 1136
     },
     "nucleo::UnidadeOrcamentaria": {
-      "x": 616,
-      "y": 1592
+      "x": -48,
+      "y": 1352
     },
     "nucleo::OrgaoPublicoOrcamentario": {
-      "x": 368,
-      "y": 1592
+      "x": -376,
+      "y": 1344
     },
     "base-despesas::OrgaoPublicoOrcamentario": {
       "x": -256,
@@ -308,6 +308,14 @@
     "base-despesas::MicroRegiaoNaDespesa": {
       "x": 960,
       "y": 1104
+    },
+    "base-despesas::OrgaoPublicoOrcamentarioNaDespesa": {
+      "x": -400,
+      "y": 1184
+    },
+    "base-despesas::UnidadeOrcamentariaNaDespesa": {
+      "x": -72,
+      "y": 1240
     }
   },
   "edges": {

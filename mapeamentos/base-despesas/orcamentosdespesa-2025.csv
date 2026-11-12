@@ -32,8 +32,8 @@ DespesaPaga ;
 Ano ; 
 Esfera ; 
 NomeEsfera ; 
-UnidadeOrcamentaria ; 
-NomeUnidadeOrcamentaria ; 
+UnidadeOrcamentaria ; base-receitas.UnidadeOrcamentariaNaDespesa.codigo
+NomeUnidadeOrcamentaria ; base-receitas.UnidadeOrcamentariaNaDespesa.descricao
 Microregiao ; 
 NomeMicroregiao ; 
 Municipio ; 
