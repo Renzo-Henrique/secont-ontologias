@@ -96,8 +96,8 @@
       "y": 384
     },
     "nucleo::DadosPessoaisAnonimizados": {
-      "x": 392,
-      "y": 680
+      "x": 464,
+      "y": 664
     },
     "nucleo::OrgaoPublicoOrcamentario": {
       "x": 224,
@@ -106,6 +106,14 @@
     "nucleo::UnidadeDeOrgaoPublico": {
       "x": -104,
       "y": 848
+    },
+    "nucleo::EsferaOrcamentaria": {
+      "x": 336,
+      "y": 1008
+    },
+    "nucleo::FonteOrcamentaria": {
+      "x": 536,
+      "y": 1008
     }
   },
   "edges": {
