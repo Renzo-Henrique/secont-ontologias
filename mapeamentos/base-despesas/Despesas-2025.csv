@@ -1,15 +1,15 @@
-Ano ;
-Data ;
-ValorEmpenho ;
-ValorLiquidado ;
-ValorPago ;
-ValorRap ;
-CpfCnpjNis ; 
-TipoFavorecido ; 
+Ano ; base-despesas.
+Data ; base-despesas.
+ValorEmpenho ; base-despesas.
+ValorLiquidado ; base-despesas.
+ValorPago ; base-despesas.
+ValorRap ; base-despesas.
+CpfCnpjNis ; base-despesas.
+TipoFavorecido ; base-despesas. 
 CargoFuncao ; 
-Favorecido ; 
-IdFavorecido ; 
-TipoLicitacao ; 
+Favorecido ; base-despesas. 
+IdFavorecido ; base-despesas. 
+TipoLicitacao ; base-despesas. 
 HistoricoDocumento ;
 Documento ;
 DocumentoEmpenho ;
@@ -46,26 +46,26 @@ CodigoModalidade ; base-despesas.ClassificadorPorNaturezaDeDespesa.codigoModalid
 Modalidade ; base-despesas.ClassificadorPorNaturezaDeDespesa.descricaoModalidade
 CodigoSubelementoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa.codigoSubElementoDespesa
 SubelementoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa.descricaoSubElementoDespesa
-CodigoGestaoEmitente ;
+CodigoGestaoEmitente ; base-despesas.
 CodigoPlanoOrcamentario ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa.codigoPlanoOrcamentario
 PlanoOrcamentario ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa.descricaoPlanoOrcamentario
 NumeroProcesso ;
-CodigoConvenioRecebido ; 
-CodigoConvenioConcedido ; 
-Embasamento ;
-CredorRetencao ;
-NomeCredorRetencao ;
-TipoRetencao ;
-NomeTipoRetencao ;
-NumeroLicitacao ;
-AnoLicitacao ;
-BancoOrigem ; 
-AgenciaOrigem ; 
-DomicilioBancarioOrigem ; 
-IdUso ;
-DescricaoIdUso ;
-Emenda ;
-Esfera ; 
-DescricaoEsfera ; 
-Contrato ;
-Id ;
+CodigoConvenioRecebido ; base-despesas.RecebedorDeConvenio.codigo
+CodigoConvenioConcedido ; base-despesas.ConcedorDeConvenio.codigo
+Embasamento ; base-despesas.
+CredorRetencao ; base-despesas.
+NomeCredorRetencao ; base-despesas.
+TipoRetencao ; base-despesas.
+NomeTipoRetencao ; base-despesas.
+NumeroLicitacao ; base-despesas.
+AnoLicitacao ; base-despesas.
+BancoOrigem ; base-despesas.BancoNaDespesa.codigo
+AgenciaOrigem ; base-despesas.BancoNaDespesa.codigoAgenciaOrigem
+DomicilioBancarioOrigem ; base-despesas.BancoNaDespesa.codigoDomicilioBancarioOrigem
+IdUso ; base-despesas.
+DescricaoIdUso ; base-despesas.
+Emenda ; base-despesas.
+Esfera ; base-despesas. 
+DescricaoEsfera ; base-despesas. 
+Contrato ; base-despesas.
+Id ;  base-despesas.

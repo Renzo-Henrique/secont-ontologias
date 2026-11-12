@@ -1,11 +1,11 @@
-Data ; 
-ValorEmpenho ; 
-ValorLiquidado ; 
-ValorPago ; 
-ValorRap ; 
-ValorOrcadoInicial ; 
-ValorOrcado ; 
+Data ;  base-despesas.RegistroDeOrcamentosDeExecucoes.data
+ValorEmpenho ;  base-despesas.RegistroDeOrcamentosDeExecucoes.valorAtrelado.valorEmpenho
+ValorLiquidado ;  base-despesas.RegistroDeOrcamentosDeExecucoes.valorAtrelado.valorLiquidado
+ValorPago ;  base-despesas.RegistroDeOrcamentosDeExecucoes.valorAtrelado.valorPago
+ValorRap ;  base-despesas.RegistroDeOrcamentosDeExecucoes.valorAtrelado.valorRap
+ValorOrcadoInicial ;  base-despesas.RegistroDeOrcamentosDeExecucoes.valorAtrelado.valorOrcadoInicial
+ValorOrcado ;  base-despesas.RegistroDeOrcamentosDeExecucoes.valorAtrelado.valorOrcado
 CodigoUnidadeGestora ; base-despesas.UnidadeGestoraNaDespesa.codigo
 UnidadeGestora ; base-despesas.UnidadeGestoraNaDespesa.descricao
 SiglaUnidadeGestora ; base-despesas.UnidadeGestoraNaDespesa.sigla
-Id ;
+Id ;  base-despesas.RegistroDeOrcamentosDeExecucoes.idRegistro

@@ -73,11 +73,17 @@ kind Municipio {
 }
 
 /// @pt-br Instituição financeira referenciada nos dados do Portal da Transparência.
-kind Banco
+kind Banco{
+    codigo: const string [1]
+    codigoAgenciaOrigem: const string [1]
+    codigoDomicilioBancarioOrigem: const string [1]
+}
 
 /// @pt-br  Convênios, contratos de repasse e termos de parceria são acordos feitos entre União e entidades governamentais dos demais entes da Federação, ou organizações não-governamentais, para transferência de recursos financeiros a serem utilizados na execução de um objetivo comum. Portanto, as transferências voluntárias e legais serão viabilizadas a partir dos mencionados instrumentos e outros congêneres.
 /// Cite url https://portaldatransparencia.gov.br/entenda-a-gestao-publica/convenios-e-outros-acordos
-kind Convenio
+kind Convenio{
+    codigo: const string [1]
+}
 
 /// @pt-br Classificação que identifica o Poder da Federação ao qual uma unidade gestora está vinculada.
 datatype PoderDaFederacao

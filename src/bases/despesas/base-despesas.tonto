@@ -93,7 +93,19 @@ subkind RegistroDeRestosAPagar specializes RegistroDeDespesaOrcamentaria{
 subkind RegistroDeOrcamentosDeDespesa specializes RegistroDeDespesaOrcamentaria{
 }
 
+
+datatype ValorAtreladoNoOrcamentoDeExecucoesDeDespesa{
+    valorEmpenho: const number [1]
+    valorLiquidado: const number [1]
+    valorPago: const number [1]
+    valorRap: const number [1]
+    valorOrcadoInicial: const number [1]
+    valorOrcado: const number [1]
+}
 subkind RegistroDeOrcamentosDeExecucoes specializes RegistroDeDespesaOrcamentaria{
+    data: const datetime [1]
+    valorAtrelado: const ValorAtreladoNoOrcamentoDeExecucoesDeDespesa [1]
+    idRegistro: const string [1]
 }
 
 disjoint genset RegistrosDaDespesa where RegistroDeDespesa, RegistroDeRestosAPagar, RegistroDeOrcamentosDeDespesa, RegistroDeOrcamentosDeExecucoes specializes RegistroDeDespesaOrcamentaria

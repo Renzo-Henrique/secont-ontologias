@@ -20,23 +20,23 @@ CodigoSubelementoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa.codig
 SubelementoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa.descricaoSubElementoDespesa
 CodigoFonte ; base-despesas.FonteDaDespesa.codigoFonte
 Fonte ; base-despesas.FonteDaDespesa.descricaoFonte
-CpfCnpjNis ; 
-Favorecido ; 
+CpfCnpjNis ;  base-despesas.
+Favorecido ;  base-despesas.
 CodigoPlanoOrcamentario ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa.codigoPlanoOrcamentario
 PlanoOrcamentario ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa.descricaoPlanoOrcamentario
-DotacaoInicial ; 
-DotacaoAtualizada ; 
-DespesaEmpenhada ; 
-DespesaLiquidada ; 
-DespesaPaga ; 
-Ano ; 
-Esfera ; 
-NomeEsfera ; 
+DotacaoInicial ;  base-despesas.
+DotacaoAtualizada ;  base-despesas.
+DespesaEmpenhada ;  base-despesas.
+DespesaLiquidada ;  base-despesas.
+DespesaPaga ;  base-despesas.
+Ano ;  base-despesas.
+Esfera ;  base-despesas.
+NomeEsfera ;  base-despesas.
 UnidadeOrcamentaria ; base-despesas.UnidadeOrcamentariaNaDespesa.codigo
 NomeUnidadeOrcamentaria ; base-despesas.UnidadeOrcamentariaNaDespesa.descricao
-Microregiao ; 
-NomeMicroregiao ; 
-Municipio ; 
-NomeMunicipio ; 
-Emenda ; 
-Id ; 
+Microregiao ;  base-despesas.
+NomeMicroregiao ;  base-despesas.
+Municipio ;  base-despesas.
+NomeMunicipio ;  base-despesas.
+Emenda ;  base-despesas.
+Id ;  base-despesas.

@@ -1,6 +1,6 @@
-Ano ; 
-CodigoPoder ; 
-Poder ; 
+Ano ;  base-despesas.
+CodigoPoder ;  base-despesas.
+Poder ;  base-despesas.
 CodigoUnidadeGestora ; base-despesas.UnidadeGestoraNaDespesa.codigo
 UnidadeGestora ; base-despesas.UnidadeGestoraNaDespesa.descricao
 CodigoElemento ; base-despesas.ClassificadorPorNaturezaDeDespesa.codigoElementoDespesa
