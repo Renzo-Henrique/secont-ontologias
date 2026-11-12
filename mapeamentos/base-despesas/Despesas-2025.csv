@@ -9,13 +9,13 @@ TipoFavorecido ; base-despesas.RegistroDeDespesa.dadosDoFavorecido.tipoFavorecid
 CargoFuncao ; base-despesas.RegistroDeDespesa.dadosDoFavorecido.cargoFuncao
 Favorecido ; base-despesas.RegistroDeDespesa.dadosDoFavorecido.nome
 IdFavorecido ; base-despesas.RegistroDeDespesa.dadosDoFavorecido.idFavorecido
-TipoLicitacao ; base-despesas.RegistroDeDespesa.tipoLicitacao
-HistoricoDocumento ;
-Documento ;
-DocumentoEmpenho ;
-CodigoProcesso ;
-Processo ;
-ProcessoAssunto ;
+TipoLicitacao ; base-despesas.RegistroDeDespesa.dadosLicitacao.tipoLicitacao
+HistoricoDocumento ; base-despesas.RegistroDeDespesa.historicoDocumento
+Documento ; base-despesas.RegistroDeDespesa.documento
+DocumentoEmpenho ; base-despesas.RegistroDeDespesa.documentoEmpenho
+CodigoProcesso ; base-despesas.ProcessoOrcamentarioDeDespesa.codigo
+Processo ; base-despesas.ProcessoOrcamentarioDeDespesa.descricao
+ProcessoAssunto ; base-despesas.ProcessoOrcamentarioDeDespesa.assunto
 CodigoFuncionalProgramatica ;
 CodigoCategoriaEconomica ; base-despesas.ClassificadorPorNaturezaDeDespesa.codigoCategoriaEconomica
 CategoriaEconomica ; base-despesas.ClassificadorPorNaturezaDeDespesa.descricaoCategoriaEconomica
@@ -46,26 +46,26 @@ CodigoModalidade ; base-despesas.ClassificadorPorNaturezaDeDespesa.codigoModalid
 Modalidade ; base-despesas.ClassificadorPorNaturezaDeDespesa.descricaoModalidade
 CodigoSubelementoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa.codigoSubElementoDespesa
 SubelementoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa.descricaoSubElementoDespesa
-CodigoGestaoEmitente ; base-despesas.
+CodigoGestaoEmitente ; base-despesas.RegistroDeDespesa.codigoGestaoEmitente
 CodigoPlanoOrcamentario ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa.codigoPlanoOrcamentario
 PlanoOrcamentario ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa.descricaoPlanoOrcamentario
 NumeroProcesso ;
 CodigoConvenioRecebido ; base-despesas.RecebedorDeConvenio.codigo
 CodigoConvenioConcedido ; base-despesas.ConcedorDeConvenio.codigo
 Embasamento ; base-despesas.RegistroDeDespesa.embasamento
-CredorRetencao ; base-despesas.
-NomeCredorRetencao ; base-despesas.
-TipoRetencao ; base-despesas.
-NomeTipoRetencao ; base-despesas.
-NumeroLicitacao ; base-despesas.
-AnoLicitacao ; base-despesas.
+CredorRetencao ; base-despesas.RegistroDeDespesa.dadosRetencao.codigo
+NomeCredorRetencao ; base-despesas.RegistroDeDespesa.dadosRetencao.nome
+TipoRetencao ; base-despesas.RegistroDeDespesa.dadosRetencao.tipoRetencao
+NomeTipoRetencao ; base-despesas.RegistroDeDespesa.dadosRetencao.nomeTipoRetencao
+NumeroLicitacao ; base-despesas.RegistroDeDespesa.dadosLicitacao.numeroLicitacao
+AnoLicitacao ; base-despesas.RegistroDeDespesa.dadosLicitacao.anoLicitacao
 BancoOrigem ; base-despesas.BancoNaDespesa.codigo
 AgenciaOrigem ; base-despesas.BancoNaDespesa.codigoAgenciaOrigem
 DomicilioBancarioOrigem ; base-despesas.BancoNaDespesa.codigoDomicilioBancarioOrigem
-IdUso ; base-despesas.
-DescricaoIdUso ; base-despesas.
-Emenda ; base-despesas.
+IdUso ; base-despesas.RegistroDeDespesa.idUso
+DescricaoIdUso ; base-despesas.RegistroDeDespesa.descricaoIdUso
+Emenda ; base-despesas.RegistroDeDespesa.emenda
 Esfera ; base-despesas.EsferaOrcamentariaNaDespesa.codigo
 DescricaoEsfera ; base-despesas.EsferaOrcamentariaNaDespesa.descricao
-Contrato ; base-despesas.
-Id ;  base-despesas.
+Contrato ; base-despesas.RegistroDeDespesa.contratoDaDespesa
+Id ;  base-despesas.RegistroDeDespesa.idRegistro

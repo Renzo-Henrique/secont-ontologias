@@ -88,7 +88,21 @@ relator RegistroDeDespesaOrcamentaria{
     //dadosAnonimizados: const nucleo.DadosPessoaisAnonimizados [1]
 }
 
+category ProcessoOrcamentarioDeDespesa of functional-complexes{
+    codigo: const string [1]
+    descricao: const string [1]
+    assunto: const string [1]
+}
 
+datatype RetencaoDaDespesa specializes nucleo.DadosPessoaisAnonimizados{
+    tipoRetencao: const string [1]
+    nomeTipoRetencao: const string [1]
+}
+datatype LicitacaoDaDespesa{
+    tipoLicitacao: const string [1]
+    numeroLicitacao: const string [1]
+    anoLicitacao: const string [1]
+}
 datatype ValorAtreladoNoRegistroDeDespesa{
     valorEmpenho: const number [1]
     valorLiquidado: const number [1]
@@ -100,8 +114,25 @@ subkind RegistroDeDespesa specializes RegistroDeDespesaOrcamentaria{
     emenda: const string [0..1]
     embasamento: const string [1]
     dadosDoFavorecido: const nucleo.DadosPessoaisAnonimizadosExpandido [1]
-    tipoLicitacao: const string [1]
     valorAtrelado: const ValorAtreladoNoRegistroDeDespesa [1]
+    retencaoDaDespesa: const RetencaoDaDespesa [0..1]
+    historicoDocumento: const string [1]
+    documento: const string [1]
+    documentoEmpenho: const string [1]
+
+    idUso: const string [1]
+    descricaoIdUso: const string [1]
+
+    dadosRetencao: const RetencaoDaDespesa [0..1]
+    dadosLicitacao: const LicitacaoDaDespesa [0..1]
+
+    contratoDaDespesa: const string [1]
+
+    /// TODO:: Não incluir? Visto que no próprio dicionário fala que não tem utilidade
+    codigoGestaoEmitente: const string [1]
+
+    
+    @mediation (const) [1..*]  -- [1] (const) ProcessoOrcamentarioDeDespesa
 
 }
 
