@@ -1,13 +1,13 @@
-Ano ;  base-despesas.
-CodigoPoder ;  base-despesas.
-Poder ;  base-despesas.
+Ano ;  base-despesas.DespesaOrcamentariaRegistrada.ano
+CodigoPoder ;  base-despesas.PoderDaFederacaoNaDespesa.codigo
+Poder ;  base-despesas.PoderDaFederacaoNaDespesa.descricao
 CodigoUnidadeGestora ; base-despesas.UnidadeGestoraNaDespesa.codigo
 UnidadeGestora ; base-despesas.UnidadeGestoraNaDespesa.descricao
 CodigoElemento ; base-despesas.ClassificadorPorNaturezaDeDespesa.codigoElementoDespesa
 Elemento ; base-despesas.ClassificadorPorNaturezaDeDespesa.descricaoElementoDespesa
-CpfCnpjNis ; 
-Favorecido ; 
-ValorNaoProcessado ;
-ValorProcessado ;
-ValorNaoProcessadoLiquidado ;
-Id ; 
+CpfCnpjNis ; nucleo.DadosPessoaisAnonimizados.codigo
+Favorecido ; nucleo.DadosPessoaisAnonimizados.nome
+ValorNaoProcessado ; base-despesas.RegistroDeRestosAPagar.valorAtrelado.valorNaoProcessado
+ValorProcessado ; base-despesas.RegistroDeRestosAPagar.valorAtrelado.valorProcessado
+ValorNaoProcessadoLiquidado ; base-despesas.RegistroDeRestosAPagar.valorAtrelado.valorNaoProcessadoLiquidado
+Id ; base-despesas.RegistroDeRestosAPagar.idRegistro

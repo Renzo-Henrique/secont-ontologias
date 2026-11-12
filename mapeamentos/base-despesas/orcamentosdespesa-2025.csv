@@ -29,7 +29,7 @@ DotacaoAtualizada ;  base-despesas.
 DespesaEmpenhada ;  base-despesas.
 DespesaLiquidada ;  base-despesas.
 DespesaPaga ;  base-despesas.
-Ano ;  base-despesas.
+Ano ;  base-despesas.DespesaOrcamentariaRegistrada.ano
 Esfera ;  base-despesas.
 NomeEsfera ;  base-despesas.
 UnidadeOrcamentaria ; base-despesas.UnidadeOrcamentariaNaDespesa.codigo

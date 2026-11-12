@@ -86,10 +86,18 @@ kind Convenio{
 }
 
 /// @pt-br Classificação que identifica o Poder da Federação ao qual uma unidade gestora está vinculada.
-datatype PoderDaFederacao
+category PoderDaFederacao of functional-complexes{
+    // EXECUTIVO, LEGISLATIVO, JUDICIARIO, DEFENSORIA_PUBLICA
+    codigo: const string [1]
+    descricao: const string [1]
+} 
 
 /// @pt-br Representação de informações pessoais que foram submetidas a processo de anonimização.
-datatype DadosPessoaisAnonimizados
+datatype DadosPessoaisAnonimizados{
+    /// Codigo pode ser cpf, cnpj ou nis
+    codigo: const string [1]
+    nome: const string [1]
+}
 
 category FonteOrcamentaria of functional-complexes{
 }

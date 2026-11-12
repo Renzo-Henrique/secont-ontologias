@@ -67,7 +67,7 @@ category ClassificadorPorNaturezaDeDespesa of functional-complexes {
 /// Cite MCASP - 11º Edição: Parte I: Seção 5.1
 /// Na execução orçamentária da despesa, a FR estará associada, desde o momento do empenho, às contas de controle orçamentário (classe 6 do PCASP), às contas do passivo financeiro (classe 2 com atributo “F”) e às contas de controle da disponibilidade por destinação de recursos (na classe 8)
 /// Cite MCASP - 11º Edição: Parte I: Seção 5.2
-category FonteDaDespesa specializes nucleo.FonteOrcamentaria{
+roleMixin FonteDaDespesa specializes nucleo.FonteOrcamentaria{
     codigoFonte: const string [1]
     descricaoFonte: const string [1]
 
@@ -75,19 +75,29 @@ category FonteDaDespesa specializes nucleo.FonteOrcamentaria{
     descricaoDetalhamentoFonte: const string [1]
 }
 
+roleMixin PoderDaFederacaoNaDespesa specializes nucleo.PoderDaFederacao
+
 /// @pt-br Registro que associa o documento contábil de despesa à unidade gestora emitente.
 relator RegistroDeDespesaOrcamentaria{
     @mediation (const) [1]  -- [1] (const) DespesaOrcamentariaRegistrada
     @mediation [1..*] --  [1] (const) UnidadeGestoraNaDespesa
-    dadosAnonimizados: const nucleo.DadosPessoaisAnonimizados [1]
-    poder: const  nucleo.PoderDaFederacao [0..1]
+    //dadosAnonimizados: const nucleo.DadosPessoaisAnonimizados [1]
 }
 
 subkind RegistroDeDespesa specializes RegistroDeDespesaOrcamentaria{
 
 }
 
+datatype ValorAtreladoNoRegistroRestosAPagar{
+    valorNaoProcessado: const number [1]
+    valorProcessado: const number [1]
+    valorNaoProcessadoLiquidado: const number [1]
+}
 subkind RegistroDeRestosAPagar specializes RegistroDeDespesaOrcamentaria{
+    valorAtrelado: const ValorAtreladoNoRegistroRestosAPagar [1]
+    idRegistro: const string [1]
+
+    @mediation (const) [1..*]  -- [1] (const) PoderDaFederacaoNaDespesa
 }
 
 subkind RegistroDeOrcamentosDeDespesa specializes RegistroDeDespesaOrcamentaria{
@@ -174,7 +184,9 @@ disjoint complete genset EstagiosDaDespesaEmExecucao where DespesaDeEmpenho, Des
 
 
 /// Agrupa os papeis das despesas que são representadas por arquivos no Portal da Transparência.
-role DespesaOrcamentariaRegistrada specializes DespesaOrcamentaria
+role DespesaOrcamentariaRegistrada specializes DespesaOrcamentaria{
+    ano: const string [1]
+}
 
 
 /**
