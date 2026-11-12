@@ -1,15 +1,15 @@
 Ano ; base-despesas.DespesaOrcamentariaRegistrada.ano
-Data ; base-despesas.
-ValorEmpenho ; base-despesas.
-ValorLiquidado ; base-despesas.
-ValorPago ; base-despesas.
-ValorRap ; base-despesas.
-CpfCnpjNis ; nucleo.DadosPessoaisAnonimizadosExpandido.codigo
-TipoFavorecido ; nucleo.DadosPessoaisAnonimizadosExpandido.tipoFavorecido
-CargoFuncao ; nucleo.DadosPessoaisAnonimizadosExpandido.cargoFuncao
-Favorecido ; nucleo.DadosPessoaisAnonimizadosExpandido.nome
-IdFavorecido ; nucleo.DadosPessoaisAnonimizadosExpandido.idFavorecido
-TipoLicitacao ; base-despesas. 
+Data ; base-despesas.RegistroDeDespesa.data
+ValorEmpenho ; base-despesas.RegistroDeDespesa.valorAtrelado.valorEmpenho
+ValorLiquidado ; base-despesas.RegistroDeDespesa.valorAtrelado.valorLiquidado
+ValorPago ; base-despesas.RegistroDeDespesa.valorAtrelado.valorPago
+ValorRap ; base-despesas.RegistroDeDespesa.valorAtrelado.valorRap
+CpfCnpjNis ; base-despesas.DadosPessoaisAnonimizadosExpandido.codigo
+TipoFavorecido ; base-despesas.RegistroDeDespesa.dadosDoFavorecido.tipoFavorecido
+CargoFuncao ; base-despesas.RegistroDeDespesa.dadosDoFavorecido.cargoFuncao
+Favorecido ; base-despesas.RegistroDeDespesa.dadosDoFavorecido.nome
+IdFavorecido ; base-despesas.RegistroDeDespesa.dadosDoFavorecido.idFavorecido
+TipoLicitacao ; base-despesas.RegistroDeDespesa.tipoLicitacao
 HistoricoDocumento ;
 Documento ;
 DocumentoEmpenho ;
@@ -52,7 +52,7 @@ PlanoOrcamentario ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa
 NumeroProcesso ;
 CodigoConvenioRecebido ; base-despesas.RecebedorDeConvenio.codigo
 CodigoConvenioConcedido ; base-despesas.ConcedorDeConvenio.codigo
-Embasamento ; base-despesas.
+Embasamento ; base-despesas.RegistroDeDespesa.embasamento
 CredorRetencao ; base-despesas.
 NomeCredorRetencao ; base-despesas.
 TipoRetencao ; base-despesas.
@@ -65,7 +65,7 @@ DomicilioBancarioOrigem ; base-despesas.BancoNaDespesa.codigoDomicilioBancarioOr
 IdUso ; base-despesas.
 DescricaoIdUso ; base-despesas.
 Emenda ; base-despesas.
-Esfera ; base-despesas. 
-DescricaoEsfera ; base-despesas. 
+Esfera ; base-despesas.EsferaOrcamentariaNaDespesa.codigo
+DescricaoEsfera ; base-despesas.EsferaOrcamentariaNaDespesa.descricao
 Contrato ; base-despesas.
 Id ;  base-despesas.

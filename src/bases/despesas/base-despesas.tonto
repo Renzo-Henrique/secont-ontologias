@@ -88,8 +88,21 @@ relator RegistroDeDespesaOrcamentaria{
     //dadosAnonimizados: const nucleo.DadosPessoaisAnonimizados [1]
 }
 
+
+datatype ValorAtreladoNoRegistroDeDespesa{
+    valorEmpenho: const number [1]
+    valorLiquidado: const number [1]
+    valorPago: const number [1]
+    valorRap: const number [1]
+}
 subkind RegistroDeDespesa specializes RegistroDeDespesaOrcamentaria{
+    data: const datetime [1]
     emenda: const string [0..1]
+    embasamento: const string [1]
+    dadosDoFavorecido: const nucleo.DadosPessoaisAnonimizadosExpandido [1]
+    tipoLicitacao: const string [1]
+    valorAtrelado: const ValorAtreladoNoRegistroDeDespesa [1]
+
 }
 
 datatype ValorAtreladoNoRegistroRestosAPagar{
@@ -117,6 +130,7 @@ datatype ValorAtreladoNoOrcamentoDeDespesa{
 subkind RegistroDeOrcamentoDeDespesa specializes RegistroDeDespesaOrcamentaria{
     valorAtrelado: const ValorAtreladoNoOrcamentoDeDespesa [1]
     emenda: const string [0..1]
+    dadosDoFavorecido: const nucleo.DadosPessoaisAnonimizados [1]
 
     @mediation (const) [1..*]  -- [1] (const) MicroRegiaoNaDespesa
     @mediation (const) [1..*]  -- [1] (const) MunicipioNaDespesa
