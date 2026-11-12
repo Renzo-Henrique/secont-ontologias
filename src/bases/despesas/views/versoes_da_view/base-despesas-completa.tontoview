@@ -15,7 +15,6 @@
       "base-despesas::ConvenioConcedido",
       "base-despesas::RegistroDeConvenioConcedidoNaDespesaOrcamentaria",
       "base-despesas::RegistroDeOrcamentoDeExecucao",
-      "base-despesas::RegistroDeRestosAPagar",
       "base-despesas::RegistroDeOrcamentoDeDespesa",
       "base-despesas::UnidadeGestoraComOrcamentoDeDespesa",
       "base-despesas::UnidadeGestoraComRestosAPagar",
@@ -109,8 +108,8 @@
       "y": 760
     },
     "nucleo::UnidadeGestora": {
-      "x": 56,
-      "y": 680
+      "x": -248,
+      "y": 880
     },
     "base-despesas::RegistroDeOrcamentoDeDespesa": {
       "x": 192,
@@ -141,8 +140,8 @@
       "y": 896
     },
     "base-despesas::RegistroDeRestosAPagar": {
-      "x": -8,
-      "y": 824
+      "x": -568,
+      "y": 720
     },
     "base-despesas::UnidadeGestoraComRestosAPagar": {
       "x": 38,
@@ -243,8 +242,8 @@
       "y": 664
     },
     "base-despesas::UnidadeGestoraNaDespesa": {
-      "x": 24,
-      "y": 840
+      "x": -72,
+      "y": 864
     },
     "nucleo::OrgaoPublico": {
       "x": -216,
@@ -289,6 +288,18 @@
     "base-despesas::MicroRegiaoNaDespesa": {
       "x": 960,
       "y": 1096
+    },
+    "base-despesas::RegistroDeOrcamentosDeDespesa": {
+      "x": -64,
+      "y": 720
+    },
+    "base-despesas::RegistroDeDespesa": {
+      "x": 200,
+      "y": 720
+    },
+    "base-despesas::RegistroDeOrcamentosDeExecucoes": {
+      "x": -376,
+      "y": 720
     }
   },
   "edges": {

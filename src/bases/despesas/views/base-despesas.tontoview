@@ -38,7 +38,10 @@
       "base-despesas::MunicipioNaDespesa",
       "nucleo::Municipio",
       "base-despesas::BancoNaDespesa",
-      "nucleo::Banco"
+      "nucleo::Banco",
+      "base-despesas::RegistroDeOrcamentosDeExecucoes",
+      "base-despesas::RegistroDeOrcamentosDeDespesa",
+      "base-despesas::RegistroDeDespesa"
     ]
   },
   "display": {

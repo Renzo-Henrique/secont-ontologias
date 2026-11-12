@@ -46,7 +46,10 @@
       "base-despesas::OrgaoPublicoOrcamentario",
       "nucleo::OrgaoPublico",
       "base-despesas::UnidadeOrcamentaria",
-      "nucleo::UnidadeDeOrgaoPublico"
+      "nucleo::UnidadeDeOrgaoPublico",
+      "base-despesas::RegistroDeDespesa",
+      "base-despesas::RegistroDeOrcamentosDeDespesa",
+      "base-despesas::RegistroDeOrcamentosDeExecucoes"
     ]
   },
   "display": {
@@ -245,6 +248,10 @@
     "base-despesas::DespesaOrcamentariaRegistrada": {
       "x": 696,
       "y": 1056
+    },
+    "base-despesas::DespesaOrcamentaria": {
+      "x": 912,
+      "y": 928
     }
   },
   "edges": {
@@ -347,20 +354,20 @@
     "gen:base-despesas::DespesaOrcamentariaRegistrada->base-despesas::DespesaOrcamentaria": {
       "points": [
         {
-          "x": 837,
+          "x": 836,
           "y": 1056
         },
         {
           "x": 840,
-          "y": 1016
+          "y": 1024
         },
         {
-          "x": 968,
-          "y": 1016
+          "x": 952,
+          "y": 1024
         },
         {
-          "x": 971,
-          "y": 964
+          "x": 959,
+          "y": 970
         }
       ]
     }

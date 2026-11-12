@@ -14,6 +14,7 @@ role EntidadePublica specializes PessoaJuridica
 kind OrgaoPublico {
     codigo: string [1]
     descricao: string [1]
+    sigla: string [0..1]
 
     @componenthood [1..*] --<> [1] (const) EntidadePublica
 }
