@@ -74,7 +74,7 @@ Cite MCASP - 11º Edicao: Parte I: Seção 3.2.1"""@pt-br ;
           owl:onProperty base-receitas:NaturezaDaReceita.descricaoTipo ;
           owl:cardinality "1"^^xsd:nonNegativeInteger ] .
 
-base-receitas:FonteDaReceita a owl:Class, gufo:Category ;
+base-receitas:FonteDaReceita a owl:Class, gufo:RoleMixin ;
     rdfs:label "FonteDaReceita" ;
     rdfs:comment """A classificação por fontes ou destinações de recursos (FR) tem como objetivo agrupar receitas que possuam as mesmas normas de aplicação na despesa. Em regra, as fontes ou destinações de recursos reúnem recursos oriundos de determinados códigos da classificação por natureza da receita orçamentária, conforme regras previamente estabelecidas. Por meio do orçamento público, essas fontes ou destinações são associadas a determinadas despesas de forma a evidenciar os meios para atingir os objetivos públicos.
 Cite MCASP - 11º Edicao: Parte I: Seção 5.1
@@ -85,25 +85,28 @@ Cite MCASP - 11º Edicao: Parte I: Seção 5.2"""@pt-br ;
         nucleo:FonteOrcamentaria,
         [ a owl:Restriction ;
           owl:onProperty base-receitas:FonteDaReceita.codigoFonte ;
-          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+          owl:minCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
           owl:onProperty base-receitas:FonteDaReceita.descricaoFonte ;
-          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+          owl:minCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
           owl:onProperty base-receitas:FonteDaReceita.codigoGrupoFonte ;
-          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+          owl:minCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
           owl:onProperty base-receitas:FonteDaReceita.descricaoGrupoFonte ;
-          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+          owl:minCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
           owl:onProperty base-receitas:FonteDaReceita.codigoDetalhamentoFonte ;
-          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+          owl:minCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
           owl:onProperty base-receitas:FonteDaReceita.codigoDetalhamentoFonteAux ;
-          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+          owl:minCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
           owl:onProperty base-receitas:FonteDaReceita.descricaoDetalhamentoFonte ;
-          owl:cardinality "1"^^xsd:nonNegativeInteger ] .
+          owl:minCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty [ owl:inverseOf base-receitas:ClassificacaoDoRegistroDeReceitaOrcamentaria.fonteClassificadaPor ] ;
+          owl:someValuesFrom base-receitas:ClassificacaoDoRegistroDeReceitaOrcamentaria ] .
 
 base-receitas:ContaContabil a owl:Class, gufo:Category ;
     rdfs:label "ContaContabil" ;
@@ -397,55 +400,49 @@ base-receitas:NaturezaDaReceita.descricaoTipo a owl:DatatypeProperty, owl:Functi
     rdfs:range xsd:string ;
     rdfs:subPropertyOf gufo:hasQualityValue .
 
-base-receitas:FonteDaReceita.codigoFonte a owl:DatatypeProperty, owl:FunctionalProperty ;
+base-receitas:FonteDaReceita.codigoFonte a owl:DatatypeProperty ;
     rdfs:label "codigoFonte" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:domain base-receitas:FonteDaReceita ;
     rdfs:range xsd:string ;
     rdfs:subPropertyOf gufo:hasQualityValue .
 
-base-receitas:FonteDaReceita.descricaoFonte a owl:DatatypeProperty, owl:FunctionalProperty ;
+base-receitas:FonteDaReceita.descricaoFonte a owl:DatatypeProperty ;
     rdfs:label "descricaoFonte" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:domain base-receitas:FonteDaReceita ;
     rdfs:range xsd:string ;
     rdfs:subPropertyOf gufo:hasQualityValue .
 
-base-receitas:FonteDaReceita.codigoGrupoFonte a owl:DatatypeProperty, owl:FunctionalProperty ;
+base-receitas:FonteDaReceita.codigoGrupoFonte a owl:DatatypeProperty ;
     rdfs:label "codigoGrupoFonte" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:domain base-receitas:FonteDaReceita ;
     rdfs:range xsd:string ;
     rdfs:subPropertyOf gufo:hasQualityValue .
 
-base-receitas:FonteDaReceita.descricaoGrupoFonte a owl:DatatypeProperty, owl:FunctionalProperty ;
+base-receitas:FonteDaReceita.descricaoGrupoFonte a owl:DatatypeProperty ;
     rdfs:label "descricaoGrupoFonte" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:domain base-receitas:FonteDaReceita ;
     rdfs:range xsd:string ;
     rdfs:subPropertyOf gufo:hasQualityValue .
 
-base-receitas:FonteDaReceita.codigoDetalhamentoFonte a
-        owl:DatatypeProperty,
-        owl:FunctionalProperty ;
+base-receitas:FonteDaReceita.codigoDetalhamentoFonte a owl:DatatypeProperty ;
     rdfs:label "codigoDetalhamentoFonte" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:domain base-receitas:FonteDaReceita ;
     rdfs:range xsd:string ;
     rdfs:subPropertyOf gufo:hasQualityValue .
 
-base-receitas:FonteDaReceita.codigoDetalhamentoFonteAux a
-        owl:DatatypeProperty,
-        owl:FunctionalProperty ;
+base-receitas:FonteDaReceita.codigoDetalhamentoFonteAux a owl:DatatypeProperty ;
     rdfs:label "codigoDetalhamentoFonteAux" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:domain base-receitas:FonteDaReceita ;
     rdfs:range xsd:string ;
     rdfs:subPropertyOf gufo:hasQualityValue .
 
-base-receitas:FonteDaReceita.descricaoDetalhamentoFonte a
-        owl:DatatypeProperty,
-        owl:FunctionalProperty ;
+base-receitas:FonteDaReceita.descricaoDetalhamentoFonte a owl:DatatypeProperty ;
     rdfs:label "descricaoDetalhamentoFonte" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:domain base-receitas:FonteDaReceita ;

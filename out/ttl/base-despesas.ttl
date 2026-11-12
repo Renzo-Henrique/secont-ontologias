@@ -47,12 +47,16 @@ Cite MCASP - 11º Edição: Parte I: Seção 4.2.1"""@pt-br ;
           owl:onClass base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria ;
           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-          owl:onProperty base-despesas:ClassificadorInstitucionalDeDespesa.mediatesOrgaoPublicoOrcamentario ;
-          owl:onClass base-despesas:OrgaoPublicoOrcamentario ;
+          owl:onProperty base-despesas:ClassificadorInstitucionalDeDespesa.mediatesOrgaoPublicoOrcamentarioNaDespesa ;
+          owl:onClass base-despesas:OrgaoPublicoOrcamentarioNaDespesa ;
           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-          owl:onProperty base-despesas:ClassificadorInstitucionalDeDespesa.mediatesUnidadeOrcamentaria ;
-          owl:onClass base-despesas:UnidadeOrcamentaria ;
+          owl:onProperty base-despesas:ClassificadorInstitucionalDeDespesa.mediatesUnidadeOrcamentariaNaDespesa ;
+          owl:onClass base-despesas:UnidadeOrcamentariaNaDespesa ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificadorInstitucionalDeDespesa.mediatesEsferaOrcamentariaNaDespesa ;
+          owl:onClass base-despesas:EsferaOrcamentariaNaDespesa ;
           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
 
 base-despesas:ClassificadorFuncionalDeDespesa a owl:Class, gufo:Category ;
@@ -60,7 +64,20 @@ base-despesas:ClassificadorFuncionalDeDespesa a owl:Class, gufo:Category ;
     rdfs:comment """A classificação funcional segrega as dotações orçamentárias em funções e subfunções, buscando responder basicamente à indagação \"em que área\" de ação governamental a despesa será realizada. A atual classificação funcional foi instituída pela Portaria nº 42/1999, do então Ministério do Orçamento e Gestão, divulgada pela Portaria SOF/ME nº 2.520/2022, e é composta de um rol de funções e subfunções prefixadas, que servem como agregador dos gastos públicos por área de ação governamental nas três esferas de Governo. Trata-se de uma classificação independente dos programas e de aplicação comum e obrigatória, no âmbito da União, dos Estados, do Distrito Federal e dos Municípios, o que permite a consolidação nacional dos gastos do setor público.
 Cite MCASP - 11º Edição: Parte I: Seção 4.2.2"""@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
-    rdfs:subClassOf gufo:FunctionalComplex .
+    rdfs:subClassOf
+        gufo:FunctionalComplex,
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificadorFuncionalDeDespesa.codigoFuncao ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificadorFuncionalDeDespesa.descricaoFuncao ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificadorFuncionalDeDespesa.codigoSubFuncao ;
+          owl:maxCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificadorFuncionalDeDespesa.descricaoSubFuncao ;
+          owl:maxCardinality "1"^^xsd:nonNegativeInteger ] .
 
 base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa a owl:Class, gufo:Category ;
     rdfs:label "ClassificadorPorEstruturaProgramaticaDeDespesa" ;
@@ -69,23 +86,104 @@ Cite MCASP - 11º Edição: Parte I: Seção 4.2.3
 Na União, o subtítulo representa o menor nível de categoria de programação e será detalhado por esfera orçamentária (fiscal, seguridade e investimento), grupo de natureza de despesa, modalidade de aplicação, identificador de resultado primário, identificador de uso e fonte de recursos, sendo o produto e a unidade de medida os mesmos da ação orçamentária.
 Cite MCASP - 11º Edição: Parte I: Seção 4.2.3.3"""@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
-    rdfs:subClassOf gufo:FunctionalComplex .
+    rdfs:subClassOf
+        gufo:FunctionalComplex,
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa.codigoPrograma ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa.descricaoPrograma ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa.codigoAcao ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa.descricaoAcao ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa.codigoSubtitulo ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa.descricaoSubtitulo ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa.codigoPlanoOrcamentario ;
+          owl:maxCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa.descricaoPlanoOrcamentario ;
+          owl:maxCardinality "1"^^xsd:nonNegativeInteger ] .
 
 base-despesas:ClassificadorPorNaturezaDeDespesa a owl:Class, gufo:Category ;
     rdfs:label "ClassificadorPorNaturezaDeDespesa" ;
     rdfs:comment """A classificação da despesa orçamentária, segundo a sua natureza, compõe-se de: a. Categoria Econômica ; b. Grupo de Natureza da Despesa ; c. Elemento de Despesa.  A natureza da despesa será complementada pela informação gerencial denominada \"Modalidade de Aplicação\", a qual tem por finalidade indicar se os recursos são aplicados diretamente por órgãos ou entidades no âmbito da mesma esfera de Governo ou por outro ente da Federação e suas respectivas entidades, e objetiva, precipuamente, possibilitar a eliminação da dupla contagem dos recursos transferidos ou descentralizados.
 Cite MCASP - 11º Edição: Parte I: Seção 4.2.4"""@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
-    rdfs:subClassOf gufo:FunctionalComplex .
+    rdfs:subClassOf
+        gufo:FunctionalComplex,
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificadorPorNaturezaDeDespesa.codigoCategoriaEconomica ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificadorPorNaturezaDeDespesa.descricaoCategoriaEconomica ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificadorPorNaturezaDeDespesa.codigoGrupoDespesa ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificadorPorNaturezaDeDespesa.descricaoGrupoDespesa ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificadorPorNaturezaDeDespesa.codigoModalidade ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificadorPorNaturezaDeDespesa.descricaoModalidade ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificadorPorNaturezaDeDespesa.codigoElementoDespesa ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificadorPorNaturezaDeDespesa.descricaoElementoDespesa ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificadorPorNaturezaDeDespesa.codigoSubElementoDespesa ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ClassificadorPorNaturezaDeDespesa.descricaoSubElementoDespesa ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ] .
 
-base-despesas:FonteDaDespesa a owl:Class, gufo:Category ;
+base-despesas:FonteDaDespesa a owl:Class, gufo:RoleMixin ;
     rdfs:label "FonteDaDespesa" ;
     rdfs:comment """A classificação por fontes ou destinações de recursos (FR) tem como objetivo agrupar receitas que possuam as mesmas normas de aplicação na despesa. Em regra, as fontes ou destinações de recursos reúnem recursos oriundos de determinados códigos da classificação por natureza da receita orçamentária, conforme regras previamente estabelecidas. Por meio do orçamento público, essas fontes ou destinações são associadas a determinadas despesas de forma a evidenciar os meios para atingir os objetivos públicos.
 Cite MCASP - 11º Edição: Parte I: Seção 5.1
 Na execução orçamentária da despesa, a FR estará associada, desde o momento do empenho, às contas de controle orçamentário (classe 6 do PCASP), às contas do passivo financeiro (classe 2 com atributo “F”) e às contas de controle da disponibilidade por destinação de recursos (na classe 8)
 Cite MCASP - 11º Edição: Parte I: Seção 5.2"""@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
-    rdfs:subClassOf nucleo:FonteOrcamentaria .
+    rdfs:subClassOf
+        nucleo:FonteOrcamentaria,
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:FonteDaDespesa.codigoFonte ;
+          owl:minCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:FonteDaDespesa.descricaoFonte ;
+          owl:minCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:FonteDaDespesa.codigoDetalhamentoFonte ;
+          owl:minCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:FonteDaDespesa.descricaoDetalhamentoFonte ;
+          owl:minCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty [ owl:inverseOf base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria.fonteClassificadaPor ] ;
+          owl:someValuesFrom base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria ] .
+
+base-despesas:PoderDaFederacaoNaDespesa a owl:Class, gufo:RoleMixin ;
+    rdfs:label "PoderDaFederacaoNaDespesa" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:subClassOf
+        nucleo:PoderDaFederacao,
+        [ a owl:Restriction ;
+          owl:onProperty [ owl:inverseOf base-despesas:RegistroDeRestosAPagar.mediatesPoderDaFederacaoNaDespesa ] ;
+          owl:someValuesFrom base-despesas:RegistroDeRestosAPagar ] .
 
 base-despesas:RegistroDeDespesaOrcamentaria a owl:Class, gufo:Kind ;
     rdfs:label "RegistroDeDespesaOrcamentaria" ;
@@ -94,11 +192,8 @@ base-despesas:RegistroDeDespesaOrcamentaria a owl:Class, gufo:Kind ;
     rdfs:subClassOf
         gufo:Relator,
         [ a owl:Restriction ;
-          owl:onProperty base-despesas:RegistroDeDespesaOrcamentaria.dadosAnonimizados ;
+          owl:onProperty base-despesas:RegistroDeDespesaOrcamentaria.idRegistro ;
           owl:cardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-          owl:onProperty base-despesas:RegistroDeDespesaOrcamentaria.poder ;
-          owl:maxCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
           owl:onProperty base-despesas:RegistroDeDespesaOrcamentaria.mediatesDespesaOrcamentariaRegistrada ;
           owl:onClass base-despesas:DespesaOrcamentariaRegistrada ;
@@ -112,31 +207,265 @@ base-despesas:RegistroDeDespesaOrcamentaria a owl:Class, gufo:Kind ;
           owl:onClass base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria ;
           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
 
-base-despesas:RegistroDeDespesaOrcamentariaComOpcionais a owl:Class, gufo:SubKind ;
-    rdfs:label "RegistroDeDespesaOrcamentariaComOpcionais" ;
+base-despesas:ProcessoOrcamentarioDeDespesa a owl:Class, gufo:Category ;
+    rdfs:label "ProcessoOrcamentarioDeDespesa" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:subClassOf
+        gufo:FunctionalComplex,
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ProcessoOrcamentarioDeDespesa.codigo ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ProcessoOrcamentarioDeDespesa.descricao ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ProcessoOrcamentarioDeDespesa.assunto ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty [ owl:inverseOf base-despesas:RegistroDeDespesa.mediatesProcessoOrcamentarioDeDespesa ] ;
+          owl:someValuesFrom base-despesas:RegistroDeDespesa ] .
+
+base-despesas:RetencaoDaDespesa a owl:Class, gufo:AbstractIndividualType ;
+    rdfs:label "RetencaoDaDespesa" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:subClassOf
+        gufo:QualityValue,
+        nucleo:DadosPessoaisAnonimizados,
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:RetencaoDaDespesa.tipoRetencao ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:RetencaoDaDespesa.nomeTipoRetencao ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ] .
+
+base-despesas:LicitacaoDaDespesa a owl:Class, gufo:AbstractIndividualType ;
+    rdfs:label "LicitacaoDaDespesa" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:subClassOf
+        gufo:QualityValue,
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:LicitacaoDaDespesa.tipoLicitacao ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:LicitacaoDaDespesa.numeroLicitacao ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:LicitacaoDaDespesa.anoLicitacao ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ] .
+
+base-despesas:ValorAtreladoNoRegistroDeDespesa a owl:Class, gufo:AbstractIndividualType ;
+    rdfs:label "ValorAtreladoNoRegistroDeDespesa" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:subClassOf
+        gufo:QualityValue,
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ValorAtreladoNoRegistroDeDespesa.valorEmpenho ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ValorAtreladoNoRegistroDeDespesa.valorLiquidado ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ValorAtreladoNoRegistroDeDespesa.valorPago ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ValorAtreladoNoRegistroDeDespesa.valorRap ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ] .
+
+base-despesas:RegistroDeDespesa a owl:Class, gufo:SubKind ;
+    rdfs:label "RegistroDeDespesa" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:subClassOf
         base-despesas:RegistroDeDespesaOrcamentaria,
         [ a owl:Restriction ;
-          owl:onProperty base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasMicroRegiaoNaDespesa ;
-          owl:onClass base-despesas:MicroRegiaoNaDespesa ;
+          owl:onProperty base-despesas:RegistroDeDespesa.data ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:RegistroDeDespesa.emenda ;
+          owl:maxCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:RegistroDeDespesa.embasamento ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:RegistroDeDespesa.dadosDoFavorecido ;
+          owl:onClass nucleo:DadosPessoaisAnonimizadosExpandido ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:RegistroDeDespesa.valorAtrelado ;
+          owl:onClass base-despesas:ValorAtreladoNoRegistroDeDespesa ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:RegistroDeDespesa.retencaoDaDespesa ;
+          owl:onClass base-despesas:RetencaoDaDespesa ;
           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-          owl:onProperty base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasMunicipioNaDespesa ;
-          owl:onClass base-despesas:MunicipioNaDespesa ;
+          owl:onProperty base-despesas:RegistroDeDespesa.historicoDocumento ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:RegistroDeDespesa.documento ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:RegistroDeDespesa.documentoEmpenho ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:RegistroDeDespesa.idUso ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:RegistroDeDespesa.descricaoIdUso ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:RegistroDeDespesa.dadosRetencao ;
+          owl:onClass base-despesas:RetencaoDaDespesa ;
           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-          owl:onProperty base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasBancoNaDespesa ;
+          owl:onProperty base-despesas:RegistroDeDespesa.dadosLicitacao ;
+          owl:onClass base-despesas:LicitacaoDaDespesa ;
+          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:RegistroDeDespesa.contratoDaDespesa ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:RegistroDeDespesa.codigoGestaoEmitente ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:RegistroDeDespesa.mediatesProcessoOrcamentarioDeDespesa ;
+          owl:onClass base-despesas:ProcessoOrcamentarioDeDespesa ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:RegistroDeDespesa.hasBancoNaDespesa ;
           owl:onClass base-despesas:BancoNaDespesa ;
           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-          owl:onProperty base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasConcedorDeConvenio ;
+          owl:onProperty base-despesas:RegistroDeDespesa.hasConcedorDeConvenio ;
           owl:onClass base-despesas:ConcedorDeConvenio ;
           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-          owl:onProperty base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasRecebedorDeConvenio ;
+          owl:onProperty base-despesas:RegistroDeDespesa.hasRecebedorDeConvenio ;
           owl:onClass base-despesas:RecebedorDeConvenio ;
           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
+
+base-despesas:ValorAtreladoNoRegistroRestosAPagar a owl:Class, gufo:AbstractIndividualType ;
+    rdfs:label "ValorAtreladoNoRegistroRestosAPagar" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:subClassOf
+        gufo:QualityValue,
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ValorAtreladoNoRegistroRestosAPagar.valorNaoProcessado ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ValorAtreladoNoRegistroRestosAPagar.valorProcessado ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ValorAtreladoNoRegistroRestosAPagar.valorNaoProcessadoLiquidado ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ] .
+
+base-despesas:RegistroDeRestosAPagar a owl:Class, gufo:SubKind ;
+    rdfs:label "RegistroDeRestosAPagar" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:subClassOf
+        base-despesas:RegistroDeDespesaOrcamentaria,
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:RegistroDeRestosAPagar.valorAtrelado ;
+          owl:onClass base-despesas:ValorAtreladoNoRegistroRestosAPagar ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:RegistroDeRestosAPagar.idRegistro ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:RegistroDeRestosAPagar.mediatesPoderDaFederacaoNaDespesa ;
+          owl:onClass base-despesas:PoderDaFederacaoNaDespesa ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
+
+base-despesas:EsferaOrcamentariaNaDespesa a owl:Class, gufo:RoleMixin ;
+    rdfs:label "EsferaOrcamentariaNaDespesa" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:subClassOf
+        nucleo:EsferaOrcamentaria,
+        [ a owl:Restriction ;
+          owl:onProperty [ owl:inverseOf base-despesas:ClassificadorInstitucionalDeDespesa.mediatesEsferaOrcamentariaNaDespesa ] ;
+          owl:someValuesFrom base-despesas:ClassificadorInstitucionalDeDespesa ] .
+
+base-despesas:ValorAtreladoNoOrcamentoDeDespesa a owl:Class, gufo:AbstractIndividualType ;
+    rdfs:label "ValorAtreladoNoOrcamentoDeDespesa" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:subClassOf
+        gufo:QualityValue,
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ValorAtreladoNoOrcamentoDeDespesa.dotacaoInicial ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ValorAtreladoNoOrcamentoDeDespesa.dotacaoAtualizada ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ValorAtreladoNoOrcamentoDeDespesa.despesaEmpenhada ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ValorAtreladoNoOrcamentoDeDespesa.despesaLiquidada ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ValorAtreladoNoOrcamentoDeDespesa.despesaPaga ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ] .
+
+base-despesas:RegistroDeOrcamentoDeDespesa a owl:Class, gufo:SubKind ;
+    rdfs:label "RegistroDeOrcamentoDeDespesa" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:subClassOf
+        base-despesas:RegistroDeDespesaOrcamentaria,
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:RegistroDeOrcamentoDeDespesa.valorAtrelado ;
+          owl:onClass base-despesas:ValorAtreladoNoOrcamentoDeDespesa ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:RegistroDeOrcamentoDeDespesa.emenda ;
+          owl:maxCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:RegistroDeOrcamentoDeDespesa.dadosDoFavorecido ;
+          owl:onClass nucleo:DadosPessoaisAnonimizados ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:RegistroDeOrcamentoDeDespesa.mediatesMicroRegiaoNaDespesa ;
+          owl:onClass base-despesas:MicroRegiaoNaDespesa ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:RegistroDeOrcamentoDeDespesa.mediatesMunicipioNaDespesa ;
+          owl:onClass base-despesas:MunicipioNaDespesa ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
+
+base-despesas:ValorAtreladoNoOrcamentoDeExecucaoDeDespesa a owl:Class, gufo:AbstractIndividualType ;
+    rdfs:label "ValorAtreladoNoOrcamentoDeExecucaoDeDespesa" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:subClassOf
+        gufo:QualityValue,
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ValorAtreladoNoOrcamentoDeExecucaoDeDespesa.valorEmpenho ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ValorAtreladoNoOrcamentoDeExecucaoDeDespesa.valorLiquidado ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ValorAtreladoNoOrcamentoDeExecucaoDeDespesa.valorPago ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ValorAtreladoNoOrcamentoDeExecucaoDeDespesa.valorRap ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ValorAtreladoNoOrcamentoDeExecucaoDeDespesa.valorOrcadoInicial ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:ValorAtreladoNoOrcamentoDeExecucaoDeDespesa.valorOrcado ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ] .
+
+base-despesas:RegistroDeOrcamentoDeExecucao a owl:Class, gufo:SubKind ;
+    rdfs:label "RegistroDeOrcamentoDeExecucao" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:subClassOf
+        base-despesas:RegistroDeDespesaOrcamentaria,
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:RegistroDeOrcamentoDeExecucao.data ;
+          owl:cardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:RegistroDeOrcamentoDeExecucao.valorAtrelado ;
+          owl:onClass base-despesas:ValorAtreladoNoOrcamentoDeExecucaoDeDespesa ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
 
 base-despesas:MicroRegiaoNaDespesa a owl:Class, gufo:Role ;
     rdfs:label "MicroRegiaoNaDespesa" ;
@@ -144,8 +473,8 @@ base-despesas:MicroRegiaoNaDespesa a owl:Class, gufo:Role ;
     rdfs:subClassOf
         nucleo:MicroRegiao,
         [ a owl:Restriction ;
-          owl:onProperty [ owl:inverseOf base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasMicroRegiaoNaDespesa ] ;
-          owl:someValuesFrom base-despesas:RegistroDeDespesaOrcamentariaComOpcionais ] .
+          owl:onProperty [ owl:inverseOf base-despesas:RegistroDeOrcamentoDeDespesa.mediatesMicroRegiaoNaDespesa ] ;
+          owl:someValuesFrom base-despesas:RegistroDeOrcamentoDeDespesa ] .
 
 base-despesas:MunicipioNaDespesa a owl:Class, gufo:Role ;
     rdfs:label "MunicipioNaDespesa" ;
@@ -153,8 +482,8 @@ base-despesas:MunicipioNaDespesa a owl:Class, gufo:Role ;
     rdfs:subClassOf
         nucleo:Municipio,
         [ a owl:Restriction ;
-          owl:onProperty [ owl:inverseOf base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasMunicipioNaDespesa ] ;
-          owl:someValuesFrom base-despesas:RegistroDeDespesaOrcamentariaComOpcionais ] .
+          owl:onProperty [ owl:inverseOf base-despesas:RegistroDeOrcamentoDeDespesa.mediatesMunicipioNaDespesa ] ;
+          owl:someValuesFrom base-despesas:RegistroDeOrcamentoDeDespesa ] .
 
 base-despesas:BancoNaDespesa a owl:Class, gufo:Role ;
     rdfs:label "BancoNaDespesa" ;
@@ -162,8 +491,8 @@ base-despesas:BancoNaDespesa a owl:Class, gufo:Role ;
     rdfs:subClassOf
         nucleo:Banco,
         [ a owl:Restriction ;
-          owl:onProperty [ owl:inverseOf base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasBancoNaDespesa ] ;
-          owl:someValuesFrom base-despesas:RegistroDeDespesaOrcamentariaComOpcionais ] .
+          owl:onProperty [ owl:inverseOf base-despesas:RegistroDeDespesa.hasBancoNaDespesa ] ;
+          owl:someValuesFrom base-despesas:RegistroDeDespesa ] .
 
 base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria a owl:Class, gufo:Kind ;
     rdfs:label "ClassificacaoDoRegistroDeDespesaOrcamentaria" ;
@@ -202,8 +531,8 @@ base-despesas:ConcedorDeConvenio a owl:Class, gufo:Role ;
     rdfs:subClassOf
         nucleo:Convenio,
         [ a owl:Restriction ;
-          owl:onProperty [ owl:inverseOf base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasConcedorDeConvenio ] ;
-          owl:someValuesFrom base-despesas:RegistroDeDespesaOrcamentariaComOpcionais ] .
+          owl:onProperty [ owl:inverseOf base-despesas:RegistroDeDespesa.hasConcedorDeConvenio ] ;
+          owl:someValuesFrom base-despesas:RegistroDeDespesa ] .
 
 base-despesas:RecebedorDeConvenio a owl:Class, gufo:Role ;
     rdfs:label "RecebedorDeConvenio" ;
@@ -211,8 +540,8 @@ base-despesas:RecebedorDeConvenio a owl:Class, gufo:Role ;
     rdfs:subClassOf
         nucleo:Convenio,
         [ a owl:Restriction ;
-          owl:onProperty [ owl:inverseOf base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasRecebedorDeConvenio ] ;
-          owl:someValuesFrom base-despesas:RegistroDeDespesaOrcamentariaComOpcionais ] .
+          owl:onProperty [ owl:inverseOf base-despesas:RegistroDeDespesa.hasRecebedorDeConvenio ] ;
+          owl:someValuesFrom base-despesas:RegistroDeDespesa ] .
 
 base-despesas:UnidadeGestoraNaDespesa a owl:Class, gufo:Role ;
     rdfs:label "UnidadeGestoraNaDespesa" ;
@@ -224,31 +553,23 @@ base-despesas:UnidadeGestoraNaDespesa a owl:Class, gufo:Role ;
           owl:onProperty [ owl:inverseOf base-despesas:RegistroDeDespesaOrcamentaria.mediatesUnidadeGestoraNaDespesa ] ;
           owl:someValuesFrom base-despesas:RegistroDeDespesaOrcamentaria ] .
 
-base-despesas:OrgaoPublicoOrcamentario a owl:Class, gufo:Role ;
-    rdfs:label "OrgaoPublicoOrcamentario" ;
-    rdfs:comment """Os órgãos orçamentários, por sua vez, correspondem a agrupamentos de unidades orçamentárias. As dotações são consignadas às unidades orçamentárias, responsáveis pela realização das ações.
-Cite MCASP - 11º Edicao: Parte Il: Seções 4.2.1"""@pt-br ;
+base-despesas:OrgaoPublicoOrcamentarioNaDespesa a owl:Class, gufo:Role ;
+    rdfs:label "OrgaoPublicoOrcamentarioNaDespesa" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:subClassOf
-        nucleo:OrgaoPublico,
+        nucleo:OrgaoPublicoOrcamentario,
         [ a owl:Restriction ;
-          owl:onProperty [ owl:inverseOf base-despesas:ClassificadorInstitucionalDeDespesa.mediatesOrgaoPublicoOrcamentario ] ;
-          owl:someValuesFrom base-despesas:ClassificadorInstitucionalDeDespesa ],
-        [ a owl:Restriction ;
-          owl:onProperty [ owl:inverseOf base-despesas:UnidadeOrcamentaria.isComponentOfOrgaoPublicoOrcamentario ] ;
-          owl:someValuesFrom base-despesas:UnidadeOrcamentaria ] .
+          owl:onProperty [ owl:inverseOf base-despesas:ClassificadorInstitucionalDeDespesa.mediatesOrgaoPublicoOrcamentarioNaDespesa ] ;
+          owl:someValuesFrom base-despesas:ClassificadorInstitucionalDeDespesa ] .
 
-base-despesas:UnidadeOrcamentaria a owl:Class, gufo:Role ;
-    rdfs:label "UnidadeOrcamentaria" ;
+base-despesas:UnidadeOrcamentariaNaDespesa a owl:Class, gufo:Role ;
+    rdfs:label "UnidadeOrcamentariaNaDespesa" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:subClassOf
-        nucleo:UnidadeDeOrgaoPublico,
+        nucleo:UnidadeOrcamentaria,
         [ a owl:Restriction ;
-          owl:onProperty [ owl:inverseOf base-despesas:ClassificadorInstitucionalDeDespesa.mediatesUnidadeOrcamentaria ] ;
-          owl:someValuesFrom base-despesas:ClassificadorInstitucionalDeDespesa ],
-        [ a owl:Restriction ;
-          owl:onProperty base-despesas:UnidadeOrcamentaria.isComponentOfOrgaoPublicoOrcamentario ;
-          owl:someValuesFrom base-despesas:OrgaoPublicoOrcamentario ] .
+          owl:onProperty [ owl:inverseOf base-despesas:ClassificadorInstitucionalDeDespesa.mediatesUnidadeOrcamentariaNaDespesa ] ;
+          owl:someValuesFrom base-despesas:ClassificadorInstitucionalDeDespesa ] .
 
 base-despesas:DespesaDeEmpenho a owl:Class, gufo:Phase ;
     rdfs:label "DespesaDeEmpenho" ;
@@ -277,6 +598,9 @@ base-despesas:DespesaOrcamentariaRegistrada a owl:Class, gufo:Role ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:subClassOf
         base-despesas:DespesaOrcamentaria,
+        [ a owl:Restriction ;
+          owl:onProperty base-despesas:DespesaOrcamentariaRegistrada.ano ;
+          owl:minCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
           owl:onProperty [ owl:inverseOf base-despesas:RegistroDeDespesaOrcamentaria.mediatesDespesaOrcamentariaRegistrada ] ;
           owl:someValuesFrom base-despesas:RegistroDeDespesaOrcamentaria ] .
@@ -332,24 +656,641 @@ base-despesas:CriacaoDeDespesaNaoPaga a owl:Class, gufo:EventType ;
 
 [] a owl:AllDisjointClasses ;
     owl:members (
+        base-despesas:RegistroDeDespesa
+        base-despesas:RegistroDeOrcamentoDeDespesa
+        base-despesas:RegistroDeOrcamentoDeExecucao
+        base-despesas:RegistroDeRestosAPagar
+    ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members (
         base-despesas:DespesaDeExercicioAnterior
         base-despesas:DespesaDeExercicioVigente
     ) .
 
-base-despesas:RegistroDeDespesaOrcamentaria.dadosAnonimizados a
+base-despesas:ClassificadorFuncionalDeDespesa.codigoFuncao a
         owl:DatatypeProperty,
         owl:FunctionalProperty ;
-    rdfs:label "dadosAnonimizados" ;
+    rdfs:label "codigoFuncao" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
-    rdfs:domain base-despesas:RegistroDeDespesaOrcamentaria ;
-    rdfs:range nucleo:DadosPessoaisAnonimizados ;
+    rdfs:domain base-despesas:ClassificadorFuncionalDeDespesa ;
+    rdfs:range xsd:string ;
     rdfs:subPropertyOf gufo:hasQualityValue .
 
-base-despesas:RegistroDeDespesaOrcamentaria.poder a owl:DatatypeProperty, owl:FunctionalProperty ;
-    rdfs:label "poder" ;
+base-despesas:ClassificadorFuncionalDeDespesa.descricaoFuncao a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "descricaoFuncao" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ClassificadorFuncionalDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:ClassificadorFuncionalDeDespesa.codigoSubFuncao a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "codigoSubFuncao" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ClassificadorFuncionalDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:ClassificadorFuncionalDeDespesa.descricaoSubFuncao a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "descricaoSubFuncao" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ClassificadorFuncionalDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa.codigoPrograma a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "codigoPrograma" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa.descricaoPrograma a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "descricaoPrograma" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa.codigoAcao a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "codigoAcao" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa.descricaoAcao a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "descricaoAcao" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa.codigoSubtitulo a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "codigoSubtitulo" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa.descricaoSubtitulo a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "descricaoSubtitulo" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa.codigoPlanoOrcamentario a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "codigoPlanoOrcamentario" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa.descricaoPlanoOrcamentario a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "descricaoPlanoOrcamentario" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:ClassificadorPorNaturezaDeDespesa.codigoCategoriaEconomica a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "codigoCategoriaEconomica" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ClassificadorPorNaturezaDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:ClassificadorPorNaturezaDeDespesa.descricaoCategoriaEconomica a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "descricaoCategoriaEconomica" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ClassificadorPorNaturezaDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:ClassificadorPorNaturezaDeDespesa.codigoGrupoDespesa a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "codigoGrupoDespesa" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ClassificadorPorNaturezaDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:ClassificadorPorNaturezaDeDespesa.descricaoGrupoDespesa a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "descricaoGrupoDespesa" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ClassificadorPorNaturezaDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:ClassificadorPorNaturezaDeDespesa.codigoModalidade a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "codigoModalidade" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ClassificadorPorNaturezaDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:ClassificadorPorNaturezaDeDespesa.descricaoModalidade a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "descricaoModalidade" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ClassificadorPorNaturezaDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:ClassificadorPorNaturezaDeDespesa.codigoElementoDespesa a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "codigoElementoDespesa" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ClassificadorPorNaturezaDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:ClassificadorPorNaturezaDeDespesa.descricaoElementoDespesa a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "descricaoElementoDespesa" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ClassificadorPorNaturezaDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:ClassificadorPorNaturezaDeDespesa.codigoSubElementoDespesa a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "codigoSubElementoDespesa" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ClassificadorPorNaturezaDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:ClassificadorPorNaturezaDeDespesa.descricaoSubElementoDespesa a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "descricaoSubElementoDespesa" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ClassificadorPorNaturezaDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:FonteDaDespesa.codigoFonte a owl:DatatypeProperty ;
+    rdfs:label "codigoFonte" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:FonteDaDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:FonteDaDespesa.descricaoFonte a owl:DatatypeProperty ;
+    rdfs:label "descricaoFonte" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:FonteDaDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:FonteDaDespesa.codigoDetalhamentoFonte a owl:DatatypeProperty ;
+    rdfs:label "codigoDetalhamentoFonte" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:FonteDaDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:FonteDaDespesa.descricaoDetalhamentoFonte a owl:DatatypeProperty ;
+    rdfs:label "descricaoDetalhamentoFonte" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:FonteDaDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:RegistroDeDespesaOrcamentaria.idRegistro a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "idRegistro" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:domain base-despesas:RegistroDeDespesaOrcamentaria ;
-    rdfs:range nucleo:PoderDaFederacao ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:ProcessoOrcamentarioDeDespesa.codigo a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:label "codigo" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ProcessoOrcamentarioDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:ProcessoOrcamentarioDeDespesa.descricao a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "descricao" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ProcessoOrcamentarioDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:ProcessoOrcamentarioDeDespesa.assunto a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:label "assunto" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ProcessoOrcamentarioDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:RetencaoDaDespesa.tipoRetencao a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:label "tipoRetencao" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:RetencaoDaDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasValueComponent .
+
+base-despesas:RetencaoDaDespesa.nomeTipoRetencao a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:label "nomeTipoRetencao" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:RetencaoDaDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasValueComponent .
+
+base-despesas:LicitacaoDaDespesa.tipoLicitacao a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:label "tipoLicitacao" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:LicitacaoDaDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasValueComponent .
+
+base-despesas:LicitacaoDaDespesa.numeroLicitacao a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:label "numeroLicitacao" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:LicitacaoDaDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasValueComponent .
+
+base-despesas:LicitacaoDaDespesa.anoLicitacao a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:label "anoLicitacao" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:LicitacaoDaDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasValueComponent .
+
+base-despesas:ValorAtreladoNoRegistroDeDespesa.valorEmpenho a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "valorEmpenho" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ValorAtreladoNoRegistroDeDespesa ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf gufo:hasValueComponent .
+
+base-despesas:ValorAtreladoNoRegistroDeDespesa.valorLiquidado a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "valorLiquidado" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ValorAtreladoNoRegistroDeDespesa ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf gufo:hasValueComponent .
+
+base-despesas:ValorAtreladoNoRegistroDeDespesa.valorPago a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "valorPago" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ValorAtreladoNoRegistroDeDespesa ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf gufo:hasValueComponent .
+
+base-despesas:ValorAtreladoNoRegistroDeDespesa.valorRap a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "valorRap" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ValorAtreladoNoRegistroDeDespesa ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf gufo:hasValueComponent .
+
+base-despesas:RegistroDeDespesa.data a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:label "data" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:RegistroDeDespesa ;
+    rdfs:range xsd:dateTime ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:RegistroDeDespesa.emenda a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:label "emenda" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:RegistroDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:RegistroDeDespesa.embasamento a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:label "embasamento" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:RegistroDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:RegistroDeDespesa.dadosDoFavorecido a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:label "dadosDoFavorecido" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:RegistroDeDespesa ;
+    rdfs:range nucleo:DadosPessoaisAnonimizadosExpandido ;
+    rdfs:subPropertyOf gufo:hasReifiedQualityValue .
+
+base-despesas:RegistroDeDespesa.valorAtrelado a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:label "valorAtrelado" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:RegistroDeDespesa ;
+    rdfs:range base-despesas:ValorAtreladoNoRegistroDeDespesa ;
+    rdfs:subPropertyOf gufo:hasReifiedQualityValue .
+
+base-despesas:RegistroDeDespesa.retencaoDaDespesa a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:label "retencaoDaDespesa" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:RegistroDeDespesa ;
+    rdfs:range base-despesas:RetencaoDaDespesa ;
+    rdfs:subPropertyOf gufo:hasReifiedQualityValue .
+
+base-despesas:RegistroDeDespesa.historicoDocumento a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:label "historicoDocumento" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:RegistroDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:RegistroDeDespesa.documento a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:label "documento" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:RegistroDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:RegistroDeDespesa.documentoEmpenho a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:label "documentoEmpenho" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:RegistroDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:RegistroDeDespesa.idUso a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:label "idUso" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:RegistroDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:RegistroDeDespesa.descricaoIdUso a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:label "descricaoIdUso" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:RegistroDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:RegistroDeDespesa.dadosRetencao a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:label "dadosRetencao" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:RegistroDeDespesa ;
+    rdfs:range base-despesas:RetencaoDaDespesa ;
+    rdfs:subPropertyOf gufo:hasReifiedQualityValue .
+
+base-despesas:RegistroDeDespesa.dadosLicitacao a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:label "dadosLicitacao" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:RegistroDeDespesa ;
+    rdfs:range base-despesas:LicitacaoDaDespesa ;
+    rdfs:subPropertyOf gufo:hasReifiedQualityValue .
+
+base-despesas:RegistroDeDespesa.contratoDaDespesa a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:label "contratoDaDespesa" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:RegistroDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:RegistroDeDespesa.codigoGestaoEmitente a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "codigoGestaoEmitente" ;
+    rdfs:comment "TODO:: Não incluir? Visto que no próprio dicionário fala que não tem utilidade" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:RegistroDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:ValorAtreladoNoRegistroRestosAPagar.valorNaoProcessado a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "valorNaoProcessado" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ValorAtreladoNoRegistroRestosAPagar ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf gufo:hasValueComponent .
+
+base-despesas:ValorAtreladoNoRegistroRestosAPagar.valorProcessado a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "valorProcessado" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ValorAtreladoNoRegistroRestosAPagar ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf gufo:hasValueComponent .
+
+base-despesas:ValorAtreladoNoRegistroRestosAPagar.valorNaoProcessadoLiquidado a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "valorNaoProcessadoLiquidado" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ValorAtreladoNoRegistroRestosAPagar ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf gufo:hasValueComponent .
+
+base-despesas:RegistroDeRestosAPagar.valorAtrelado a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:label "valorAtrelado" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:RegistroDeRestosAPagar ;
+    rdfs:range base-despesas:ValorAtreladoNoRegistroRestosAPagar ;
+    rdfs:subPropertyOf gufo:hasReifiedQualityValue .
+
+base-despesas:RegistroDeRestosAPagar.idRegistro a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:label "idRegistro" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:RegistroDeRestosAPagar ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:ValorAtreladoNoOrcamentoDeDespesa.dotacaoInicial a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "dotacaoInicial" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ValorAtreladoNoOrcamentoDeDespesa ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf gufo:hasValueComponent .
+
+base-despesas:ValorAtreladoNoOrcamentoDeDespesa.dotacaoAtualizada a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "dotacaoAtualizada" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ValorAtreladoNoOrcamentoDeDespesa ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf gufo:hasValueComponent .
+
+base-despesas:ValorAtreladoNoOrcamentoDeDespesa.despesaEmpenhada a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "despesaEmpenhada" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ValorAtreladoNoOrcamentoDeDespesa ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf gufo:hasValueComponent .
+
+base-despesas:ValorAtreladoNoOrcamentoDeDespesa.despesaLiquidada a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "despesaLiquidada" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ValorAtreladoNoOrcamentoDeDespesa ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf gufo:hasValueComponent .
+
+base-despesas:ValorAtreladoNoOrcamentoDeDespesa.despesaPaga a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "despesaPaga" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ValorAtreladoNoOrcamentoDeDespesa ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf gufo:hasValueComponent .
+
+base-despesas:RegistroDeOrcamentoDeDespesa.valorAtrelado a
+        owl:ObjectProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "valorAtrelado" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:RegistroDeOrcamentoDeDespesa ;
+    rdfs:range base-despesas:ValorAtreladoNoOrcamentoDeDespesa ;
+    rdfs:subPropertyOf gufo:hasReifiedQualityValue .
+
+base-despesas:RegistroDeOrcamentoDeDespesa.emenda a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:label "emenda" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:RegistroDeOrcamentoDeDespesa ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:RegistroDeOrcamentoDeDespesa.dadosDoFavorecido a
+        owl:ObjectProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "dadosDoFavorecido" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:RegistroDeOrcamentoDeDespesa ;
+    rdfs:range nucleo:DadosPessoaisAnonimizados ;
+    rdfs:subPropertyOf gufo:hasReifiedQualityValue .
+
+base-despesas:ValorAtreladoNoOrcamentoDeExecucaoDeDespesa.valorEmpenho a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "valorEmpenho" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ValorAtreladoNoOrcamentoDeExecucaoDeDespesa ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf gufo:hasValueComponent .
+
+base-despesas:ValorAtreladoNoOrcamentoDeExecucaoDeDespesa.valorLiquidado a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "valorLiquidado" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ValorAtreladoNoOrcamentoDeExecucaoDeDespesa ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf gufo:hasValueComponent .
+
+base-despesas:ValorAtreladoNoOrcamentoDeExecucaoDeDespesa.valorPago a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "valorPago" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ValorAtreladoNoOrcamentoDeExecucaoDeDespesa ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf gufo:hasValueComponent .
+
+base-despesas:ValorAtreladoNoOrcamentoDeExecucaoDeDespesa.valorRap a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "valorRap" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ValorAtreladoNoOrcamentoDeExecucaoDeDespesa ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf gufo:hasValueComponent .
+
+base-despesas:ValorAtreladoNoOrcamentoDeExecucaoDeDespesa.valorOrcadoInicial a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "valorOrcadoInicial" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ValorAtreladoNoOrcamentoDeExecucaoDeDespesa ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf gufo:hasValueComponent .
+
+base-despesas:ValorAtreladoNoOrcamentoDeExecucaoDeDespesa.valorOrcado a
+        owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "valorOrcado" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ValorAtreladoNoOrcamentoDeExecucaoDeDespesa ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf gufo:hasValueComponent .
+
+base-despesas:RegistroDeOrcamentoDeExecucao.data a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:label "data" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:RegistroDeOrcamentoDeExecucao ;
+    rdfs:range xsd:dateTime ;
+    rdfs:subPropertyOf gufo:hasQualityValue .
+
+base-despesas:RegistroDeOrcamentoDeExecucao.valorAtrelado a
+        owl:ObjectProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "valorAtrelado" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:RegistroDeOrcamentoDeExecucao ;
+    rdfs:range base-despesas:ValorAtreladoNoOrcamentoDeExecucaoDeDespesa ;
+    rdfs:subPropertyOf gufo:hasReifiedQualityValue .
+
+base-despesas:DespesaOrcamentariaRegistrada.ano a owl:DatatypeProperty ;
+    rdfs:label "ano" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:DespesaOrcamentariaRegistrada ;
+    rdfs:range xsd:string ;
     rdfs:subPropertyOf gufo:hasQualityValue .
 
 base-despesas:ClassificadorInstitucionalDeDespesa.mediatesClassificacaoDoRegistroDeDespesaOrcamentaria a
@@ -362,22 +1303,31 @@ base-despesas:ClassificadorInstitucionalDeDespesa.mediatesClassificacaoDoRegistr
     rdfs:range base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria ;
     rdfs:subPropertyOf gufo:mediates .
 
-base-despesas:ClassificadorInstitucionalDeDespesa.mediatesOrgaoPublicoOrcamentario a
+base-despesas:ClassificadorInstitucionalDeDespesa.mediatesOrgaoPublicoOrcamentarioNaDespesa a
         owl:ObjectProperty,
         owl:FunctionalProperty ;
-    rdfs:label "ClassificadorInstitucionalDeDespesa.mediatesOrgaoPublicoOrcamentario" ;
+    rdfs:label "ClassificadorInstitucionalDeDespesa.mediatesOrgaoPublicoOrcamentarioNaDespesa" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:domain base-despesas:ClassificadorInstitucionalDeDespesa ;
-    rdfs:range base-despesas:OrgaoPublicoOrcamentario ;
+    rdfs:range base-despesas:OrgaoPublicoOrcamentarioNaDespesa ;
     rdfs:subPropertyOf gufo:mediates .
 
-base-despesas:ClassificadorInstitucionalDeDespesa.mediatesUnidadeOrcamentaria a
+base-despesas:ClassificadorInstitucionalDeDespesa.mediatesUnidadeOrcamentariaNaDespesa a
         owl:ObjectProperty,
         owl:FunctionalProperty ;
-    rdfs:label "ClassificadorInstitucionalDeDespesa.mediatesUnidadeOrcamentaria" ;
+    rdfs:label "ClassificadorInstitucionalDeDespesa.mediatesUnidadeOrcamentariaNaDespesa" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:domain base-despesas:ClassificadorInstitucionalDeDespesa ;
-    rdfs:range base-despesas:UnidadeOrcamentaria ;
+    rdfs:range base-despesas:UnidadeOrcamentariaNaDespesa ;
+    rdfs:subPropertyOf gufo:mediates .
+
+base-despesas:ClassificadorInstitucionalDeDespesa.mediatesEsferaOrcamentariaNaDespesa a
+        owl:ObjectProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "ClassificadorInstitucionalDeDespesa.mediatesEsferaOrcamentariaNaDespesa" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:ClassificadorInstitucionalDeDespesa ;
+    rdfs:range base-despesas:EsferaOrcamentariaNaDespesa ;
     rdfs:subPropertyOf gufo:mediates .
 
 base-despesas:RegistroDeDespesaOrcamentaria.mediatesDespesaOrcamentariaRegistrada a
@@ -398,45 +1348,61 @@ base-despesas:RegistroDeDespesaOrcamentaria.mediatesUnidadeGestoraNaDespesa a
     rdfs:range base-despesas:UnidadeGestoraNaDespesa ;
     rdfs:subPropertyOf gufo:mediates .
 
-base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasMicroRegiaoNaDespesa a
+base-despesas:RegistroDeDespesa.mediatesProcessoOrcamentarioDeDespesa a
         owl:ObjectProperty,
         owl:FunctionalProperty ;
-    rdfs:label "RegistroDeDespesaOrcamentariaComOpcionais.hasMicroRegiaoNaDespesa" ;
+    rdfs:label "RegistroDeDespesa.mediatesProcessoOrcamentarioDeDespesa" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
-    rdfs:domain base-despesas:RegistroDeDespesaOrcamentariaComOpcionais ;
-    rdfs:range base-despesas:MicroRegiaoNaDespesa .
+    rdfs:domain base-despesas:RegistroDeDespesa ;
+    rdfs:range base-despesas:ProcessoOrcamentarioDeDespesa ;
+    rdfs:subPropertyOf gufo:mediates .
 
-base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasMunicipioNaDespesa a
-        owl:ObjectProperty,
-        owl:FunctionalProperty ;
-    rdfs:label "RegistroDeDespesaOrcamentariaComOpcionais.hasMunicipioNaDespesa" ;
+base-despesas:RegistroDeDespesa.hasBancoNaDespesa a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:label "RegistroDeDespesa.hasBancoNaDespesa" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
-    rdfs:domain base-despesas:RegistroDeDespesaOrcamentariaComOpcionais ;
-    rdfs:range base-despesas:MunicipioNaDespesa .
-
-base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasBancoNaDespesa a
-        owl:ObjectProperty,
-        owl:FunctionalProperty ;
-    rdfs:label "RegistroDeDespesaOrcamentariaComOpcionais.hasBancoNaDespesa" ;
-    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
-    rdfs:domain base-despesas:RegistroDeDespesaOrcamentariaComOpcionais ;
+    rdfs:domain base-despesas:RegistroDeDespesa ;
     rdfs:range base-despesas:BancoNaDespesa .
 
-base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasConcedorDeConvenio a
-        owl:ObjectProperty,
-        owl:FunctionalProperty ;
-    rdfs:label "RegistroDeDespesaOrcamentariaComOpcionais.hasConcedorDeConvenio" ;
+base-despesas:RegistroDeDespesa.hasConcedorDeConvenio a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:label "RegistroDeDespesa.hasConcedorDeConvenio" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
-    rdfs:domain base-despesas:RegistroDeDespesaOrcamentariaComOpcionais ;
+    rdfs:domain base-despesas:RegistroDeDespesa ;
     rdfs:range base-despesas:ConcedorDeConvenio .
 
-base-despesas:RegistroDeDespesaOrcamentariaComOpcionais.hasRecebedorDeConvenio a
+base-despesas:RegistroDeDespesa.hasRecebedorDeConvenio a
         owl:ObjectProperty,
         owl:FunctionalProperty ;
-    rdfs:label "RegistroDeDespesaOrcamentariaComOpcionais.hasRecebedorDeConvenio" ;
+    rdfs:label "RegistroDeDespesa.hasRecebedorDeConvenio" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
-    rdfs:domain base-despesas:RegistroDeDespesaOrcamentariaComOpcionais ;
+    rdfs:domain base-despesas:RegistroDeDespesa ;
     rdfs:range base-despesas:RecebedorDeConvenio .
+
+base-despesas:RegistroDeRestosAPagar.mediatesPoderDaFederacaoNaDespesa a
+        owl:ObjectProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "RegistroDeRestosAPagar.mediatesPoderDaFederacaoNaDespesa" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:RegistroDeRestosAPagar ;
+    rdfs:range base-despesas:PoderDaFederacaoNaDespesa ;
+    rdfs:subPropertyOf gufo:mediates .
+
+base-despesas:RegistroDeOrcamentoDeDespesa.mediatesMicroRegiaoNaDespesa a
+        owl:ObjectProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "RegistroDeOrcamentoDeDespesa.mediatesMicroRegiaoNaDespesa" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:RegistroDeOrcamentoDeDespesa ;
+    rdfs:range base-despesas:MicroRegiaoNaDespesa ;
+    rdfs:subPropertyOf gufo:mediates .
+
+base-despesas:RegistroDeOrcamentoDeDespesa.mediatesMunicipioNaDespesa a
+        owl:ObjectProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "RegistroDeOrcamentoDeDespesa.mediatesMunicipioNaDespesa" ;
+    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
+    rdfs:domain base-despesas:RegistroDeOrcamentoDeDespesa ;
+    rdfs:range base-despesas:MunicipioNaDespesa ;
+    rdfs:subPropertyOf gufo:mediates .
 
 base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria.classifica a
         owl:ObjectProperty,
@@ -483,13 +1449,6 @@ base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria.fonteClassificadaPor 
     rdfs:domain base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria ;
     rdfs:range base-despesas:FonteDaDespesa ;
     rdfs:subPropertyOf gufo:mediates .
-
-base-despesas:UnidadeOrcamentaria.isComponentOfOrgaoPublicoOrcamentario a owl:ObjectProperty ;
-    rdfs:label "UnidadeOrcamentaria.isComponentOfOrgaoPublicoOrcamentario" ;
-    rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
-    rdfs:domain base-despesas:UnidadeOrcamentaria ;
-    rdfs:range base-despesas:OrgaoPublicoOrcamentario ;
-    rdfs:subPropertyOf gufo:isComponentOf .
 
 base-despesas:TerminoDoExercicioVigenteDaDespesa.triggers a
         owl:ObjectProperty,

@@ -131,8 +131,11 @@ subkind RegistroDeDespesa specializes RegistroDeDespesaOrcamentaria{
     /// TODO:: Não incluir? Visto que no próprio dicionário fala que não tem utilidade
     codigoGestaoEmitente: const string [1]
 
-    
+
     @mediation (const) [1..*]  -- [1] (const) ProcessoOrcamentarioDeDespesa
+    (const) [1..*]  -- [0..1] (const) BancoNaDespesa
+    (const) [1..*] -- [0..1] (const) ConcedorDeConvenio
+    (const) [1..*] -- [0..1] (const) RecebedorDeConvenio
 
 }
 
@@ -183,13 +186,13 @@ subkind RegistroDeOrcamentoDeExecucao specializes RegistroDeDespesaOrcamentaria{
 
 disjoint genset RegistrosDaDespesa where RegistroDeDespesa, RegistroDeRestosAPagar, RegistroDeOrcamentoDeDespesa, RegistroDeOrcamentoDeExecucao specializes RegistroDeDespesaOrcamentaria
 
-subkind RegistroDeDespesaOrcamentariaComOpcionais specializes RegistroDeDespesaOrcamentaria{
-    [1..*] -- [0..1] (const) MicroRegiaoNaDespesa
-    [1..*] -- [0..1] (const) MunicipioNaDespesa
-    [1..*] -- [0..1] (const) BancoNaDespesa
-    [1..*] -- [0..1] (const) ConcedorDeConvenio
-    [1..*] -- [0..1] (const) RecebedorDeConvenio
-}
+// subkind RegistroDeDespesaOrcamentariaComOpcionais specializes RegistroDeDespesaOrcamentaria{
+//     [1..*] -- [0..1] (const) MicroRegiaoNaDespesa
+//     [1..*] -- [0..1] (const) MunicipioNaDespesa
+//     [1..*] -- [0..1] (const) BancoNaDespesa
+//     [1..*] -- [0..1] (const) ConcedorDeConvenio
+//     [1..*] -- [0..1] (const) RecebedorDeConvenio
+// }
 
 role MicroRegiaoNaDespesa specializes nucleo.MicroRegiao
 role MunicipioNaDespesa specializes nucleo.Municipio
