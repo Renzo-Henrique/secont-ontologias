@@ -4,11 +4,11 @@ ValorEmpenho ; base-despesas.
 ValorLiquidado ; base-despesas.
 ValorPago ; base-despesas.
 ValorRap ; base-despesas.
-CpfCnpjNis ; base-despesas.
-TipoFavorecido ; base-despesas. 
-CargoFuncao ; 
-Favorecido ; base-despesas. 
-IdFavorecido ; base-despesas. 
+CpfCnpjNis ; nucleo.DadosPessoaisAnonimizadosExpandido.codigo
+TipoFavorecido ; nucleo.DadosPessoaisAnonimizadosExpandido.tipoFavorecido
+CargoFuncao ; nucleo.DadosPessoaisAnonimizadosExpandido.cargoFuncao
+Favorecido ; nucleo.DadosPessoaisAnonimizadosExpandido.nome
+IdFavorecido ; nucleo.DadosPessoaisAnonimizadosExpandido.idFavorecido
 TipoLicitacao ; base-despesas. 
 HistoricoDocumento ;
 Documento ;

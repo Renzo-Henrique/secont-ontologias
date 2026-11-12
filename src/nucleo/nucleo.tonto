@@ -59,15 +59,22 @@ kind PessoaJuridica {
 }
 
 /// @pt-br Unidade territorial usada para agrupar municípios no contexto geográfico da ontologia.
-kind Regiao
+kind Regiao{
+    codigo: const string [1]
+    nome: const string [1]
+}
 
 /// @pt-br Recorte geográfico formado por municípios e vinculado a uma região no modelo.
 kind MicroRegiao {
+    codigo: const string [1]
+    nome: const string [1]
     @componenthood [0..*] --<> [1] (const) Regiao
 }
 
 /// @pt-br Unidade territorial municipal relacionada à região e à microrregião correspondentes.
 kind Municipio {
+    codigo: const string [1]
+    nome: const string [1]
     @componenthood [0..*] --<> [1] (const) Regiao
     @componenthood [0..*] --<> [0..*] (const) MicroRegiao
 }
@@ -99,5 +106,17 @@ datatype DadosPessoaisAnonimizados{
     nome: const string [1]
 }
 
+datatype DadosPessoaisAnonimizadosExpandido specializes DadosPessoaisAnonimizados{
+    
+    cargoFuncao: const string [0..1]
+    tipoFavorecido: const string [0..1]
+    idFavorecido: const string [0..1]
+}
+
 category FonteOrcamentaria of functional-complexes{
+}
+
+category EsferaOrcamentaria of functional-complexes{
+    codigo: const string [1]
+    descricao: const string [1]
 }
