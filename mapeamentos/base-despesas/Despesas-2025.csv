@@ -17,38 +17,38 @@ CodigoProcesso ;
 Processo ;
 ProcessoAssunto ;
 CodigoFuncionalProgramatica ;
-CodigoCategoriaEconomica ; 
-CategoriaEconomica ; 
-CodigoUnidadeGestora ; base-receitas.UnidadeGestoraNaDespesa.codigo
-UnidadeGestora ; base-receitas.UnidadeGestoraNaDespesa.descricao
-CodigoGrupoDespesa ; 
-GrupoDespesa ; 
-CodigoElementoDespesa ; 
-ElementoDespesa ; 
+CodigoCategoriaEconomica ; base-despesas.ClassificadorPorNaturezaDeDespesa.codigoCategoriaEconomica
+CategoriaEconomica ; base-despesas.ClassificadorPorNaturezaDeDespesa.descricaoCategoriaEconomica
+CodigoUnidadeGestora ; base-despesas.UnidadeGestoraNaDespesa.codigo
+UnidadeGestora ; base-despesas.UnidadeGestoraNaDespesa.descricao
+CodigoGrupoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa.codigoGrupoDespesa
+GrupoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa.descricaoGrupoDespesa
+CodigoElementoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa.codigoElementoDespesa
+ElementoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa.descricaoElementoDespesa
 DescricaoElementoDespesa ; 
-CodigoSubtitulo ; 
-Subtitulo ; 
-CodigoFonte ; 
-Fonte ; 
-CodigoDetalhamentoFonte ; 
-DetalhamentoFonte ; 
-CodigoOrgao ; base-receitas.OrgaoPublicoOrcamentarioNaDespesa.codigo
-Orgao ; base-receitas.OrgaoPublicoOrcamentarioNaDespesa.descricao
-CodigoFuncao ; 
-Funcao ; 
-CodigoSubFuncao ; 
-SubFuncao ; 
-CodigoPrograma ; 
-Programa ; 
-CodigoAcao ; 
-Acao ; 
-CodigoModalidade ; 
-Modalidade ; 
-CodigoSubelementoDespesa ; 
-SubelementoDespesa ; 
+CodigoSubtitulo ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa.codigoSubtitulo
+Subtitulo ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa.descricaoSubtitulo
+CodigoFonte ; base-despesas.FonteDaDespesa.codigoFonte
+Fonte ; base-despesas.FonteDaDespesa.descricaoFonte
+CodigoDetalhamentoFonte ; base-despesas.FonteDaDespesa.codigoDetalhamentoFonte
+DetalhamentoFonte ; base-despesas.FonteDaDespesa.descricaoDetalhamentoFonte
+CodigoOrgao ; base-despesas.OrgaoPublicoOrcamentarioNaDespesa.codigo
+Orgao ; base-despesas.OrgaoPublicoOrcamentarioNaDespesa.descricao
+CodigoFuncao ; base-despesas.ClassificadorFuncionalDeDespesa.codigoFuncao
+Funcao ; base-despesas.ClassificadorFuncionalDeDespesa.descricaoFuncao
+CodigoSubFuncao ; base-despesas.ClassificadorFuncionalDeDespesa.codigoSubFuncao
+SubFuncao ; base-despesas.ClassificadorFuncionalDeDespesa.descricaoSubFuncao
+CodigoPrograma ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa.codigoPrograma
+Programa ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa.descricaoPrograma
+CodigoAcao ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa.codigoAcao
+Acao ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa.descricaoAcao
+CodigoModalidade ; base-despesas.ClassificadorPorNaturezaDeDespesa.codigoModalidade
+Modalidade ; base-despesas.ClassificadorPorNaturezaDeDespesa.descricaoModalidade
+CodigoSubelementoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa.codigoSubElementoDespesa
+SubelementoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa.descricaoSubElementoDespesa
 CodigoGestaoEmitente ;
-CodigoPlanoOrcamentario ; 
-PlanoOrcamentario ; 
+CodigoPlanoOrcamentario ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa.codigoPlanoOrcamentario
+PlanoOrcamentario ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa.descricaoPlanoOrcamentario
 NumeroProcesso ;
 CodigoConvenioRecebido ; 
 CodigoConvenioConcedido ; 

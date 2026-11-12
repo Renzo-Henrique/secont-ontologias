@@ -1,10 +1,10 @@
 Ano ; 
 CodigoPoder ; 
 Poder ; 
-CodigoUnidadeGestora ; base-receitas.UnidadeGestoraNaDespesa.codigo
-UnidadeGestora ; base-receitas.UnidadeGestoraNaDespesa.descricao
-CodigoElemento ; 
-Elemento ; 
+CodigoUnidadeGestora ; base-despesas.UnidadeGestoraNaDespesa.codigo
+UnidadeGestora ; base-despesas.UnidadeGestoraNaDespesa.descricao
+CodigoElemento ; base-despesas.ClassificadorPorNaturezaDeDespesa.codigoElementoDespesa
+Elemento ; base-despesas.ClassificadorPorNaturezaDeDespesa.descricaoElementoDespesa
 CpfCnpjNis ; 
 Favorecido ; 
 ValorNaoProcessado ;

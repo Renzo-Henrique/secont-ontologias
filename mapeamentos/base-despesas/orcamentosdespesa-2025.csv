@@ -1,29 +1,29 @@
-CodigoUnidadeGestora ; base-receitas.UnidadeGestoraNaDespesa.codigo
-UnidadeGestora ; base-receitas.UnidadeGestoraNaDespesa.descricao
-CodigoPrograma ; 
-Programa ; 
-CodigoAcao ; 
-Acao ; 
-CodigoFuncao ; 
-Funcao ; 
-CodigoSubFuncao ; 
-SubFuncao ; 
-CodigoCategoriaEconomica ; 
-CategoriaEconomica ; 
-CodigoGrupoDespesa ; 
-GrupoDespesa ; 
-CodigoModalidade ; 
-Modalidade ; 
-CodigoElementoDespesa ; 
-ElementoDespesa ; 
-CodigoSubelementoDespesa ; 
-SubelementoDespesa ; 
-CodigoFonte ; 
-Fonte ; 
+CodigoUnidadeGestora ; base-despesas.UnidadeGestoraNaDespesa.codigo
+UnidadeGestora ; base-despesas.UnidadeGestoraNaDespesa.descricao
+CodigoPrograma ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa.codigoPrograma
+Programa ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa.descricaoPrograma
+CodigoAcao ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa.codigoAcao
+Acao ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa.descricaoAcao
+CodigoFuncao ; base-despesas.ClassificadorFuncionalDeDespesa.codigoFuncao
+Funcao ; base-despesas.ClassificadorFuncionalDeDespesa.descricaoFuncao
+CodigoSubFuncao ; base-despesas.ClassificadorFuncionalDeDespesa.codigoSubFuncao
+SubFuncao ; base-despesas.ClassificadorFuncionalDeDespesa.descricaoSubFuncao
+CodigoCategoriaEconomica ; base-despesas.ClassificadorPorNaturezaDeDespesa.codigoCategoriaEconomica
+CategoriaEconomica ; base-despesas.ClassificadorPorNaturezaDeDespesa.descricaoCategoriaEconomica
+CodigoGrupoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa.codigoGrupoDespesa
+GrupoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa.descricaoGrupoDespesa
+CodigoModalidade ; base-despesas.ClassificadorPorNaturezaDeDespesa.codigoModalidade
+Modalidade ; base-despesas.ClassificadorPorNaturezaDeDespesa.descricaoModalidade
+CodigoElementoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa.codigoElementoDespesa
+ElementoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa.descricaoElementoDespesa
+CodigoSubelementoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa.codigoSubElementoDespesa
+SubelementoDespesa ; base-despesas.ClassificadorPorNaturezaDeDespesa.descricaoSubElementoDespesa
+CodigoFonte ; base-despesas.FonteDaDespesa.codigoFonte
+Fonte ; base-despesas.FonteDaDespesa.descricaoFonte
 CpfCnpjNis ; 
 Favorecido ; 
-CodigoPlanoOrcamentario ; 
-PlanoOrcamentario ; 
+CodigoPlanoOrcamentario ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa.codigoPlanoOrcamentario
+PlanoOrcamentario ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa.descricaoPlanoOrcamentario
 DotacaoInicial ; 
 DotacaoAtualizada ; 
 DespesaEmpenhada ; 
@@ -32,8 +32,8 @@ DespesaPaga ;
 Ano ; 
 Esfera ; 
 NomeEsfera ; 
-UnidadeOrcamentaria ; base-receitas.UnidadeOrcamentariaNaDespesa.codigo
-NomeUnidadeOrcamentaria ; base-receitas.UnidadeOrcamentariaNaDespesa.descricao
+UnidadeOrcamentaria ; base-despesas.UnidadeOrcamentariaNaDespesa.codigo
+NomeUnidadeOrcamentaria ; base-despesas.UnidadeOrcamentariaNaDespesa.descricao
 Microregiao ; 
 NomeMicroregiao ; 
 Municipio ; 

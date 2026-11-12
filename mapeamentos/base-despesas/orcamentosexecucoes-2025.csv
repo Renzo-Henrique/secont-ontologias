@@ -5,7 +5,7 @@ ValorPago ;
 ValorRap ; 
 ValorOrcadoInicial ; 
 ValorOrcado ; 
-CodigoUnidadeGestora ; base-receitas.UnidadeGestoraNaDespesa.codigo
-UnidadeGestora ; base-receitas.UnidadeGestoraNaDespesa.descricao
-SiglaUnidadeGestora ; base-receitas.UnidadeGestoraNaDespesa.sigla
+CodigoUnidadeGestora ; base-despesas.UnidadeGestoraNaDespesa.codigo
+UnidadeGestora ; base-despesas.UnidadeGestoraNaDespesa.descricao
+SiglaUnidadeGestora ; base-despesas.UnidadeGestoraNaDespesa.sigla
 Id ;
