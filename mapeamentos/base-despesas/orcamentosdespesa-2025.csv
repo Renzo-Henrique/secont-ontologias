@@ -1,9 +1,9 @@
 CodigoUnidadeGestora ; base-despesas.UnidadeGestoraNaDespesa.codigo
 UnidadeGestora ; base-despesas.UnidadeGestoraNaDespesa.descricao
-CodigoPrograma ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa.codigoPrograma
-Programa ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa.descricaoPrograma
-CodigoAcao ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa.codigoAcao
-Acao ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa.descricaoAcao
+CodigoPrograma ; base-despesas.EstruturaProgramaticaDeDespesa.codigoPrograma
+Programa ; base-despesas.EstruturaProgramaticaDeDespesa.descricaoPrograma
+CodigoAcao ; base-despesas.EstruturaProgramaticaDeDespesa.codigoAcao
+Acao ; base-despesas.EstruturaProgramaticaDeDespesa.descricaoAcao
 CodigoFuncao ; base-despesas.ClassificadorFuncionalDeDespesa.codigoFuncao
 Funcao ; base-despesas.ClassificadorFuncionalDeDespesa.descricaoFuncao
 CodigoSubFuncao ; base-despesas.ClassificadorFuncionalDeDespesa.codigoSubFuncao
@@ -22,8 +22,8 @@ CodigoFonte ; base-despesas.FonteDaDespesa.codigoFonte
 Fonte ; base-despesas.FonteDaDespesa.descricaoFonte
 CpfCnpjNis ;  base-despesas.RegistroDeOrcamentoDeDespesa.dadosDoFavorecido.codigo
 Favorecido ;  base-despesas.RegistroDeOrcamentoDeDespesa.dadosDoFavorecido.nome
-CodigoPlanoOrcamentario ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa.codigoPlanoOrcamentario
-PlanoOrcamentario ; base-despesas.ClassificadorPorEstruturaProgramaticaDeDespesa.descricaoPlanoOrcamentario
+CodigoPlanoOrcamentario ; base-despesas.EstruturaProgramaticaDeDespesa.codigoPlanoOrcamentario
+PlanoOrcamentario ; base-despesas.EstruturaProgramaticaDeDespesa.descricaoPlanoOrcamentario
 DotacaoInicial ;  base-despesas.RegistroDeOrcamentoDeDespesa.valorAtrelado.dotacaoInicial
 DotacaoAtualizada ;  base-despesas.RegistroDeOrcamentoDeDespesa.valorAtrelado.dotacaoAtualizada
 DespesaEmpenhada ;  base-despesas.RegistroDeOrcamentoDeDespesa.valorAtrelado.despesaEmpenhada

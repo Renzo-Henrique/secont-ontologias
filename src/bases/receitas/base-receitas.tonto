@@ -81,7 +81,7 @@ role ReceitaOrcamentariaRegistrada specializes ReceitaOrcamentaria{
     ano: const string [1]
 }
 
-/// @pt-br Tipo de dados que agrupa os valores que um Registro de Receita Orçamentária pode ter.
+/// @pt-br Tipo de dados que agrupa os valores monetários que um Registro de Receita Orçamentária pode ter.
 datatype ValorAtreladoNaReceita {
     valorPrevista:  const number
     valorArrecadada:  const number
