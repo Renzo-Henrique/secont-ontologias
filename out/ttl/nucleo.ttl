@@ -54,8 +54,7 @@ Cite LEI Nº 9.784 , DE 29 DE JANEIRO DE 1999."""@pt-br ;
 
 nucleo:UnidadeDeOrgaoPublico a owl:Class, gufo:Kind ;
     rdfs:label "UnidadeDeOrgaoPublico" ;
-    rdfs:comment """Constitui unidade orçamentária o agrupamento de serviços subordinados ao mesmo órgão ou repartição a que serão consignadas dotações próprias.
-Cite LEI No 4.320, DE 17 DE MARÇO DE 1964"""@pt-br ;
+    rdfs:comment "É o agrupamento de serviços subordinados ao mesmo órgão ou repartição a que serão consignadas dotações próprias."@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
     rdfs:subClassOf
         gufo:FunctionalComplex,
@@ -83,6 +82,8 @@ Cite MCASP - 11º Edicao: Parte Il: Seções 4.2.1"""@pt-br ;
 
 nucleo:UnidadeOrcamentaria a owl:Class, gufo:Role ;
     rdfs:label "UnidadeOrcamentaria" ;
+    rdfs:comment """Constitui unidade orçamentária o agrupamento de serviços subordinados ao mesmo órgão ou repartição a que serão consignadas dotações próprias.
+Cite LEI No 4.320, DE 17 DE MARÇO DE 1964"""@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
     rdfs:subClassOf
         nucleo:UnidadeDeOrgaoPublico,
@@ -163,12 +164,14 @@ nucleo:Municipio a owl:Class, gufo:Kind ;
           owl:onClass nucleo:Regiao ;
           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
 
-nucleo:Banco a owl:Class, gufo:Kind ;
+nucleo:Banco a owl:Class, gufo:SubKind ;
     rdfs:label "Banco" ;
-    rdfs:comment "Instituição financeira referenciada nos dados do Portal da Transparência."@pt-br ;
+    rdfs:comment """Considera-se instituição financeira, para efeito desta lei, a pessoa jurídica de direito público ou privado, que tenha como atividade principal ou acessória, cumulativamente ou não, a captação, intermediação ou aplicação de recursos financeiros (Vetado) de terceiros, em moeda nacional ou estrangeira, ou a custódia, emissão, distribuição, negociação, intermediação ou administração de valores mobiliários.
+Cite LEI No 7.492, DE 16 DE JUNHO DE 1986.
+Na definição da lei é denominado instituição financeira, mas popularmente é conhecido como Banco."""@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
     rdfs:subClassOf
-        gufo:FunctionalComplex,
+        nucleo:PessoaJuridica,
         [ a owl:Restriction ;
           owl:onProperty nucleo:Banco.codigo ;
           owl:cardinality "1"^^xsd:nonNegativeInteger ],
@@ -182,7 +185,9 @@ nucleo:Banco a owl:Class, gufo:Kind ;
 nucleo:Convenio a owl:Class, gufo:Kind ;
     rdfs:label "Convenio" ;
     rdfs:comment """Convênios, contratos de repasse e termos de parceria são acordos feitos entre União e entidades governamentais dos demais entes da Federação, ou organizações não-governamentais, para transferência de recursos financeiros a serem utilizados na execução de um objetivo comum. Portanto, as transferências voluntárias e legais serão viabilizadas a partir dos mencionados instrumentos e outros congêneres.
-Cite url https://portaldatransparencia.gov.br/entenda-a-gestao-publica/convenios-e-outros-acordos"""@pt-br ;
+Cite url https://portaldatransparencia.gov.br/entenda-a-gestao-publica/convenios-e-outros-acordos
+Instrumento que, na ausência de legislação específica, dispõe sobre a transferência de recursos financeiros provenientes do Orçamento Fiscal e da Seguridade Social da União para a execução de programas, projetos e atividades de interesse recíproco e em regime de mútua colaboração;
+Cite DECRETO Nº 11.531, DE 16 DE MAIO DE 2023"""@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
     rdfs:subClassOf
         gufo:FunctionalComplex,
@@ -192,7 +197,7 @@ Cite url https://portaldatransparencia.gov.br/entenda-a-gestao-publica/convenios
 
 nucleo:PoderDaFederacao a owl:Class, gufo:Category ;
     rdfs:label "PoderDaFederacao" ;
-    rdfs:comment "Classificação que identifica o Poder da Federação ao qual uma unidade gestora está vinculada."@pt-br ;
+    rdfs:comment "Classificação que identifica o Poder da Federação."@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
     rdfs:subClassOf
         gufo:FunctionalComplex,
@@ -218,6 +223,7 @@ nucleo:DadosPessoaisAnonimizados a owl:Class, gufo:AbstractIndividualType ;
 
 nucleo:DadosPessoaisAnonimizadosExpandido a owl:Class, gufo:AbstractIndividualType ;
     rdfs:label "DadosPessoaisAnonimizadosExpandido" ;
+    rdfs:comment "Representação de informações pessoais que foram submetidas a processo de anonimização, mas possui atributos opcionais que detalham os dados."@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
     rdfs:subClassOf
         gufo:QualityValue,
@@ -234,11 +240,15 @@ nucleo:DadosPessoaisAnonimizadosExpandido a owl:Class, gufo:AbstractIndividualTy
 
 nucleo:FonteOrcamentaria a owl:Class, gufo:Category ;
     rdfs:label "FonteOrcamentaria" ;
+    rdfs:comment """A classificação por fontes ou destinações de recursos (FR) tem como objetivo agrupar receitas que possuam as mesmas normas de aplicação na despesa. Em regra, as fontes ou destinações de recursos reúnem recursos oriundos de determinados códigos da classificação por natureza da receita orçamentária, conforme regras previamente estabelecidas. Por meio do orçamento público, essas fontes ou destinações são associadas a determinadas despesas de forma a evidenciar os meios para atingir os objetivos públicos. Como mecanismo integrador entre a receita e a despesa, o código de FR exerce um duplo papel no processo orçamentário. Para a receita orçamentária, esse código tem a finalidade de indicar a destinação de recursos para a realização de determinadas despesas orçamentárias. Para a despesa orçamentária, identifica a origem dos recursos que estão sendo utilizados.
+Cite MCASP - 11º Edicao: Parte I: Seção 5.1"""@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
     rdfs:subClassOf gufo:FunctionalComplex .
 
 nucleo:EsferaOrcamentaria a owl:Class, gufo:Category ;
     rdfs:label "EsferaOrcamentaria" ;
+    rdfs:comment """Classificação que tem por finalidade identificar se a despesa ou a receita estão inseridas nos orçamentos fiscal, da seguridade social ou de investimento das empresas estatais.
+Cite url https://www.congressonacional.leg.br/legislacao-e-publicacoes/glossario-orcamentario/-/orcamentario/termo/classificacao_por_esfera_orcamentaria"""@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/nucleo> ;
     rdfs:subClassOf
         gufo:FunctionalComplex,
@@ -505,7 +515,6 @@ nucleo:Municipio.isComponentOfMicroRegiao a owl:ObjectProperty ;
 
 [] a owl:AllDisjointClasses ;
     owl:members (
-        nucleo:Banco
         nucleo:Convenio
         nucleo:MicroRegiao
         nucleo:Municipio

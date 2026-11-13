@@ -76,10 +76,8 @@ Cite MCASP - 11º Edicao: Parte I: Seção 3.2.1"""@pt-br ;
 
 base-receitas:FonteDaReceita a owl:Class, gufo:RoleMixin ;
     rdfs:label "FonteDaReceita" ;
-    rdfs:comment """A classificação por fontes ou destinações de recursos (FR) tem como objetivo agrupar receitas que possuam as mesmas normas de aplicação na despesa. Em regra, as fontes ou destinações de recursos reúnem recursos oriundos de determinados códigos da classificação por natureza da receita orçamentária, conforme regras previamente estabelecidas. Por meio do orçamento público, essas fontes ou destinações são associadas a determinadas despesas de forma a evidenciar os meios para atingir os objetivos públicos.
-Cite MCASP - 11º Edicao: Parte I: Seção 5.1
-No momento da arrecadação, a FR deverá ser informada no registro da realização da receita orçamentária (classe 6 do PCASP), no registro do ingresso dos recursos financeiros no ativo financeiro (classe 1 com atributo \"F\") e em contas de controle da Disponibilidade por Destinação de Recursos - DDR (nas classes 7 e 8 do PCASP). A partir desse momento, a FR informada para os recursos financeiros não deverá ser alterada
-Cite MCASP - 11º Edicao: Parte I: Seção 5.2"""@pt-br ;
+    rdfs:comment """No momento da arrecadação, a FR deverá ser informada no registro da realização da receita orçamentária (classe 6 do PCASP), no registro do ingresso dos recursos financeiros no ativo financeiro (classe 1 com atributo \"F\") e em contas de controle da Disponibilidade por Destinação de Recursos - DDR (nas classes 7 e 8 do PCASP). A partir desse momento, a FR informada para os recursos financeiros não deverá ser alterada
+Cite MCASP - 11º Edicao: Parte I: Seção 5.2""" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:subClassOf
         nucleo:FonteOrcamentaria,
@@ -111,7 +109,7 @@ Cite MCASP - 11º Edicao: Parte I: Seção 5.2"""@pt-br ;
 base-receitas:ContaContabil a owl:Class, gufo:Category ;
     rdfs:label "ContaContabil" ;
     rdfs:comment """Conta é a expressão qualitativa e quantitativa de fatos de mesma natureza, que evidencia a composição, variação e estado do patrimônio, bem como de bens, direitos, obrigações e situações nele não compreendidas, mas que, direta ou indiretamente, possam vir a afetá-lo.
-Cite MCASP - 11º Edicao: Parte IV: Seções 2.3 ; 3.1"""@pt-br ;
+Cite MCASP - 11º Edicao: Parte IV: Seções 2.3 ;"""@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:subClassOf
         gufo:FunctionalComplex,
@@ -124,7 +122,7 @@ Cite MCASP - 11º Edicao: Parte IV: Seções 2.3 ; 3.1"""@pt-br ;
 
 base-receitas:UnidadeGestoraEmitenteDeReceita a owl:Class, gufo:Role ;
     rdfs:label "UnidadeGestoraEmitenteDeReceita" ;
-    rdfs:comment "Unidade gestora responsável pela emissão do documento contábil de receita."@pt-br ;
+    rdfs:comment "Unidade gestora responsável pela emissão da receita orçamentária."@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:subClassOf
         nucleo:UnidadeGestora,
@@ -137,7 +135,7 @@ base-receitas:UnidadeGestoraEmitenteDeReceita a owl:Class, gufo:Role ;
 
 base-receitas:UnidadeGestoraBeneficiadaDeReceita a owl:Class, gufo:Role ;
     rdfs:label "UnidadeGestoraBeneficiadaDeReceita" ;
-    rdfs:comment "Unidade gestora beneficiada pela receita registrada no documento contábil."@pt-br ;
+    rdfs:comment "Unidade gestora beneficiada por uma receita orçamentária emitida."@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:subClassOf
         nucleo:UnidadeGestora,
@@ -185,7 +183,7 @@ base-receitas:ReceitaOrcamentariaRegistrada a owl:Class, gufo:Role ;
 
 base-receitas:ValorAtreladoNaReceita a owl:Class, gufo:AbstractIndividualType ;
     rdfs:label "ValorAtreladoNaReceita" ;
-    rdfs:comment "Tipo de dados que agrupa os valores que um Registro de Receita Orçamentária pode ter."@pt-br ;
+    rdfs:comment "Tipo de dados que agrupa os valores monetários que um Registro de Receita Orçamentária pode ter."@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:subClassOf
         gufo:QualityValue,
@@ -222,7 +220,7 @@ base-receitas:ValorAtreladoNaReceita a owl:Class, gufo:AbstractIndividualType ;
 
 base-receitas:RegistroDeReceitaOrcamentaria a owl:Class, gufo:Kind ;
     rdfs:label "RegistroDeReceitaOrcamentaria" ;
-    rdfs:comment "Registro que associa a Receita às unidades gestoras emitente e beneficiada."@pt-br ;
+    rdfs:comment "Registro que associa a Receita às unidades gestoras emitentes e beneficiadas."@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:subClassOf
         gufo:Relator,
