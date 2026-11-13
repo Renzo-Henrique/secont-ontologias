@@ -34,16 +34,25 @@ Gerencia as dependências de visualização e compilação de modelos do ecossis
 
 * **Python 3.x** instalado.
 * **Node.js** (versão 22 ou superior recomendada) instalado no ambiente.
-
+* **rdflib** biblioteca para leitura de arquivos rdf
 
 
 ### Instalação das dependências Node
 
-Caso ainda não tenha instalado os pacotes do projeto, execute na raiz do diretório:
+Caso ainda não tenha instalado os pacotes de Tonto Visualizer, execute na raiz do diretório:
 
 ```bash
 npm install
 
+```
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+```
+pip install -r requirements.txt
 ```
 
 ### Executando o script de exportação

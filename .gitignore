@@ -5,6 +5,7 @@ arquivos/
 .github
 .tonto
 .venv
+venv
 node_modules
 .cursorignore
 .mcp.json
