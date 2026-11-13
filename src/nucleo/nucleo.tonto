@@ -74,6 +74,7 @@ kind MicroRegiao {
 kind Municipio {
     codigo: const string [1]
     nome: const string [1]
+    
     @componenthood [0..*] --<> [1] (const) Regiao
     @componenthood [0..*] --<> [0..*] (const) MicroRegiao
 }

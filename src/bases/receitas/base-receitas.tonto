@@ -52,7 +52,7 @@ roleMixin FonteDaReceita specializes nucleo.FonteOrcamentaria{
 
 
 /// @pt-br Conta é a expressão qualitativa e quantitativa de fatos de mesma natureza, que evidencia a composição, variação e estado do patrimônio, bem como de bens, direitos, obrigações e situações nele não compreendidas, mas que, direta ou indiretamente, possam vir a afetá-lo.
-/// Cite MCASP - 11º Edicao: Parte IV: Seções 2.3 ; 3.1
+/// Cite MCASP - 11º Edicao: Parte IV: Seções 2.3 ;
 category ContaContabil of functional-complexes{
     codigo: const string [1]
     descricao: const string [1]
@@ -60,14 +60,11 @@ category ContaContabil of functional-complexes{
 
 
 
-/// @pt-br Unidade gestora responsável pela emissão do documento contábil de receita.
+/// @pt-br Unidade gestora responsável pela emissão da receita orçamentária.
 role UnidadeGestoraEmitenteDeReceita specializes nucleo.UnidadeGestora
 
-/// @pt-br Unidade gestora beneficiada pela receita registrada no documento contábil.
+/// @pt-br Unidade gestora beneficiada por uma receita orçamentária emitida.
 role UnidadeGestoraBeneficiadaDeReceita specializes nucleo.UnidadeGestora
-
-
-
 
 
 /// @pt-br O orçamento é um importante instrumento de planejamento de qualquer entidade, seja pública ou privada, e representa o fluxo previsto de ingressos e de aplicações de recursos em determinado período.
@@ -98,13 +95,8 @@ datatype ValorAtreladoNaReceita {
     valorArrecadadaLiquida:  const number
     valorRecolhidaBruta:  const number
 }
-/// @pt-br Registro que associa a Receita às unidades gestoras emitente e beneficiada.
+/// @pt-br Registro que associa a Receita às unidades gestoras emitentes e beneficiadas.
 relator RegistroDeReceitaOrcamentaria {
-    @mediation (const) [1..*]  -- formalizadaPor -- [1] (const) ReceitaOrcamentariaRegistrada
-    @mediation [1..*] -- temUnidadeGestoraEmitente -- [1..*] (const) UnidadeGestoraEmitenteDeReceita
-    @mediation [1..*] -- temUnidadeGestoraBeneficiada -- [1..*] (const) UnidadeGestoraBeneficiadaDeReceita
-
-
     valorAtreladoNaReceita: ValorAtreladoNaReceita [1..*]
 
     codigoIdUso: const string [1]
@@ -112,6 +104,10 @@ relator RegistroDeReceitaOrcamentaria {
     tipoLancamento: const string [1]
     dataContabilizacao: const datetime [1]
     tipo: const string [1]
+
+    @mediation (const) [1..*]  -- formalizadaPor -- [1] (const) ReceitaOrcamentariaRegistrada
+    @mediation [1..*] -- temUnidadeGestoraEmitente -- [1..*] (const) UnidadeGestoraEmitenteDeReceita
+    @mediation [1..*] -- temUnidadeGestoraBeneficiada -- [1..*] (const) UnidadeGestoraBeneficiadaDeReceita
 }
 
 /// @pt-br Relator que associa a Receita às classificações de natureza, fonte e conta contábil.
