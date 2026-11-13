@@ -80,8 +80,8 @@ roleMixin PoderDaFederacaoNaDespesa specializes nucleo.PoderDaFederacao
 relator RegistroDeDespesaOrcamentaria{
     idRegistro: const string [1]
 
-    @mediation (const) [1]  -- [1] (const) DespesaOrcamentariaRegistrada
-    @mediation [1..*] --  [1] (const) UnidadeGestoraNaDespesa
+    @mediation (const) [1]  -- temDespesaOrcamentaria --[1] (const) DespesaOrcamentariaRegistrada
+    @mediation [1..*] -- temUnidadeGestoraDaDespesa -- [1] (const) UnidadeGestoraNaDespesa
     //dadosAnonimizados: const nucleo.DadosPessoaisAnonimizados [1]
 }
 

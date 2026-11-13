@@ -105,9 +105,9 @@ relator RegistroDeReceitaOrcamentaria {
     dataContabilizacao: const datetime [1]
     tipo: const string [1]
 
-    @mediation (const) [1..*]  -- formalizadaPor -- [1] (const) ReceitaOrcamentariaRegistrada
-    @mediation [1..*] -- temUnidadeGestoraEmitente -- [1..*] (const) UnidadeGestoraEmitenteDeReceita
-    @mediation [1..*] -- temUnidadeGestoraBeneficiada -- [1..*] (const) UnidadeGestoraBeneficiadaDeReceita
+    @mediation (const) [1..*]  -- temReceitaOrcamentaria -- [1] (const) ReceitaOrcamentariaRegistrada
+    @mediation [1..*] -- temUnidadeGestoraEmitenteDeReceita -- [1..*] (const) UnidadeGestoraEmitenteDeReceita
+    @mediation [1..*] -- temUnidadeGestoraBeneficiadaDeReceita -- [1..*] (const) UnidadeGestoraBeneficiadaDeReceita
 }
 
 /// @pt-br Relator que associa a Receita às classificações de natureza, fonte e conta contábil.
