@@ -13,8 +13,8 @@ kind DespesaOrcamentaria
 relator ClassificadorInstitucionalDeDespesa {
     @mediation (const) [1]  -- [1] (const) ClassificacaoDoRegistroDeDespesaOrcamentaria
 
-    @mediation (const) [1]  -- [1] (const) OrgaoPublicoOrcamentarioNaDespesa
-    @mediation (const) [1]  -- [1] (const) UnidadeOrcamentariaNaDespesa
+    @mediation (const) [1..*]  -- [1] (const) OrgaoPublicoOrcamentarioNaDespesa
+    @mediation (const) [1..*]  -- [1] (const) UnidadeOrcamentariaNaDespesa
 
 }
 
