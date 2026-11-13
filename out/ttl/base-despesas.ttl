@@ -383,6 +383,7 @@ base-despesas:RegistroDeRestosAPagar a owl:Class, gufo:SubKind ;
 
 base-despesas:EsferaOrcamentariaNaDespesa a owl:Class, gufo:RoleMixin ;
     rdfs:label "EsferaOrcamentariaNaDespesa" ;
+    rdfs:comment "Papel da esfera orçamentária na despesa"@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:subClassOf
         nucleo:EsferaOrcamentaria,

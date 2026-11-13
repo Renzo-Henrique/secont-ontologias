@@ -162,6 +162,7 @@ subkind RegistroDeRestosAPagar specializes RegistroDeDespesaOrcamentaria{
     @mediation (const) [1..*]  -- [1] (const) PoderDaFederacaoNaDespesa
 }
 
+/// @pt-br Papel da esfera orçamentária na despesa
 roleMixin EsferaOrcamentariaNaDespesa specializes nucleo.EsferaOrcamentaria
 
 /// @pt-br Tipo de dados que agrupa os valores monetários que um Registro de Orçamento de Despesa pode ter.
