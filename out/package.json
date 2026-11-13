@@ -1,5 +1,6 @@
 {
   "devDependencies": {
-    "@nemo-ufes/tonto-visualizer-cli": "^0.3.2"
+    "@nemo-ufes/tonto-visualizer-cli": "^0.3.2",
+    "tonto-language": "^0.9.3"
   }
 }

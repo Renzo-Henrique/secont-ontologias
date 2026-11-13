@@ -2,6 +2,11 @@
 
 O propósito da ontologia é representar os conceitos relacionados aos dados publicados no Portal da Transparência do Poder Executivo do Estado do Espírito Santo, incluindo os conceitos administrativos, orçamentários, financeiros e contábeis necessários à interpretação dessas informações (*what*); de modo a estabelecer uma conceituação explícita e compartilhada que apoie a compreensão das bases por usuários humanos, a integração semântica entre diferentes conjuntos de dados e a posterior representação dos dados por meio de tecnologias da Web Semântica (*for what*); visando reduzir ambiguidades na interpretação dos dados, favorecer sua interoperabilidade semântica com dados internos e externos e ampliar as possibilidades de integração, consulta e reutilização automatizada das informações publicadas (*why*).
 
+## Resumo do repositório
+O repositório está organizado em três diretórios principais:
+- src: contém a ontologia de referência, desenvolvida na linguagem Tonto. É nesse diretório que ficam os arquivos-fonte que definem a modelagem conceitual da ontologia.
+- out: contém o script responsável por gerar os artefatos da ontologia a partir da ontologia especificada em Tonto.
+- mapeamento: contém os mapeamentos entre as colunas dos arquivos originais das bases de dados do Portal da Transparência do Espírito Santo e as entidades e os atributos correspondentes na ontologia Tonto.
 
 ## Resumo dos pacotes
 A arquitetura da ontologia é modularizada em pacotes independentes que separam conceitos transversais das especificidades de cada conjunto de dados publicado no Portal da Transparência, promovendo reuso e extensibilidade:
@@ -23,10 +28,10 @@ O pacote `nucleo` atua como o alicerce conceitual e estrutural do ecossistema da
 
 
 
-## Pacote bases
+### Pacote bases
 O pacote `bases` contém as ontologias de domínio específicas para cada conjunto de dados selecionado do Portal da Transparência. Cada módulo importa o pacote `nucleo` e especializa seus conceitos por meio de *roles*, *roleMixins* e *subkinds* para capturar o contexto específico das bases de dados:
 
-### [base-receitas](https://dados.es.gov.br/dataset/portal-da-transparencia-receitas): 
+#### [base-receitas](https://dados.es.gov.br/dataset/portal-da-transparencia-receitas): 
 Modela o domínio da **Receita Orçamentária** (`ReceitaOrcamentaria`) e suas classificações. A ontologia representa:
 
 * **Registro de Receita**: O registro formal da receita (`RegistroDeReceitaOrcamentaria`) e os respectivos valores monetários brutos, líquidos e de dedução (`ValorAtreladoNaReceita`).
@@ -37,7 +42,7 @@ Modela o domínio da **Receita Orçamentária** (`ReceitaOrcamentaria`) e suas c
 
 * **Classificações:** As estruturas de classificação contábil e orçamentária por meio do relator `ClassificacaoDoRegistroDeReceitaOrcamentaria`, integrando `NaturezaDaReceita`, `FonteDaReceita` e `ContaContabil`.
 
-### [base-despesas](https://dados.es.gov.br/dataset/portal-da-transparencia-despesas-execucao-orcamentaria-e-financeira): 
+#### [base-despesas](https://dados.es.gov.br/dataset/portal-da-transparencia-despesas-execucao-orcamentaria-e-financeira): 
 Modela o domínio da **Despesa Orçamentária** (`DespesaOrcamentaria`) no escopo de execução, classificação e vigência de uma despesa. A ontologia contempla:
 
 * **Estágios da Execução:** Partição disjunta e completa dos estágios legais de execução da despesa (`DespesaDeEmpenho`, `DespesaDeLiquidacao` e `DespesaDePagamento`), além da distinção temporal entre despesas pagas no exercício vigente (`DespesaDeExercicioVigente`) e inscrições em Restos a Pagar (`DespesaDeExercicioAnterior`), modeladas via eventos de transição (`TerminoDoExercicioVigenteDaDespesa` e `CriacaoDeDespesaNaoPaga`).
