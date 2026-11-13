@@ -106,7 +106,7 @@
       "y": 760
     },
     "nucleo::UnidadeGestora": {
-      "x": 72,
+      "x": 48,
       "y": 704
     },
     "base-despesas::RegistroDeOrcamentoDeDespesa": {
@@ -234,12 +234,12 @@
       "y": 536
     },
     "base-despesas::DespesaOrcamentariaRegistrada": {
-      "x": 432,
-      "y": 648
+      "x": 400,
+      "y": 640
     },
     "base-despesas::UnidadeGestoraNaDespesa": {
-      "x": 40,
-      "y": 824
+      "x": 8,
+      "y": 808
     },
     "nucleo::OrgaoPublico": {
       "x": -216,

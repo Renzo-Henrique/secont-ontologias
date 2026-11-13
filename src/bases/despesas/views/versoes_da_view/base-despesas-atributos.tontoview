@@ -67,11 +67,11 @@
     },
     "base-despesas::ClassificadorPorEstruturaProgramaticaDeDespesa": {
       "x": 864,
-      "y": 1408
+      "y": 1384
     },
     "base-despesas::ClassificadorPorNaturezaDeDespesa": {
-      "x": 1024,
-      "y": 1144
+      "x": 1208,
+      "y": 1064
     },
     "base-despesas::FonteDaDespesa": {
       "x": 544,
@@ -106,7 +106,7 @@
       "y": 760
     },
     "nucleo::UnidadeGestora": {
-      "x": 680,
+      "x": 696,
       "y": 552
     },
     "base-despesas::RegistroDeOrcamentoDeDespesa": {
@@ -238,8 +238,8 @@
       "y": 640
     },
     "base-despesas::UnidadeGestoraNaDespesa": {
-      "x": 632,
-      "y": 632
+      "x": 664,
+      "y": 640
     },
     "nucleo::OrgaoPublico": {
       "x": -216,
@@ -302,12 +302,12 @@
       "y": 1344
     },
     "base-despesas::EsferaOrcamentariaNaDespesa": {
-      "x": -440,
-      "y": 1224
+      "x": 1280,
+      "y": 1344
     },
     "nucleo::EsferaOrcamentaria": {
-      "x": -400,
-      "y": 1088
+      "x": 1320,
+      "y": 1456
     },
     "base-despesas::UnidadeOrcamentariaNaDespesa": {
       "x": -120,
@@ -342,7 +342,7 @@
       "y": 1672
     },
     "base-despesas::ValorAtreladoNoOrcamentoDeExecucaoDeDespesa": {
-      "x": 1056,
+      "x": 1112,
       "y": 1656
     },
     "base-despesas::RetencaoDaDespesa": {
@@ -352,6 +352,10 @@
     "nucleo::DadosPessoaisAnonimizados": {
       "x": -488,
       "y": 1552
+    },
+    "base-despesas::EstruturaProgramaticaDeDespesa": {
+      "x": 936,
+      "y": 1448
     }
   },
   "edges": {

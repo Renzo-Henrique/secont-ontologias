@@ -191,11 +191,11 @@ base-despesas:RegistroDeDespesaOrcamentaria a owl:Class, gufo:Kind ;
           owl:onProperty base-despesas:RegistroDeDespesaOrcamentaria.idRegistro ;
           owl:cardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-          owl:onProperty base-despesas:RegistroDeDespesaOrcamentaria.mediatesDespesaOrcamentariaRegistrada ;
+          owl:onProperty base-despesas:RegistroDeDespesaOrcamentaria.temDespesaOrcamentaria ;
           owl:onClass base-despesas:DespesaOrcamentariaRegistrada ;
           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-          owl:onProperty base-despesas:RegistroDeDespesaOrcamentaria.mediatesUnidadeGestoraNaDespesa ;
+          owl:onProperty base-despesas:RegistroDeDespesaOrcamentaria.temUnidadeGestoraDaDespesa ;
           owl:onClass base-despesas:UnidadeGestoraNaDespesa ;
           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
@@ -569,7 +569,7 @@ base-despesas:UnidadeGestoraNaDespesa a owl:Class, gufo:Role ;
     rdfs:subClassOf
         nucleo:UnidadeGestora,
         [ a owl:Restriction ;
-          owl:onProperty [ owl:inverseOf base-despesas:RegistroDeDespesaOrcamentaria.mediatesUnidadeGestoraNaDespesa ] ;
+          owl:onProperty [ owl:inverseOf base-despesas:RegistroDeDespesaOrcamentaria.temUnidadeGestoraDaDespesa ] ;
           owl:someValuesFrom base-despesas:RegistroDeDespesaOrcamentaria ] .
 
 base-despesas:OrgaoPublicoOrcamentarioNaDespesa a owl:Class, gufo:Role ;
@@ -623,7 +623,7 @@ base-despesas:DespesaOrcamentariaRegistrada a owl:Class, gufo:Role ;
           owl:onProperty base-despesas:DespesaOrcamentariaRegistrada.ano ;
           owl:minCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-          owl:onProperty [ owl:inverseOf base-despesas:RegistroDeDespesaOrcamentaria.mediatesDespesaOrcamentariaRegistrada ] ;
+          owl:onProperty [ owl:inverseOf base-despesas:RegistroDeDespesaOrcamentaria.temDespesaOrcamentaria ] ;
           owl:someValuesFrom base-despesas:RegistroDeDespesaOrcamentaria ] .
 
 base-despesas:DespesaDeExercicioVigente a owl:Class, gufo:SubKind ;
@@ -1342,19 +1342,19 @@ base-despesas:ClassificadorInstitucionalDeDespesa.mediatesUnidadeOrcamentariaNaD
     rdfs:range base-despesas:UnidadeOrcamentariaNaDespesa ;
     rdfs:subPropertyOf gufo:mediates .
 
-base-despesas:RegistroDeDespesaOrcamentaria.mediatesDespesaOrcamentariaRegistrada a
+base-despesas:RegistroDeDespesaOrcamentaria.temDespesaOrcamentaria a
         owl:ObjectProperty,
         owl:FunctionalProperty ;
-    rdfs:label "RegistroDeDespesaOrcamentaria.mediatesDespesaOrcamentariaRegistrada" ;
+    rdfs:label "temDespesaOrcamentaria" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:domain base-despesas:RegistroDeDespesaOrcamentaria ;
     rdfs:range base-despesas:DespesaOrcamentariaRegistrada ;
     rdfs:subPropertyOf gufo:mediates .
 
-base-despesas:RegistroDeDespesaOrcamentaria.mediatesUnidadeGestoraNaDespesa a
+base-despesas:RegistroDeDespesaOrcamentaria.temUnidadeGestoraDaDespesa a
         owl:ObjectProperty,
         owl:FunctionalProperty ;
-    rdfs:label "RegistroDeDespesaOrcamentaria.mediatesUnidadeGestoraNaDespesa" ;
+    rdfs:label "temUnidadeGestoraDaDespesa" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:domain base-despesas:RegistroDeDespesaOrcamentaria ;
     rdfs:range base-despesas:UnidadeGestoraNaDespesa ;

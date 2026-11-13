@@ -127,7 +127,7 @@ base-receitas:UnidadeGestoraEmitenteDeReceita a owl:Class, gufo:Role ;
     rdfs:subClassOf
         nucleo:UnidadeGestora,
         [ a owl:Restriction ;
-          owl:onProperty [ owl:inverseOf base-receitas:RegistroDeReceitaOrcamentaria.temUnidadeGestoraEmitente ] ;
+          owl:onProperty [ owl:inverseOf base-receitas:RegistroDeReceitaOrcamentaria.temUnidadeGestoraEmitenteDeReceita ] ;
           owl:someValuesFrom base-receitas:RegistroDeReceitaOrcamentaria ],
         [ a owl:Restriction ;
           owl:onProperty [ owl:inverseOf base-receitas:ReceitaOrcamentariaRegistrada.emitidaPor ] ;
@@ -140,7 +140,7 @@ base-receitas:UnidadeGestoraBeneficiadaDeReceita a owl:Class, gufo:Role ;
     rdfs:subClassOf
         nucleo:UnidadeGestora,
         [ a owl:Restriction ;
-          owl:onProperty [ owl:inverseOf base-receitas:RegistroDeReceitaOrcamentaria.temUnidadeGestoraBeneficiada ] ;
+          owl:onProperty [ owl:inverseOf base-receitas:RegistroDeReceitaOrcamentaria.temUnidadeGestoraBeneficiadaDeReceita ] ;
           owl:someValuesFrom base-receitas:RegistroDeReceitaOrcamentaria ],
         [ a owl:Restriction ;
           owl:onProperty [ owl:inverseOf base-receitas:ReceitaOrcamentariaRegistrada.emitidaPara ] ;
@@ -172,7 +172,7 @@ base-receitas:ReceitaOrcamentariaRegistrada a owl:Class, gufo:Role ;
           owl:onProperty base-receitas:ReceitaOrcamentariaRegistrada.ano ;
           owl:minCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-          owl:onProperty [ owl:inverseOf base-receitas:RegistroDeReceitaOrcamentaria.formalizadaPor ] ;
+          owl:onProperty [ owl:inverseOf base-receitas:RegistroDeReceitaOrcamentaria.temReceitaOrcamentaria ] ;
           owl:someValuesFrom base-receitas:RegistroDeReceitaOrcamentaria ],
         [ a owl:Restriction ;
           owl:onProperty base-receitas:ReceitaOrcamentariaRegistrada.emitidaPara ;
@@ -243,14 +243,14 @@ base-receitas:RegistroDeReceitaOrcamentaria a owl:Class, gufo:Kind ;
           owl:onProperty base-receitas:RegistroDeReceitaOrcamentaria.tipo ;
           owl:cardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-          owl:onProperty base-receitas:RegistroDeReceitaOrcamentaria.formalizadaPor ;
+          owl:onProperty base-receitas:RegistroDeReceitaOrcamentaria.temReceitaOrcamentaria ;
           owl:onClass base-receitas:ReceitaOrcamentariaRegistrada ;
           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-          owl:onProperty base-receitas:RegistroDeReceitaOrcamentaria.temUnidadeGestoraEmitente ;
+          owl:onProperty base-receitas:RegistroDeReceitaOrcamentaria.temUnidadeGestoraEmitenteDeReceita ;
           owl:someValuesFrom base-receitas:UnidadeGestoraEmitenteDeReceita ],
         [ a owl:Restriction ;
-          owl:onProperty base-receitas:RegistroDeReceitaOrcamentaria.temUnidadeGestoraBeneficiada ;
+          owl:onProperty base-receitas:RegistroDeReceitaOrcamentaria.temUnidadeGestoraBeneficiadaDeReceita ;
           owl:someValuesFrom base-receitas:UnidadeGestoraBeneficiadaDeReceita ],
         [ a owl:Restriction ;
           owl:onProperty [ owl:inverseOf base-receitas:ClassificacaoDoRegistroDeReceitaOrcamentaria.classifica ] ;
@@ -618,24 +618,24 @@ base-receitas:RegistroDeReceitaOrcamentaria.tipo a owl:DatatypeProperty, owl:Fun
     rdfs:range xsd:string ;
     rdfs:subPropertyOf gufo:hasQualityValue .
 
-base-receitas:RegistroDeReceitaOrcamentaria.formalizadaPor a
+base-receitas:RegistroDeReceitaOrcamentaria.temReceitaOrcamentaria a
         owl:ObjectProperty,
         owl:FunctionalProperty ;
-    rdfs:label "formalizadaPor" ;
+    rdfs:label "temReceitaOrcamentaria" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:domain base-receitas:RegistroDeReceitaOrcamentaria ;
     rdfs:range base-receitas:ReceitaOrcamentariaRegistrada ;
     rdfs:subPropertyOf gufo:mediates .
 
-base-receitas:RegistroDeReceitaOrcamentaria.temUnidadeGestoraEmitente a owl:ObjectProperty ;
-    rdfs:label "temUnidadeGestoraEmitente" ;
+base-receitas:RegistroDeReceitaOrcamentaria.temUnidadeGestoraEmitenteDeReceita a owl:ObjectProperty ;
+    rdfs:label "temUnidadeGestoraEmitenteDeReceita" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:domain base-receitas:RegistroDeReceitaOrcamentaria ;
     rdfs:range base-receitas:UnidadeGestoraEmitenteDeReceita ;
     rdfs:subPropertyOf gufo:mediates .
 
-base-receitas:RegistroDeReceitaOrcamentaria.temUnidadeGestoraBeneficiada a owl:ObjectProperty ;
-    rdfs:label "temUnidadeGestoraBeneficiada" ;
+base-receitas:RegistroDeReceitaOrcamentaria.temUnidadeGestoraBeneficiadaDeReceita a owl:ObjectProperty ;
+    rdfs:label "temUnidadeGestoraBeneficiadaDeReceita" ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-receitas> ;
     rdfs:domain base-receitas:RegistroDeReceitaOrcamentaria ;
     rdfs:range base-receitas:UnidadeGestoraBeneficiadaDeReceita ;
@@ -687,8 +687,8 @@ base-receitas:ReceitaOrcamentariaRegistrada.emitidaPara a
     rdfs:range base-receitas:UnidadeGestoraBeneficiadaDeReceita ;
     gufo:isDerivedFrom base-receitas:RegistroDeReceitaOrcamentaria ;
     owl:propertyChainAxiom (
-        [ owl:inverseOf base-receitas:RegistroDeReceitaOrcamentaria.formalizadaPor ]
-        base-receitas:RegistroDeReceitaOrcamentaria.temUnidadeGestoraBeneficiada
+        [ owl:inverseOf base-receitas:RegistroDeReceitaOrcamentaria.temReceitaOrcamentaria ]
+        base-receitas:RegistroDeReceitaOrcamentaria.temUnidadeGestoraBeneficiadaDeReceita
     ) .
 
 base-receitas:ReceitaOrcamentariaRegistrada.emitidaPor a
@@ -700,8 +700,8 @@ base-receitas:ReceitaOrcamentariaRegistrada.emitidaPor a
     rdfs:range base-receitas:UnidadeGestoraEmitenteDeReceita ;
     gufo:isDerivedFrom base-receitas:RegistroDeReceitaOrcamentaria ;
     owl:propertyChainAxiom (
-        [ owl:inverseOf base-receitas:RegistroDeReceitaOrcamentaria.formalizadaPor ]
-        base-receitas:RegistroDeReceitaOrcamentaria.temUnidadeGestoraEmitente
+        [ owl:inverseOf base-receitas:RegistroDeReceitaOrcamentaria.temReceitaOrcamentaria ]
+        base-receitas:RegistroDeReceitaOrcamentaria.temUnidadeGestoraEmitenteDeReceita
     ) .
 
 [] a owl:AllDisjointClasses ;
