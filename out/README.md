@@ -45,7 +45,8 @@ Gerencia as dependências de visualização e compilação de modelos **Tonto**.
 
 * **Python 3.x** instalado.
 * **Node.js** (versão 22 ou superior recomendada) instalado no ambiente.
-* **rdflib** biblioteca para leitura de arquivos rdf
+* **rdflib** biblioteca python para leitura de arquivos rdf
+* **cairosvg** biblioteca python para conversão de arquivos .svg para pdf
 
 
 ### Configuração do Ambiente Virtual Python
