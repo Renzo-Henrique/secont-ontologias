@@ -64,11 +64,11 @@
       "y": 472
     },
     "nucleo::Banco": {
-      "x": 312,
-      "y": 336
+      "x": 336,
+      "y": 328
     },
     "nucleo::Convenio": {
-      "x": 480,
+      "x": 624,
       "y": 336
     },
     "nucleo::PoderDaFederacao": {

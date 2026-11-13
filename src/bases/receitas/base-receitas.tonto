@@ -34,8 +34,7 @@ category NaturezaDaReceita of functional-complexes{
     descricaoTipo: const string [1]
 }
 
-/// @pt-br A classificação por fontes ou destinações de recursos (FR) tem como objetivo agrupar receitas que possuam as mesmas normas de aplicação na despesa. Em regra, as fontes ou destinações de recursos reúnem recursos oriundos de determinados códigos da classificação por natureza da receita orçamentária, conforme regras previamente estabelecidas. Por meio do orçamento público, essas fontes ou destinações são associadas a determinadas despesas de forma a evidenciar os meios para atingir os objetivos públicos.
-/// Cite MCASP - 11º Edicao: Parte I: Seção 5.1
+
 /// No momento da arrecadação, a FR deverá ser informada no registro da realização da receita orçamentária (classe 6 do PCASP), no registro do ingresso dos recursos financeiros no ativo financeiro (classe 1 com atributo "F") e em contas de controle da Disponibilidade por Destinação de Recursos - DDR (nas classes 7 e 8 do PCASP). A partir desse momento, a FR informada para os recursos financeiros não deverá ser alterada
 /// Cite MCASP - 11º Edicao: Parte I: Seção 5.2
 roleMixin FonteDaReceita specializes nucleo.FonteOrcamentaria{

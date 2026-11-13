@@ -21,8 +21,7 @@ kind OrgaoPublico {
 
 
 
-/// @pt-br Constitui unidade orçamentária o agrupamento de serviços subordinados ao mesmo órgão ou repartição a que serão consignadas dotações próprias.
-/// Cite LEI No 4.320, DE 17 DE MARÇO DE 1964
+/// @pt-br É o agrupamento de serviços subordinados ao mesmo órgão ou repartição a que serão consignadas dotações próprias.
 kind UnidadeDeOrgaoPublico{
     codigo: string [1]
     descricao: string [1]
@@ -33,10 +32,10 @@ kind UnidadeDeOrgaoPublico{
 
 /// @pt-br Os órgãos orçamentários, por sua vez, correspondem a agrupamentos de unidades orçamentárias. As dotações são consignadas às unidades orçamentárias, responsáveis pela realização das ações.
 /// Cite MCASP - 11º Edicao: Parte Il: Seções 4.2.1
-role OrgaoPublicoOrcamentario specializes OrgaoPublico{
+role OrgaoPublicoOrcamentario specializes OrgaoPublico
 
-}
-
+/// @pt-br Constitui unidade orçamentária o agrupamento de serviços subordinados ao mesmo órgão ou repartição a que serão consignadas dotações próprias.
+/// Cite LEI No 4.320, DE 17 DE MARÇO DE 1964
 role UnidadeOrcamentaria specializes UnidadeDeOrgaoPublico{
     @componenthood [1..*] --<> [1] (const) OrgaoPublicoOrcamentario
 }
@@ -79,8 +78,10 @@ kind Municipio {
     @componenthood [0..*] --<> [0..*] (const) MicroRegiao
 }
 
-/// @pt-br Instituição financeira referenciada nos dados do Portal da Transparência.
-kind Banco{
+/// @pt-br Considera-se instituição financeira, para efeito desta lei, a pessoa jurídica de direito público ou privado, que tenha como atividade principal ou acessória, cumulativamente ou não, a captação, intermediação ou aplicação de recursos financeiros (Vetado) de terceiros, em moeda nacional ou estrangeira, ou a custódia, emissão, distribuição, negociação, intermediação ou administração de valores mobiliários.
+/// Cite LEI No 7.492, DE 16 DE JUNHO DE 1986.
+/// Na definição da lei é denominado instituição financeira, mas popularmente é conhecido como Banco.
+subkind Banco specializes PessoaJuridica{
     codigo: const string [1]
     codigoAgenciaOrigem: const string [1]
     codigoDomicilioBancarioOrigem: const string [1]
@@ -88,11 +89,13 @@ kind Banco{
 
 /// @pt-br  Convênios, contratos de repasse e termos de parceria são acordos feitos entre União e entidades governamentais dos demais entes da Federação, ou organizações não-governamentais, para transferência de recursos financeiros a serem utilizados na execução de um objetivo comum. Portanto, as transferências voluntárias e legais serão viabilizadas a partir dos mencionados instrumentos e outros congêneres.
 /// Cite url https://portaldatransparencia.gov.br/entenda-a-gestao-publica/convenios-e-outros-acordos
+/// Instrumento que, na ausência de legislação específica, dispõe sobre a transferência de recursos financeiros provenientes do Orçamento Fiscal e da Seguridade Social da União para a execução de programas, projetos e atividades de interesse recíproco e em regime de mútua colaboração;
+/// Cite DECRETO Nº 11.531, DE 16 DE MAIO DE 2023
 kind Convenio{
     codigo: const string [1]
 }
 
-/// @pt-br Classificação que identifica o Poder da Federação ao qual uma unidade gestora está vinculada.
+/// @pt-br Classificação que identifica o Poder da Federação.
 category PoderDaFederacao of functional-complexes{
     // EXECUTIVO, LEGISLATIVO, JUDICIARIO, DEFENSORIA_PUBLICA
     codigo: const string [1]
@@ -106,16 +109,21 @@ datatype DadosPessoaisAnonimizados{
     nome: const string [1]
 }
 
+/// @pt-br Representação de informações pessoais que foram submetidas a processo de anonimização, mas possui atributos opcionais que detalham os dados.
 datatype DadosPessoaisAnonimizadosExpandido specializes DadosPessoaisAnonimizados{
-    
+ 
     cargoFuncao: const string [0..1]
     tipoFavorecido: const string [0..1]
     idFavorecido: const string [0..1]
 }
 
-category FonteOrcamentaria of functional-complexes{
-}
+/// @pt-br A classificação por fontes ou destinações de recursos (FR) tem como objetivo agrupar receitas que possuam as mesmas normas de aplicação na despesa. Em regra, as fontes ou destinações de recursos reúnem recursos oriundos de determinados códigos da classificação por natureza da receita orçamentária, conforme regras previamente estabelecidas. Por meio do orçamento público, essas fontes ou destinações são associadas a determinadas despesas de forma a evidenciar os meios para atingir os objetivos públicos. Como mecanismo integrador entre a receita e a despesa, o código de FR exerce um duplo papel no processo orçamentário. Para a receita orçamentária, esse código tem a finalidade de indicar a destinação de recursos para a realização de determinadas despesas orçamentárias. Para a despesa orçamentária, identifica a origem dos recursos que estão sendo utilizados.
+/// Cite MCASP - 11º Edicao: Parte I: Seção 5.1
+category FonteOrcamentaria of functional-complexes
 
+
+/// @pt-br Classificação que tem por finalidade identificar se a despesa ou a receita estão inseridas nos orçamentos fiscal, da seguridade social ou de investimento das empresas estatais.
+/// Cite url https://www.congressonacional.leg.br/legislacao-e-publicacoes/glossario-orcamentario/-/orcamentario/termo/classificacao_por_esfera_orcamentaria
 category EsferaOrcamentaria of functional-complexes{
     codigo: const string [1]
     descricao: const string [1]
