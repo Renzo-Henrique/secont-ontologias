@@ -260,7 +260,7 @@ def gerar_dicionario_latex(
       label_str = escapar_latex(nome_uri)
 
     # Formata a linha exatamente no padrão solicitado
-    linha = f"{label_str} &\n{comment_str} \n\\\\ \\hline\n"
+    linha = f"\\seqsplit{{{label_str}}} &\n{comment_str} \n\\\\ \\hline\n"
     linhas_tabela.append(linha)
 
   # Escreve o resultado no arquivo de saída

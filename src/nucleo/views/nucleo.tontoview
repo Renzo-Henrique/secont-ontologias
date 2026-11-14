@@ -23,6 +23,7 @@
     "showEndDecorations": true,
     "showRoleNames": true,
     "showColors": true,
+    "transparentBackground": false,
     "showLegend": false,
     "showPackageGroups": true,
     "qualifyNames": false
@@ -104,8 +105,8 @@
       "y": 880
     },
     "nucleo::UnidadeDeOrgaoPublico": {
-      "x": -104,
-      "y": 848
+      "x": -128,
+      "y": 872
     },
     "nucleo::EsferaOrcamentaria": {
       "x": 336,
