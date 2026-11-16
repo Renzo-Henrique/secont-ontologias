@@ -13,10 +13,16 @@ def converter_latex_para_html(texto: str) -> str:
         return ""
     
     # 1. Substitui qualquer  '\t' por vazio
-    texto_sem_barra = texto.replace("\t", "")
+    txt_mod = texto.replace(r"\t", "")
     
     # 2. Verifica o padrão textit{...} (já sem a barra) e substitui o conteúdo por <em>...</em>
-    return re.sub(r'extit\{([^}]*)\}', r'<em>\1</em>', texto_sem_barra)
+    txt_mod = re.sub(r'extit\{([^}]*)\}', r'<em>\1</em>', txt_mod)
+
+    txt_mod = txt_mod.replace(r"\o", "")
+    txt_mod = txt_mod.replace("ntologyname (ntologyacronym{})", f"<b>{_sigla_ontologia}</b>")
+
+
+    return txt_mod
 
 def tratar_propriedades_inversas(g: rdflib.Graph) -> rdflib.Graph:
     """
@@ -200,9 +206,10 @@ def gerar_documentacao_html(
 
 _nome_ontologia = """Ontologia do Portal da Transparência do ES"""
 _sigla_ontologia = """OPTES"""
-_proposito_ontologia = """O propósito da ontologia é representar os conceitos relacionados aos dados publicados no Portal da Transparência do Poder Executivo do Estado do Espírito Santo e os conceitos que são necessários à interpretação dessas informações (\textit{what}); de modo a estabelecer uma conceituação explícita e compartilhada que apoie a compreensão das bases por usuários humanos, a integração semântica entre diferentes conjuntos de dados e a posterior representação dos dados por meio de tecnologias da Web Semântica (\textit{for what}); visando reduzir ambiguidades na interpretação dos dados, favorecer sua interoperabilidade semântica com dados internos e externos e ampliar as possibilidades de integração, consulta e reutilização automatizada das informações publicadas (\textit{why})."""
+_proposito_ontologia = r"""O propósito da \ontologyname (\ontologyacronym{}) é representar os conceitos relacionados aos dados publicados no Portal da Transparência do Poder Executivo do Estado do Espírito Santo, bem como os conceitos necessários à interpretação dessas informações, considerando os diferentes domínios de informação governamental e os elementos conceituais compartilhados entre eles (\textit{what}); de modo a estabelecer uma conceituação explícita e compartilhada que apoie a compreensão das bases por usuários humanos, a integração semântica entre diferentes conjuntos de dados e a posterior representação dos dados por meio de tecnologias da Web Semântica (\textit{for what}); visando reduzir ambiguidades na interpretação dos dados, favorecer sua interoperabilidade semântica com dados internos e externos e ampliar as possibilidades de integração, consulta e reutilização automatizada das informações publicadas (\textit{why})."""
 
 if __name__ == "__main__":
+    
     gerar_documentacao_html(
         nome_ontologia=_nome_ontologia,
         sigla_ontologia=_sigla_ontologia,
