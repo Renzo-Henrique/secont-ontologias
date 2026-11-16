@@ -147,16 +147,10 @@ base-despesas:ClassificadorPorEstruturaProgramaticaDeDespesa.descricaoSubtitulo 
     rdfs:range xsd:string ;
     rdfs:subPropertyOf gufo:hasQualityValue .
 
-<<<<<<< HEAD
 base-despesas:ClassificadorPorNaturezaDeDespesa.codigoCategoriaEconomica a owl:DatatypeProperty,
         owl:FunctionalProperty ;
     rdfs:label "codigoCategoriaEconomica" ;
     rdfs:domain base-despesas:ClassificadorPorNaturezaDeDespesa ;
-=======
-base-despesas:EsferaOrcamentariaNaDespesa a owl:Class, gufo:RoleMixin ;
-    rdfs:label "EsferaOrcamentariaNaDespesa" ;
-    rdfs:comment "Papel da esfera orçamentária na despesa"@pt-br ;
->>>>>>> main
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:range xsd:string ;
     rdfs:subPropertyOf gufo:hasQualityValue .
@@ -784,6 +778,7 @@ base-despesas:DespesaDeExercicioVigente.wasTerminatedInCriacaoDeDespesaNaoPaga a
 base-despesas:EsferaOrcamentariaNaDespesa a gufo:RoleMixin,
         owl:Class ;
     rdfs:label "EsferaOrcamentariaNaDespesa" ;
+    rdfs:comment "Papel da esfera orçamentária na despesa"@pt-br ;
     rdfs:isDefinedBy <https://example.org/ontologia-portal-transparencia-es/base-despesas> ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty [ owl:inverseOf base-despesas:ClassificacaoDoRegistroDeDespesaOrcamentaria.mediatesEsferaOrcamentariaNaDespesa ] ;
