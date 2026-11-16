@@ -46,6 +46,7 @@ Gerencia as dependências de visualização e compilação de modelos **Tonto**.
 * **Python 3.x** instalado.
 * **Node.js** (versão 22 ou superior recomendada) instalado no ambiente.
 * **rdflib** biblioteca para leitura de arquivos rdf
+* **pylode** biblioteca para geração automática da documentação html da ontologia de referência
 
 
 ### Configuração do Ambiente Virtual Python
@@ -69,11 +70,18 @@ npm install
 
 ```
 
-### Executando o Script de Exportação
+### Executando os scripts de exportação
 
-Para rodar a automação completa (atualizando os diagramas SVG, os arquivos Turtle `.ttl` e os dicionários de conceitos em LaTeX `.tex`), execute:
+Para rodar a automação de artefatos ontológicos (atualizando os diagramas SVG, os arquivos Turtle `.ttl` e os dicionários de conceitos em LaTeX `.tex`), execute:
 
 ```bash
 python3 exportar_ontologia.py
+
+```
+
+Para rodar a automação de documentos html baseados na ontologia operacional, execute:
+
+```bash
+python3 exportar_html.py
 
 ```

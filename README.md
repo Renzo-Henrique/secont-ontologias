@@ -4,9 +4,9 @@ O propósito da ontologia é representar os conceitos relacionados aos dados pub
 
 ## Resumo do repositório
 O repositório está organizado em três diretórios principais:
-- src: contém a ontologia de referência, desenvolvida na linguagem Tonto. É nesse diretório que ficam os arquivos-fonte que definem a modelagem conceitual da ontologia.
-- out: contém o script responsável por gerar os artefatos da ontologia a partir da ontologia especificada em Tonto.
-- mapeamento: contém os mapeamentos entre as colunas dos arquivos originais das bases de dados do Portal da Transparência do Espírito Santo e as entidades e os atributos correspondentes na ontologia Tonto.
+- src: contém a ontologia de referência, desenvolvida na linguagem Tonto. É nesse diretório que ficam os arquivos-fonte que definem a modelagem conceitual da ontologia
+- out: contém o script responsável por gerar os artefatos da ontologia a partir da ontologia especificada em Tonto e gerar documentação PYLODE baseada nos arquivos .ttl
+- mapeamento: contém os mapeamentos entre as colunas dos arquivos originais das bases de dados do Portal da Transparência do Espírito Santo e as entidades e os atributos correspondentes na ontologia Tonto
 
 ## Resumo dos pacotes
 A arquitetura da ontologia é modularizada em pacotes independentes que separam conceitos transversais das especificidades de cada conjunto de dados publicado no Portal da Transparência, promovendo reuso e extensibilidade:
