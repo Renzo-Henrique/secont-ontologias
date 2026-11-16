@@ -1,6 +1,6 @@
 {
-   "projectName": "secont-ontologias",
-   "displayName": "SECONT Ontologias",
+   "projectName": "optes",
+   "displayName": "optes",
    "version": "1.0.0",
    "publisher": "Nemo",
    "license": "MIT",
@@ -14,5 +14,25 @@
       "Veruska Zamborlini",
       "Vítor E. Silva Souza"
    ],
-   "repository": "secont2"
+   "repository": "https://github.com/Renzo-Henrique/secont-ontologias",
+   "ontologyName": "Ontologia do Portal da Transparência do ES",
+   "ontologyAcronym": "OPTES",
+   "ontologyPurpose": "O propósito da ontologia é representar os conceitos relacionados aos dados publicados no Portal da Transparência do Poder Executivo do Estado do Espírito Santo, bem como os conceitos necessários à interpretação dessas informações, considerando os diferentes domínios de informação governamental e os elementos conceituais compartilhados entre eles (what); de modo a estabelecer uma conceituação explícita e compartilhada que apoie a compreensão das bases por usuários humanos, a integração semântica entre diferentes conjuntos de dados e a posterior representação dos dados por meio de tecnologias da Web Semântica (for what); visando reduzir ambiguidades na interpretação dos dados, favorecer sua interoperabilidade semântica com dados internos e externos e ampliar as possibilidades de integração, consulta e reutilização automatizada das informações publicadas (why).",
+   "packages": {
+      "nucleo": {
+         "moduleName": "nucleo",
+         "moduleSimpleDescription": "O subdomínio nucleo reúne requisitos relacionados a conceitos que podem ser compartilhados por diferentes conjuntos de dados do Portal da Transparência.",
+         "moduleDescription": "Concentra requisitos relacionados a conceitos que podem ser compartilhados por diferentes conjuntos de dados do Portal da Transparência. Sua identificação busca evitar que elementos recorrentes sejam modelados separadamente em cada subdomínio e possibilitar o reúso de uma conceituação comum. O módulo contempla entidades relacionadas à organização administrativa, à identificação de pessoas físicas e jurídicas, aos órgãos públicos e unidades de órgão público e a outros elementos compartilháveis, incluindo conceitos territoriais e institucionais da federação. Entre os conceitos representados, destacam-se Unidade Gestora, Pessoa Física, Pessoa Jurídica e Órgão Público, que constituem elementos relevantes para a representação conceitual das diferentes bases."
+      },
+      "base-receitas": {
+         "moduleName": "base-receitas",
+         "moduleSimpleDescription": "O subdomínio base-receitas visa estabelecer os conceitos centrais necessárias para compreender o que é uma receita pública e como conceitos relacionados estão envolvidos, especialmente as Unidades Gestoras.",
+         "moduleDescription": "Concentra os requisitos gerais relacionados às receitas públicas representadas no conjunto de dados analisado. Seu objetivo é estabelecer os conceitos centrais necessárias para compreender o que está sendo representado como receita e como essas informações se relacionam com elementos administrativos presentes na base, especialmente as Unidades Gestoras. O módulo contempla conceitos relacionados às receitas orçamentárias, aos registros de receitas e às classificações utilizadas para caracterizar as receitas, bem como aos diferentes papéis desempenhados pelas unidades gestoras. Nesse contexto, o conceito Receita Orçamentária é uma entidade própria que são disponibilidades de recursos financeiros que ingressam durante o exercício e que aumentam o saldo financeiro de uma Unidade Gestora."
+      },
+      "base-despesas": {
+         "moduleName": "base-despesas",
+         "moduleSimpleDescription": "O subdomínio base-despesas visa estabelecer os conceitos centrais necessárias para compreender o que é uma despesa pública, quais são seus subtipos e como conceitos relacionados estão envolvidos.",
+         "moduleDescription": "Concentra os requisitos gerais relacionados às despesas (execução orçamentária e financeira dos Órgãos e Entidades da Administração Pública Estadual.) representadas no conjunto de dados analisado. Seu objetivo é estabelecer os conceitos centrais necessárias para compreender o que está sendo representado como despesa e como essas informações se relacionam com elementos administrativos presentes na base, especialmente as Unidades Gestoras. O módulo contempla conceitos relacionados às despesas orçamentárias (com seus diferentes tipos), aos registros de despesas (com seus diferentes tipos) e às classificações utilizadas para caracterizar as despesas, bem como a relação com unidades gestoras. Nesse contexto, o conceito Despesa Orçamentária é uma entidade própria que representa um conjunto de dispêndios realizados pelos entes públicos para o funcionamento e manutenção dos serviços públicos prestados à sociedade."
+      }
+   }
 }

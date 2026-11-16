@@ -1,28 +1,10 @@
 import subprocess
 from pathlib import Path
-import re
+from typing import Optional, Dict, Any
 import rdflib
+import json
 from rdflib.namespace import RDF, OWL, RDFS, DCTERMS
 
-def converter_latex_para_html(texto: str) -> str:
-    """
-    Função auxiliar para substituir 
-    padrões textit{} por tags HTML de itálico (<em>...</em>).
-    """
-    if not texto:
-        return ""
-    
-    # 1. Substitui qualquer  '\t' por vazio
-    txt_mod = texto.replace(r"\t", "")
-    
-    # 2. Verifica o padrão textit{...} (já sem a barra) e substitui o conteúdo por <em>...</em>
-    txt_mod = re.sub(r'extit\{([^}]*)\}', r'<em>\1</em>', txt_mod)
-
-    txt_mod = txt_mod.replace(r"\o", "")
-    txt_mod = txt_mod.replace("ntologyname (ntologyacronym{})", f"<b>{_sigla_ontologia}</b>")
-
-
-    return txt_mod
 
 def tratar_propriedades_inversas(g: rdflib.Graph) -> rdflib.Graph:
     """
@@ -63,50 +45,61 @@ def tratar_propriedades_inversas(g: rdflib.Graph) -> rdflib.Graph:
     return g
 
 def gerar_documentacao_html(
-    nome_ontologia: str,
-    sigla_ontologia: str,
-    proposito_ontologia: str,
-    nucleo: str,
-    base_despesas: str,
-    base_receitas: str,
+    tonto_json_path: str = "../tonto.json",
     ttl_dir: str = "./ttl", 
     output_docs_dir: str = "./html"
 ):
     """
-    Detecta arquivos .ttl, trata propriedades inversas, injeta metadados necessários 
-    para o pyLODE, gera a documentação HTML individual e cria o index.html em ordem 
-    reversa contendo o resumo de cada módulo.
+    Lê os metadados da ontologia e os módulos de '../tonto.json', localiza os 
+    arquivos .ttl correspondentes em './ttl/', gera a documentação HTML via pyLODE 
+    e cria o index.html com o resumo de cada módulo.
     """
-    if not nome_ontologia or not sigla_ontologia or not proposito_ontologia:
-        raise ValueError(
-            "Erro: Os argumentos 'nome_ontologia', 'sigla_ontologia' e 'proposito_ontologia' são obrigatórios!"
-        )
-
-    # Mapeamento dos resumos específicos por nome de módulo para exibição exclusiva no index.html
-    descricoes_modulos = {
-        "nucleo": converter_latex_para_html(nucleo),
-        "base-despesas": converter_latex_para_html(base_despesas),
-        "base-receitas": converter_latex_para_html(base_receitas),
-    }
-
+    json_path = Path(tonto_json_path).resolve()
     ttl_path = Path(ttl_dir).resolve()
     docs_path = Path(output_docs_dir).resolve()
+
+    if not json_path.exists():
+        raise FileNotFoundError(f"Arquivo tonto.json não encontrado: {json_path}")
 
     if not ttl_path.exists():
         print(f"Diretório de ontologias TTL não encontrado: {ttl_path}")
         return
 
+    with open(json_path, "r", encoding="utf-8") as f:
+        config_tonto: Dict[str, Any] = json.load(f)
+
+    nome_ontologia = config_tonto.get("ontologyName", "")
+    sigla_ontologia = config_tonto.get("ontologyAcronym", "")
+    proposito_ontologia = config_tonto.get("ontologyPurpose", "")
+    packages: Dict[str, Dict[str, str]] = config_tonto.get("packages", {})
+
+    if not nome_ontologia or not sigla_ontologia or not proposito_ontologia:
+        raise ValueError(
+            "Erro: Os campos 'ontologyName', 'ontologyAcronym' e 'ontologyPurpose' são obrigatórios no tonto.json!"
+        )
+
+    if not packages:
+        print("Nenhum módulo encontrado em 'packages' no tonto.json.")
+        return
+
     docs_path.mkdir(parents=True, exist_ok=True)
 
-    ttl_files = list(ttl_path.glob("*.ttl"))
+    # Seleciona apenas os arquivos .ttl correspondentes às chaves de 'packages'
+    ttl_files = []
+    for modulo_key in packages.keys():
+        arquivo_ttl = ttl_path / f"{modulo_key}.ttl"
+        if arquivo_ttl.exists():
+            ttl_files.append(arquivo_ttl)
+        else:
+            print(f"Aviso: Arquivo '{arquivo_ttl.name}' definido em packages não foi encontrado em {ttl_path}.")
 
     if not ttl_files:
-        print(f"Nenhum arquivo .ttl encontrado em: {ttl_path}")
+        print(f"Nenhum arquivo .ttl correspondente aos módulos de packages foi encontrado em: {ttl_path}")
         return
 
     modulos_gerados = []
 
-    print(f"Encontrados {len(ttl_files)} arquivos .ttl. Processando e gerando documentação HTML com pyLODE...")
+    print(f"Encontrados {len(ttl_files)} módulos válidos. Processando e gerando documentação HTML com pyLODE...")
 
     for ttl_file in ttl_files:
         nome_modulo = ttl_file.stem
@@ -147,15 +140,18 @@ def gerar_documentacao_html(
             print("Erro: O comando 'pylode' não foi encontrado. Certifique-se de instalar com 'pip install pylode'.")
             return
 
-    proposito_html = converter_latex_para_html(proposito_ontologia)
     index_html_path = docs_path / "index.html"
     
-    # Gera a listagem dos módulos em ordem reversa (reverse-order) com seus respectivos resumos
+    # Gera a listagem dos módulos em ordem reversa (reverse-order) usando moduleName e moduleSimpleDescription
     itens_lista = []
     for mod in sorted(modulos_gerados, reverse=True):
-        desc_mod = descricoes_modulos.get(mod, "")
-        desc_html = f"<br><small>{desc_mod}</small>" if desc_mod else ""
-        itens_lista.append(f'        <li><a href="{mod}.html">Módulo <strong>{mod}</strong></a>{desc_html}</li>')
+        dados_mod = packages.get(mod, {})
+        titulo_mod = dados_mod.get("moduleName", mod)
+        desc_simples = dados_mod.get("moduleSimpleDescription", "")
+        desc_html = f"<br><small>{desc_simples}</small>" if desc_simples else ""
+        itens_lista.append(
+            f'        <li><a href="{mod}.html">Módulo <strong>{titulo_mod}</strong> ({mod})</a>{desc_html}</li>'
+        )
     
     itens_lista_html = "\n".join(itens_lista)
 
@@ -209,7 +205,7 @@ def gerar_documentacao_html(
 </head>
 <body>
     <h1>{nome_ontologia} <span class="badge">{sigla_ontologia}</span></h1>
-    <p><strong>Propósito:</strong> {proposito_html}</p>
+    <p><strong>Propósito:</strong> {proposito_ontologia}</p>
     <p>Esta ontologia está estruturada em módulos para melhor organização e reutilização de conceitos. Abaixo estão disponíveis os links para acessar a documentação detalhada de cada módulo específico gerada via pyLODE:</p>
     <ul>
 {itens_lista_html}
@@ -223,25 +219,6 @@ def gerar_documentacao_html(
 
     print(f"Página principal gerada com sucesso em: {index_html_path}")
 
-
-
-
-
-_nome_ontologia = """Ontologia do Portal da Transparência do ES"""
-_sigla_ontologia = """OPTES"""
-_proposito_ontologia = r"""O propósito da \ontologyname (\ontologyacronym{}) é representar os conceitos relacionados aos dados publicados no Portal da Transparência do Poder Executivo do Estado do Espírito Santo, bem como os conceitos necessários à interpretação dessas informações, considerando os diferentes domínios de informação governamental e os elementos conceituais compartilhados entre eles (\textit{what}); de modo a estabelecer uma conceituação explícita e compartilhada que apoie a compreensão das bases por usuários humanos, a integração semântica entre diferentes conjuntos de dados e a posterior representação dos dados por meio de tecnologias da Web Semântica (\textit{for what}); visando reduzir ambiguidades na interpretação dos dados, favorecer sua interoperabilidade semântica com dados internos e externos e ampliar as possibilidades de integração, consulta e reutilização automatizada das informações publicadas (\textit{why})."""
-
-_nucleo = r"""O subdomínio nucleo reúne requisitos relacionados a conceitos que podem ser compartilhados por diferentes conjuntos de dados do Portal da Transparência."""
-_base_receitas = r"""O subdomínio base-receitas visa estabelecer os conceitos centrais necessárias para compreender o que é uma receita pública e como conceitos relacionados estão envolvidos, especialmente as Unidades Gestoras."""
-_base_despesas = r"""O subdomínio base-despesas visa estabelecer os conceitos centrais necessárias para compreender o que é uma despesa pública, quais são seus subtipos e como conceitos relacionados estão envolvidos."""
-
 if __name__ == "__main__":
     
-    gerar_documentacao_html(
-        nome_ontologia=_nome_ontologia,
-        sigla_ontologia=_sigla_ontologia,
-        proposito_ontologia=converter_latex_para_html(_proposito_ontologia),
-        nucleo=_nucleo,
-        base_despesas=_base_despesas,
-        base_receitas=_base_receitas
-    )
+    gerar_documentacao_html()
