@@ -1,5 +1,5 @@
-codigoUG ; base-receitas.UnidadeGestoraBeneficiada.codigo
-descricaoUG ; base-receitas.UnidadeGestoraBeneficiada.descricao
+codigoUG ; base-receitas.UnidadeGestoraBeneficiadaDeReceita.codigo
+descricaoUG ; base-receitas.UnidadeGestoraBeneficiadaDeReceita.descricao
 contaContabil ; base-receitas.ContaContabil.codigo
 descricaoContaContabil ; base-receitas.ContaContabil.descricao
 codigoNatureza ; base-receitas.NaturezaDaReceita.codigoNatureza
@@ -34,8 +34,8 @@ tipoLancamento ; base-receitas.RegistroDeReceitaOrcamentaria.tipoLancamento
 dataEmissao ; base-receitas.ReceitaOrcamentariaRegistrada.dataEmissao
 dataContabilizacao ; base-receitas.RegistroDeReceitaOrcamentaria.dataContabilizacao
 documento ; base-receitas.ReceitaOrcamentariaRegistrada.documento
-codigoUGEmitente ; base-receitas.UnidadeGestoraEmitente.codigo
-descricaoUGEmitente ; base-receitas.UnidadeGestoraEmitente.descricao
+codigoUGEmitente ; base-receitas.UnidadeGestoraEmitenteDeReceita.codigo
+descricaoUGEmitente ; base-receitas.UnidadeGestoraEmitenteDeReceita.descricao
 tipo ; base-receitas.RegistroDeReceitaOrcamentaria.tipo
 valorPrevistaBruta ; base-receitas.ReceitaOrcamentariaRegistrada.valorAtreladoNaReceita.valorPrevistaBruta
 valorPrevistaDeducao ; base-receitas.ReceitaOrcamentariaRegistrada.valorAtreladoNaReceita.valorPrevistaDeducao
