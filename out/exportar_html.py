@@ -66,17 +66,28 @@ def gerar_documentacao_html(
     nome_ontologia: str,
     sigla_ontologia: str,
     proposito_ontologia: str,
+    nucleo: str,
+    base_despesas: str,
+    base_receitas: str,
     ttl_dir: str = "./ttl", 
     output_docs_dir: str = "./html"
 ):
     """
     Detecta arquivos .ttl, trata propriedades inversas, injeta metadados necessários 
-    para o pyLODE, gera a documentação HTML individual e cria o index.html em ordem reversa.
+    para o pyLODE, gera a documentação HTML individual e cria o index.html em ordem 
+    reversa contendo o resumo de cada módulo.
     """
     if not nome_ontologia or not sigla_ontologia or not proposito_ontologia:
         raise ValueError(
             "Erro: Os argumentos 'nome_ontologia', 'sigla_ontologia' e 'proposito_ontologia' são obrigatórios!"
         )
+
+    # Mapeamento dos resumos específicos por nome de módulo para exibição exclusiva no index.html
+    descricoes_modulos = {
+        "nucleo": converter_latex_para_html(nucleo),
+        "base-despesas": converter_latex_para_html(base_despesas),
+        "base-receitas": converter_latex_para_html(base_receitas),
+    }
 
     ttl_path = Path(ttl_dir).resolve()
     docs_path = Path(output_docs_dir).resolve()
@@ -108,7 +119,7 @@ def gerar_documentacao_html(
             # 1. Trata propriedades inversas anônimas gerando referências limpas
             g = tratar_propriedades_inversas(g)
 
-            # 2. Identifica a URI principal da ontologia e injeta metadados se necessário
+            # 2. Identifica a URI principal da ontologia e injeta metadados padrão apenas se ausentes
             ontologias = list(g.subjects(RDF.type, OWL.Ontology))
             if ontologias:
                 ont_uri = ontologias[0]
@@ -139,10 +150,14 @@ def gerar_documentacao_html(
     proposito_html = converter_latex_para_html(proposito_ontologia)
     index_html_path = docs_path / "index.html"
     
-    # Gera a listagem dos módulos em ordem reversa (reverse-order)
-    itens_lista_html = "\n".join(
-        f'        <li><a href="{mod}.html">Módulo <strong>{mod}</strong></a></li>' for mod in sorted(modulos_gerados, reverse=True)
-    )
+    # Gera a listagem dos módulos em ordem reversa (reverse-order) com seus respectivos resumos
+    itens_lista = []
+    for mod in sorted(modulos_gerados, reverse=True):
+        desc_mod = descricoes_modulos.get(mod, "")
+        desc_html = f"<br><small>{desc_mod}</small>" if desc_mod else ""
+        itens_lista.append(f'        <li><a href="{mod}.html">Módulo <strong>{mod}</strong></a>{desc_html}</li>')
+    
+    itens_lista_html = "\n".join(itens_lista)
 
     conteudo_index = f"""<!DOCTYPE html>
 <html lang="pt-br">
@@ -174,8 +189,14 @@ def gerar_documentacao_html(
             padding-left: 20px;
         }}
         li {{
-            margin-bottom: 10px;
+            margin-bottom: 14px;
             font-size: 1.1em;
+        }}
+        li small {{
+            color: #555;
+            font-size: 0.85em;
+            display: inline-block;
+            margin-top: 4px;
         }}
         a {{
             color: #0066cc;
@@ -204,14 +225,23 @@ def gerar_documentacao_html(
 
 
 
+
+
 _nome_ontologia = """Ontologia do Portal da Transparência do ES"""
 _sigla_ontologia = """OPTES"""
 _proposito_ontologia = r"""O propósito da \ontologyname (\ontologyacronym{}) é representar os conceitos relacionados aos dados publicados no Portal da Transparência do Poder Executivo do Estado do Espírito Santo, bem como os conceitos necessários à interpretação dessas informações, considerando os diferentes domínios de informação governamental e os elementos conceituais compartilhados entre eles (\textit{what}); de modo a estabelecer uma conceituação explícita e compartilhada que apoie a compreensão das bases por usuários humanos, a integração semântica entre diferentes conjuntos de dados e a posterior representação dos dados por meio de tecnologias da Web Semântica (\textit{for what}); visando reduzir ambiguidades na interpretação dos dados, favorecer sua interoperabilidade semântica com dados internos e externos e ampliar as possibilidades de integração, consulta e reutilização automatizada das informações publicadas (\textit{why})."""
+
+_nucleo = r"""O subdomínio nucleo reúne requisitos relacionados a conceitos que podem ser compartilhados por diferentes conjuntos de dados do Portal da Transparência."""
+_base_receitas = r"""O subdomínio base-receitas visa estabelecer os conceitos centrais necessárias para compreender o que é uma receita pública e como conceitos relacionados estão envolvidos, especialmente as Unidades Gestoras."""
+_base_despesas = r"""O subdomínio base-despesas visa estabelecer os conceitos centrais necessárias para compreender o que é uma despesa pública, quais são seus subtipos e como conceitos relacionados estão envolvidos."""
 
 if __name__ == "__main__":
     
     gerar_documentacao_html(
         nome_ontologia=_nome_ontologia,
         sigla_ontologia=_sigla_ontologia,
-        proposito_ontologia=converter_latex_para_html(_proposito_ontologia)
+        proposito_ontologia=converter_latex_para_html(_proposito_ontologia),
+        nucleo=_nucleo,
+        base_despesas=_base_despesas,
+        base_receitas=_base_receitas
     )
