@@ -13,8 +13,8 @@ kind DespesaOrcamentaria
 relator ClassificadorInstitucionalDeDespesa {
     @mediation (const) [1]  -- [1] (const) ClassificacaoDoRegistroDeDespesaOrcamentaria
 
-    @mediation (const) [1]  -- [1] (const) OrgaoPublicoOrcamentarioNaDespesa
-    @mediation (const) [1]  -- [1] (const) UnidadeOrcamentariaNaDespesa
+    @mediation (const) [1..*]  -- [1] (const) OrgaoPublicoOrcamentarioNaDespesa
+    @mediation (const) [1..*]  -- [1] (const) UnidadeOrcamentariaNaDespesa
 
 }
 
@@ -162,6 +162,7 @@ subkind RegistroDeRestosAPagar specializes RegistroDeDespesaOrcamentaria{
     @mediation (const) [1..*]  -- [1] (const) PoderDaFederacaoNaDespesa
 }
 
+/// @pt-br Papel da esfera orçamentária na despesa
 roleMixin EsferaOrcamentariaNaDespesa specializes nucleo.EsferaOrcamentaria
 
 /// @pt-br Tipo de dados que agrupa os valores monetários que um Registro de Orçamento de Despesa pode ter.

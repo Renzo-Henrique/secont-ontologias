@@ -1,5 +1,6 @@
 import json
 import subprocess
+import shutil
 from pathlib import Path
 from typing import Optional, Dict, Any
 import rdflib
@@ -10,6 +11,42 @@ _PREFIX_NUCLEO = "/nucleo"
 _PREFIX_RECEITAS = "/receitas"
 _PREFIX_DESPESAS = "/despesas"
 _PREFIX_OUTPUT_DICIONARIO = "./dicionario_de_conceitos"
+
+def converter_svg_para_pdf(svg_path: Path, pdf_path: Path) -> None:
+    """
+    Converte um SVG em PDF, preservando o formato vetorial.
+
+    Prioriza o Inkscape. Caso não esteja instalado, tenta usar o CairoSVG
+    (biblioteca Python).
+    """
+    inkscape = shutil.which("inkscape")
+
+    if inkscape:
+        subprocess.run(
+            [
+                inkscape,
+                str(svg_path),
+                "--export-type=pdf",
+                f"--export-filename={pdf_path}",
+            ],
+            check=True,
+            text=True,
+        )
+        return
+
+    try:
+        import cairosvg
+    except ImportError as exc:
+        raise RuntimeError(
+            "Não foi possível gerar o PDF: instale o Inkscape ou a biblioteca "
+            "CairoSVG (pip install cairosvg)."
+        ) from exc
+
+    cairosvg.svg2pdf(
+        url=str(svg_path),
+        write_to=str(pdf_path),
+    )
+
 
 def exportar_diagramas_com_tonto_view(input_path: str, output_dir: Optional[str] = None, output_name: Optional[str] = None, view_file: Optional[str] = None):
     """
@@ -32,6 +69,7 @@ def exportar_diagramas_com_tonto_view(input_path: str, output_dir: Optional[str]
     # Define o nome do arquivo de saída (usa o nome do arquivo .tonto por padrão se não especificado)
     base_name = output_name if output_name else input_file.stem
     svg_output = out_dir / f"{base_name}.svg"
+    pdf_output = out_dir / f"{base_name}.pdf"
 
     try:
         print(f"Processando visualização para: {input_file.name}")
@@ -51,6 +89,8 @@ def exportar_diagramas_com_tonto_view(input_path: str, output_dir: Optional[str]
             subprocess.run(cmd_str, shell=True, stdout=f_svg, check=True, text=True)
             
         print(f"SVG salvo em: {svg_output}")
+        converter_svg_para_pdf(svg_output, pdf_output)
+        print(f"PDF salvo em: {pdf_output}")
 
     except subprocess.CalledProcessError as e:
         print(f"Erro ao executar o tonto-view: {e}")
@@ -91,6 +131,24 @@ def exportarDespesas():
                 output_name="base-despesas-atributos",
                 view_file="../src/bases/despesas/views/versoes_da_view/base-despesas-atributos.tontoview"
         )
+    exportar_diagramas_com_tonto_view(
+                    input_path="../src/bases/despesas/base-despesas.tonto",
+                    output_dir=_PREFIX_OUTPUT_DIR+_PREFIX_DESPESAS,
+                    output_name="base-despesas-conceitos-centrais",
+                    view_file="../src/bases/despesas/views/versoes_da_view/base-despesas-conceitos-centrais.tontoview"
+        )
+    exportar_diagramas_com_tonto_view(
+                        input_path="../src/bases/despesas/base-despesas.tonto",
+                        output_dir=_PREFIX_OUTPUT_DIR+_PREFIX_DESPESAS,
+                        output_name="base-despesas-tipos-de-registro",
+                        view_file="../src/bases/despesas/views/versoes_da_view/base-despesas-tipos-de-registro.tontoview"
+            )
+    exportar_diagramas_com_tonto_view(
+                        input_path="../src/bases/despesas/base-despesas.tonto",
+                        output_dir=_PREFIX_OUTPUT_DIR+_PREFIX_DESPESAS,
+                        output_name="base-despesas-classificadores",
+                        view_file="../src/bases/despesas/views/versoes_da_view/base-despesas-classificadores.tontoview"
+            )
 
 def exportarDiagramas():
     exportarNucleo()
@@ -342,7 +400,7 @@ def gerar_dicionario_latex(
       label_str = escapar_latex(nome_uri)
 
     # Formata a linha exatamente no padrão solicitado
-    linha = f"{label_str} &\n{comment_str} \n\\\\ \\hline\n"
+    linha = f"\\seqsplit{{{label_str}}} &\n{comment_str} \n\\\\ \\hline\n"
     linhas_tabela.append(linha)
 
   # Escreve o resultado no arquivo de saída
