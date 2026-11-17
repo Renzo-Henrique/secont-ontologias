@@ -4,7 +4,7 @@ ValorEmpenho ; base-despesas.RegistroDeDespesa.valorAtrelado.valorEmpenho
 ValorLiquidado ; base-despesas.RegistroDeDespesa.valorAtrelado.valorLiquidado
 ValorPago ; base-despesas.RegistroDeDespesa.valorAtrelado.valorPago
 ValorRap ; base-despesas.RegistroDeDespesa.valorAtrelado.valorRap
-CpfCnpjNis ; base-despesas.DadosPessoaisAnonimizadosExpandido.codigo
+CpfCnpjNis ; base-despesas.RegistroDeDespesa.dadosDoFavorecido.codigo
 TipoFavorecido ; base-despesas.RegistroDeDespesa.dadosDoFavorecido.tipoFavorecido
 CargoFuncao ; base-despesas.RegistroDeDespesa.dadosDoFavorecido.cargoFuncao
 Favorecido ; base-despesas.RegistroDeDespesa.dadosDoFavorecido.nome
